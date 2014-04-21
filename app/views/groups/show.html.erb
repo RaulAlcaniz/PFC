@@ -1,0 +1,15 @@
+<h1>Groups#show</h1>
+<p>Find me in app/views/groups/show.html.erb</p>
+
+<table id="sections">
+  <tr>
+    <th>Section number</th>
+    <th>Description</th>
+  </tr>
+  <% @group.sections.each do |section| %>
+      <tr>
+        <td><%= section.name %></td>
+        <td><%= section.description %></td>
+      </tr>
+  <% end %>
+</table>
