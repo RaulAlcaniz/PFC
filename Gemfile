@@ -30,10 +30,12 @@ gem 'spring',        group: :development
 group :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
+  gem 'cucumber-websteps'
   gem 'rspec-rails'
   gem 'database_cleaner'
-  #gem 'selenium-webdriver', '2.35.1'
-  #gem 'capybara', '2.2.1'
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.2.1'
+  gem 'email_spec'
 end
 
 

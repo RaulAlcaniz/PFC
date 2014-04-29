@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+[
+    ['Group I', 'Sheepdogs and Cattle Dogs (except Swiss Cattle Dogs)'],
+    ['Group II', 'Pinscher and Schnauzer - Molossoid Breeds - Swiss Mountain and Cattle Dogs'],
+    ['Group III', 'Terriers']
+].each do |entry|
+  Group.create!(name: entry[0], description: entry[1])
+end
