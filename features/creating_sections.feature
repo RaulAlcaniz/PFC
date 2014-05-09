@@ -17,6 +17,14 @@ Feature: Creating sections
     Then I should see "Section has been created."
     And I should be on the section page for "1"
 
+  @revisar
+  Scenario: Creating an existing section
+    Given there is a section which description is "Sheepdogs"
+    When I fill in "Description" with "Sheepdogs"
+    And I press "Create Section"
+    Then I should see "Section has not been created."
+    And I should see "Description has already been taken"
+
   @done
   Scenario: Creating a section without a name
     When I fill in "Name" with ""

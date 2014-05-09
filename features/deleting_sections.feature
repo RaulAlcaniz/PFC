@@ -12,6 +12,7 @@ Feature: Deleting Sections
     When I follow "Group I"
     And I follow "Sheepdogs"
 
+  @done
   Scenario: Deleting a section
     When I follow "Delete Section"
     Then I should see "Section has been deleted."

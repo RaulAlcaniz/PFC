@@ -32,7 +32,7 @@ class GroupsController < ApplicationController
       redirect_to @group
     else
       flash[:alert] = 'Group has not been updated.'
-      render 'show'
+      render 'edit'
     end
   end
 

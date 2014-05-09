@@ -8,6 +8,7 @@ Feature: Deleting groups
     And I am on the groups page
     When I follow "Group I"
 
+  @done
   Scenario: Deleting groups
     When I follow "Delete group"
     Then I should see "Group has been deleted."

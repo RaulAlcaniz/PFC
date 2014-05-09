@@ -30,7 +30,7 @@ class SectionsController < ApplicationController
       redirect_to [@group, @section]
     else
       flash[:alert] = 'Section has not been updated.'
-      render 'show'
+      render 'edit'
     end
   end
 
