@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
   has_many :sections
-  validates_presence_of :name, uniqueness: true
-  validates_presence_of :description
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :description, presence: true
 end

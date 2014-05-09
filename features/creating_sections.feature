@@ -9,14 +9,24 @@ Feature: Creating sections
     When I follow "Group I"
     And I follow "New section"
 
+  @done
   Scenario: Creating a section
     When I fill in "Name" with "1"
     And I fill in "Description" with "Sheepdogs"
     And I press "Create Section"
     Then I should see "Section has been created."
+    And I should be on the section page for "1"
 
-  Scenario: Creating a section without attributes
-    When I press "Create Section"
+  @done
+  Scenario: Creating a section without a name
+    When I fill in "Name" with ""
+    And I press "Create Section"
     Then I should see "Section has not been created."
-    And I should see "Name can't be blank."
-    And I should see "Description can't be blank."
+    And I should see "Name can't be blank"
+
+  @done
+  Scenario: Creating a section without a name
+    When I fill in "Description" with ""
+    And I press "Create Section"
+    Then I should see "Section has not been created."
+    And I should see "Description can't be blank"

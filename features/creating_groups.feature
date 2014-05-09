@@ -15,30 +15,25 @@ Feature: Creating groups
     Then I should see "Group has been created."
     And I should be on the group page for "Group I"
 
-  @pending
+  @done
   Scenario: Creating an existing group
+    Given there is a group called "Group I"
     When I fill in "Name" with "Group I"
     And I fill in "Description" with "Sheepdogs and Cattle Dogs (except Swiss Cattle Dog)"
     And I press "Create Group"
-    Then I should see "Group has been created."
-    And I should be on the group page for "Group I"
-
-    #cómo hago para controlar que estemos de nuevo en la groups page?
-    When I follow "New Group"
-    And I fill in "Name" with "Group I"
-    And I fill in "Description" with "Sheepdogs and Cattle Dogs (except Swiss Cattle Dog) beta"
-    And I press "Create Group"
     Then I should see "Group has not been created."
-    And I should see "Group already exists."
+    And I should see "Name has already been taken"
 
   @done
   Scenario: Creating a group without a name
-    When I press "Create Group"
+    When I fill in "Name" with ""
+    And I press "Create Group"
     Then I should see "Group has not been created."
     And I should see "Name can't be blank"
 
-  @pending
+  @done
   Scenario: Creating a group without a description
-    When I press "Create Group"
+    When I fill in "Description" with ""
+    And I press "Create Group"
     Then I should see "Group has not been created."
     And I should see "Description can't be blank"
