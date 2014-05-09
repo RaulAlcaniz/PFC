@@ -13,6 +13,9 @@ module NavigationHelpers
         '/'
       when /the group page for "([^\"]*)"/
         group_path(Group.find_by_name!($1))
+      when /the section page for "([^\"]*)"/
+        section = Section.find_by_name!($1)
+        group_section_path(section.group, section)
 
 
 # Add more mappings here.

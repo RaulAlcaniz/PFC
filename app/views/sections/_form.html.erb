@@ -1,0 +1,14 @@
+<%= form_for [@group, @section] do |f|%>
+    <% @section.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </p>
+    <%= f.submit %>
+<% end %>

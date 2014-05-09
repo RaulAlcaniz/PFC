@@ -10,6 +10,6 @@
     ['Group I', 'Sheepdogs and Cattle Dogs (except Swiss Cattle Dogs)'],
     ['Group II', 'Pinscher and Schnauzer - Molossoid Breeds - Swiss Mountain and Cattle Dogs'],
     ['Group III', 'Terriers']
-].each do |entry|
-  Group.create!(name: entry[0], description: entry[1])
+].each do |name, description|
+  Group.create!(name: name, description: description)
 end

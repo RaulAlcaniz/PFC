@@ -1,0 +1,19 @@
+<div id="sections" >
+  <h2><%= @section.name %></h2>
+  <%= simple_format( @section.description ) %>
+
+  <ul>
+    <li><%= link_to 'Edit Section', edit_group_section_path(@group, @section) %></li>
+    <li><%= link_to "Delete Section", [@group, @section], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Section?'} %></li>
+    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+  </ul>
+
+  <table id="subsections">
+    <tr>
+      <th>Subsection number</th>
+      <th>Description</th>
+    </tr>
+  </table>
+
+</div>

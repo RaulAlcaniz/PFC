@@ -4,7 +4,7 @@
 <ul>
   <li><%= link_to 'Edit group', edit_group_path(@group) %></li>
   <li><%= link_to 'Delete group', @group, method: :delete, data: {confirm: 'Are you sure you want to delete this group'} %></li>
-  <li><%= link_to 'Add section', new_group_section_path(@group) %></li>
+  <li><%= link_to 'New section', new_group_section_path(@group) %></li>
   <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
 </ul>
 
@@ -17,7 +17,7 @@
   <% @group.sections.each do |section| %>
       <tr>
         <td><%= section.name %></td>
-        <td><%= section.description %></td>
+        <td><%= link_to section.description, [@group, section] %></td>
       </tr>
   <% end %>
 </table>
