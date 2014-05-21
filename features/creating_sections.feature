@@ -34,7 +34,7 @@ Feature: Creating sections
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Creating a section without a name
+  Scenario: Creating a section without a description
     When I fill in "Description" with ""
     And I press "Create Section"
     Then I should see "Section has not been created."

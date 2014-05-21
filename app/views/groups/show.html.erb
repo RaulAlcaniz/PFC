@@ -19,5 +19,16 @@
         <td><%= section.name %></td>
         <td><%= link_to section.description, [@group, section] %></td>
       </tr>
+      <tr>
+      <tr id="subsection">
+        <% section.subsections.each do |subsection| %>
+          <tr>
+            <td><%=section.name%>.<%=subsection.name%></td>
+            <td><%=subsection.description%></td>
+          </tr>
+        <% end %>
+
+      </tr>
   <% end %>
 </table>
+

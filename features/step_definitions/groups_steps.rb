@@ -16,5 +16,5 @@ Then(/^the standards and nomenclature page should content:$/) do |expected_table
 end
 
 Given(/^there is a group called "(.*?)"$/) do |name|
-  @group = FactoryGirl.create(:group, name: name) # pq se lo asignamos a group? es una variable local al bloque, no? una vez termina el bloque se elimina la variable, así q para q sirve?
+  @group = FactoryGirl.create(:group, name: name)
 end

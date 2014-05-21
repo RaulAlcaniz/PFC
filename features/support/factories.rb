@@ -10,4 +10,11 @@ FactoryGirl.define do
     s.name 'no section name defined'
     s.description 'no section description defined'
   end
+
+  factory :subsection do |sub|
+    sub.section_id 0
+    sub.name 'no section name defined'
+    sub.description 'no section description defined'
+  end
+
 end

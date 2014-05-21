@@ -1,6 +1,5 @@
-class Section < ActiveRecord::Base
-  belongs_to :group
-  has_many :subsections
+class Subsection < ActiveRecord::Base
+  belongs_to :section
 
   validates :name, presence: true
   validates :description, presence: true

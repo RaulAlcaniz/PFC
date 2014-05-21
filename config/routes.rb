@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  #get 'subsections/index'
+
   #get 'section/show'
 
   #get 'groups/index'
 
   resources :groups do
-    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

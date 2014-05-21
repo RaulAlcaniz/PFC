@@ -6,6 +6,7 @@
     <li><%= link_to 'Edit Section', edit_group_section_path(@group, @section) %></li>
     <li><%= link_to "Delete Section", [@group, @section], method: :delete,
                     data: {confirm: 'Are you sure you want to delete this Section?'} %></li>
+    <li><%= link_to 'New Subsection', new_group_section_subsection_path(@group,@section) %></li>
     <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
   </ul>
 
@@ -14,6 +15,11 @@
       <th>Subsection number</th>
       <th>Description</th>
     </tr>
+    <% @section.subsections.each do |subsection| %>
+      <tr>
+        <td><%= subsection.name %></td>
+        <td><%= link_to subsection.description, [@group, @section, subsection] %></td>
+      </tr>
+    <% end %>
   </table>
-
 </div>

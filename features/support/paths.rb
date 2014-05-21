@@ -17,7 +17,6 @@ module NavigationHelpers
         section = Section.find_by_name!($1)
         group_section_path(section.group, section)
 
-
 # Add more mappings here.
 # Here is an example that pulls values out of the Regexp:
 #

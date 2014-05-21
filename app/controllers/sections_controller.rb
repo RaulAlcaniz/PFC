@@ -3,9 +3,6 @@ class SectionsController < ApplicationController
   before_action :set_group, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
-  def show
-  end
-
   def new
     @section = @group.sections.build
   end
@@ -19,9 +16,6 @@ class SectionsController < ApplicationController
       flash[:alert] = 'Section has not been created.'
       render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
