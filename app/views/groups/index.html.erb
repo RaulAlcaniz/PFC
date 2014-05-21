@@ -7,13 +7,11 @@
 
 <table id="groups">
   <tr>
-    <th>GROUP ID</th>
     <th>Name</th>
     <th>Description</th>
   </tr>
   <% @groups.each do |group| %>
       <tr>
-        <td><%= group.id %></td>
         <td><%= link_to group.name, group_path(group) %></td>
         <td><%= group.description %></td>
       </tr>

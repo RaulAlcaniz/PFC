@@ -1,34 +1,27 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div id="groups" >
+  <h1>Groups#show. Find me in app/views/groups/show.html.erb</h1>
 
-<ul>
-  <li><%= link_to 'Edit group', edit_group_path(@group) %></li>
-  <li><%= link_to 'Delete group', @group, method: :delete, data: {confirm: 'Are you sure you want to delete this group'} %></li>
-  <li><%= link_to 'New section', new_group_section_path(@group) %></li>
-  <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-</ul>
+  <h2><%= @group.name %></h2>
+  <%= simple_format( @group.description ) %>
+
+  <ul>
+    <li><%= link_to 'Edit group', edit_group_path(@group) %></li>
+    <li><%= link_to 'Delete group', @group, method: :delete, data: {confirm: 'Are you sure you want to delete this group'} %></li>
+    <li><%= link_to 'New section', new_group_section_path(@group) %></li>
+    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+  </ul>
 
 
-<table id="sections">
-  <tr>
-    <th>Section number</th>
-    <th>Description</th>
-  </tr>
-  <% @group.sections.each do |section| %>
-      <tr>
-        <td><%= section.name %></td>
-        <td><%= link_to section.description, [@group, section] %></td>
-      </tr>
-      <tr>
-      <tr id="subsection">
-        <% section.subsections.each do |subsection| %>
-          <tr>
-            <td><%=section.name%>.<%=subsection.name%></td>
-            <td><%=subsection.description%></td>
-          </tr>
-        <% end %>
-
-      </tr>
-  <% end %>
-</table>
-
+  <table id="sections">
+    <tr>
+      <th>Section number</th>
+      <th>Description</th>
+    </tr>
+    <% @group.sections.each do |section| %>
+        <tr>
+          <td><%= section.name %></td>
+          <td><%= link_to section.description, [@group, section] %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

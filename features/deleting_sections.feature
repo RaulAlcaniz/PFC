@@ -6,8 +6,8 @@ Feature: Deleting Sections
   Background:
     Given there is a group called "Group I"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description|
-      |1         |1       |1             |Sheepdogs  |
+      |Section number|Description|
+      |1             |Sheepdogs  |
     And I am on the groups page
     When I follow "Group I"
     And I follow "Sheepdogs"

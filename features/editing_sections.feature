@@ -1,14 +1,15 @@
 Feature: Editing Section
-  In order to alter section information
+  In order to alter a section information
   As a user
   I want a form to edit the sections
 
   Background:
     Given there is a group called "Group I"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description|
-      |1         |1       |1             |Sheepdogs  |
-    And I am on the groups page
+      |Section number|Description|
+      |1             |Sheepdogs  |
+
+    Given I am on the groups page
     When I follow "Group I"
     And I follow "Sheepdogs"
     And I follow "Edit Section"

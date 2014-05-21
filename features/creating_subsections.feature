@@ -6,8 +6,8 @@ Feature: Creating subsections
   Background:
     Given there is a group called "Group II"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description                |
-      |1         |2       |1             |Pinscher and Schnauzer type|
+      |Section number|Description                |
+      |1             |Pinscher and Schnauzer type|
     And I am on the section page for "1"
     When I follow "New Subsection"
    # Then I should see una div con el nombre: formulario de nueva subsección con campos nombre, descripción?

@@ -6,17 +6,17 @@ Feature: Deleting Subsections
   Background:
     Given there is a group called "Group II"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description                |
-      |1         |2       |1             |Pinscher and Schnauzer type|
+      |Section number|Description                |
+      |1             |Pinscher and Schnauzer type|
     And there are subsections for the section with section number "1":
       |Subsection number|Description|
-      |15               |Pinscher   |
+      |3               |Smoushond   |
     And I am on the section page for "1"
-    And I follow "Pinscher"
+    And I follow "Smoushond"
 
-  @actual
+  @done
   Scenario: Deleting a section
     When I follow "Delete Subsection"
     Then I should see "Subsection has been deleted."
     And I should be on the section page for "1"
-    And I should not see "Pinscher"
+    And I should not see "Smoushond"

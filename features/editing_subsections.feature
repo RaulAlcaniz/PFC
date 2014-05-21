@@ -6,13 +6,14 @@ Feature: Editing Subsections
   Background:
     Given there is a group called "Group II"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description                |
-      |1         |2       |1             |Pinscher and Schnauzer type|
+      |Section number|Description                |
+      |1             |Pinscher and Schnauzer type|
     And there are subsections for the section with section number "1":
       |Subsection number|Description|
-      |15               |Pinscher   |
+      |3               |Smoushond   |
+
     And I am on the section page for "1"
-    When I follow "Pinscher"
+    When I follow "Smoushond"
     And I follow "Edit Subsection"
 
   @done
@@ -23,7 +24,7 @@ Feature: Editing Subsections
     Then I should see "Subsection has been updated."
     And I should be on the section page for "1"
     And I should see "beta" within "#subsections"
-    But I should not see "15"
+    But I should not see "3" within "#subsections"
 
  # @revisar
  # Scenario: Updating a section with a description already taken

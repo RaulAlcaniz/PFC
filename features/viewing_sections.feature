@@ -6,15 +6,17 @@ Feature: Viewing sections
   Background:
     Given there is a group called "Group I"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description                    |
-      |1         |1       |1             |Sheepdogs                      |
+      |Section number|Description                    |
+      |1             |Sheepdogs                      |
+
     Given there is a group called "Group II"
     And there are sections for this group:
-      |SECTION ID|GROUP ID|Section number|Description                    |
-      |3         |2       |1             |Large and medium-sized Terriers|
+      |Section number|Description                    |
+      |1             |Large and medium-sized Terriers|
 
     Given I am on the groups page
 
+  @done
   Scenario: Viewing sections for a given group
     When I follow "Group I"
     Then I should see "Sheepdogs"
