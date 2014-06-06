@@ -10,19 +10,19 @@ Feature: Editing Subsections
       |1             |Pinscher and Schnauzer type|
     And there are subsections for the section with section number "1":
       |Subsection number|Description|
-      |3               |Smoushond   |
+      |3                |Smoushond   |
 
     And I am on the section page for "1"
     When I follow "Smoushond"
     And I follow "Edit Subsection"
 
   @done
-  Scenario: Updating a section
+  Scenario: Updating a subsection
     When I fill in "Name" with "beta"
     And I fill in "Description" with "Description beta"
     And I press "Update Subsection"
     Then I should see "Subsection has been updated."
-    And I should be on the section page for "1"
+    And I should be on the subsection page for "beta"
     And I should see "beta" within "#subsections"
     But I should not see "3" within "#subsections"
 

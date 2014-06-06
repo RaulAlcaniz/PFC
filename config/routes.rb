@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
 
+  #get 'breeds/new'
+
   #get 'subsections/index'
 
   #get 'section/show'
 
   #get 'groups/index'
 
+  resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]
+  end
+
+  resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]
+  end
+
+
   resources :groups do
     resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do
-      resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
+
+      #resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

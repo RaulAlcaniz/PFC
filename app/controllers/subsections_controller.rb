@@ -11,7 +11,7 @@ class SubsectionsController < ApplicationController
     @subsection = @section.subsections.build(subsec_params)
     if @subsection.save
       flash[:notice] = 'Subsection has been created.'
-      redirect_to [@group, @section]
+      redirect_to [@section, @subsection]
     else
       flash[:alert] = 'Subsection has not been created.'
       render 'new'
@@ -21,7 +21,7 @@ class SubsectionsController < ApplicationController
   def update
     if @subsection.update_attributes(subsec_params)
       flash[:notice] = 'Subsection has been updated.'
-      redirect_to [@group, @section]
+      redirect_to [@section, @subsection]
     else
       flash[:alert] = 'Subsection has not been updated.'
       render 'edit'
@@ -31,7 +31,7 @@ class SubsectionsController < ApplicationController
   def destroy
     if @subsection.destroy
       flash[:notice] = 'Subsection has been deleted.'
-      redirect_to [@group, @section]
+      redirect_to [@section.group, @section]
     else
     end
   end
@@ -39,8 +39,8 @@ class SubsectionsController < ApplicationController
   private
 
   def set_section
-    @group = Group.find(params[:group_id])
-    @section = @group.sections.find(params[:section_id])
+    #@group = Group.find(params[:group_id])
+    @section = Section.find(params[:section_id])
   end
 
   def set_subsection

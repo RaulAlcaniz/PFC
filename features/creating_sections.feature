@@ -1,13 +1,13 @@
 Feature: Creating sections
   In order to create sections for groups
   As a user
-  I want to be able to select a group and do it
+  I want to be able to follow a group and do it
 
   Background:
     Given there is a group called "Group I"
     And I am on the groups page
     When I follow "Group I"
-    And I follow "New section"
+    And I follow "New Section"
 
   @done
   Scenario: Creating a section

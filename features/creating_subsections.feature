@@ -1,7 +1,7 @@
 Feature: Creating subsections
   In order to create subsections for sections
   As a user
-  I want to be able to select a section and do it
+  I want to be able to follow a section and do it
 
   Background:
     Given there is a group called "Group II"
@@ -18,7 +18,7 @@ Feature: Creating subsections
     And I fill in "Description" with "Pinscher"
     And I press "Create Subsection"
     Then I should see "Subsection has been created."
-    And I should be on the section page for "1"
+    And I should be on the subsection page for "1"
 
   @done
   Scenario: Creating a subsection without a name

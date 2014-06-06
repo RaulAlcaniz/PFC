@@ -16,6 +16,12 @@ module NavigationHelpers
       when /the section page for "([^\"]*)"/
         section = Section.find_by_name!($1)
         group_section_path(section.group, section)
+      when /the subsection page for "([^\"]*)"/
+        subsection = Subsection.find_by_name!($1)
+        section_subsection_path(subsection.section, subsection)
+      when /the breed page for "([^\"]*)"/
+        breed = Breed.find_by_name!($1)
+        send("#{breed.breedable_type.downcase}" + '_breed_path',breed.breedable_id, breed)
 
 # Add more mappings here.
 # Here is an example that pulls values out of the Regexp:

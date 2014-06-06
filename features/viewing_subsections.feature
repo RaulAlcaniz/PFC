@@ -17,7 +17,7 @@ Feature: Viewing subsections
     Given I am on the section page for "1"
 
   @done
-  Scenario: Viewing subsections for a given section
+  Scenario: Viewing subsections for a section
     Then I should see "Pinscher"
     And I should see "Schnauzer"
     When I follow "Pinscher"

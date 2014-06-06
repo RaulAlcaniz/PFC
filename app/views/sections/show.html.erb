@@ -8,7 +8,7 @@
     <li><%= link_to 'Edit Section', edit_group_section_path(@group, @section) %></li>
     <li><%= link_to "Delete Section", [@group, @section], method: :delete,
                     data: {confirm: 'Are you sure you want to delete this Section?'} %></li>
-    <li><%= link_to 'New Subsection', new_group_section_subsection_path(@group,@section) %></li>
+    <li><%= link_to 'New Subsection', new_section_subsection_path(@section) %></li>
     <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
   </ul>
 
@@ -20,8 +20,24 @@
     <% @section.subsections.each do |subsection| %>
       <tr>
         <td><%= subsection.name %></td>
-        <td><%= link_to subsection.description, [@group, @section, subsection] %></td>
+        <td><%= link_to subsection.description, [@section, subsection] %></td>
       </tr>
     <% end %>
   </table>
+
+  <ul>
+    <li><%= link_to 'New Breed', new_section_breed_path(@section) %></li>
+  </ul>
+
+  <table id="breeds">
+    <tr>
+      <th>Breeds</th>
+    </tr>
+    <% @section.breeds.each do |breed| %>
+      <tr>
+        <td><%= link_to breed.name, [@section, breed] %></td>
+      </tr>
+    <% end %>
+  </table>
+
 </div>

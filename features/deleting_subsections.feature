@@ -15,7 +15,7 @@ Feature: Deleting Subsections
     And I follow "Smoushond"
 
   @done
-  Scenario: Deleting a section
+  Scenario: Deleting a subsection
     When I follow "Delete Subsection"
     Then I should see "Subsection has been deleted."
     And I should be on the section page for "1"

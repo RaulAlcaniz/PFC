@@ -1,0 +1,14 @@
+<div id="breeds" >
+  <h1>breeds#show. Find me in app/views/breeds/show.html.erb</h1>
+
+  <h2><%= @breed.name %></h2>
+
+  <ul>
+    <li><%= link_to 'Edit Breed', send('edit_' + "#{@breed.breedable_type.downcase}" + '_breed_path',@breedable, @breed)%></li>
+    <li><%= link_to "Delete Breed", [@breedable, @breed], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Breed?'} %></li>
+  </ul>
+
+
+
+</div>
