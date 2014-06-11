@@ -1,0 +1,11 @@
+<div id="varieties" >
+  <h1>Varieties#show. Find me in app/views/varieties/show.html.erb</h1>
+
+  <h2><%= @variety.name %></h2>
+
+  <ul>
+    <li><%= link_to 'Edit Variety', edit_breed_variety_path(@breed, @variety) %></li>
+    <li><%= link_to "Delete Variety", [@breed, @variety], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Variety?'} %></li>
+  </ul>
+</div>

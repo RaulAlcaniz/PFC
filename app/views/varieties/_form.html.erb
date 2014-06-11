@@ -1,0 +1,11 @@
+<%= form_for [@breed, @variety] do |f|%>
+    <% @variety.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <%= f.submit %>
+<% end %>

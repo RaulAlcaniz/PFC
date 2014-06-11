@@ -10,7 +10,7 @@ Feature: Deleting Subsections
       |1             |Pinscher and Schnauzer type|
     And there are subsections for the section with section number "1":
       |Subsection number|Description|
-      |3               |Smoushond   |
+      |3                |Smoushond  |
     And I am on the section page for "1"
     And I follow "Smoushond"
 

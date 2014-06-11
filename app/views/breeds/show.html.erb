@@ -9,6 +9,16 @@
                     data: {confirm: 'Are you sure you want to delete this Breed?'} %></li>
   </ul>
 
-
+  <table id="varieties">
+    <li><%= link_to 'New Variety', new_breed_variety_path(@breed, @variety) %></li>
+    <tr>
+      <th>Varieties</th>
+    </tr>
+    <% @breed.varieties.each do |variety| %>
+        <tr>
+          <td><%= link_to variety.name, [@breed, variety] %></td>
+        </tr>
+    <% end %>
+  </table>
 
 </div>

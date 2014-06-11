@@ -22,6 +22,9 @@ module NavigationHelpers
       when /the breed page for "([^\"]*)"/
         breed = Breed.find_by_name!($1)
         send("#{breed.breedable_type.downcase}" + '_breed_path',breed.breedable_id, breed)
+      when /the variety page for "([^\"]*)"/
+        variety = Variety.find_by_name!($1)
+        breed_variety_path(variety.breed, variety)
 
 # Add more mappings here.
 # Here is an example that pulls values out of the Regexp:
