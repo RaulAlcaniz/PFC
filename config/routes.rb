@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'subvarieties/show'
+
   get 'varieties/show'
 
   #get 'varieties/show'
@@ -11,6 +13,10 @@ Rails.application.routes.draw do
   #get 'section/show'
 
   #get 'groups/index'
+
+  resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :subvarieties, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
 
   resources :breeds, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy]

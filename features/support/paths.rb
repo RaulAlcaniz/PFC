@@ -25,6 +25,9 @@ module NavigationHelpers
       when /the variety page for "([^\"]*)"/
         variety = Variety.find_by_name!($1)
         breed_variety_path(variety.breed, variety)
+      when /the subvariety page for "([^\"]*)"/
+        subvariety = Subvariety.find_by_name!($1)
+        variety_subvariety_path(subvariety.variety, subvariety)
 
 # Add more mappings here.
 # Here is an example that pulls values out of the Regexp:

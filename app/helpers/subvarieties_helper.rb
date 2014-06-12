@@ -1,0 +1,2 @@
+module SubvarietiesHelper
+end

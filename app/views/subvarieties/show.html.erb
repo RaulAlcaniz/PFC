@@ -1,0 +1,12 @@
+<table  id="subvarieties">
+  <h1>Subvarieties#show</h1>
+  <p>Find me in app/views/subvarieties/show.html.erb</p>
+
+  <h2><%= @subvariety.name %></h2>
+
+  <ul>
+    <li><%= link_to 'Edit Subvariety', edit_variety_subvariety_path(@variety, @subvariety)%></li>
+    <li><%= link_to "Delete Subvariety", [@variety, @subvariety], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Subvariety?'} %></li>
+  </ul>
+</table>

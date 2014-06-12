@@ -8,4 +8,19 @@
     <li><%= link_to "Delete Variety", [@breed, @variety], method: :delete,
                     data: {confirm: 'Are you sure you want to delete this Variety?'} %></li>
   </ul>
+
+  <table id="subvarities">
+    <ul>
+      <li><%= link_to 'New Subvariety', new_variety_subvariety_path(@variety, @subvariety) %></li>
+    </ul>
+
+    <tr>
+      <th>Subvarities</th>
+    </tr>
+    <% @variety.subvarieties.each do |subvariety| %>
+        <tr>
+          <td><%= link_to subvariety.name, [@variety, subvariety] %></td>
+        </tr>
+    <% end %>
+  </table>
 </div>

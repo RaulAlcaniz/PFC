@@ -1,7 +1,7 @@
-Feature: Viewing varieties
-  In order to view the varieties for a breed variety
+Feature: Deleting Subvarieties
+  In order to remove subvarieties
   As a user
-  I want to see them on that breed variety page
+  I want to press a button and make it disappear
 
   Background:
     Given there is a group called "Group IV"
@@ -21,14 +21,11 @@ Feature: Viewing varieties
       |Long-haired  |
       |Wire-haired  |
 
-    Given I am on the breed page for "Dachshund"
-    And I follow "Standard"
+    Given I am on the subvariety page for "Smooth-haired"
 
-  @done
-  Scenario: Viewing subvarieties for a breed variety
-    Then I should see "Smooth-haired"
-    And I should see "Long-haired"
-    And I should see "Wire-haired"
-
-    When I follow "Smooth-haired"
-    Then I should see "Smooth-haired" within "#subvarieties h2"
+  @actual
+  Scenario: Deleting a subvariety
+    When I follow "Delete Subvariety"
+    Then I should see "Subvariety has been deleted."
+    And I should be on the variety page for "Standard"
+    And I should not see "Smooth-haired"
