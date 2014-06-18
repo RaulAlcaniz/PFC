@@ -32,17 +32,6 @@ Feature: Creating breeds
     And I should be on the breed page for "Terrier Brasileiro"
 
   @done
-  Scenario: Creating a breed without a name
-    When I follow "Group III"
-    And I follow "Small-sized Terriers"
-    And I follow "New Breed"
-
-    When I fill in "Name" with ""
-    And I press "Create Breed"
-    Then I should see "Breed has not been created."
-    And I should see "Name can't be blank"
-
-  @done
   Scenario: Creating a breed for a subsection
     When I follow "Group II"
     And I follow "Pinscher and Schnauzer type"
@@ -54,3 +43,27 @@ Feature: Creating breeds
     And I press "Create Breed"
     Then I should see "Breed has been created."
     And I should be on the breed page for "Dobermann"
+
+  @done
+  Scenario: Creating a breed without a name
+    When I follow "Group III"
+    And I follow "Small-sized Terriers"
+    And I follow "New Breed"
+
+    When I fill in "Name" with ""
+    And I press "Create Breed"
+    Then I should see "Breed has not been created."
+    And I should see "Name can't be blank"
+
+  @done
+  Scenario: Creating a breed with a name already taken
+    Given there is a breed called "Dobermann"
+
+    When I follow "Group III"
+    And I follow "Small-sized Terriers"
+    And I follow "New Breed"
+
+    When I fill in "Name" with "Dobermann"
+    And I press "Create Breed"
+    Then I should see "Breed has not been created."
+    And I should see "Name has already been taken"

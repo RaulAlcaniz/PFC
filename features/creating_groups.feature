@@ -25,6 +25,15 @@ Feature: Creating groups
     And I should see "Name has already been taken"
 
   @done
+  Scenario: Creating a group with a description already taken
+    Given there is a group which description is "Terriers"
+    When I fill in "Name" with "Group I"
+    And I fill in "Description" with "Terriers"
+    And I press "Create Group"
+    Then I should see "Group has not been created."
+    And I should see "Description has already been taken"
+
+  @done
   Scenario: Creating a group without a name
     When I fill in "Name" with ""
     And I press "Create Group"

@@ -13,3 +13,8 @@ Given(/^there are some breeds for the subsection with subsection number "(.*?)":
     @subsection.breeds.create!(attributes)
   end
 end
+
+Given(/^there is a breed called "(.*?)"$/) do |name|
+  @breed = FactoryGirl.create(:breed, name: name)
+  puts @breed
+end

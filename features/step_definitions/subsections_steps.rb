@@ -5,3 +5,7 @@ Given(/^there are subsections for the section with section number "(.*?)":$/) do
     @section.subsections.create!(attributes)
   end
 end
+
+Given(/^there is a subsection which description is "(.*?)"$/) do |description|
+  subsection = FactoryGirl.create(:subsection, description: description)
+end

@@ -8,6 +8,7 @@ Feature: Editing Section
     And there are sections for this group:
       |Section number|Description|
       |1             |Sheepdogs  |
+      |2             |Cattle Dogs|
 
     Given I am on the groups page
     When I follow "Group I"
@@ -24,16 +25,12 @@ Feature: Editing Section
     And I should see "beta" within "#sections h2"
     But I should not see "1"
 
- # @revisar
- # Scenario: Updating a section with a description already taken
- #   Given there is a group called "Group II"
- #   And there are sections for this group:
- #     |SECTION ID|GROUP ID|Section number|Description                |
- #     |2         |2       |1             |Pinscher and Schnauzer type|
- #   When I fill in "Description" with "Pinscher and Schnauzer type"
- #   And I press "Update Section"
- #   Then I should see "Section has not been updated."
- #   And I should see "Description has already been taken"
+  @done
+  Scenario: Updating a section with a description already taken
+    When I fill in "Description" with "Cattle Dogs"
+    And I press "Update Section"
+    Then I should see "Section has not been updated."
+    And I should see "Description has already been taken"
 
   @done
   Scenario: Updating a section without a name

@@ -26,12 +26,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+group :development, :test do
+  gem 'rspec-rails', '2.13.1'
+end
+
 # Gemas para el cucumber
 group :test do
+  gem "minitest"
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'cucumber-websteps'
-  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.2.1'

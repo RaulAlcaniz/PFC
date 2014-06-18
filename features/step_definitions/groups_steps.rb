@@ -18,3 +18,7 @@ end
 Given(/^there is a group called "(.*?)"$/) do |name|
   @group = FactoryGirl.create(:group, name: name)
 end
+
+Given(/^there is a group which description is "(.*?)"$/) do |description|
+  @group = FactoryGirl.create(:group, description: description)
+end

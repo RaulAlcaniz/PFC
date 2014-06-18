@@ -33,3 +33,12 @@ Feature: Creating subsections
     And I press "Create Subsection"
     Then I should see "Subsection has not been created."
     And I should see "Description can't be blank"
+
+  @done
+  Scenario: Creating an existing subsection
+    Given there is a subsection which description is "Smoushond"
+
+    When I fill in "Description" with "Smoushond"
+    And I press "Create Subsection"
+    Then I should see "Subsection has not been created."
+    And I should see "Description has already been taken"

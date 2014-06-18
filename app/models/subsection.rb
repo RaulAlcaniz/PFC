@@ -3,5 +3,5 @@ class Subsection < ActiveRecord::Base
   has_many :breeds, as: :breedable
 
   validates :name, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, uniqueness: {case_sensitive: false}
 end

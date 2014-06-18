@@ -23,7 +23,7 @@ Feature: Deleting Subvarieties
 
     Given I am on the subvariety page for "Smooth-haired"
 
-  @actual
+  @done
   Scenario: Deleting a subvariety
     When I follow "Delete Subvariety"
     Then I should see "Subvariety has been deleted."

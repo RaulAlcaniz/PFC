@@ -10,6 +10,6 @@ end
 #  @section = FactoryGirl.create(:section, name: name)
 #end
 
-#Given(/^there is a section which description is "(.*?)"$/) do |description|
-#  @section = FactoryGirl.create(:section, description: description)
-#end
+Given(/^there is a section which description is "(.*?)"$/) do |description|
+  @section = FactoryGirl.create(:section, description: description)
+end
