@@ -130,7 +130,6 @@ end
   Section.find_by(:description => 'Molossoid breeds').subsections.where(name: name, description: description).first_or_create!
 end
 
-
 #
 # Group II - Subsection 1.1 - Breeds
 #
@@ -322,6 +321,7 @@ end
 ###############################################
 ################## Group IV ###################
 ###############################################
+
 #
 # Group IV - Sections
 #
@@ -343,6 +343,7 @@ end
 ###############################################
 ################### Group V ###################
 ###############################################
+
 #
 # Group V - Sections
 #
@@ -455,4 +456,438 @@ end
   'Thai Ridgeback Dog (338)'
 ].each do |name|
   Section.find_by(:description => 'Primitive type - Hunting Dogs').breeds.where(name: name).first_or_create!
+end
+
+###############################################
+################## Group VI ###################
+###############################################
+
+#
+# Group VI - Sections
+#
+[
+  ['Section 1', 'Scenthounds'],
+  ['Section 2', 'Leash (scent) Hounds'],
+  ['Section 3', 'Related breeds']
+].each do |name, description|
+  Group.find_by(:description => 'Scenthounds and Related Breeds').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group VI - Subsection 1.1 - Breeds
+#
+################################################################################################### MIRAR COMO HACERLO EN LA WEBBBB############################
+=begin
+[
+    'Chien de Saint-Hubert (84) (Bloodhound)',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+].each do |name|
+  Subsection.find_by(:description => 'Mountain type').breeds.where(name: name).first_or_create!
+end
+=end
+
+###############################################
+################# Group VII ###################
+###############################################
+
+#
+# Group VII - Sections
+#
+[
+  ['Section 1', 'Continental Pointing Dogs'],
+  ['Section 2', 'British and Irish Pointers and Setters']
+].each do |name, description|
+  Group.find_by(:description => 'Pointing Dogs').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group VII - Subsections
+#
+[
+  ['1.1', 'Type Continental Pointing Dog'],
+  ['1.2', 'Spaniel type'],
+  ['1.3', '\'Griffon\' type']
+].each do |name, description|
+  Section.find_by(:description => 'Continental Pointing Dogs').subsections.where(name: name, description: description).first_or_create!
+end
+
+[
+  ['2.1', 'Pointer'],
+  ['2.2', 'Setter']
+].each do |name, description|
+  Section.find_by(:description => 'British and Irish Pointers and Setters').subsections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group VII - Subsection 1.1 - Breeds
+#
+[
+  'Gammel Dansk Hønsehund (281) (Old Danish Pointing Dog)',
+  'Deutsch Kurzhaar (119) (German Short-haired Pointing Dog)',
+  'Deutsch Drahthaar (98) (German Wire-haired Pointer)',
+  'Pudelpointer (216)',
+  'Deutsch Stichelhaar (232) (German Rough-haired Pointing Dog)',
+  'Weimaraner (99)',
+  'Perdiguero de Burgos (90) (Burgos Pointing Dog)',
+  'Braque de l\'Ariège (177) (Ariege Pointing Dog)',
+  'Braque d\'Auvergne (180) (Auvergne Pointer)',
+  'Braque du Bourbonnais (179) (Bourbonnais Pointing Dog)',
+  'Braque français, type Gascogne (grande taille) (133) (French Pointing Dog - Gascogne type)',
+  'Braque français, type Pyrénées (petite taille) (134) (French Pointing Dog - Pyrenean type)',
+  'Braque Saint-Germain (115) (St.Germain Pointer)',
+  'Bracco Italiano (202) (Italian Pointing Dog)',
+  'Drötzörü Magyar Vizsla (239) (Hungarian Wire-haired Pointing Dog)',
+  'Rövidszörü Magyar Vizsla (57) (Hungarian Short-haired Pointing Dog)',
+  'Perdigueiro Português (187) (Portuguese Pointing Dog)',
+  'Slovenský Hrubosrsty Stavac (Ohar) (320) (Wire-haired Slovakian Pointer)'
+].each do |name|
+  Subsection.find_by(:description => 'Type Continental Pointing Dog').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VII - Subsection 1.2 - Breeds
+#
+[
+  'Kleiner Münsterländer (102)',
+  'Grosser Münsterländer Vorstehhund (118) (Large Munsterlander)',
+  'Deutsch Langhaar (117) (German long-haired Pointing Dog)',
+  'Epagneul bleu de Picardie (106) (Blue Picardy Spaniel)',
+  'Epagneul Breton (95) (Brittany Spaniel)',
+  'Epagneul français (175) (French Spaniel)',
+  'Epagneul picard (108) (Picardy Spaniel)',
+  'Epagneul de Pont-Audemer (114) (Pont-Audemer Spaniel)',
+  'Drentsche Patrijshond (224) (Drentsche Partridge Dog)',
+  'Stabyhoun (222) (Frisian Pointing Dog)'
+].each do |name|
+  Subsection.find_by(:description => 'Spaniel type').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VII - Subsection 1.3 - Breeds
+#
+[
+  'Griffon d\'arrêt à poil dur Korthals (107) (Wire-haired Pointing Griffon Korthals)',
+  'Spinone Italiano (165) (Spinone)',
+  'Ceský Fousek (245) (Bohemian wire-haired Pointing Griffon)'
+].each do |name|
+  Subsection.find_by(:description => '\'Griffon\' type').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VII - Subsection 2.1 - Breeds
+#
+[
+  'English Pointer (1)'
+].each do |name|
+  Subsection.find_by(:description => 'Pointer').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VII - Subsection 2.2 - Breeds
+#
+[
+  'English Setter (2)',
+  'Gordon Setter (6)',
+  'Irish Red Setter (120)',
+  'Irish Red and White Setter (330)'
+].each do |name|
+  Subsection.find_by(:description => 'Setter').breeds.where(name: name).first_or_create!
+end
+
+###############################################
+################ Group VIII ###################
+###############################################
+
+#
+# Group VIII - Sections
+#
+[
+    ['Section 1', 'Retrievers'],
+    ['Section 2', 'Flushing Dogs'],
+    ['Section 3', 'Water Dogs']
+].each do |name, description|
+  Group.find_by(:description => 'Retrievers - Flushing Dogs - Water Dogs').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group VIII - Section 1 - Breeds
+#
+[
+  'Nova Scotia Duck Tolling Retriever (312)',
+  'Curly Coated Retriever (110)',
+  'Flat Coated Retriever (121)',
+  'Labrador Retriever (122)',
+  'Golden Retriever (111)',
+  'Chesapeake Bay Retriever (263)'
+].each do |name|
+  Section.find_by(:description => 'Retrievers').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VIII - Section 2 - Breeds
+#
+[
+  'Deutscher Wachtelhund (104) (German Spaniel)',
+  'Clumber Spaniel (109)',
+  'English Cocker Spaniel (5)',
+  'Field Spaniel (123)',
+  'Sussex Spaniel (127)',
+  'English Springer Spaniel (125)',
+  'Welsh Springer Spaniel (126)',
+  'Nederlandse Kooikerhondje (314)',
+  'American Cocker Spaniel (167)'
+].each do |name|
+  Section.find_by(:description => 'Flushing Dogs').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VIII - Section 3 - Breeds
+#
+[
+  'Perro de agua español (336) (Spanish Waterdog)',
+  'Barbet (105) (French Water Dog)',
+  'Irish Water Spaniel (124)',
+  'Lagotto Romagnolo (298) (Romagna Water Dog)',
+  'Wetterhoun (221) (Frisian Water Dog)',
+  'Cão de agua Português (37) (Portuguese Water Dog)',
+  'American Water Spaniel (301)'
+].each do |name|
+  Section.find_by(:description => 'Water Dogs').breeds.where(name: name).first_or_create!
+end
+
+###############################################
+################### Group IX ##################
+###############################################
+
+#
+# Group IX - Sections
+#
+[
+  ['Section 1', 'Bichons and related breeds'],
+  ['Section 2', 'Poodle'],
+  ['Section 3', 'Small Belgian Dogs'],
+  ['Section 4', 'Hairless Dogs'],
+  ['Section 5', 'Tibetan breeds'],
+  ['Section 6', 'Chihuahueño'],
+  ['Section 7', 'English Toy Spaniels'],
+  ['Section 8', 'Japan Chin and Pekingese'],
+  ['Section 9', 'Continental Toy Spaniel'],
+  ['Section 10', 'Kromfohrländer'],
+  ['Section 11', 'Small Molossian type Dogs']
+].each do |name, description|
+  Group.find_by(:description => 'Companion and Toy Dogs').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group IX - Subsections
+#
+[
+  ['1.1', 'Bichons'],
+  ['1.2', 'Coton de Tuléar'],
+  ['1.3', 'Petit chien lion']
+].each do |name, description|
+  Section.find_by(:description => 'Bichons and related breeds').subsections.where(name: name, description: description).first_or_create!
+end
+
+[
+  ['3.1', 'Griffons'],
+  ['3.2', 'Petit Brabançon']
+].each do |name, description|
+  Section.find_by(:description => 'Small Belgian Dogs').subsections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group IX - Subsection 1.1 - Breeds
+#
+[
+  'Maltese (65)',
+  'Bichon Havanais (250) (Havanese)',
+  'Bichon à poil frisé (215) (Bichon Frise)',
+  'Bolognese (196)'
+].each do |name|
+  Subsection.find_by(:description => 'Bichons').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Subsection 1.2 - Breeds
+#
+[
+  'Coton de Tuléar (283) (Coton de Tulear)'
+].each do |name|
+  Subsection.find_by(:description => 'Coton de Tuléar').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Subsection 1.3 - Breeds
+#
+[
+  'Petit chien lion (233) (Little Lion Dog)'
+].each do |name|
+  Subsection.find_by(:description => 'Petit chien lion').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 2 - Breeds
+#
+[
+  'Caniche (172) (Poodle)'
+].each do |name|
+  Section.find_by(:description => 'Poodle').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Subsection 3.1 - Breeds
+#
+[
+  'Griffon belge (81)',
+  'Griffon bruxellois (80)'
+].each do |name|
+  Subsection.find_by(:description => 'Griffons').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Subsection 3.2 - Breeds
+#
+[
+  'Petit Brabançon (82)'
+].each do |name|
+  Subsection.find_by(:description => 'Petit Brabançon').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 4 - Breeds
+#
+[
+  'Chinese Crested Dog (288)'
+].each do |name|
+  Section.find_by(:description => 'Hairless Dogs').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 5 - Breeds
+#
+[
+  'Lhasa Apso (227)',
+  'Shih Tzu (208)',
+  'Tibetan Spaniel (231)',
+  'Tibetan Terrier (209)'
+].each do |name|
+  Section.find_by(:description => 'Tibetan breeds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 6 - Breeds
+#
+[
+  'Chihuahueño (Chihuahua) (218)'
+].each do |name|
+  Section.find_by(:description => 'Chihuahueño').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 7 - Breeds
+#
+[
+  'Cavalier King Charles Spaniel (136)',
+  'King Charles Spaniel (128)'
+].each do |name|
+  Section.find_by(:description => 'English Toy Spaniels').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 8 - Breeds
+#
+[
+  'Pekingese (207)',
+  'Chin (206) (Japanese Chin)'
+].each do |name|
+  Section.find_by(:description => 'Japan Chin and Pekingese').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 9 - Breeds
+#
+[
+  'Epagneul nain Continental (77) (Continental Toy Spaniel)'
+].each do |name|
+  Section.find_by(:description => 'Continental Toy Spaniel').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 10 - Breeds
+#
+[
+  'Kromfohrländer (192)'
+].each do |name|
+  Section.find_by(:description => 'Kromfohrländer').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 11 - Breeds
+#
+[
+  'Bouledogue français (101) (French Bulldog)',
+  'Pug (253)',
+  'Boston Terrier (140)'
+].each do |name|
+  Section.find_by(:description => 'Small Molossian type Dogs').breeds.where(name: name).first_or_create!
+end
+
+###############################################
+#################### Group X ##################
+###############################################
+
+#
+# Group IX - Sections
+#
+[
+  ['Section 1', 'Long-haired or fringed Sighthounds'],
+  ['Section 2', 'Rough-haired Sighthounds'],
+  ['Section 3', 'Short-haired Sighthounds']
+].each do |name, description|
+  Group.find_by(:description => 'Sighthounds').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group X - Section 1 - Breeds
+#
+[
+  'Afghan Hound (228)',
+  'Saluki (269)',
+  'Russkaya Psovaya Borzaya (193)  (Borzoi - Russian hunting Sighthound)'
+].each do |name|
+  Section.find_by(:description => 'Long-haired or fringed Sighthounds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group X - Section 2 - Breeds
+#
+[
+  'Irish Wolfhound (160)',
+  'Deerhound (164)'
+].each do |name|
+  Section.find_by(:description => 'Rough-haired Sighthounds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group X - Section 3 - Breeds
+#
+[
+  'Galgo español (285) (Spanish Greyhound)',
+  'Whippet (162)',
+  'Piccolo Levriero Italiano (200) (Italian Greyhound)',
+  'Magyar Agar (240) (Hungarian Greyhound)',
+  'Azawakh (307)',
+  'Sloughi (188) (Arabian Greyhound)',
+  'Chart Polski (333) (Polish Greyhound)'
+].each do |name|
+  Section.find_by(:description => 'Short-haired Sighthounds').breeds.where(name: name).first_or_create!
 end
