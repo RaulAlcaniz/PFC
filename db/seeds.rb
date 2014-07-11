@@ -10,12 +10,12 @@
 # Groups
 #
 [
-    ['Group I', 'Sheepdogs and Cattle Dogs (except Swiss Cattle Dogs)'],
-    ['Group II', 'Pinscher and Schnauzer - Molossoid Breeds - Swiss Mountain and Cattle Dogs'],
+    ['Group I', 'Sheepdogs and Cattledogs (except Swiss Cattledogs)'],
+    ['Group II', 'Pinscher and Schnauzer - Molossoid and Swiss Mountain and Cattledogs'],
     ['Group III', 'Terriers'],
     ['Group IV', 'Dachshunds'],
-    ['Group V', 'Spitz and Primitive types'],
-    ['Group VI', 'Scenthounds and Related Breeds'],
+    ['Group V', 'Spitz and primitive types'],
+    ['Group VI', 'Scenthounds and related breeds'],
     ['Group VII', 'Pointing Dogs'],
     ['Group VIII', 'Retrievers - Flushing Dogs - Water Dogs'],
     ['Group IX', 'Companion and Toy Dogs'],
@@ -35,7 +35,7 @@ end
   ['Section 1', 'Sheepdogs'],
   ['Section 2', 'Cattle Dogs (except Swiss Cattle dogs)']
 ].each do |name, description|
-  Group.find_by(:description => 'Sheepdogs and Cattle Dogs (except Swiss Cattle Dogs)').sections.where(name: name, description: description).first_or_create!
+  Group.find_by(:description => 'Sheepdogs and Cattledogs (except Swiss Cattledogs)').sections.where(name: name, description: description).first_or_create!
 end
 
 #
@@ -85,6 +85,81 @@ end
 end
 
 #
+# Group I - Section 1 - Varieties
+#
+%w(Groenendael
+  Laekenois
+  Malinois
+  Tervueren
+).each do |name|
+  Breed.where('name LIKE ?', '%Chien de Berger Belge%').first.varieties.where(name: name).first_or_create!
+end
+
+
+[
+  'Double coat',
+  'Long and harsh outer coat'
+].each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Schäferhund%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Short-haired
+  Long-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Ca de Bestiar%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Black and tan',
+  'Harlequin'
+].each do |name|
+  Breed.where('name LIKE ?', '%Berger de Beauce%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Slate',
+  'Fawn, grey'
+].each do |name|
+  Breed.where('name LIKE ?', '%Berger de Brie%').first.varieties.where(name: name).first_or_create!
+end
+
+['Fawn',
+ 'Black',
+ 'Blue-merle',
+ 'Ash Coloured (Blue Grey)',
+ 'Brown',
+ 'White'
+].each do |name|
+  Breed.where('name LIKE ?', '%Mudi%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Pearl-white',
+  'Black',
+  'Black shaded with rust-red or grey',
+  'Fawn',
+  'Grey in any shade'
+].each do |name|
+  Breed.where('name LIKE ?', '%Puli%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Grey in various shades',
+  'Black',
+  'Fawn (Fakó). Primary colours: Red, Yellow, Cream',
+  'White'
+].each do |name|
+  Breed.where('name LIKE ?', '%Pumi%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Short-haired
+ Long-haired
+ Rough-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Hollandse Herdershond%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group I - Section 2 - Breeds
 #
 [
@@ -108,7 +183,8 @@ end
   ['Section 2', 'Molossoid breeds'],
   ['Section 3', 'Swiss Mountain and Cattle Dogs']
 ].each do |name, description|
-  Group.find_by(:description => 'Pinscher and Schnauzer - Molossoid Breeds - Swiss Mountain and Cattle Dogs').sections.where(name: name, description: description).first_or_create!
+  Group.find_by(:description => 'Pinscher and Schnauzer - Molossoid and Swiss Mountain and Cattledogs')
+  .sections.where(name: name, description: description).first_or_create!
 end
 
 #
@@ -144,6 +220,24 @@ end
 end
 
 #
+# Group II - Subsection 1.1 - Varieties
+#
+[
+  'Black with rust red clearly defined and clean markings',
+  'Brown with rust red clearly defined and clean markings'
+].each do |name|
+  Breed.where('name LIKE ?', '%Dobermann%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Self coloured: Deer red, reddish-brown to dark red brown',
+  'Black and tan'
+].each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Pinscher%').first.varieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Zwergpinscher%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group II - Subsection 1.2 - Breeds
 #
 [
@@ -152,6 +246,26 @@ end
   'Zwergschnauzer (183) (Miniature Schnauzer)',
 ].each do |name|
   Subsection.find_by(:description => 'Schnauzer').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group II - Subsection 1.2 - Varieties
+#
+[
+  'Pure black with black undercoat',
+  'Pepper and salt'
+].each do |name|
+  Breed.where('name LIKE ?', '%Riesenschnauzer%').first.varieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Schnauzer%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Pepper and salt',
+  'Pure black with black undercoat',
+  'Black and silver',
+  'Pure white with white undercoat'
+].each do |name|
+  Breed.where('name LIKE ?', '%Zwergschnauzer%').first.varieties.where(name: name).first_or_create!
 end
 
 #
@@ -173,6 +287,15 @@ end
 end
 
 #
+# Group II - Section 2 - Breeds
+#
+[
+    'Cane Corso Italiano (343) (Italian Corso Dog)'
+].each do |name|
+  Section.find_by(:description => 'Molossoid breeds').breeds.where(name: name).first_or_create!
+end
+
+#
 # Group II - Subsection 2.1 - Breeds
 #
 [
@@ -190,11 +313,28 @@ end
   'Bullmastiff (157)',
   'Mastiff (264)',
   'Mastino Napoletano (197) (Neapolitan Mastiff)',
-  'Cane Corso Italiano (343) (Italian Corso Dog)',
   'Tosa (260)',
   'Cão Fila de São Miguel (340) (Saint Miguel Cattle Dog)'
 ].each do |name|
   Subsection.find_by(:description => 'Mastiff type').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group II - Subsection 2.1 - Varieties
+#
+%w(Fawn
+  Brindle
+).each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Boxer%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Fawn
+  Brindle
+  Black
+  Harlequin
+  Blue
+).each do |name|
+  Breed.where('name LIKE ?', '%Deutsche Dogge%').first.varieties.where(name: name).first_or_create!
 end
 
 #
@@ -221,6 +361,31 @@ end
   'Do-Khyi (230) (Tibetan Mastiff)'
 ].each do |name|
   Subsection.find_by(:description => 'Mountain type').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group II - Subsection 2.2 - Varieties
+#
+[
+  'Black',
+  'Brown',
+  'White and black'
+].each do |name|
+  Breed.where('name LIKE ?', '%Newfoundland%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Black-Gold
+  Black
+  Blond
+).each do |name|
+  Breed.where('name LIKE ?', '%Hovawart%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Short-haired
+  Long-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Cão da Serra da Estrela%').first.varieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%St.Bernhardshund%').first.varieties.where(name: name).first_or_create!
 end
 
 #
@@ -288,7 +453,7 @@ end
   'Scottish Terrier (73)',
   'Sealyham Terrier (74)',
   'Skye Terrier (75)',
-  'Skye Terrier (75)',
+  'West Highland White Terrier (85)',
   'Nihon Teria (259) (Japanese Terrier)',
   'Ceský Teriér (246) (Cesky Terrier)'
 ].each do |name|
@@ -340,6 +505,33 @@ end
   Section.find_by(:description => 'Dachshunds').breeds.where(name: name).first_or_create!
 end
 
+#
+# Group IV - Section 1 - Varieties
+#
+[
+  'Standard',
+  'Miniature',
+  'Rabbit Dachshund'
+].each do |name|
+  Breed.where('name LIKE ?', '%Dachshund%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group IV - Section 1 - Subvarieties
+#
+%w(
+  Smooth-haired
+  Long-haired
+  Wire-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Dachshund%').first.
+      varieties.where('name LIKE ?', '%Standard%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Dachshund%').first.
+      varieties.where('name LIKE ?', '%Miniature%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Dachshund%').first.
+      varieties.where('name LIKE ?', '%Rabbit Dachshund%').first.subvarieties.where(name: name).first_or_create!
+end
+
 ###############################################
 ################### Group V ###################
 ###############################################
@@ -354,9 +546,10 @@ end
   ['Section 4', 'European Spitz'],
   ['Section 5', 'Asian Spitz and related breeds'],
   ['Section 6', 'Primitive type'],
-  ['Section 7', 'Primitive type - Hunting Dogs']
+  ['Section 7', 'Primitive type - Hunting Dogs'],
+  ['Section 8', 'Primitive type Hunting Dogs with a ridge on the back']
 ].each do |name, description|
-  Group.find_by(:description => 'Spitz and Primitive types').sections.where(name: name, description: description).first_or_create!
+  Group.find_by(:description => 'Spitz and primitive types').sections.where(name: name, description: description).first_or_create!
 end
 
 #
@@ -414,6 +607,44 @@ end
 end
 
 #
+# Group V - Section 4 - Varieties
+#
+[
+  'Keeshond',
+  'Wolfspitz',
+  'Giant spitz',
+  'Medium size Spitz',
+  'Miniature Spitz',
+  'Pomeranian'
+].each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Spitz%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group V - Section 4 - Subvarieties
+#
+%w(White
+  Brown
+  Black
+).each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Spitz%').first.
+      varieties.where('name LIKE ?', '%Giant spitz%').first.subvarieties.where(name: name).first_or_create!
+end
+
+%w(White
+  Orange
+  Grey
+  Autre
+  Brown
+  Black
+).each do |name|
+  Breed.where('name LIKE ?', '%Deutscher Spitz%').first.
+      varieties.where('name LIKE ?', '%Medium size Spitz%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Deutscher Spitz%').first.
+      varieties.where('name LIKE ?', '%Miniature Spitz%').first.subvarieties.where(name: name).first_or_create!
+end
+
+#
 # Group V - Section 5 - Breeds
 #
 [
@@ -446,16 +677,72 @@ end
 end
 
 #
+# Group V - Section 6 - Varieties
+#
+%w(Standard
+  Intermediate
+  Miniature
+).each do |name|
+  Breed.where('name LIKE ?', '%Xoloitzcuintle%').first.varieties.where(name: name).first_or_create!
+end
+
+%w(Large
+  Medium-sized
+  Miniature
+).each do |name|
+  Breed.where('name LIKE ?', '%Perro sin pelo del Perú%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group V - Section 7 - Breeds
 #
 [
   'Podenco Canario (329) (Canarian Warren Hound - Canarian Podenco)',
   'Podenco Ibicenco (89)',
   'Cirneco dell\'Etna (199)',
-  'Podengo Português (94) (Portuguese Warren Hound - portuguese Podengo)',
-  'Thai Ridgeback Dog (338)'
+  'Podengo Português (94) (Portuguese Warren Hound - portuguese Podengo)'
 ].each do |name|
   Section.find_by(:description => 'Primitive type - Hunting Dogs').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group V - Section 7 - Varieties
+#
+[
+  'Long and wire-haired',
+  'Smooth and short-haired'
+].each do |name|
+  Breed.where('name LIKE ?', '%Podengo Português%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Rough haired',
+  'Smooth haired'
+].each do |name|
+  Breed.where('name LIKE ?', '%Podenco Ibicenco%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group V - Section 7 - Subvarieties
+#
+
+%w(Medium-sized
+  Large
+  Small
+).each do |name|
+  Breed.where('name LIKE ?', '%Podengo Português%').first.
+      varieties.where('name LIKE ?', '%Long and wire-haired%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Podengo Português%').first.
+      varieties.where('name LIKE ?', '%Smooth and short-haired%').first.subvarieties.where(name: name).first_or_create!
+end
+
+#
+# Group V - Section 8 - Breeds
+#
+[
+  'Thai Ridgeback Dog (338)'
+].each do |name|
+  Section.find_by(:description => 'Primitive type Hunting Dogs with a ridge on the back').breeds.where(name: name).first_or_create!
 end
 
 ###############################################
@@ -470,29 +757,154 @@ end
   ['Section 2', 'Leash (scent) Hounds'],
   ['Section 3', 'Related breeds']
 ].each do |name, description|
-  Group.find_by(:description => 'Scenthounds and Related Breeds').sections.where(name: name, description: description).first_or_create!
+  Group.find_by(:description => 'Scenthounds and related breeds').sections.where(name: name, description: description).first_or_create!
+end
+
+#
+# Group VI - Subsections
+#
+[
+    ['1.1', 'Large-sized Hounds'],
+    ['1.2', 'Medium-sized Hounds'],
+    ['1.3', 'Small-sized Hounds']
+].each do |name, description|
+  Section.find_by(:description => 'Scenthounds').subsections.where(name: name, description: description).first_or_create!
 end
 
 #
 # Group VI - Subsection 1.1 - Breeds
 #
-################################################################################################### MIRAR COMO HACERLO EN LA WEBBBB############################
-=begin
 [
-    'Chien de Saint-Hubert (84) (Bloodhound)',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
+  'Chien de Saint-Hubert (84) (Bloodhound)',
+  'Billy (25)',
+  'Français tricolore (219) (French Tricolour Hound)',
+  'Français blanc et noir (220) (French White and Black Hound)',
+  'Français blanc et orange (316) (French White and Orange Hound)',
+  'Grand anglo-français tricolore (322) (Great Anglo-French Tricolour Hound)',
+  'Grand anglo-français blanc et noir (323) (Great Anglo-French White and Black Hound)',
+  'Grand anglo-français blanc et orange (324) (Great Anglo-French White and Orange Hound)',
+  'Grand Bleu de Gascogne (22) (Great Gascony Blue)',
+  'Gascon saintongeois (21)',
+  'Grand griffon vendéen (282) (Grand Griffon Vendeen)',
+  'English Foxhound (159)',
+  'Otterhound (294)',
+  'American Foxhound (303)',
+  'Black and Tan Coonhound (300)'
 ].each do |name|
-  Subsection.find_by(:description => 'Mountain type').breeds.where(name: name).first_or_create!
+  Subsection.find_by(:description => 'Large-sized Hounds').breeds.where(name: name).first_or_create!
 end
-=end
+
+#
+# Group VI - Subsection 1.2 - Breeds
+#
+[
+  'Bosanski Ostrodlaki Gonic Barak (155) (Bosnian coarse-haired Hound - called Barak)',
+  'Istarski Kratkodlaki Gonic (151) (Istrian short-haired Scent Hound)',
+  'Istarski Ostrodlaki Gonic (152) (Istrian wire-haired Scent Hound)',
+  'Posavski Gonic (154) (Scent Hound from the Save Valley)',
+  'Sabueso Español (204) (Spanish Hound)',
+  'Anglo-français de petite vénerie (325) (Medium-sized Anglo-French Hound)',
+  'Ariégeois (20) (Ariège-Hound)',
+  'Beagle-Harrier (290)',
+  'Poitevin (24)',
+  'Chien d\'Artois (28) (Artois Hound)',
+  'Porcelaine (30)',
+  'Petit bleu de Gascogne (31) (Small Gascony Blue)',
+  'Briquet griffon vendéen (19) (Medium Griffon Vendeen)',
+  'Griffon bleu de Gascogne (32) (Blue Gascony Griffon)',
+  'Griffon fauve de Bretagne (66)',
+  'Griffon Nivernais (17)',
+  'Harrier (295)',
+  'Hellinikos Ichnilatis (214) (Hellenic Hound)',
+  'Segugio Italiano a pelo forte (198) (Italian Rough-haired segugio)',
+  'Segugio Italiano a pelo raso (337) (Italian Short-haired Hound)',
+  'Srpski Trobojni Gonic (229) (Serbian Tricolour Hound)',
+  'Srpski Gonic (150) (Serbian Hound)',
+  'Crnogorski Planinski Gonic (279) (Montenegrin Mountain Hound)',
+  'Erdélyi Kopó (241) (Transylvanian Hound)',
+  'Dunker (203) (Norwegian Hound)',
+  'Haldenstøvare (267) (Halden Hound)',
+  'Hygenhund (266) (Hygen Hound)',
+  'Brandlbracke (Vieräugl) (63) (Austrian Black and Tan Hound)',
+  'Steirische Rauhhaarbracke (62) (Coarse-haired Styrian Hound)',
+  'Tiroler Bracke (68) (Tyrolean Hound)',
+  'Ogar Polski (52) (Polish Hound)',
+  'Schweizer Laufhund-Chien Courant Suisse (59) (Swiss Hound)',
+  'Slovenský Kopov (244) (Slovakian Hound)',
+  'Suomenajokoira (51) (Finnish Hound)',
+  'Hamiltonstövare (132)',
+  'Schillerstövare (131)',
+  'Smålandsstövare (129)'
+].each do |name|
+  Subsection.find_by(:description => 'Medium-sized Hounds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VI - Subsection 1.2 - Varieties
+#
+[
+  'Bernese Hound',
+  'Jura Hound',
+  'Lucerne Hound',
+  'Schwyz Hound'
+].each do |name|
+  Breed.where('name LIKE ?', '%Schweizer Laufhund-Chien Courant Suisse%').first.
+      varieties.where(name: name).first_or_create!
+end
+
+#
+# Group VI - Subsection 1.3 - Breeds
+#
+[
+  'Deutsche Bracke (299) (German Hound)',
+  'Westfälische Dachsbracke (100) (Westphalian Dachsbracke)',
+  'Basset artésien normand (34) (Artesian-Norman Basset)',
+  'Basset bleu de Gascogne (35) (Blue Gascony Basset)',
+  'Basset fauve de Bretagne (36) (Fawn Brittany Basset)',
+  'Grand Basset griffon vendéen (33) (Grand Basset Griffon Vendeen)',
+  'Petit Basset griffon vendéen (67) (Petit Basset Griffon Vendeen)',
+  'Basset Hound (163)',
+  'Beagle (161)',
+  'Schweizerischer Niederlaufhund - Petit chien courant suisse (60) (Small Swiss Hound)',
+  'Drever (130)'
+].each do |name|
+  Subsection.find_by(:description => 'Small-sized Hounds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VI - Subsection 1.3 - Varieties
+#
+[
+  'Small bernese Hound',
+  'Small Jura Hound',
+  'Small Lucerne Hound',
+  'Small Schwyz Hound'
+].each do |name|
+  Breed.where('name LIKE ?', '%Schweizerischer Niederlaufhund - Petit chien courant suisse%').first.
+      varieties.where(name: name).first_or_create!
+end
+
+#
+# Group VI - Section 2 - Breeds
+#
+[
+  ' Bayrischer Gebirgsschweisshund (217) (Bavarian Mountain Scenthound)',
+  ' Hannover\'scher Schweisshund (213) (Hanoverian Scenthound)',
+  ' Alpenländische Dachsbracke(254) (Alpine Dachsbracke)'
+].each do |name|
+  Section.find_by(:description => 'Leash (scent) Hounds').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group VI - Section 3 - Breeds
+#
+[
+  'Dalmatinski pas (153) (Dalmatian)',
+  'Rhodesian Ridgeback (146)'
+].each do |name|
+  Section.find_by(:description => 'Related breeds').breeds.where(name: name).first_or_create!
+end
+
 
 ###############################################
 ################# Group VII ###################
@@ -553,6 +965,22 @@ end
 end
 
 #
+# Group VII - Subsection 1.1 - Varieties
+#
+%w(Short-haired
+  Long-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Weimaraner%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'White-Orange',
+  'Chestnut roan'
+].each do |name|
+  Breed.where('name LIKE ?', '%Bracco Italiano%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group VII - Subsection 1.2 - Breeds
 #
 [
@@ -602,6 +1030,7 @@ end
   Subsection.find_by(:description => 'Setter').breeds.where(name: name).first_or_create!
 end
 
+
 ###############################################
 ################ Group VIII ###################
 ###############################################
@@ -649,6 +1078,26 @@ end
 end
 
 #
+# Group VIII - Section 2 - Varieties
+#
+[
+  'Solid colours',
+  'Parti-colours',
+  'Tricolours',
+  'Roans'
+].each do |name|
+  Breed.where('name LIKE ?', '%English Cocker Spaniel%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Black',
+  'Any solid colour other than black (ASCOB)',
+  'Parti-colours'
+].each do |name|
+  Breed.where('name LIKE ?', '%American Cocker Spaniel%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group VIII - Section 3 - Breeds
 #
 [
@@ -663,6 +1112,18 @@ end
   Section.find_by(:description => 'Water Dogs').breeds.where(name: name).first_or_create!
 end
 
+#
+# Group VIII - Section 3 - Varieties
+#
+[
+  'Long and wavy',
+  'Shorter and curly'
+].each do |name|
+  Breed.where('name LIKE ?', '%Cão de agua Português%').first.varieties.where(name: name).first_or_create!
+end
+
+
+
 ###############################################
 ################### Group IX ##################
 ###############################################
@@ -676,12 +1137,13 @@ end
   ['Section 3', 'Small Belgian Dogs'],
   ['Section 4', 'Hairless Dogs'],
   ['Section 5', 'Tibetan breeds'],
-  ['Section 6', 'Chihuahueño'],
-  ['Section 7', 'English Toy Spaniels'],
-  ['Section 8', 'Japan Chin and Pekingese'],
-  ['Section 9', 'Continental Toy Spaniel'],
-  ['Section 10', 'Kromfohrländer'],
-  ['Section 11', 'Small Molossian type Dogs']
+  ['Section 6', 'English Toy Spaniels'],
+  ['Section 7', 'Japan Chin and Pekingese'],
+  ['Section 8', 'Small Molossian type Dogs'],
+  ['Section 9', 'Chihuahueño'],
+  ['Section 10', 'Continental Toy Spaniel'],
+  ['Section 11', 'Kromfohrländer'],
+
 ].each do |name, description|
   Group.find_by(:description => 'Companion and Toy Dogs').sections.where(name: name, description: description).first_or_create!
 end
@@ -744,6 +1206,37 @@ end
 end
 
 #
+# Group IX - Section 2 - Varieties
+#
+[
+  'Standard',
+  'Medium size',
+  'Miniature',
+  'Toy'
+].each do |name|
+  Breed.where('name LIKE ?', '%Caniche%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 2 - Subvarieties
+#
+[
+  'Brown',
+  'Black',
+  'White',
+  'Grey',
+  'Orange fawn (Apricot)',
+  'Red fawn'
+].each do |name|
+  Breed.where('name LIKE ?', '%Caniche%').first.
+      varieties.where('name LIKE ?', '%Standard%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Caniche%').first.
+      varieties.where('name LIKE ?', '%Medium size%').first.subvarieties.where(name: name).first_or_create!
+  Breed.where('name LIKE ?', '%Caniche%').first.
+      varieties.where('name LIKE ?', '%Miniature%').first.subvarieties.where(name: name).first_or_create!
+end
+
+#
 # Group IX - Subsection 3.1 - Breeds
 #
 [
@@ -772,6 +1265,16 @@ end
 end
 
 #
+# Group IX - Section 4 - Varieties
+#
+[
+  'Hairless',
+  'Powder puff',
+].each do |name|
+  Breed.where('name LIKE ?', '%Chinese Crested Dog%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group IX - Section 5 - Breeds
 #
 [
@@ -787,15 +1290,6 @@ end
 # Group IX - Section 6 - Breeds
 #
 [
-  'Chihuahueño (Chihuahua) (218)'
-].each do |name|
-  Section.find_by(:description => 'Chihuahueño').breeds.where(name: name).first_or_create!
-end
-
-#
-# Group IX - Section 7 - Breeds
-#
-[
   'Cavalier King Charles Spaniel (136)',
   'King Charles Spaniel (128)'
 ].each do |name|
@@ -803,7 +1297,20 @@ end
 end
 
 #
-# Group IX - Section 8 - Breeds
+# Group IX - Section 6 - Varieties
+#
+[
+  'Black and tan',
+  'Ruby',
+  'Blenheim',
+  'Tricolour'
+].each do |name|
+  Breed.where(name: 'Cavalier King Charles Spaniel (136)').first.varieties.where(name: name).first_or_create!
+  Breed.where(name: 'King Charles Spaniel (128)').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 7 - Breeds
 #
 [
   'Pekingese (207)',
@@ -813,7 +1320,56 @@ end
 end
 
 #
+# Group IX - Section 8 - Breeds
+#
+[
+    'Bouledogue français (101) (French Bulldog)',
+    'Pug (253)',
+    'Boston Terrier (140)'
+].each do |name|
+  Section.find_by(:description => 'Small Molossian type Dogs').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 8 - Varieties
+#
+%w(
+  Silver
+  Apricot
+  Fawn
+  Black
+).each do |name|
+  Breed.where('name LIKE ?', '%Pug%').first.varieties.where(name: name).first_or_create!
+end
+
+[
+  'Uniformly fawn, brindled or not, or with limited white patching',
+  'Fawn, brindled or not, with medium or predominant patching'
+].each do |name|
+  Breed.where('name LIKE ?', '%Bouledogue français%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group IX - Section 9 - Breeds
+#
+[
+  'Chihuahueño (Chihuahua) (218)'
+].each do |name|
+  Section.find_by(:description => 'Chihuahueño').breeds.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 9 - Varieties
+#
+%w(
+  Long-haired
+  Smooth-haired
+).each do |name|
+  Breed.where('name LIKE ?', '%Chihuahueño%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 10 - Breeds
 #
 [
   'Epagneul nain Continental (77) (Continental Toy Spaniel)'
@@ -822,7 +1378,17 @@ end
 end
 
 #
-# Group IX - Section 10 - Breeds
+# Group IX - Section 10 - Varieties
+#
+[
+  'Papillon - with erect ears',
+  'Phalène - with drooping ears'
+].each do |name|
+  Breed.where('name LIKE ?', '%Epagneul nain Continental%').first.varieties.where(name: name).first_or_create!
+end
+
+#
+# Group IX - Section 11 - Breeds
 #
 [
   'Kromfohrländer (192)'
@@ -830,16 +1396,7 @@ end
   Section.find_by(:description => 'Kromfohrländer').breeds.where(name: name).first_or_create!
 end
 
-#
-# Group IX - Section 11 - Breeds
-#
-[
-  'Bouledogue français (101) (French Bulldog)',
-  'Pug (253)',
-  'Boston Terrier (140)'
-].each do |name|
-  Section.find_by(:description => 'Small Molossian type Dogs').breeds.where(name: name).first_or_create!
-end
+
 
 ###############################################
 #################### Group X ##################
@@ -868,6 +1425,15 @@ end
 end
 
 #
+# Group X - Section 1 - Varieties
+#
+%w(Fringed
+  Smooth
+).each do |name|
+  Breed.where('name LIKE ?', '%Saluki%').first.varieties.where(name: name).first_or_create!
+end
+
+#
 # Group X - Section 2 - Breeds
 #
 [
@@ -882,6 +1448,7 @@ end
 #
 [
   'Galgo español (285) (Spanish Greyhound)',
+  'Greyhound (158)',
   'Whippet (162)',
   'Piccolo Levriero Italiano (200) (Italian Greyhound)',
   'Magyar Agar (240) (Hungarian Greyhound)',

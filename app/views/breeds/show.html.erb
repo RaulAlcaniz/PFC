@@ -16,6 +16,8 @@
     </tr>
     <% @breed.varieties.each do |variety| %>
         <tr>
+          <td>id: <%=variety.id%></td>
+          <td>breed_id: <%=variety.breed_id%></td>
           <td><%= link_to variety.name, [@breed, variety] %></td>
         </tr>
     <% end %>
