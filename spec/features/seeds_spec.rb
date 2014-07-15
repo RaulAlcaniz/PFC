@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe 'Seed Data' do
+describe '#Seed Data' do
   before(:all) { load Rails.root + 'db/seeds.rb' }
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
-  describe 'Groups' do
+  describe '#Groups' do
     specify 'should have 10 items' do
       Group.count.should eq 10
     end
@@ -29,7 +29,7 @@ describe 'Seed Data' do
   #######################
   # SECTIONS AND BREEDS #
   #######################
-  describe 'Sections' do
+  describe '#Sections' do
     specify 'should have 40 items' do
       Section.count.should eq 40
     end
@@ -407,76 +407,87 @@ describe 'Seed Data' do
   #############
   # VARIETIES #
   #############
-  describe 'Varieties' do
-    specify 'should have 125 varieties' do
+  describe '#Varieties' do
+    specify 'should have 125 varieties.' do
       Variety.count.should eq 125
     end
 
     # GROUP I #
     ###########
-
-
-=begin    describe 'Group I' do
-     it 'should have 4+4+2+4+6=26 varieties' do
+    describe 'Group I' do
+      context 'should have (4+2+6+5+4+2+3) = 26 varieties.' do
         # Section 1
-
-        [['Chien de Berger Belge', 2]].each do |name, count|
-          puts 'aquí2', name, count
-          Group.find_by!(:name => 'Group I').sections.find_by!(:name => 'Section 1').breeds.find_by!('name LIKE ?', "%#{name}%") do |breed|
-            breed.varieties.count.should eq count
-            puts 'aquí'
-            puts breed.name
+        it 'In section 1' do
+          [
+            ['Chien de Berger Belge', 4],
+            ['Deutscher Schäferhund', 2],
+            ['Mudi', 6],
+            ['Puli', 5],
+            ['Pumi', 4],
+            ['Ca de Bestiar', 2],
+            ['Hollandse Herdershond', 3]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group I').sections.find_by!(:name => 'Section 1').breeds.
+                 find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
           end
-
         end
-#        Group.find_by(:name => 'Group I').sections.find_by(:name => 'Section 1').breeds.
-#            find_by('name LIKE ?', '%Chien de Berger Belge%').varieties.count.should eq 4
       end
     end
-=end
+
     # GROUP II #
     ############
     describe 'Group II' do
-      it 'should have 31 varieties' do
+      context 'should have (2+2+2) + (2+2+4) + (2+5) + (3+3+2+2) = 31 varieties.' do
         # Subsection 1.1
-        [
-          Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-              subsections.find_by(:name => '1.1').breeds
-        ].each do |breed|
-
-          breed.find_by('name LIKE ?', '%Dobermann%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Deutscher Pinscher%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Zwergpinscher%').varieties.count.should eq 2
+        it 'In subsection 1.1' do
+          [
+            ['Dobermann', 2],
+            ['Deutscher Pinscher', 2],
+            ['Zwergpinscher', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 1').
+                subsections.find_by!(:name => '1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
 
         # Subsection 1.2
-        [
-          Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-              subsections.find_by(:name => '1.2').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Riesenschnauzer%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Schnauzer%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Zwergschnauzer%').varieties.count.should eq 4
+          it 'In subsection 1.2' do
+          [
+            ['Riesenschnauzer', 2],
+            ['Schnauzer', 2],
+            ['Zwergschnauzer', 4]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 1').
+                subsections.find_by!(:name => '1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
 
         # Subsection 2.1
-        [
-          Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 2').
-              subsections.find_by(:name => '2.1').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Deutscher Boxer%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Deutsche Dogge%').varieties.count.should eq 5
+        it 'In subsection 2.1' do
+          [
+            ['Deutscher Boxer', 2],
+            ['Deutsche Dogge', 5]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 2').
+                subsections.find_by!(:name => '2.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
 
         # Subsection 2.2
-        [
-          Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 2').
-              subsections.find_by(:name => '2.2').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Newfoundland%').varieties.count.should eq 3
-          breed.find_by('name LIKE ?', '%Hovawart%').varieties.count.should eq 3
-          breed.find_by('name LIKE ?', '%Cão da Serra da Estrela%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%St.Bernhardshund (Bernhardiner)%').varieties.count.should eq 2
+        it 'In subsection 2.2' do
+          [
+            ['Newfoundland', 3],
+            ['Hovawart', 3],
+            ['Cão da Serra da Estrela', 2],
+            ['St.Bernhardshund (Bernhardiner)', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 2').
+                subsections.find_by!(:name => '2.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
       end
     end
@@ -484,18 +495,23 @@ describe 'Seed Data' do
     # GROUP III #
     #############
     describe 'Group III' do
-      it 'should have 0 varieties' do
+      context 'should have 0 varieties.' do
 
       end
     end
 
     # GROUP IV #
+    ############
     describe 'Group IV' do
-      it 'should have 3 varieties' do
-        [
-          Group.find_by(:name => 'Group IV').sections.find_by(:name => 'Section 1').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Dachshund%').varieties.count.should eq 3
+      context 'should have 3 varieties.' do
+        # Section 1
+        it 'In section 1' do
+          [
+            ['Dachshund', 3]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IV').sections.find_by!(:name => 'Section 1').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
       end
     end
@@ -503,51 +519,65 @@ describe 'Seed Data' do
     # GROUP V #
     ###########
     describe 'Group V' do
-      it 'should have 16 varieties' do
+      context 'should have (6) + (3+3) + (2+2) = 16 varieties.' do
         # Section 4
-        [
-          Group.find_by(:name => 'Group V').sections.find_by(:name => 'Section 4').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Deutscher Spitz%').varieties.count.should eq 6
+        it 'In section 4' do
+          [
+            ['Deutscher Spitz', 6]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 4').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 6
-        [
-          Group.find_by(:name => 'Group V').sections.find_by(:name => 'Section 6').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Xoloitzcuintle%').varieties.count.should eq 3
-          breed.find_by('name LIKE ?', '%Perro sin pelo del Perú%').varieties.count.should eq 3
+        it 'In section 4' do
+          [
+            ['Xoloitzcuintle', 3],
+            ['Perro sin pelo del Perú', 3]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 6').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 7
-        [
-          Group.find_by(:name => 'Group V').sections.find_by(:name => 'Section 7').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Podengo Português%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Podenco Ibicenco%').varieties.count.should eq 2
+        it 'In section 7' do
+          [
+            ['Podengo Português', 2],
+            ['Podenco Ibicenco', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 7').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
-
       end
     end
 
     # GROUP VI #
     ############
     describe 'Group VI' do
-      it 'should have 8 varieties' do
+      context 'should have (4) + (4) = 8 varieties.' do
         # Subsection 1.2
-        [
-          Group.find_by(:name => 'Group VI').sections.find_by(:name => 'Section 1').
-              subsections.find_by(:name => '1.2').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Schweizer Laufhund-Chien Courant Suisse%').varieties.count.should eq 4
+        it 'In subsection 1.2' do
+          [
+            ['Schweizer Laufhund-Chien Courant Suisse',4]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group VI').sections.find_by!(:name => 'Section 1').
+                subsections.find_by!(:name => '1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
 
         # Subsection 1.3
-        [
-          Group.find_by(:name => 'Group VI').sections.find_by(:name => 'Section 1').
-              subsections.find_by(:name => '1.3').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Schweizerischer Niederlaufhund%').varieties.count.should eq 4
+        it 'In subsection 1.3' do
+          [
+            ['Schweizerischer Niederlaufhund',4]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group VI').sections.find_by!(:name => 'Section 1').
+                subsections.find_by!(:name => '1.3').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
       end
     end
@@ -555,14 +585,17 @@ describe 'Seed Data' do
     # GROUP VII #
     #############
     describe 'Group VII' do
-      it 'should have 4 varieties' do
+      context 'should have (4) varieties.' do
         # Subsection 1.1
-        [
-          Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 1').
-              subsections.find_by(:name => '1.1').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Weimaraner%').varieties.count.should eq 2
-          breed.find_by('name LIKE ?', '%Bracco Italiano%').varieties.count.should eq 2
+        it 'In subsection 1.1' do
+          [
+            ['Weimaraner',2],
+            ['Bracco Italiano',2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group VII').sections.find_by!(:name => 'Section 1').
+                subsections.find_by!(:name => '1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                varieties.count.should eq count
+          end
         end
       end
     end
@@ -570,20 +603,26 @@ describe 'Seed Data' do
     # GROUP VIII #
     ##############
     describe 'Group VIII' do
-      it 'should have 9 varieties' do
+      context 'should have (4+3) + (2) = 9 varieties.' do
         # Section 2
-        [
-          Group.find_by(:name => 'Group VIII').sections.find_by(:name => 'Section 2').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%English Cocker Spaniel%').varieties.count.should eq 4
-          breed.find_by('name LIKE ?', '%American Cocker Spaniel%').varieties.count.should eq 3
+        it 'In section 2' do
+          [
+            ['English Cocker Spaniel', 4],
+            ['American Cocker Spaniel', 3]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group VIII').sections.find_by!(:name => 'Section 2').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 3
-        [
-          Group.find_by(:name => 'Group VIII').sections.find_by(:name => 'Section 3').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Cão de agua Português%').varieties.count.should eq 2
+        it 'In section 3' do
+          [
+            ['Cão de agua Português', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group VIII').sections.find_by!(:name => 'Section 3').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
       end
     end
@@ -591,49 +630,67 @@ describe 'Seed Data' do
     # GROUP IX #
     ############
     describe 'Group IX' do
-      it 'should have 24 varieties' do
+      context 'should have (4) + (2) + (4+4) + (4+2) + (2) + (2) = 24 varieties.' do
         # Section 2
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 2').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Caniche%').varieties.count.should eq 4
+        it 'In section 2' do
+          [
+            ['Caniche', 4]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 2').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 4
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 4').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Chinese Crested Dog%').varieties.count.should eq 2
+        it 'In section 4' do
+          [
+            ['Chinese Crested Dog', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 4').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 6
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 6').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Cavalier King Charles Spaniel%').varieties.count.should eq 4
-          breed.find_by('name LIKE ?', '%King Charles Spaniel%').varieties.count.should eq 4
+        it 'In section 6' do
+          [
+            ['Cavalier King Charles Spaniel', 4],
+            ['King Charles Spaniel', 4]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 6').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 8
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 8').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Pug%').varieties.count.should eq 4
-          breed.find_by('name LIKE ?', '%Bouledogue français%').varieties.count.should eq 2
+        it 'In section 8' do
+          [
+            ['Pug', 4],
+            ['Bouledogue français', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 8').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 9
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 9').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Chihuahueño%').varieties.count.should eq 2
+        it 'In section 9' do
+          [
+            ['Chihuahueño', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 9').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
 
         # Section 10
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 10').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Epagneul nain Continental%').varieties.count.should eq 2
+        it 'In section 10' do
+          [
+            ['Epagneul nain Continental', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 10').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
       end
     end
@@ -641,12 +698,15 @@ describe 'Seed Data' do
     # GROUP X #
     ###########
     describe 'Group X' do
-      it 'should have 2 varieties' do
+      context 'should have (2) varieties.' do
         # Section 1
-        [
-          Group.find_by(:name => 'Group X').sections.find_by(:name => 'Section 1').breeds
-        ].each do |breed|
-          breed.find_by('name LIKE ?', '%Saluki%').varieties.count.should eq 2
+        it 'In section 1' do
+          [
+            ['Saluki', 2]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group X').sections.find_by!(:name => 'Section 1').breeds.
+                find_by!('name LIKE ?', "%#{name}%").varieties.count.should eq count
+          end
         end
       end
     end
@@ -655,15 +715,15 @@ describe 'Seed Data' do
   ################
   # SUBVARIETIES #
   ################
-  describe 'Subvarieties' do
-    specify 'should have 48 subvarieties' do
+  describe '#Subvarieties' do
+    specify 'should have 48 subvarieties.' do
       Subvariety.count.should eq 48
     end
 
     # GROUP I #
     ###########
     describe 'Group I' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -671,7 +731,7 @@ describe 'Seed Data' do
     # GROUP II #
     ############
     describe 'Group II' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -679,7 +739,7 @@ describe 'Seed Data' do
     # GROUP III #
     #############
     describe 'Group III' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -687,15 +747,18 @@ describe 'Seed Data' do
     # GROUP IV #
     ############
     describe 'Group IV' do
-      it 'should have 9 subvarieties' do
+      context 'should have 9 subvarieties.' do
         # Section 1
-        [
-          Group.find_by(:name => 'Group IV').sections.find_by(:name => 'Section 1').
-              breeds.find_by('name LIKE ?', '%Dachshund%').varieties
-        ].each do |variety|
-          variety.find_by('name LIKE ?', '%Standard%').subvarieties.count.should eq 3
-          variety.find_by('name LIKE ?', '%Miniature%').subvarieties.count.should eq 3
-          variety.find_by('name LIKE ?', '%Rabbit Dachshund%').subvarieties.count.should eq 3
+        it 'In section 1' do
+          [
+            ['Standard', 3],
+            ['Miniature', 3],
+            ['Rabbit Dachshund', 3]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IV').sections.find_by!(:name => 'Section 1').breeds.
+                find_by!('name LIKE ?', "%Dachshund%").varieties.find_by!(:name => "#{name}").
+                subvarieties.count.should eq count
+          end
         end
       end
     end
@@ -703,24 +766,30 @@ describe 'Seed Data' do
     # GROUP V #
     ###########
     describe 'Group V' do
-      it 'should have 21 subvarieties' do
+      context 'should have (3+6+6) + (3+3) = 21 subvarieties.' do
         # Section 4
-        [
-          Group.find_by(:name => 'Group V').sections.find_by(:name => 'Section 4').
-              breeds.find_by('name LIKE ?', '%Deutscher Spitz%').varieties
-        ].each do |variety|
-          variety.find_by('name LIKE ?', '%Giant spitz%').subvarieties.count.should eq 3
-          variety.find_by('name LIKE ?', '%Medium size Spitz%').subvarieties.count.should eq 6
-          variety.find_by('name LIKE ?', '%Miniature Spitz%').subvarieties.count.should eq 6
+        it 'In section 4' do
+          [
+            ['Giant spitz', 3],
+            ['Medium size Spitz', 6],
+            ['Miniature Spitz', 6]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 4').breeds.
+                find_by!('name LIKE ?', "%Deutscher Spitz%").varieties.find_by!(:name => "#{name}").
+                subvarieties.count.should eq count
+          end
         end
 
-        # Section 4
-        [
-          Group.find_by(:name => 'Group V').sections.find_by(:name => 'Section 7').
-              breeds.find_by('name LIKE ?', '%Podengo Português%').varieties
-        ].each do |variety|
-          variety.find_by('name LIKE ?', '%Long and wire-haired%').subvarieties.count.should eq 3
-          variety.find_by('name LIKE ?', '%Smooth and short-haired%').subvarieties.count.should eq 3
+        # Section 7
+        it 'In section 7' do
+          [
+            ['Long and wire-haired', 3],
+            ['Smooth and short-haired', 3],
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 7').breeds.
+                find_by!('name LIKE ?', "%Podengo Português%").varieties.find_by!(:name => "#{name}").
+                subvarieties.count.should eq count
+          end
         end
       end
     end
@@ -728,7 +797,7 @@ describe 'Seed Data' do
     # GROUP VI #
     ############
     describe 'Group VI' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -736,7 +805,7 @@ describe 'Seed Data' do
     # GROUP VII #
     #############
     describe 'Group VII' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -744,7 +813,7 @@ describe 'Seed Data' do
     # GROUP VIII #
     ##############
     describe 'Group VIII' do
-      it 'should have 0 subvarieties' do
+      it 'should have 0 subvarieties.' do
 
       end
     end
@@ -752,15 +821,18 @@ describe 'Seed Data' do
     # GROUP IX #
     ############
     describe 'Group IX' do
-      it 'should have 18 subvarieties' do
+      context 'should have (18) subvarieties.' do
         # Section 2
-        [
-          Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 2').
-              breeds.find_by('name LIKE ?', '%Caniche%').varieties
-        ].each do |variety|
-          variety.find_by('name LIKE ?', '%Standard%').subvarieties.count.should eq 6
-          variety.find_by('name LIKE ?', '%Medium size%').subvarieties.count.should eq 6
-          variety.find_by('name LIKE ?', '%Miniature%').subvarieties.count.should eq 6
+        it 'In section 2' do
+          [
+            ['Standard', 6],
+            ['Medium size', 6],
+            ['Miniature', 6]
+          ].each do |name, count|
+            Group.find_by!(:name => 'Group IX').sections.find_by!(:name => 'Section 2').breeds.
+                find_by!('name LIKE ?', "%Caniche%").varieties.find_by!(:name => "#{name}").
+                subvarieties.count.should eq count
+          end
         end
       end
     end
