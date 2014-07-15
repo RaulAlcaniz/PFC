@@ -769,15 +769,18 @@ describe '#Seed Data' do
       context 'should have (3+6+6) + (3+3) = 21 subvarieties.' do
         # Section 4
         it 'In section 4' do
+          total_subvarieties =
           [
             ['Giant spitz', 3],
             ['Medium size Spitz', 6],
             ['Miniature Spitz', 6]
-          ].each do |name, count|
+          ].inject(0) do |sum, name, count|
             Group.find_by!(:name => 'Group V').sections.find_by!(:name => 'Section 4').breeds.
                 find_by!('name LIKE ?', "%Deutscher Spitz%").varieties.find_by!(:name => "#{name}").
                 subvarieties.count.should eq count
+            sum + count
           end
+          total_subvarieties.should eq 17
         end
 
         # Section 7
