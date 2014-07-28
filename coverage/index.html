@@ -14,14 +14,14 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-07-24T16:10:42+00:00">2014-07-24T16:10:42+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-07-24T17:10:19+00:00">2014-07-24T17:10:19+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">59.86%</span></span>
+    (<span class="covered_percent"><span class="red">60.14%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>37</b> files in total.
-    <b>284</b> relevant lines. 
-    <span class="green"><b>170</b> lines covered</span> and
+    <b>286</b> relevant lines. 
+    <span class="green"><b>172</b> lines covered</span> and
     <span class="red"><b>114</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -402,10 +402,10 @@
       
       <tr>
         <td class="strong"><a href="#4c406d63ab97d9f6425d3be9986c555b9b1edd9c" class="src_link" title="features/support/paths.rb">features/support/paths.rb</a></td>
-        <td class="red strong">22.73 %</td>
-        <td>51</td>
-        <td>22</td>
-        <td>5</td>
+        <td class="red strong">29.17 %</td>
+        <td>56</td>
+        <td>24</td>
+        <td>7</td>
         <td>17</td>
         <td>0.3</td>
       </tr>
@@ -558,8 +558,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="11">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="2" data-linenumber="11">
+          <span class="hits">2</span>
           
           <code class="ruby">    @groups = Group.all</code>
         </li>
@@ -6589,10 +6589,10 @@
         <div class="source_table" id="4c406d63ab97d9f6425d3be9986c555b9b1edd9c">
   <div class="header">
     <h3>features/support/paths.rb</h3>
-    <h4><span class="red">22.73 %</span> covered</h4>
+    <h4><span class="red">29.17 %</span> covered</h4>
     <div>
-      <b>22</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>24</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>17</b> lines missed.</span>
     </div>
   </div>
@@ -6672,8 +6672,8 @@
           <code class="ruby">      when /^the home\s?page$/</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
           <code class="ruby">        &#39;/&#39;</code>
         </li>
@@ -6783,124 +6783,154 @@
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      when /my profile page/</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"># Add more mappings here.</code>
+          <code class="ruby">        puts $1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="33">
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"># Here is an example that pulls values out of the Regexp:</code>
+          <code class="ruby">        user_path(User.find_by_name!($1))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">#</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby"># when /^(.*)&#39;s profile page$/i</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby"># user_profile_path(User.find_by_login($1))</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
           
           
-          <code class="ruby"></code>
+          <code class="ruby"># Add more mappings here.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">      else</code>
+          <code class="ruby"># Here is an example that pulls values out of the Regexp:</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">        begin</code>
+          <code class="ruby">#</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">          page_name =~ /^the (.*) page$/</code>
+          <code class="ruby"># when /^(.*)&#39;s profile page$/i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">          path_components = $1.split(/\s+/)</code>
+          <code class="ruby"># user_profile_path(User.find_by_login($1))</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="42">
-          
-          
-          <code class="ruby">          self.send(path_components.push(&#39;path&#39;).join(&#39;_&#39;).to_sym)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="43">
-          
-          
-          <code class="ruby">        rescue NoMethodError, ArgumentError</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="44">
-          
-          
-          <code class="ruby">          raise &quot;Can&#39;t find mapping from \&quot;#{page_name}\&quot; to a path.\n&quot; +</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="45">
-          
-          
-          <code class="ruby">                    &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="46">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="47">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="48">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="49">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">      else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="44">
+          
+          
+          <code class="ruby">        begin</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="45">
+          
+          
+          <code class="ruby">          page_name =~ /^the (.*) page$/</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="46">
+          
+          
+          <code class="ruby">          path_components = $1.split(/\s+/)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="47">
+          
+          
+          <code class="ruby">          self.send(path_components.push(&#39;path&#39;).join(&#39;_&#39;).to_sym)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="48">
+          
+          
+          <code class="ruby">        rescue NoMethodError, ArgumentError</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="49">
+          
+          
+          <code class="ruby">          raise &quot;Can&#39;t find mapping from \&quot;#{page_name}\&quot; to a path.\n&quot; +</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">                    &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
           <code class="ruby">World(NavigationHelpers)</code>
