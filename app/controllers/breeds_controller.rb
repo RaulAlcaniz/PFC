@@ -1,6 +1,5 @@
 class BreedsController < ApplicationController
 
- # before_action :set_section, only: [:new, :create, :show]
   before_action :set_breedable, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :set_breed, only: [:show, :edit, :update, :destroy]
 

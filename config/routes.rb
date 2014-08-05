@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'people/show'
+
   devise_for :users
 
   root :to => "groups#index"
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'varieties/show'
 
+  resources :people, only: [:show, :new, :create]
   #get 'varieties/show'
 
   #get 'breeds/new'
@@ -41,6 +44,8 @@ Rails.application.routes.draw do
       #resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
     end
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

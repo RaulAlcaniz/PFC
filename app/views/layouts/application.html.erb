@@ -18,6 +18,9 @@
   <%# end %>
 </nav>
 
+<ul><li><%= link_to 'New Person', new_person_path %></li></ul>
+
+
 <% flash.each do |key, value| %>
     <div class="flash" id="<%= key %>">
       <%= value %>

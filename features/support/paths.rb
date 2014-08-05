@@ -28,9 +28,11 @@ module NavigationHelpers
       when /the subvariety page for "([^\"]*)"/
         subvariety = Subvariety.find_by_name!($1)
         variety_subvariety_path(subvariety.variety, subvariety)
-      when /my profile page/
-        puts $1
-        user_path(User.find_by_name!($1))
+      when /the person's page for "([^\"]*)"/
+        person_path(Person.find_by_name!($1))
+
+      #when /my profile page/
+       # user_path(User.find_by_name!($1))
 
 
 

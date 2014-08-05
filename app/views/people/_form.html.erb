@@ -1,0 +1,35 @@
+<%= form_for [@person] do |f|%>
+    <% @person.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :date_of_birth %>
+      <%= f.date_select(:date_of_birth, start_year: Date.today.year-90,
+                        end_year: Date.today.year,
+                        prompt: {day: 'Day...', month: 'Month...', year: 'Year..'}) %>
+    </p>
+
+    <p>
+      <%= f.label :sex %>
+      <%= f.select(:sex, options_for_select(%w[Male Female]), prompt: 'Choose one...') %>
+    </p>
+    <p>
+      <%= f.label :sex %>
+      <%= f.radio_button :sex, 'male', :checked => true %>
+      <%= label :sex_male, 'Male' %>
+      <%= f.radio_button :sex, 'female' %>
+      <%= label :sex_female, 'Female' %>
+    </p>
+
+    <p>
+      <%= f.label :country %>
+      <%= f.country_select(:country, nil, {prompt: 'Choose one...' }) %>
+    </p>
+
+    <%= f.submit %>
+<% end %>

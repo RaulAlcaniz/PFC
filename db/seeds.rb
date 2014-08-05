@@ -35,7 +35,8 @@ end
   ['Section 1', 'Sheepdogs'],
   ['Section 2', 'Cattle Dogs (except Swiss Cattle dogs)']
 ].each do |name, description|
-  Group.find_by(:description => 'Sheepdogs and Cattledogs (except Swiss Cattledogs)').sections.where(name: name, description: description).first_or_create!
+  Group.find_by(:description => 'Sheepdogs and Cattledogs (except Swiss Cattledogs)').
+      sections.where(name: name, description: description).first_or_create!
 end
 
 #
