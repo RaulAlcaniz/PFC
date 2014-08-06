@@ -4,15 +4,15 @@ Feature: Creating people
   I want to create them easily
 
   Background:
-    Given I am on the home page
+    Given I am on the people page
     And I follow "New Person"
-    Given the select "Date of birth" has following options:
-      | January 15, 1990 |
-      | January 16, 1990 |
-      | January 17, 1990 |
+#    Given the select "Date of birth" has following options:
+#      | January 15, 1990 |
+#      | January 16, 1990 |
+#      | January 17, 1990 |
     # Cómo puedo hacer el select del Date of birth?
-    And the select "Sex" should have following options:
-      |Choose one...|
+    Then the select "Sex" should have following options:
+      |Select one...|
       |Male         |
       |Female       |
 #    And the select "Country" should have following options:
@@ -22,21 +22,42 @@ Feature: Creating people
     #  |Algeria|
   # Se listan TODOS los paises, cómo podría seleccionar solo unos cuántos?
 
-  @actual
+  @done
   Scenario: Creating a person
     When I fill in "Name" with "Personal name"
-    And I select "1990 January 16" as the "Date of birth" date
+    And I fill in "Date of birth" with "1/01/2000"
+    #And I select "1990 January 16" as the "Date of birth" date
     And I select "Male" from "Sex"
     And I select "Spain" from "Country"
     And I press "Create Person"
     Then I should see "Person has been created."
-    And I should be on the person's page for "Personal name"
+    And I should be on the person page for "Personal name"
 
-  @pending
+  @done
+  Scenario: Creating a person without a name
+    When I fill in "Name" with ""
+    And I press "Create Person"
+    Then I should see "Person has not been created."
+    And I should see "Name can't be blank"
+
+  @done
   Scenario: Creating a person with a name already taken
-    Given there is a person called "Personal name"
+    Given there is a person called "Personal Name"
     When I fill in "Name" with "Personal name"
     And I press "Create Person"
     Then I should see "Person has not been created."
-    And I should see "Name already taken."
-    #And I should be on the person's page for "Personal name"
+    And I should see "Name has already been taken"
+
+  @done
+  Scenario: Creating a person with an invalid sex
+    When I select "Select one..." from "Sex"
+    And I press "Create Person"
+    Then I should see "Person has not been created."
+    And I should see "Sex can't be blank"
+
+  @done
+  Scenario: Creating a person with an invalid country
+    When I select "Choose one..." from "Country"
+    And I press "Create Person"
+    Then I should see "Person has not been created."
+    And I should see "Country can't be blank"

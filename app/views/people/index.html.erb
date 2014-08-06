@@ -1,2 +1,24 @@
-<h1>Standars and Nomenclature Page</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<h1>People page</h1>
+<p>Find me in app/views/people/index.html.erb</p>
+
+<li><%= link_to 'New Person', new_person_path %></li>
+
+
+<table id="people">
+  <tr>
+    <th>Name</th>
+    <th>Date of birth</th>
+    <th>Sex</th>
+    <th>Country</th>
+
+  </tr>
+  <% @people.each do |person| %>
+      <tr>
+        <td><%= link_to person.name, person_path(person) %></td>
+        <td><%= person.date_of_birth.strftime('%d/%m/%Y') %></td>
+        <td><%= person.sex %></td>
+        <td><%= person.country %></td>
+      </tr>
+  <% end %>
+
+</table>

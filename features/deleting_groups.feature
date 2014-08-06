@@ -1,5 +1,5 @@
 Feature: Deleting groups
-  In order to remove any group
+  In order to remove groups
   As user
   I want to make it disappear
 

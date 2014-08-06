@@ -1,24 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'people/show'
+  #get 'people/show'
 
   devise_for :users
 
   root :to => "groups#index"
-  get 'subvarieties/show'
 
-  get 'varieties/show'
-
-  resources :people, only: [:show, :new, :create]
-  #get 'varieties/show'
-
-  #get 'breeds/new'
-
-  #get 'subsections/index'
-
-  #get 'section/show'
-
-  #get 'groups/index'
+  resources :people
 
   resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :subvarieties, only: [:show, :new, :create, :edit, :update, :destroy]

@@ -1,13 +1,38 @@
-Given(/^the select "(.*?)" has following options:$/) do |arg1, table|
+Given(/^there is a person called "(.*?)"$/) do |name|
+  @person = FactoryGirl.create(:person, name: name)
+end
+
+Given(/^there are people with these entries:$/) do |table|
+  table.map_headers!('Name' => :name, 'Date of birth'=> :date_of_birth,
+                     'Sex' => :sex, 'Country' => :country)
+  table.hashes.map{|hash| FactoryGirl.create(:person, hash)}
+end
+
+When(/^the people page is visited$/) do
+  visit 'people'
+end
+
+Then(/^people page should content:$/) do |expected_table|
+  rows = find('table#people').all('tr')
+  actual_table = rows.map{ |row| row.all('th, td').map{ |cell| cell.text} }
+  expected_table.diff!(actual_table)
+end
+
+
+# Steps para las selecciones del date select
+=begin Given(/^the select "(.*?)" has following options:$/) do |arg1, table|
   @date_options = table.raw
 #  asd.each do |fecha|
 #    puts fecha.to_s
 #    date = Date.parse(fecha.to_s)
 #  end
 end
+=end
 
 
-When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date, date_label|
+
+# Steps que no entran en select_date para hacer el select_date en vez de el field date
+=begin When /^(?:|I )select "([^\"]*)" as the "([^\"]*)" date$/ do |date, date_label|
   select_date(date, from: date_label)
 end
 
@@ -31,6 +56,8 @@ def id_prefix_for(options = {})
   msg = "cannot select option, no select box with id, name, or label '#{options[:from]}' found"
   locate(:xpath, Capybara::XPath.select(options[:from]), msg)['id'].gsub(/_#{DATE_TIME_SUFFIXES[:year]}$/,'')
 end
+
+=end
 
 
 #Given(/^there should be a select lists for day, month and year parts of the date of birth$/) do

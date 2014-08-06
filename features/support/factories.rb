@@ -23,6 +23,13 @@ FactoryGirl.define do
     breed.name {'Breed ' + generate(:name)}
   end
 
+  factory :person do |person|
+    person.name {'Person ' + generate(:name)}
+    person.date_of_birth "1/01/2000"
+    person.sex "None"
+    person.country "None"
+  end
+
   sequence :name do |n|
     "name no defined ##{n}"
   end

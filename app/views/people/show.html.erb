@@ -1,2 +1,22 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+<div id="people">
+
+  <h1>People#show</h1>
+  <p>Find me in app/views/people/show.html.erb</p>
+
+  <h2><%= @person.name %></h2>
+
+  <% sex = "Sex: " + @person.sex %>
+  <% country = "County: " + @person.country %>
+  <% birth = "Date of birth: " + @person.date_of_birth.strftime('%d/%m/%Y') %>
+
+  <%= simple_format( birth ) %>
+  <%= simple_format( sex ) %>
+  <%= simple_format( country ) %>
+
+  <ul>
+    <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
+    <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
+    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+  </ul>
+
+</div>
