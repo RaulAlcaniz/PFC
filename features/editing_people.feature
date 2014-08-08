@@ -34,5 +34,5 @@ Feature: Editing People
     Then I should see "Person has not been updated."
     And I should see "Date of birth can't be blank"
 
-  # In the edit form can't be selected nil value for sex or country because
-  # prompt use, so isn't necessary test it
+  # When we are editing a person, we can't select nil value
+  # for sex or country because we use prompt tag, so isn't necessary test it

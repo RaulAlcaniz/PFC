@@ -5,5 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  belongs_to :person
+  has_one :person
+
+  after_create{create_person(name: self.email, sex: "Not selected",
+                             date_of_birth: "01/01/2000", country: "Not selected")}
+
 end
