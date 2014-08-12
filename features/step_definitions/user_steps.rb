@@ -1,3 +1,5 @@
+require 'date'
+
 Given(/^there are the following users:$/) do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |attributes|
@@ -23,3 +25,12 @@ Given(/^I am signed in as "(.*?)"$/) do |email|
   step("I am signed in as them")
 end
 
+Then(/^should be created a person called "(.*?)"$/) do |name|
+  @person = Person.find_by_name!(name)
+end
+
+Then(/^"(.*?)" should be "(.*?)"$/) do |arg, value|
+  register = @person.send(arg)
+  register = register.strftime('%Y-%m-%d') if @person.send(arg).is_a? Date
+  register.should == value
+end

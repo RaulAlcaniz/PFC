@@ -7,7 +7,7 @@ Feature: Deleting people
     Given there is a person called "Personal Name"
     And I am on the person page for "Personal Name"
 
-  @actual
+  @done
   Scenario: Deleting people
     When I follow "Delete person"
     Then I should see "Person has been deleted."
