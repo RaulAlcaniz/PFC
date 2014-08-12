@@ -7,8 +7,8 @@ Feature: Editing Section
     Given there is a group called "Group I"
     And there are sections for this group:
       |Section number|Description|
-      |1             |Sheepdogs  |
-      |2             |Cattle Dogs|
+      |Section 1     |Sheepdogs  |
+      |Section 2     |Cattle Dogs|
 
     Given I am on the groups page
     When I follow "Group I"

@@ -22,3 +22,7 @@ end
 Given(/^there is a group which description is "(.*?)"$/) do |description|
   @group = FactoryGirl.create(:group, description: description)
 end
+
+Then(/^all sections for this group should have been removed$/) do
+  @group.sections.count.should eq 0
+end

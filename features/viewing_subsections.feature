@@ -7,19 +7,20 @@ Feature: Viewing subsections
     Given there is a group called "Group II"
     And there are sections for this group:
       |Section number|Description                |
-      |1             |Pinscher and Schnauzer type|
-      |2             |Molossoid breeds           |
-    And there are subsections for the section with section number "1":
+      |Section 1     |Pinscher and Schnauzer type|
+      |Section 2     |Molossoid breeds           |
+    And there are subsections for the section with section number "Section 1":
       |Subsection number|Description|
-      |1                |Pinscher   |
-      |2                |Schnauzer  |
+      |Subsection 1     |Pinscher   |
+      |Subsection 2     |Schnauzer  |
 
-    Given I am on the section page for "1"
+    Given I am on the section page for "Section 1"
 
   @done
   Scenario: Viewing subsections for a section
     Then I should see "Pinscher"
     And I should see "Schnauzer"
     When I follow "Pinscher"
-    Then I should see "1" within "#subsections h2"
+    Then I should see "Subsection 1" within "#subsections h2"
     And I should see "Pinscher"
+    And I should not see "Subsection 2"

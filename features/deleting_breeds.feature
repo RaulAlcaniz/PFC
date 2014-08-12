@@ -13,8 +13,8 @@ Feature: Deleting Breeds
       |Subsection 1.1   |Pinscher   |
       |Subsection 1.2   |Schnauzer  |
     And there are some breeds for the subsection with subsection number "Subsection 1.1":
-      |Name                     |
-      |Dobermann                |
+      |Name     |
+      |Dobermann|
 
     Given there is a group called "Group III"
     And there are sections for this group:
