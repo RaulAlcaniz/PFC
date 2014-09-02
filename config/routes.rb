@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
+  #get 'dogs/new'
+
   #get 'people/show'
+
+
+  get 'dogs/update_varieties_select/:id', :controller=>'dogs', :action => 'update_varieties_select'
+  get 'dogs/update_subvarieties_select/:id', :controller=>'dogs', :action => 'update_subvarieties_select'
 
   devise_for :users
 
   root :to => "groups#index"
 
-  resources :people
+  resources :people do
+    resources :dogs, only: [:show, :new, :create]
+  end
 
   resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :subvarieties, only: [:show, :new, :create, :edit, :update, :destroy]
@@ -27,10 +35,7 @@ Rails.application.routes.draw do
 
 
   resources :groups do
-    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do
-
-      #resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]
-    end
+    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 
 

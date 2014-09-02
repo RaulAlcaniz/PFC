@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806173904) do
+ActiveRecord::Schema.define(version: 20140813182103) do
 
   create_table "breeds", force: true do |t|
     t.string   "name"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 20140806173904) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "dogs", force: true do |t|
+    t.string   "name"
+    t.string   "titles"
+    t.string   "sire"
+    t.string   "dam"
+    t.string   "sex"
+    t.date     "date_of_birth"
+    t.integer  "dogable_id"
+    t.string   "dogable_type"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dogs", ["dogable_id", "dogable_type"], name: "index_dogs_on_dogable_id_and_dogable_type"
 
   create_table "groups", force: true do |t|
     t.string   "name"

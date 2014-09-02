@@ -1,0 +1,129 @@
+<%= form_for [@person, @dog] do |f|%>
+    <% @dog.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <%#
+       dogable_collection = Breed.order('name ASC').all.map{|x|
+         [x.name, "Breed:#{x.id}"] +
+            Variety.order('name ASC').where(breed_id: x.id).map{|y|
+              [y.name, "Variety:#{y.id}"] +
+                 Subvariety.order('name ASC').where(variety_id: y.id).all.map{|z|
+                   [z.name, "Subvariety:#{z.id}"]}}}
+    %>
+    <p>Select the breed</p>
+
+    <%#BUENO dogable_collection =
+               Breed.order('name ASC').all.map{|x| [x.name, "Breed:#{x.id}"]} +
+               Variety.order('name ASC').all.map{|x| [x.name, "Variety:#{x.id}"]} +
+               Subvariety.order('name ASC').all.map{|x| [x.name, "Subvariety:#{x.id}"]}
+    %>
+    <%#= puts "DOGABLE COLLECTION", dogable_colLection.to_yaml %>
+
+    <%#= f.select(:dogable, dogable_collection,  :selected =>"#{f.object.dogable_type}:#{f.object.dogable_id}" ) %>
+
+    <%# dogable_breeds =
+            Breed.order('name ASC').all.map{|x| [x.name, "Breed:#{x.id}_Parent:0"]}
+       dogable_varieties =
+            Variety.order('name ASC').all.map{|x| [x.name, "Variety:#{x.id}_Parent:#{x.breed_id}"]}
+       dogable_subvarieties =
+            Subvariety.order('name ASC').all.map{|x| [x.name, "Subvariety:#{x.id}_Parent:#{x.variety_id}"]}
+    %>
+    <!--div class="breed">
+        <%#= f.label :breed_id %><br>
+        <%#= f.select(:dogable, dogable_breeds) %>
+    </div>
+    <div class="variety">
+        <%#= f.label :variety_id %><br>
+        <%#= f.select(:dogable, dogable_varieties) %>
+    </div>
+    <div class="subvariety">
+        <%#= f.label :subvariety_id %><br>
+        <%#= f.select(:dogable, dogable_subvarieties) %>
+    </div-->
+
+    <%= f.label :breed_id %><br>
+    <%= f.collection_select :dogable_id, Breed.order('name ASC').all, :id, :name, include_blank: true  %>
+
+    <div id="dogsVarieties">
+      <%#= render :partial => 'varieties' %>
+    </div>
+
+    <div id="dogsSubvarieties">
+      <%#= render :partial => 'subvarieties' %>
+    </div>
+
+    <!--p>OTRO TRY</p>
+    <div class="breed">
+      <%#= f.label :breed_id %><br>
+      <%#= f.collection_select :dogable_id, Breed.order('name ASC').all, :id, :name, include_blank: true %>
+    </div>
+
+    <div class="variety">
+      <%#= f.label :variety_id %><br>
+      <%#= f.grouped_collection_select :dogable_type, Breed.order('name ASC').all, :varieties, :name, :id, :name, include_blank: true %>
+    </div>
+
+    <div class="subvariety">
+      <%#= f.label :subvariety_id %><br>
+      <%#= f.grouped_collection_select :dogable_id, Variety.order('name ASC').all, :subvarieties, :name, :id, :name, include_blank: true %>
+    </div-->
+
+    <!--p>NUEVO TRY</p>
+    <div class="field">
+      <%#= f.label :breed_id %><br>
+      <%#= f.collection_select :dogable_id, Breed.order('name ASC').all, :id, :name, include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%#= f.label :variety_id %><br>
+      <%#= f.grouped_collection_select :dogable_type, Breed.order('name ASC').all, :varieties, :name, :id, :name, include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%#= f.label :subvariety_id %><br>
+      <%#= f.grouped_collection_select :dogable_id, Variety.order('name ASC').all, :subvarieties, :name, :id, :name, include_blank: true %>
+    </div-->
+
+    <p>
+      <%= f.label :sire %>
+      <%= f.text_field :sire %>
+    </p>
+
+    <p>
+      <%= f.label :dam %>
+      <%= f.text_field :dam %>
+    </p>
+
+    <p>
+      <%= f.label :sex %>
+      <%= f.select(:sex, options_for_select(%w[Male Female]), prompt: 'Select one...') %>
+    </p>
+    <p>
+      radio button for gender???
+      <%#= f.label :sex %>
+      <%#= f.radio_button :sex, 'male', :checked => true %>
+      <%#= label :sex_male, 'Male' %>
+      <%#= f.radio_button :sex, 'female' %>
+      <%#= label :sex_female, 'Female' %>
+    </p>
+
+    <p>
+      <%= f.label :date_of_birth %>
+      <%= f.date_field(:date_of_birth, :value => (@dog.date_of_birth.blank? ? 'dd/mm/yyyy' : @dog.date_of_birth.strftime('%d/%m/%Y'))) %>
+      <%#= f.date_select(:date_of_birth, start_year: Date.today.year-90,
+                        end_year: Date.today.year,
+                        prompt: {day: 'Day...', month: 'Month...', year: 'Year..'}) %>
+    </p>
+
+    <p>
+      <%= f.label :titles %>
+      <%= f.text_field :titles %>
+    </p>
+
+    <%= f.submit %>
+<% end %>

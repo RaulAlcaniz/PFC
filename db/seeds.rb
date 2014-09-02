@@ -889,9 +889,9 @@ end
 # Group VI - Section 2 - Breeds
 #
 [
-  ' Bayrischer Gebirgsschweisshund (217) (Bavarian Mountain Scenthound)',
-  ' Hannover\'scher Schweisshund (213) (Hanoverian Scenthound)',
-  ' Alpenländische Dachsbracke(254) (Alpine Dachsbracke)'
+  'Bayrischer Gebirgsschweisshund (217) (Bavarian Mountain Scenthound)',
+  'Hannover\'scher Schweisshund (213) (Hanoverian Scenthound)',
+  'Alpenländische Dachsbracke(254) (Alpine Dachsbracke)'
 ].each do |name|
   Section.find_by(:description => 'Leash (scent) Hounds').breeds.where(name: name).first_or_create!
 end

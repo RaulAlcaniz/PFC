@@ -30,6 +30,9 @@ module NavigationHelpers
         variety_subvariety_path(subvariety.variety, subvariety)
       when /the person page for "([^\"]*)"/
         person_path(Person.find_by_name!($1))
+      when /the dog page for "([^\"]*)"/
+        dog = Dog.find_by_name!($1)
+        person_dog_path(dog.person, dog)
 
       #when /my profile page/
        # user_path(User.find_by_name!($1))

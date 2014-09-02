@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    jQuery(function($) {
+        // when the #variety_id field changes
+        $("#dog_variety_id").change(function() {
+            // make a POST call and replace the content
+            var variety = $('select#dog_variety_id :selected').val();
+            //alert('asd')
+            if(variety == "") variety="0";
+            jQuery.get('/dogs/update_subvarieties_select/' + variety, function(data){
+                $("#dogsSubvarieties").html(data);
+            })
+            return false;
+        });
+    })
+</script>
+
+
+<%= form_for 'dog' do |form|%>
+    <% if !varieties.blank? %>
+      <%= form.label :variety_id %><br>
+      <%= form.select :variety_id, varieties.collect{ |s| [s.name, s.id]}, prompt: 'Select variety...' %>
+    <% end %>
+<% end %>

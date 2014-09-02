@@ -1,0 +1,6 @@
+<%= form_for "dog" do |form| %>
+    <% if !subvarieties.blank? %>
+        <%= form.label :subvariety_id %><br>
+        <%= form.select :subvariety_id, :collection => subvarieties.collect{ |c| [c.name,c.id]} %>
+    <% end %>
+<% end %>
