@@ -4,10 +4,6 @@ Rails.application.routes.draw do
 
   #get 'people/show'
 
-
-  get 'dogs/update_varieties_select/:id', :controller=>'dogs', :action => 'update_varieties_select'
-  get 'dogs/update_subvarieties_select/:id', :controller=>'dogs', :action => 'update_subvarieties_select'
-
   devise_for :users
 
   root :to => "groups#index"

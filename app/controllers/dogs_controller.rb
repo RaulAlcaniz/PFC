@@ -2,20 +2,34 @@ class DogsController < ApplicationController
 
   before_action :set_person, only: [:new, :create]
   before_action :set_dog, only: [:show]
-  #before_action :set_breeds, only: [:new, :create]
 
   def new
     @dog = @person.dogs.new
   end
 
   def create
-    #dogable_params = params[:dog][:dogable].match(/^(?<type>\w+):(?<id>\d+)$/)
-    #puts "ASD", params[:dog][:dogable]
-    #params[:dog].delete(:dogable)
-    puts "HOLA", params[:dog][:variety_id]
+    birth_params = params[:birth]
+    date = Date.new birth_params['date(1i)'].to_i, birth_params['date(2i)'].to_i, birth_params['date(3i)'].to_i
+    if params[:variety] == ''
+      dogable_id = params[:breed]
+      dogable_type = 'breed'
+    elsif params[:subvariety] == ''
+      dogable_id = params[:variety]
+      dogable_type = 'variety'
+    else
+      dogable_id = params[:subvariety]
+      dogable_type = 'subvariety'
+    end
+
+    #puts "PEPE GRILLO", dogable_id, dogable_type
+    params.delete(:breed)
+    params.delete(:variety)
+    params.delete(:subvariety)
+
     @dog = @person.dogs.build(dog_params)
-    #@dog.dogable_id = dogable_params[:id]
-    #@dog.dogable_type = dogable_params[:type]
+    @dog.date_of_birth = date
+    @dog.dogable_id = dogable_id
+    @dog.dogable_type = dogable_type
 
     if @dog.save
       flash[:notice] = 'Dog has been created.'
@@ -24,17 +38,6 @@ class DogsController < ApplicationController
       flash[:alert] = 'Dog has not been created.'
       render 'new'
     end
-  end
-
-  def update_varieties_select
-    varieties = Variety.where(:breed_id => params[:id]).order(:name) unless params[:id].blank?
-    #puts varieties.to_yaml
-    render :partial => 'varieties', :locals => { :varieties => varieties }
-  end
-
-  def update_subvarieties_select
-    subvarieties = Subvariety.where(:variety_id => params[:id]).order(:name) unless params[:id].blank?
-    render :partial => "subvarieties", :locals => { :subvarieties => subvarieties }
   end
 
   private
@@ -46,15 +49,8 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
   end
 
-#  def set_breeds
-#    @breeds = Breed.all
-#    @varieties = Variety.all
-#    @subvarieties = Subvariety.all
-#  end
-
   def dog_params
-    params.require(:dog).permit(:name, :titles, :sire, :dam, :sex, :date_of_birth, :dogable_id, :variety_id, :subvariety_id)
+    params.permit(:name, :titles, :sire, :dam, :sex, :birth, :breed, :variety, :subvariety)
   end
-
 
 end
