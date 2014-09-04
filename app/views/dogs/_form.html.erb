@@ -1,69 +1,3 @@
-<%= form_tag controller: 'dogs', action: 'create', method: 'get' do %>
-    <% @dog.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
-
-    <p>
-      <%= label_tag :name %>
-      <%= text_field_tag :name %>
-    </p>
-
-    <div id="dogsBreeds">
-      <p>Select the breed</p>
-      <%= label_tag :breed %>
-      <%= select_tag :breed,
-                     options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}),
-                     prompt: 'Select breed...'
-      %>
-    </div>
-
-    <div id="dogsVarieties">
-      <%= label_tag :variety %>
-      <%= select_tag :variety,
-                     options_for_select(Variety.order('name ASC').all.map{|x| [x.name, x.id]}),
-                     prompt: 'Select variety...'
-      %>
-    </div>
-
-    <div id="dogsSubvariety">
-      <%= label_tag :subvariety %>
-      <%= select_tag :subvariety,
-                     options_for_select(Subvariety.order('name ASC').all.map{|x| [x.name, x.id]}),
-                     prompt: 'Select subvariety...'
-      %>
-    </div>
-
-    <p>
-      <%= label_tag :sire %>
-      <%= text_field_tag :sire %>
-    </p>
-
-    <p>
-      <%= label_tag :dam %>
-      <%= text_field_tag :dam %>
-    </p>
-
-    <p>
-      <%= label_tag :sex %>
-      <%= select_tag :sex, options_for_select(%w[Male Female]), prompt: 'Select one...' %>
-    </p>
-
-    <p>
-      <%= label_tag :date_of_birth %>
-      <%= date_select(:birth, :date, start_year: Date.today.year - 20, end_year: Date.today.year) %>
-    </p>
-
-    <p>
-      <%= label_tag :titles %>
-      <%= text_field_tag :titles %>
-    </p>
-
-    <%= submit_tag('Create Dog') %>
-<% end %>
-
-
-<% if false %>
-
 <%= form_for [@person, @dog] do |f|%>
     <% @dog.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
@@ -75,15 +9,25 @@
 
     <p>Select the breed</p>
     <div id="dogsBreeds">
-      <%= f.label :breed_id %><br>
-      <%= f.collection_select :dogable_id, Breed.order('name ASC').all, :id, :name, include_blank: true  %>
-    </div>
-    <div id="dogsVarieties">
-      <%#= render :partial => 'varieties' %>
+      <%= select_tag :breed,
+                     options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}),
+                     prompt: 'Select breed...'
+
+      %>
     </div>
 
-    <div id="dogsSubvarieties">
-      <%#= render :partial => 'subvarieties' %>
+    <div id="dogsVarieties">
+      <%= select_tag :variety,
+                     options_for_select(Variety.order('name ASC').where(breed_id: @breed_form).map{|x| [x.name, x.id]}),
+                     prompt: 'Select variety...'
+      %>
+    </div>
+
+    <div id="dogsSubvariety">
+      <%= select_tag :subvariety,
+                     options_for_select(Subvariety.order('name ASC').where(variety_id: @variety_form).map{|x| [x.name, x.id]}),
+                     prompt: 'Select subvariety...'
+      %>
     </div>
 
     <p>
@@ -111,10 +55,8 @@
 
     <p>
       <%= f.label :date_of_birth %>
-      <%= f.date_field(:date_of_birth, :value => (@dog.date_of_birth.blank? ? 'dd/mm/yyyy' : @dog.date_of_birth.strftime('%d/%m/%Y'))) %>
-      <%#= f.date_select(:date_of_birth, start_year: Date.today.year-90,
-                        end_year: Date.today.year,
-                        prompt: {day: 'Day...', month: 'Month...', year: 'Year..'}) %>
+      <%= f.date_select(:date_of_birth, start_year: Date.today.year-20,
+                        end_year: Date.today.year) %>
     </p>
 
     <p>
@@ -124,4 +66,68 @@
 
     <%= f.submit %>
 <% end %>
+
+<% if false %>
+    <%= form_tag controller: 'dogs', action: 'create', method: 'get' do %>
+        <% @dog.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+
+        <p>
+          <%= label_tag :name %>
+          <%= text_field_tag :name %>
+        </p>
+
+        <div id="dogsBreeds">
+          <p>Select the breed</p>
+          <%= label_tag :breed %>
+          <%= select_tag :breed,
+                         options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}),
+                         prompt: 'Select breed...'
+          %>
+        </div>
+
+        <div id="dogsVarieties">
+          <%= label_tag :variety %>
+          <%= select_tag :variety,
+                         options_for_select(Variety.order('name ASC').all.map{|x| [x.name, x.id]}),
+                         prompt: 'Select variety...'
+          %>
+        </div>
+
+        <div id="dogsSubvariety">
+          <%= label_tag :subvariety %>
+          <%= select_tag :subvariety,
+                         options_for_select(Subvariety.order('name ASC').all.map{|x| [x.name, x.id]}),
+                         prompt: 'Select subvariety...'
+          %>
+        </div>
+
+        <p>
+          <%= label_tag :sire %>
+          <%= text_field_tag :sire %>
+        </p>
+
+        <p>
+          <%= label_tag :dam %>
+          <%= text_field_tag :dam %>
+        </p>
+
+        <p>
+          <%= label_tag :sex %>
+          <%= select_tag :sex, options_for_select(%w[Male Female]), prompt: 'Select one...' %>
+        </p>
+
+        <p>
+          <%= label_tag :date_of_birth %>
+          <%= date_select(:birth, :date, start_year: Date.today.year - 20, end_year: Date.today.year) %>
+        </p>
+
+        <p>
+          <%= label_tag :titles %>
+          <%= text_field_tag :titles %>
+        </p>
+
+        <%= submit_tag('Create Dog') %>
+    <% end %>
 <% end %>
