@@ -11,8 +11,8 @@ Feature: Editing People
   @done
   Scenario: Updating a person
     When I fill in "Name" with "Personal Name beta"
-    And I fill in "Date of birth" with "2/02/2002"
-    #And I select "1990 January 16" as the "Date of birth" date
+    #And I fill in "Date of birth" with "2/02/2002"
+    And I select "1990 January 16" as the person "date_of_birth"
     And I select "Female" from "Sex"
     And I select "Germany" from "Country"
     And I press "Update Person"
@@ -26,13 +26,6 @@ Feature: Editing People
     And I press "Update Person"
     Then I should see "Person has not been updated."
     And I should see "Name has already been taken"
-
-  @done
-  Scenario: Updating a person without a date of birth
-    When I fill in "Date of birth" with ""
-    And I press "Update Person"
-    Then I should see "Person has not been updated."
-    And I should see "Date of birth can't be blank"
 
   # When we are editing a person, we can't select nil value
   # for sex or country because we use prompt tag, so isn't necessary test it

@@ -9,23 +9,13 @@
 
     <p>
       <%= f.label :date_of_birth %>
-      <%= f.date_field(:date_of_birth, :value => (@person.date_of_birth.blank? ? 'dd/mm/yyyy' : @person.date_of_birth.strftime('%d/%m/%Y'))) %>
-      <%#= f.date_select(:date_of_birth, start_year: Date.today.year-90,
-                        end_year: Date.today.year,
-                        prompt: {day: 'Day...', month: 'Month...', year: 'Year..'}) %>
+      <%= f.date_select(:date_of_birth, start_year: Date.today.year-90,
+                        end_year: Date.today.year) %>
     </p>
 
     <p>
       <%= f.label :sex %>
       <%= f.select(:sex, options_for_select(%w[Male Female]), prompt: 'Select one...') %>
-    </p>
-    <p>
-      radio button for gender???
-      <%#= f.label :sex %>
-      <%#= f.radio_button :sex, 'male', :checked => true %>
-      <%#= label :sex_male, 'Male' %>
-      <%#= f.radio_button :sex, 'female' %>
-      <%#= label :sex_female, 'Female' %>
     </p>
 
     <p>

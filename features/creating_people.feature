@@ -6,11 +6,6 @@ Feature: Creating people
   Background:
     Given I am on the people page
     And I follow "New Person"
-#    Given the select "Date of birth" has following options:
-#      | January 15, 1990 |
-#      | January 16, 1990 |
-#      | January 17, 1990 |
-    # Cómo puedo hacer el select del Date of birth?
     Then the select "Sex" should have following options:
       |Select one...|
       |Male         |
@@ -25,8 +20,7 @@ Feature: Creating people
   @done
   Scenario: Creating a person
     When I fill in "Name" with "Personal name"
-    And I fill in "Date of birth" with "1/01/2000"
-    #And I select "1990 January 16" as the "Date of birth" date
+    And I select "May 16, 2000" as the person "date_of_birth"
     And I select "Male" from "Sex"
     And I select "Spain" from "Country"
     And I press "Create Person"

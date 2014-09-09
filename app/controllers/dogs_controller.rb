@@ -4,8 +4,8 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show]
 
   def new
+    #@breed_form = @variety_form = nil
     @dog = @person.dogs.new
-    @breed_form = @variety_form = ''
   end
 
   def create
@@ -14,13 +14,15 @@ class DogsController < ApplicationController
         Variety.find_by_id(params[:variety]) ||
         Breed.find_by_id(params[:breed])
 
-    if Subvariety.where(variety_id: params[:variety]).first != nil
-      flash[:alert] = 'Select the subvariety'
-      @variety_form = params[:variety]
+    @breed_form = params[:breed]
+    @variety_form = params[:variety]
+    @subvariety_form = params[:subvariety]
+
+    if @subvariety_form == '' && Subvariety.where(variety_id: @variety_form).first != nil
+      flash[:alert] = 'Select the subvariety.'
       render 'new'
-    elsif Variety.where(breed_id: params[:breed]).first != nil
-      flash[:alert] = 'Select the variety'
-      @breed_form = params[:breed]
+    elsif @variety_form == '' && Variety.where(breed_id: @breed_form).first != nil
+      flash[:alert] = 'Select the variety.'
       render 'new'
     elsif @dog.save
       flash[:notice] = 'Dog has been created.'
@@ -29,17 +31,6 @@ class DogsController < ApplicationController
       flash[:alert] = 'Dog has not been created.'
       render 'new'
     end
-
-
-
-=begin    if @dog.save
-      flash[:notice] = 'Dog has been created.'
-      redirect_to [@person, @dog]
-    else
-      flash[:alert] = 'Dog has not been created.'
-      render 'new'
-    end
-=end
   end
 
   private
