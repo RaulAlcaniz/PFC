@@ -7,6 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #
+# Admin user
+#
+
+admin = User.where(email: 'admin@example.com').first_or_create! do |user|
+  user.password = 'password'
+end
+admin.confirm!
+#
 # Groups
 #
 [

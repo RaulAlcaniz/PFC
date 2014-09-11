@@ -3,12 +3,29 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-#  $('#variety').parent().hide()
+  $("#breed").change ->
+    alert('1')
+    $.ajax({
+      type : 'GET',
+      #url : $(this).attr('href'),
+      dataType : 'js',
+      sucess : ((data) ->
+        alert (data)
+        $('#dogsVarieties').html(data)
+      )
+      error : (xhrObj, textStatus, exception) ->
+        alert('Error!')
+    })
+
+    varieties = $('.variety2').html()
+    alert ("Varieties: '#{varieties}'")
+
+  #$('#variety').parent().hide()
 #  $('#subvariety').parent().hide()
-#  varieties = $('#varieties').html()
-#  alert ("Varieties: '#{varieties}'")
-#  $('#breed').change ->
-#    alert('Breed Cambia')
+  #varieties = $('#variety2').html()
+  #alert ("Varieties: '#{varieties}'")
+    #$('#breed').change ->
+#alert('Breed Cambia')
 #    breed = $('#breed :selected').val()
 #    alert("Raza id: '#{breed}'")
 

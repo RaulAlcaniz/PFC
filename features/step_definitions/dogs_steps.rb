@@ -5,6 +5,11 @@ Given(/^there are some breeds ordered by name:$/) do |table|
   end
 end
 
+#Given(/^there is a dog called "(.*?)"$/) do |name|
+#  @dog = FactoryGirl.create(:dog, name: name)
+#end
+
+
 When /^I select "([^"]*)" as the (.+) "([^"]*)"$/ do |date, model, selector|
   date = Date.parse(date)
   select(date.year.to_s, :from => "#{model}[#{selector}(1i)]")

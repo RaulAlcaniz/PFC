@@ -4,8 +4,11 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show]
 
   def new
-    #@breed_form = @variety_form = nil
     @dog = @person.dogs.new
+    respond_to do |format|
+      format.js {render partial: 'varieties', object: @dog}
+      format.html { puts 'html en el new' }
+    end
   end
 
   def create
@@ -17,6 +20,9 @@ class DogsController < ApplicationController
     @breed_form = params[:breed]
     @variety_form = params[:variety]
     @subvariety_form = params[:subvariety]
+
+    # In case of breed, variety or subvariety params are not null,
+    # we should check if @dog can be saved
 
     if @subvariety_form == '' && Subvariety.where(variety_id: @variety_form).first != nil
       flash[:alert] = 'Select the subvariety.'

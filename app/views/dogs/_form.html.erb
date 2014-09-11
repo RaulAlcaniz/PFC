@@ -12,7 +12,6 @@
       <%= select_tag :breed,
                      options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}, @breed_form),
                      prompt: 'Select breed...'
-
       %>
     </div>
 

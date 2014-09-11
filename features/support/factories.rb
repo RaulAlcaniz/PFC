@@ -25,9 +25,20 @@ FactoryGirl.define do
 
   factory :person do |person|
     person.name {'Person ' + generate(:name)}
-    person.date_of_birth "1/01/2000"
-    person.sex "None"
-    person.country "None"
+    person.date_of_birth '1/01/2000'
+    person.sex 'None'
+    person.country 'None'
+  end
+
+  factory :dog do |dog|
+    dog.name {'Dog ' + generate(:name)}
+    dog.dogable_id 0
+    dog.dogable_type 'None'
+    dog.sire 'None'
+    dog.dam 'None'
+    dog.date_of_birth '1/01/2011'
+    dog.sex 'None'
+    dog.titles 'None'
   end
 
   sequence :name do |n|
