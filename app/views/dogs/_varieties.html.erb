@@ -1,31 +1,14 @@
-<%= puts 'Estoy en _varieties' %>
-
-
-<div id="dogsVarietiesJS">
-  <%= select_tag :variety2,
-                 options_for_select(Variety.order('name ASC').map{|x| [x.name, x.id]}),
+<div id="dogsVarieties" <% if !Variety.where(breed_id: @selected_breed).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
+  <%= select_tag :variety,
+                 options_for_select(Variety.order('name ASC').where(breed_id: @selected_breed).map{|x| [x.name, x.id]}),
                  prompt: 'Select variety...'
   %>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <% if false %>
+
 <script type="text/javascript">
     jQuery(function($) {
         // when the #variety_id field changes

@@ -1,6 +1,6 @@
-<%= form_for "dog" do |form| %>
-    <% if !subvarieties.blank? %>
-        <%= form.label :subvariety_id %><br>
-        <%= form.select :subvariety_id, :collection => subvarieties.collect{ |c| [c.name,c.id]} %>
-    <% end %>
-<% end %>
+<div id="dogsSubvarieties" <% if !Subvariety.where(variety_id: @selected_variety).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
+  <%= select_tag :subvariety,
+                 options_for_select(Subvariety.order('name ASC').where(variety_id: @selected_variety).map{|x| [x.name, x.id]}),
+                 prompt: 'Select subvariety...'
+  %>
+</div>

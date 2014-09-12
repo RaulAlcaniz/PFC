@@ -5,10 +5,6 @@ class DogsController < ApplicationController
 
   def new
     @dog = @person.dogs.new
-    respond_to do |format|
-      format.js {render partial: 'varieties', object: @dog}
-      format.html { puts 'html en el new' }
-    end
   end
 
   def create
@@ -36,6 +32,28 @@ class DogsController < ApplicationController
     else
       flash[:alert] = 'Dog has not been created.'
       render 'new'
+    end
+  end
+
+  def update_varieties
+    respond_to do |format|
+      format.html {
+        if request.xhr?
+          @selected_breed = params[:selected_breed]
+          render partial: 'varieties'
+        end
+      }
+    end
+  end
+
+  def update_subvarieties
+    respond_to do |format|
+      format.html {
+        if request.xhr?
+          @selected_variety = params[:selected_variety]
+          render partial: 'subvarieties'
+        end
+      }
     end
   end
 

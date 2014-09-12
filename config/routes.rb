@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   root :to => "groups#index"
 
+  get 'dogs/update_varieties', controller: 'dogs', action: 'update_varieties'
+  get 'dogs/update_subvarieties', controller: 'dogs', action: 'update_subvarieties'
+
   resources :people do
     resources :dogs, only: [:show, :new, :create]
   end
