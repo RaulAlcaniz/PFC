@@ -1,10 +1,28 @@
 class DogsController < ApplicationController
 
-  before_action :set_person, only: [:new, :create]
-  before_action :set_dog, only: [:show]
+  before_action :set_person, only: [:new, :create, :index, :show, :destroy, :edit, :update]
+  before_action :set_dog, only: [:show, :destroy, :edit, :update]
 
   def new
     @dog = @person.dogs.new
+  end
+
+  def index
+    @dogs = @person.dogs.all
+  end
+
+  def show
+    @is_a_breed = @dog.dogable.is_a?(Breed)
+    @is_a_variety = @dog.dogable.is_a?(Variety)
+    @is_a_subvariety = @dog.dogable.is_a?(Subvariety)
+  end
+
+  def destroy
+    if @dog.destroy
+      flash[:notice] = 'Dog has been deleted.'
+      redirect_to person_dogs_path
+    else
+    end
   end
 
   def create
@@ -35,6 +53,44 @@ class DogsController < ApplicationController
     end
   end
 
+  def edit
+    if @dog.dogable.is_a? Breed
+      @breed_form = @dog.dogable.get_breed.id
+    elsif @dog.dogable.is_a? Variety
+      @breed_form = @dog.dogable.get_breed.id
+      @variety_form = @dog.dogable.get_variety.id
+    elsif @dog.dogable.is_a? Subvariety
+      @breed_form = @dog.dogable.get_breed.id
+      @variety_form = @dog.dogable.get_variety.id
+      @subvariety_form = @dog.dogable.get_subvariety.id
+    end
+  end
+
+  def update
+
+    @breed_form = params[:breed]
+    @variety_form =  params[:variety] if breed_has_variety @breed_form, params[:variety]
+    @subvariety_form = params[:subvariety] if variety_has_subvariety @variety_form, params[:subvariety]
+
+    @dog.dogable = (Subvariety.find_by_id(params[:subvariety]) if variety_has_subvariety @variety_form, params[:subvariety]) ||
+        (Variety.find_by_id(params[:variety]) if breed_has_variety @breed_form, params[:variety]) ||
+        Breed.find_by_id(params[:breed])
+
+    if @subvariety_form == nil && Subvariety.where(variety_id: @variety_form).first != nil
+      flash[:alert] = 'Select the subvariety.'
+      render 'edit'
+    elsif @variety_form == nil && Variety.where(breed_id: @breed_form).first != nil
+      flash[:alert] = 'Select the variety.'
+      render 'edit'
+    elsif @dog.update_attributes(dog_params)
+      flash[:notice] = 'Dog has been updated.'
+      redirect_to [@person,@dog]
+    else
+      flash[:notice] = 'Dog has not been updated.'
+      render 'edit'
+    end
+  end
+
   def update_varieties
     respond_to do |format|
       format.html {
@@ -57,7 +113,16 @@ class DogsController < ApplicationController
     end
   end
 
+
   private
+  def breed_has_variety( breed_id, variety_id )
+    Variety.where(breed_id: breed_id).where(id: variety_id).first != nil
+  end
+
+  def variety_has_subvariety( variety_id, subvariety_id )
+    Subvariety.where(variety_id: variety_id).where(id: subvariety_id).first != nil
+  end
+
   def set_person
     @person = Person.find(params[:person_id])
   end

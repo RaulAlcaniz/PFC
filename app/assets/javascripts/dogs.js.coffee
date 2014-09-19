@@ -32,7 +32,8 @@ ShowVariety = {
 $(ShowVariety.setup)
 
 ShowSubvariety = {
-  hideSubvariety: ->
+  hideSubvariety: (data) ->
+    $('#dogsSubvariety').html(data)
     $('#dogsSubvariety').hide()
   ,
   replaceSubvarietyDiv: (data, requestStatus, xhrObject) ->

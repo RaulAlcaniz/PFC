@@ -32,8 +32,7 @@ FactoryGirl.define do
 
   factory :dog do |dog|
     dog.name {'Dog ' + generate(:name)}
-    dog.dogable_id 0
-    dog.dogable_type 'None'
+    dog.dogable { FactoryGirl.create(:breed) }
     dog.sire 'None'
     dog.dam 'None'
     dog.date_of_birth '1/01/2011'

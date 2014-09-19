@@ -111,11 +111,3 @@ Feature: Creating dogs
     And I press "Create Dog"
     Then I should see "Dog has not been created."
     And I should see "Name can't be blank"
-
-#  @actual
-#  Scenario: Creating a dog with a name already taken
-#    Given there is a dog called "Lassie"
-#    When I fill in "Name" with "Lassie"
-#    And I press "Create Dog"
-#    Then I should see "Dog has not been created."
-#    And I should see "Name can't be blank"

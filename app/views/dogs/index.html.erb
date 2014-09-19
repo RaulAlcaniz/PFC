@@ -1,0 +1,12 @@
+<h1>Dogs page</h1>
+
+<table id="dogs">
+  <tr>
+    <th>Dogs</th>
+  </tr>
+  <% @dogs.each do |dog| %>
+      <tr>
+        <td><%= link_to dog.name, person_dog_path(@person,dog) %></td>
+      </tr>
+  <% end %>
+</table>

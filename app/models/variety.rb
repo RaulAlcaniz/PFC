@@ -4,4 +4,12 @@ class Variety < ActiveRecord::Base
   has_many :dogs, as: :dogable
 
   validates :name, presence: true
+
+  def get_breed
+    self.breed
+  end
+
+  def get_variety
+    self
+  end
 end
