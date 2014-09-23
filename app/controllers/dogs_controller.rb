@@ -37,7 +37,6 @@ class DogsController < ApplicationController
 
     # In case of breed, variety or subvariety params are not null,
     # we should check if @dog can be saved
-
     if @subvariety_form == '' && Subvariety.where(variety_id: @variety_form).first != nil
       flash[:alert] = 'Select the subvariety.'
       render 'new'
@@ -54,6 +53,8 @@ class DogsController < ApplicationController
   end
 
   def edit
+    # We need to know if the dog to edit has a breed, a variety or a subvariety
+    # to get correctly their respective ids for fill the edit form
     if @dog.dogable.is_a? Breed
       @breed_form = @dog.dogable.get_breed.id
     elsif @dog.dogable.is_a? Variety
@@ -67,7 +68,6 @@ class DogsController < ApplicationController
   end
 
   def update
-
     @breed_form = params[:breed]
     @variety_form =  params[:variety] if breed_has_variety @breed_form, params[:variety]
     @subvariety_form = params[:subvariety] if variety_has_subvariety @variety_form, params[:subvariety]
@@ -91,6 +91,8 @@ class DogsController < ApplicationController
     end
   end
 
+  # Next procedures are used for render a partial form for a dog
+  # when the browser is using JavaScript
   def update_varieties
     respond_to do |format|
       format.html {
@@ -115,10 +117,12 @@ class DogsController < ApplicationController
 
 
   private
+  # breed_has_variety is used to know if a given breed has a given variety
   def breed_has_variety( breed_id, variety_id )
     Variety.where(breed_id: breed_id).where(id: variety_id).first != nil
   end
 
+  # variety_has_subvariety is used to know if a given variety has a given subvariety
   def variety_has_subvariety( variety_id, subvariety_id )
     Subvariety.where(variety_id: variety_id).where(id: subvariety_id).first != nil
   end
