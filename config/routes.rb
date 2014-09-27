@@ -6,10 +6,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root :to => "groups#index"
+  root :to => 'groups#index'
 
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
+
+  resources :exhibitions, only: [:show, :index, :new, :create, :edit, :update, :destroy]
 
   resources :people do
     resources :dogs, only: [:show, :new, :create, :index, :edit, :update, :destroy]

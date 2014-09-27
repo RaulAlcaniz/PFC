@@ -1,14 +1,7 @@
 Feature: Viewing groups
-  Groups are a container of sections. Groups have one identifier, one name and one description each.
-
-  We can see in the next table an example of 3 groups:
-
-  """
-  |GROUP ID|Name     |Description                                         |
-  |1       |Group I  |Sheepdogs and Cattle Dogs (except Swiss Cattle Dogs)|
-  |2       |Group III|Terriers                                            |
-  |3       |Group IX |Companion and Toy Dogs                              |
-  """
+  In order to view groups
+  As a user
+  I want to see them on the groups page
 
   Background:
     There are groups with a name and a description

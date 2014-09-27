@@ -10,15 +10,28 @@ Given(/^"(.*?)" is an owner for a dog which name is "(.*?)"$/) do |owner, name|
   @dog = FactoryGirl.create(:dog, name: name, person_id: @person.id)
 end
 
-#Given(/^there is a dog called "(.*?)"$/) do |name|
-#  @dog = FactoryGirl.create(:dog, name: name)
-#end
-
 When /^I select "([^"]*)" as the (.+) "([^"]*)"$/ do |date, model, selector|
-  date = Date.parse(date)
+#  begin
+#    date = DateTime.parse(date)
+# rescue ArgumentError
+#   date = DateTime.now + 1.year
+# end
+
+  if date.include?('after')
+    date = DateTime.now + 1.hour
+  elsif date.include?('before')
+    date = DateTime.now - 1.hour
+  else
+    date = DateTime.parse(date)
+  end
+
   select(date.year.to_s, :from => "#{model}[#{selector}(1i)]")
-  select(date.strftime("%B"), :from => "#{model}[#{selector}(2i)]")
+  select(date.strftime('%B'), :from => "#{model}[#{selector}(2i)]")
   select(date.day.to_s, :from => "#{model}[#{selector}(3i)]")
+  if date.hour != 0
+    select(date.strftime('%H'), :from => "#{model}[#{selector}(4i)]")
+    select(date.strftime('%M'), :from => "#{model}[#{selector}(5i)]")
+  end
 end
 
 Given(/^"(.*?)" is owner for some dogs:$/) do |owner, table|

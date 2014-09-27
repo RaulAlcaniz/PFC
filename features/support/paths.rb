@@ -36,6 +36,8 @@ module NavigationHelpers
       when /the dogs page for "([^\"]*)"/
         person = Person.find_by_name!($1)
         person_dogs_path(person)
+      when /the exhibition page for "([^\"]*)"/
+        exhibition_path(Exhibition.find_by_name!($1))
 
       #when /my profile page/
        # user_path(User.find_by_name!($1))

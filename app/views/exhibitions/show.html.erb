@@ -1,0 +1,18 @@
+<div id="exhibitions" >
+  <h1>Exhibitions#show. Find me in app/views/exhibitions/show.html.erb</h1>
+
+  <ul>
+  <li><%= link_to 'Edit exhibition', edit_exhibition_path(@exhibition) %></li>
+  <li><%= link_to 'Delete exhibition', @exhibition, method: :delete, data: {confirm: 'Are you sure you want to delete this Exhibition'} %></li>
+  </ul>
+
+  <h2><%= @exhibition.name %></h2>
+  <% description = 'Description: ' + @exhibition.description %>
+  <% start = 'Start date: ' + @exhibition.start_date.strftime('%b %e, %Y - %H:%M') %>
+  <% end_date = 'End date: ' + @exhibition.end_date.strftime('%b %e, %Y - %H:%M') %>
+
+  <%= simple_format( description ) %>
+  <%= simple_format( start ) %>
+  <%= simple_format( end_date ) %>
+
+</div>

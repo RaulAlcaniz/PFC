@@ -1,0 +1,20 @@
+<h1>Exhibitions page</h1>
+
+<ul>
+  <li><%= link_to 'New Exhibition', new_exhibition_path %></li>
+</ul>
+
+<table id="exhibitions">
+  <tr>
+    <th>Exhibitions</th>
+    <th>Start date</th>
+    <th>End date</th>
+  </tr>
+  <% @exhibitions.each do |exhibition| %>
+      <tr>
+        <td><%= link_to exhibition.name, exhibition_path(exhibition) %></td>
+        <td><%= exhibition.start_date.strftime('%b %e, %Y - %H:%M') %></td>
+        <td><%= exhibition.end_date.strftime('%b %e, %Y - %H:%M') %></td>
+      </tr>
+  <% end %>
+</table>

@@ -40,6 +40,13 @@ FactoryGirl.define do
     dog.titles 'None'
   end
 
+  factory :exhibition do |exhib|
+    exhib.name {'Exhibition ' + generate(:name)}
+    exhib.description {'Exhibition ' + generate(:description)}
+    exhib.start_date DateTime.now + 1.hour
+    exhib.end_date DateTime.now + 2.hour
+  end
+
   sequence :name do |n|
     "name no defined ##{n}"
   end

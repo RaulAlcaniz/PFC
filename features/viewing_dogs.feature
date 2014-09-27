@@ -31,7 +31,6 @@ Feature: Viewing dogs
     And "Snoopy" breed is "Australian Kelpie"
     And "Scooby Doo" breed is "Dachshund" with "Miniature" variety and "Long-haired" subvariety
 
-
     When I follow "My dogs"
 
   @done

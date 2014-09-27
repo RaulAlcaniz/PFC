@@ -49,6 +49,16 @@ Feature: Editing Dogs
     And I should see "Dog has been updated"
 
   @done
+  Scenario: Updating a dog which new breed has not varieties
+    Given I am on the dog page for "Scooby Doo"
+    When I follow "Edit Dog"
+    And I select "Australian Kelpie" from "breed"
+
+    And I press "Update Dog"
+    Then I should be on the dog page for "Scooby Doo"
+    And I should see "Dog has been updated"
+
+  @done
   Scenario: Updating a dog which new breed has varieties and subvarieties
     Given I am on the dog page for "Snoopy"
     When I follow "Edit Dog"
