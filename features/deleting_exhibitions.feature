@@ -3,7 +3,7 @@ Feature: Deleting exhibitions
   As user
   I want to make it disappear
 
-  @actual
+  @done
   Scenario: Deleting exhibitions
     Given there is an exhibition called "9th Annual Dog Show"
     And I am on the exhibition page for "9th Annual Dog Show"
