@@ -1,5 +1,5 @@
-Feature: Adding dog to a exhibition
-  In order to add a dog to a exhibition
+Feature: Enrolling a dog into a exhibition
+  In order to enroll a dog to a exhibition
   As a user
   I want to add it easily
 
@@ -13,13 +13,12 @@ Feature: Adding dog to a exhibition
       | Name       | Date of birth | Sire | Dam   | Sex  | Titles           |
       | Snoopy     | 07/05/2010    | Rex  | Missy | Male | PORTO WINNER Jr. |
       | Scooby Doo | 27/01/2008    | Skip | Peggy | Male |                  |
-    And "Snoopy" breed is "Australian Kelpie"
-    And "Scooby Doo" breed is "Dachshund"
+#    And "Snoopy" breed is "Australian Kelpie"
+#    And "Scooby Doo" breed is "Dachshund"
 
     Given there are exhibitions with these entries:
-      | Name                 | Description     | Start date             | End date               |
-      | TWK 139th Dog Show   | Not description | March 29, 2015 - 12:30 | March 30, 2015 - 12:30 |
-      | Exp. Canina de Cieza | www.example.org | Sep 1, 2015 - 17:00    | Sep 3, 2015 - 20:00    |
+      | Name                 | Description     | Start date     | End date       |
+      | Exp. Canina de Cieza | www.example.org | Sep 1, 2015    | Sep 3, 2015    |
     Given there are these entry deadlines for "Exp. Canina de Cieza":
       | Name               | Start date | End date   |
       | 1st entry deadline | 08-01-2014 | 22-02-2014 |
@@ -60,7 +59,7 @@ Feature: Adding dog to a exhibition
     Then I should be on the "inscribe dog" page
 
   @actual
-  Scenario: Add a dog into a exhibition which I have no one and I'm partner
+  Scenario: Enroll a first dog into a exhibition which I'm partner
     Given today is "10-02-2014"
     When I select "Snoopy" from "Dogs"
     And I select "Champion Class" from "Class"
@@ -73,7 +72,7 @@ Feature: Adding dog to a exhibition
     And I should see "Total" and "24.00"
 
   @pending
-  Scenario: Add a dog into a exhibition which I have another one and I'm partner
+  Scenario: Enroll a second dog into a exhibition which I'm partner
     Given today is "6-03-2014"
     Given I have "Snoopy" added in "Exp. Canina de Cieza"
     When I select "Scooby Doo" from "Dogs"
@@ -89,7 +88,7 @@ Feature: Adding dog to a exhibition
     And I should see "Total" and "51.00"
 
   @pending
-  Scenario: Add a dog into a exhibition which I have no one and I'm not partner
+  Scenario: Enroll a first dog into a exhibition which I'm not partner
     Given today is "25-02-2014"
     When I select "Snoopy" from "Dogs"
     And I select "Champion Class" from "Class"

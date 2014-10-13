@@ -65,6 +65,23 @@ Then(/^I should see "(.*?)" and "(.*?)"$/) do |arg1, arg2|
   }
 end
 
+Given(/^there are these entry deadlines for "(.*?)":$/) do |exhib_name, table|
+  #@deadlines = table.hashes
+  table.map_headers!('Name' => :name, 'Start date' => :start_date, 'End date' => :end_date)
+  @deadlines = { "#{exhib_name}"  => table.hashes }
+
+  #puts @deadlines["#{exhib_name}"]
+  @deadlines["#{exhib_name}"].each do |att|
+    puts att[:name]
+    puts att[:start_date]
+    puts att[:end_date]
+  end
+
+    #@deadlines.each do |att|
+    #  puts att['Name']
+    #end
+end
+
 
 #Then /^"([^"]*)" should be an option for "([^"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
 #  with_scope(selector) do
