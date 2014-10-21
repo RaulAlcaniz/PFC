@@ -1,3 +1,4 @@
+@time_travel
 Feature: Creating exhibitions
   In order to create exhibitions
   As a user
@@ -14,13 +15,15 @@ Feature: Creating exhibitions
 
   @done
   Scenario: Creating exhibitions
+    Given today is "April 1, 2014"
     When I fill in "Name" with "The Westminster Kennel Club 139th Annual Dog Show"
     And I fill in "Description" with "More info: www.example.org"
-    And I select "a date after today" as the exhibition "start_date"
-    And I select "a date after today" as the exhibition "end_date"
+    And I select "July 1, 2014 - 12:30" as the exhibition "start_date"
+    And I select "July 5, 2014" as the exhibition "end_date"
     And I press "Create Exhibition"
-    Then I should be on the exhibition page for "The Westminster Kennel Club 139th Annual Dog Show"
-    And I should see "Exhibition has been created"
+    Then I should see "Exhibition has been created"
+    And I should be on the exhibition page for "The Westminster Kennel Club 139th Annual Dog Show"
+
 
   @done
   Scenario: Create exhibitions without a name is not permitted
@@ -31,22 +34,25 @@ Feature: Creating exhibitions
 
   @done
   Scenario: Create exhibitions with a start date before today is not permitted
+    Given today is "April 15, 2014"
     When I fill in "Name" with "The Westminster Kennel Club 139th Annual Dog Show"
-    And I select "a date before today" as the exhibition "start_date"
+    And I select "April 10, 2014" as the exhibition "start_date"
     And I press "Create Exhibition"
     Then I should see "Exhibition has not been created."
     And I should see "Start date must be after today"
 
   @done
   Scenario: Create exhibitions with a end date before today is not permitted
+    Given today is "April 15, 2014"
     When I fill in "Name" with "The Westminster Kennel Club 139th Annual Dog Show"
-    And I select "a date before today" as the exhibition "end_date"
+    And I select "April 10, 2014" as the exhibition "end_date"
     And I press "Create Exhibition"
     Then I should see "Exhibition has not been created."
     And I should see "End date must be after today"
 
   @done
   Scenario: Start date must be before to the end date
+    Given today is "April 15, 2014"
     When I fill in "Name" with "The Westminster Kennel Club 139th Annual Dog Show"
     And I select "May 7, 2016 - 12:30" as the exhibition "start_date"
     And I select "Jan 1, 2014 - 20:30" as the exhibition "end_date"

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
+  post 'exhibitions/inscribe_dog'
 
   resources :exhibitions, only: [:show, :index, :new, :create, :edit, :update, :destroy]
 

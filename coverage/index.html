@@ -14,27 +14,27 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-10-13T19:38:15+00:00">2014-10-13T19:38:15+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-10-21T20:06:52+00:00">2014-10-21T20:06:52+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">61.18%</span></span>
+    (<span class="covered_percent"><span class="red">64.3%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.76
+         0.88
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>46</b> files in total.
-    <b>407</b> relevant lines. 
-    <span class="green"><b>249</b> lines covered</span> and
-    <span class="red"><b>158</b> lines missed </span>
+    <b>47</b> files in total.
+    <b>465</b> relevant lines. 
+    <span class="green"><b>299</b> lines covered</span> and
+    <span class="red"><b>166</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -58,6 +58,16 @@
         <td>2</td>
         <td>0</td>
         <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#d02cf2bd30ec4fb254a3c09b51fc59150e53b74e" class="src_link" title="app/controllers/exhibitions_controller.rb">app/controllers/exhibitions_controller.rb</a></td>
+        <td class="red strong">42.86 %</td>
+        <td>51</td>
+        <td>28</td>
+        <td>12</td>
+        <td>16</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
@@ -343,9 +353,9 @@
       <tr>
         <td class="strong"><a href="#58ae81293a370d080e8140f2f7081b55f8cec9b4" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>97</td>
-        <td>19</td>
-        <td>19</td>
+        <td>98</td>
+        <td>20</td>
+        <td>20</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -362,12 +372,12 @@
       
       <tr>
         <td class="strong"><a href="#b9fa2d3414332342a3aaa717e7a716c8183fa0b9" class="src_link" title="features/step_definitions/dogs_steps.rb">features/step_definitions/dogs_steps.rb</a></td>
-        <td class="red strong">43.24 %</td>
-        <td>96</td>
-        <td>37</td>
-        <td>16</td>
-        <td>21</td>
-        <td>0.6</td>
+        <td class="red strong">71.21 %</td>
+        <td>218</td>
+        <td>66</td>
+        <td>47</td>
+        <td>19</td>
+        <td>6.3</td>
       </tr>
       
       <tr>
@@ -492,12 +502,12 @@
       
       <tr>
         <td class="strong"><a href="#4c406d63ab97d9f6425d3be9986c555b9b1edd9c" class="src_link" title="features/support/paths.rb">features/support/paths.rb</a></td>
-        <td class="red strong">17.86 %</td>
+        <td class="red strong">39.29 %</td>
         <td>66</td>
         <td>28</td>
-        <td>5</td>
-        <td>23</td>
-        <td>0.2</td>
+        <td>11</td>
+        <td>17</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
@@ -565,6 +575,330 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="d02cf2bd30ec4fb254a3c09b51fc59150e53b74e">
+  <div class="header">
+    <h3>app/controllers/exhibitions_controller.rb</h3>
+    <h4><span class="red">42.86 %</span> covered</h4>
+    <div>
+      <b>28</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
+      <span class="red"><b>16</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class ExhibitionsController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  before_action :set_exhibition, only: [:show, :destroy, :edit, :update, :destroy]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def new</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="6">
+          
+          
+          <code class="ruby">    @exhibition = Exhibition.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def index</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @exhibitions = Exhibition.all</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def create</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
+          
+          <code class="ruby">    @exhibition = Exhibition.new(exhibition_params)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
+          
+          <code class="ruby">    if @exhibition.save</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
+          
+          <code class="ruby">      flash[:notice] = &#39;Exhibition has been created.&#39;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
+          
+          <code class="ruby">      redirect_to @exhibition</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
+          
+          <code class="ruby">      flash[:alert] = &#39;Exhibition has not been created.&#39;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
+          
+          <code class="ruby">      render &#39;new&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="25">
+          
+          
+          <code class="ruby">    if @exhibition.update_attributes(exhibition_params)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
+          
+          <code class="ruby">      flash[:notice] = &#39;Exhibition has been updated.&#39;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="27">
+          
+          
+          <code class="ruby">      redirect_to @exhibition</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="29">
+          
+          
+          <code class="ruby">      flash[:alert] = &#39;Exhibition has not been updated.&#39;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="30">
+          
+          
+          <code class="ruby">      render &#39;edit&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def destroy</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="35">
+          
+          
+          <code class="ruby">    if @exhibition.destroy</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="36">
+          
+          
+          <code class="ruby">      flash[:notice] = &#39;Exhibition has been deleted.&#39;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="37">
+          
+          
+          <code class="ruby">      redirect_to exhibitions_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def set_exhibition</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="45">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @exhibition = Exhibition.find(params[:id])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def exhibition_params</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="49">
+          
+          
+          <code class="ruby">    params.require(:exhibition).permit(:name, :description, :start_date, :end_date)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
           
           
           <code class="ruby">end</code>
@@ -1545,13 +1879,13 @@
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">    errors.add(:start_date, &#39;must be after today&#39;) if self.start_date &lt; DateTime.now</code>
+          <code class="ruby">    errors.add(:start_date, &#39;must be after today&#39;) if self.start_date &lt; Time.now</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">    errors.add(:end_date, &#39;must be after today&#39;) if self.end_date &lt; DateTime.now</code>
+          <code class="ruby">    errors.add(:end_date, &#39;must be after today&#39;) if self.end_date &lt; Time.now</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
@@ -4299,8 +4633,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>20</b> relevant lines. 
+      <span class="green"><b>20</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -4380,148 +4714,148 @@
           <code class="ruby">  get &#39;dogs/update_subvarieties&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  post &#39;exhibitions/inscribe_dog&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
           <code class="ruby">  resources :exhibitions, only: [:show, :index, :new, :create, :edit, :update, :destroy]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  resources :people do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :dogs, only: [:show, :new, :create, :index, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :people do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :dogs, only: [:show, :new, :create, :index, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="20">
           
-          <code class="ruby">  resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :subvarieties, only: [:show, :new, :create, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :subvarieties, only: [:show, :new, :create, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="24">
           
-          <code class="ruby">  resources :breeds, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :breeds, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="28">
           
-          <code class="ruby">  resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy] do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="32">
           
-          <code class="ruby">  resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :sections, only: [:new, :create, :show, :edit, :update, :destroy] do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]</code>
+          <code class="ruby">    resources :subsections, only: [:show, :new, :create, :edit, :update, :destroy]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :breeds, only: [:new, :create, :show, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
@@ -4530,28 +4864,28 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="38">
           
-          <code class="ruby">  resources :groups do</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy]</code>
+          <code class="ruby">  resources :groups do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    resources :sections, only: [:new, :create, :show, :edit, :update, :destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -4563,328 +4897,334 @@
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">  # The priority is based upon order of creation: first created -&gt; highest priority.</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">  # See how all your routes lay out with &quot;rake routes&quot;.</code>
+          <code class="ruby">  # The priority is based upon order of creation: first created -&gt; highest priority.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # See how all your routes lay out with &quot;rake routes&quot;.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby">  # You can have the root of your site routed with &quot;root&quot;</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
           
           
-          <code class="ruby">  # root &#39;welcome#index&#39;</code>
+          <code class="ruby">  # You can have the root of your site routed with &quot;root&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # root &#39;welcome#index&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
-          <code class="ruby">  # Example of regular route:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby">  #   get &#39;products/:id&#39; =&gt; &#39;catalog#view&#39;</code>
+          <code class="ruby">  # Example of regular route:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   get &#39;products/:id&#39; =&gt; &#39;catalog#view&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  # Example of named route that can be invoked with purchase_url(id: product.id)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby">  #   get &#39;products/:id/purchase&#39; =&gt; &#39;catalog#purchase&#39;, as: :purchase</code>
+          <code class="ruby">  # Example of named route that can be invoked with purchase_url(id: product.id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   get &#39;products/:id/purchase&#39; =&gt; &#39;catalog#purchase&#39;, as: :purchase</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">  # Example resource route (maps HTTP verbs to controller actions automatically):</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">  #   resources :products</code>
+          <code class="ruby">  # Example resource route (maps HTTP verbs to controller actions automatically):</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   resources :products</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby">  # Example resource route with options:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">  #   resources :products do</code>
+          <code class="ruby">  # Example resource route with options:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="60">
           
           
-          <code class="ruby">  #     member do</code>
+          <code class="ruby">  #   resources :products do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">  #       get &#39;short&#39;</code>
+          <code class="ruby">  #     member do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">  #       post &#39;toggle&#39;</code>
+          <code class="ruby">  #       get &#39;short&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
           
           
-          <code class="ruby">  #     end</code>
+          <code class="ruby">  #       post &#39;toggle&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby">  #</code>
+          <code class="ruby">  #     end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
-          <code class="ruby">  #     collection do</code>
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="66">
           
           
-          <code class="ruby">  #       get &#39;sold&#39;</code>
+          <code class="ruby">  #     collection do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby">  #     end</code>
+          <code class="ruby">  #       get &#39;sold&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #     end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="69">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
           
           
-          <code class="ruby">  # Example resource route with sub-resources:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="71">
           
           
-          <code class="ruby">  #   resources :products do</code>
+          <code class="ruby">  # Example resource route with sub-resources:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="72">
           
           
-          <code class="ruby">  #     resources :comments, :sales</code>
+          <code class="ruby">  #   resources :products do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="73">
           
           
-          <code class="ruby">  #     resource :seller</code>
+          <code class="ruby">  #     resources :comments, :sales</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #     resource :seller</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  # Example resource route with more complex sub-resources:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="77">
           
           
-          <code class="ruby">  #   resources :products do</code>
+          <code class="ruby">  # Example resource route with more complex sub-resources:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby">  #     resources :comments</code>
+          <code class="ruby">  #   resources :products do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">  #     resources :sales do</code>
+          <code class="ruby">  #     resources :comments</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">  #       get &#39;recent&#39;, on: :collection</code>
+          <code class="ruby">  #     resources :sales do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
           
           
-          <code class="ruby">  #     end</code>
+          <code class="ruby">  #       get &#39;recent&#39;, on: :collection</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="82">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #     end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="83">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="84">
           
           
-          <code class="ruby">  # Example resource route with concerns:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="85">
           
           
-          <code class="ruby">  #   concern :toggleable do</code>
+          <code class="ruby">  # Example resource route with concerns:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="86">
           
           
-          <code class="ruby">  #     post &#39;toggle&#39;</code>
+          <code class="ruby">  #   concern :toggleable do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="87">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #     post &#39;toggle&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
           
           
-          <code class="ruby">  #   resources :posts, concerns: :toggleable</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">  #   resources :photos, concerns: :toggleable</code>
+          <code class="ruby">  #   resources :posts, concerns: :toggleable</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #   resources :photos, concerns: :toggleable</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="91">
           
           
-          <code class="ruby">  # Example resource route within a namespace:</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">  #   namespace :admin do</code>
+          <code class="ruby">  # Example resource route within a namespace:</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="93">
           
           
-          <code class="ruby">  #     # Directs /admin/products/* to Admin::ProductsController</code>
+          <code class="ruby">  #   namespace :admin do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="94">
           
           
-          <code class="ruby">  #     # (app/controllers/admin/products_controller.rb)</code>
+          <code class="ruby">  #     # Directs /admin/products/* to Admin::ProductsController</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="95">
           
           
-          <code class="ruby">  #     resources :products</code>
+          <code class="ruby">  #     # (app/controllers/admin/products_controller.rb)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="96">
           
           
-          <code class="ruby">  #   end</code>
+          <code class="ruby">  #     resources :products</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="97">
+          
+          
+          <code class="ruby">  #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">end</code>
@@ -5029,11 +5369,11 @@
         <div class="source_table" id="b9fa2d3414332342a3aaa717e7a716c8183fa0b9">
   <div class="header">
     <h3>features/step_definitions/dogs_steps.rb</h3>
-    <h4><span class="red">43.24 %</span> covered</h4>
+    <h4><span class="red">71.21 %</span> covered</h4>
     <div>
-      <b>37</b> relevant lines. 
-      <span class="green"><b>16</b> lines covered</span> and
-      <span class="red"><b>21</b> lines missed.</span>
+      <b>66</b> relevant lines. 
+      <span class="green"><b>47</b> lines covered</span> and
+      <span class="red"><b>19</b> lines missed.</span>
     </div>
   </div>
   
@@ -5115,397 +5455,397 @@
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">When /^I select &quot;([^&quot;]*)&quot; as the (.+) &quot;([^&quot;]*)&quot;$/ do |date, model, selector|</code>
+          <code class="ruby">Given /^today is &quot;([^&quot;]*)&quot;$/ do |date|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="missed" data-hits="0" data-linenumber="14">
           
           
-          <code class="ruby">#  begin</code>
+          <code class="ruby">  travel_to DateTime.parse(date)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">#    date = DateTime.parse(date)</code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby"># rescue ArgumentError</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">#   date = DateTime.now + 1.year</code>
+          <code class="ruby">After(&#39;@time_travel&#39;) do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"># end</code>
+          <code class="ruby">  travel_back</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="20">
-          
-          
-          <code class="ruby">  if date.include?(&#39;after&#39;)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="21">
-          
-          
-          <code class="ruby">    date = DateTime.now + 1.hour</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">  elsif date.include?(&#39;before&#39;)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
-          
-          <code class="ruby">    date = DateTime.now - 1.hour</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
-          
-          
-          <code class="ruby">  else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="25">
-          
-          
-          <code class="ruby">    date = DateTime.parse(date)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">When /^I select &quot;([^&quot;]*)&quot; as the (.+) &quot;([^&quot;]*)&quot;$/ do |date, model, selector|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="22">
+          
+          
+          <code class="ruby">  date = Time.parse(date)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="24">
           
           
           <code class="ruby">  select(date.year.to_s, :from =&gt; &quot;#{model}[#{selector}(1i)]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="29">
+        <li class="missed" data-hits="0" data-linenumber="25">
           
           
           <code class="ruby">  select(date.strftime(&#39;%B&#39;), :from =&gt; &quot;#{model}[#{selector}(2i)]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="30">
+        <li class="missed" data-hits="0" data-linenumber="26">
           
           
           <code class="ruby">  select(date.day.to_s, :from =&gt; &quot;#{model}[#{selector}(3i)]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="31">
+        <li class="missed" data-hits="0" data-linenumber="27">
           
           
           <code class="ruby">  if date.hour != 0</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="32">
+        <li class="missed" data-hits="0" data-linenumber="28">
           
           
           <code class="ruby">    select(date.strftime(&#39;%H&#39;), :from =&gt; &quot;#{model}[#{selector}(4i)]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
+        <li class="missed" data-hits="0" data-linenumber="29">
           
           
           <code class="ruby">    select(date.strftime(&#39;%M&#39;), :from =&gt; &quot;#{model}[#{selector}(5i)]&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="never" data-hits="" data-linenumber="30">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="31">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
           <code class="ruby">Given(/^&quot;(.*?)&quot; is owner for some dogs:$/) do |owner, table|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
           <code class="ruby">  table.map_headers!(&#39;Name&#39; =&gt; :name, &#39;Date of birth&#39;=&gt; :date_of_birth,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">                     &#39;Sex&#39; =&gt; :sex, &#39;Sire&#39; =&gt; :sire, &#39;Dam&#39; =&gt; :dam,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="36">
           
           
           <code class="ruby">                     &#39;Titles&#39; =&gt; :titles)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
           <code class="ruby">  table.hashes.each do |attributes|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="42">
+        <li class="covered" data-hits="2" data-linenumber="38">
           <span class="hits">2</span>
           
           <code class="ruby">    User.find_by_email(owner).person.dogs.create!(attributes)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">Given(/^&quot;(.*?)&quot; breed is &quot;(.*?)&quot;( with &quot;(.*?)&quot; variety)?( and &quot;(.*?)&quot; subvariety)?$/) do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">  |name, breed, has_variety, variety_name, has_subvariety, subvariety_name|</code>
+          <code class="ruby">|name, breed, has_variety, variety_name, has_subvariety, subvariety_name|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">  if (has_variety.eql? &quot; with \&quot;#{variety_name}\&quot; variety&quot; or !has_variety) and</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="50">
+        <li class="missed" data-hits="0" data-linenumber="46">
           
           
           <code class="ruby">      (has_subvariety.eql? &quot; and \&quot;#{subvariety_name}\&quot; subvariety&quot; or !has_subvariety)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="51">
+        <li class="missed" data-hits="0" data-linenumber="47">
           
           
           <code class="ruby">    dog = Dog.find_by_name(name)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="52">
+        <li class="missed" data-hits="0" data-linenumber="48">
           
           
           <code class="ruby">    dog.dogable = Subvariety.find_by_name(subvariety_name) ||</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby">        Variety.find_by_name(variety_name) ||</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby">        Breed.find_by_name!(breed)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
+        <li class="missed" data-hits="0" data-linenumber="51">
           
           
           <code class="ruby">    dog.save!</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby">  else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
+        <li class="missed" data-hits="0" data-linenumber="53">
           
           
           <code class="ruby">    fail(ArgumentError.new(&#39;Syntax Error!&#39;))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
           <code class="ruby">Then(/^I should see &quot;(.*?)&quot; and &quot;(.*?)&quot;$/) do |arg1, arg2|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
+        <li class="missed" data-hits="0" data-linenumber="58">
           
           
           <code class="ruby">  steps %Q{</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">    Then I should see &quot;#{arg1}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">    Then I should see &quot;#{arg2}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby">  }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="68">
+        <li class="covered" data-hits="1" data-linenumber="64">
           <span class="hits">1</span>
           
           <code class="ruby">Given(/^there are these entry deadlines for &quot;(.*?)&quot;:$/) do |exhib_name, table|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
-          
-          
-          <code class="ruby">  #@deadlines = table.hashes</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="70">
+        <li class="covered" data-hits="1" data-linenumber="65">
           <span class="hits">1</span>
           
           <code class="ruby">  table.map_headers!(&#39;Name&#39; =&gt; :name, &#39;Start date&#39; =&gt; :start_date, &#39;End date&#39; =&gt; :end_date)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
+        <li class="covered" data-hits="1" data-linenumber="66">
           <span class="hits">1</span>
           
           <code class="ruby">  @deadlines = { &quot;#{exhib_name}&quot;  =&gt; table.hashes }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #puts @deadlines</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby">  #puts @deadlines[&quot;#{exhib_name}&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="74">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="69">
           
-          <code class="ruby">  @deadlines[&quot;#{exhib_name}&quot;].each do |att|</code>
+          
+          <code class="ruby">  #@deadlines[&quot;#{exhib_name}&quot;].each do |att|</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="75">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="70">
           
-          <code class="ruby">    puts att[:name]</code>
+          
+          <code class="ruby">  #  puts att[:name]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="76">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="71">
           
-          <code class="ruby">    puts att[:start_date]</code>
+          
+          <code class="ruby">  #  puts att[:start_date]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="77">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="72">
           
-          <code class="ruby">    puts att[:end_date]</code>
+          
+          <code class="ruby">  #  puts att[:end_date]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">  #end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">  #@deadlines.each do |att|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">  #  puts att[&#39;Name&#39;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">  #end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
@@ -5514,103 +5854,835 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    #@deadlines.each do |att|</code>
+          <code class="ruby">def get_abbreviations text</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
+        <li class="covered" data-hits="18" data-linenumber="81">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">    #  puts att[&#39;Name&#39;]</code>
+          <code class="ruby">  text.strip!</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="covered" data-hits="18" data-linenumber="82">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">    #end</code>
+          <code class="ruby">  text.sub! &#39;J&#39;, &#39;Junior&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="covered" data-hits="18" data-linenumber="83">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">end</code>
+          <code class="ruby">  text.sub! &#39;I&#39;, &#39;Intermediate&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="covered" data-hits="18" data-linenumber="84">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  text.sub! &#39;O&#39;, &#39;Open&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="covered" data-hits="18" data-linenumber="85">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  text.sub! &#39;W&#39;, &#39;Working&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="covered" data-hits="18" data-linenumber="86">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">#Then /^&quot;([^&quot;]*)&quot; should be an option for &quot;([^&quot;]*)&quot;(?: within &quot;([^\&quot;]*)&quot;)?$/ do |value, field, selector|</code>
+          <code class="ruby">  text.sub! &#39;CH&#39;, &#39;Champion&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="87">
           
           
-          <code class="ruby">#  with_scope(selector) do</code>
+          <code class="ruby">end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
           
           
-          <code class="ruby">#    field_labeled(field).first(:xpath, &quot;.//option[text() = &#39;#{value}&#39;]&quot;).send(:should, be_present)</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="covered" data-hits="1" data-linenumber="89">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">#  end</code>
+          <code class="ruby">Given(/^there are these payments for &quot;(.*?)&quot; in &quot;(.*?)&quot;:$/) do |clients, exhib_name, prices_table|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby">#end</code>
+          <code class="ruby">  #prices_table.map_column!(&#39;Class&#39;) { |cell| get_abbreviations(cell)}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="covered" data-hits="24" data-linenumber="91">
+          <span class="hits">24</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  @classes =  prices_table.hashes.group_by { |type| type[:Class] }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">#When /^I select &quot;(.*?)&quot; from &quot;(.*?)&quot;$/ do |option, field|</code>
+          <code class="ruby">  #puts @classes</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="covered" data-hits="2" data-linenumber="93">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">#  page.select option, :from =&gt; field</code>
+          <code class="ruby">  group_deadline_prices = []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="covered" data-hits="2" data-linenumber="94">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">#end</code>
+          <code class="ruby">  prices_collect= []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="covered" data-hits="2" data-linenumber="95">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  grouped_classes = []</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="96">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  index = 1</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="97">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  @classes.each do |class_name, class_group|</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="98">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    @deadlines[&quot;#{exhib_name}&quot;].each do |date|</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="99">
+          <span class="hits">30</span>
+          
+          <code class="ruby">      deadline_prices = []</code>
+        </li>
+      
+        <li class="covered" data-hits="96" data-linenumber="100">
+          <span class="hits">96</span>
+          
+          <code class="ruby">      class_group.each { |j| deadline_prices &lt;&lt; j[date[:name]] }</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="101">
+          <span class="hits">30</span>
+          
+          <code class="ruby">      group_deadline_prices &lt;&lt; deadline_prices</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="96">
+        <li class="covered" data-hits="10" data-linenumber="104">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    grouped_classes &lt;&lt; {:name =&gt; &#39;group&#39;&quot;#{index}&quot;, :classes =&gt;&quot;#{class_name}&quot;.split(&#39;.&#39;)}</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="105">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    prices_collect &lt;&lt; [&#39;group&#39;&quot;#{index}&quot;, group_deadline_prices]</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="106">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    group_deadline_prices = []</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="107">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    index += 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="108">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="109">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  grouped_classes.each do |k|</code>
+        </li>
+      
+        <li class="covered" data-hits="28" data-linenumber="110">
+          <span class="hits">28</span>
+          
+          <code class="ruby">    k[:classes].each {|p| get_abbreviations p}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="111">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="112">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  @groups = Hash.new</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="113">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  @groups[&#39;Exp. Canina de Cieza&#39;] = grouped_classes</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby">  #puts @grouped_classes.hashes</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="116">
+          <span class="hits">12</span>
+          
+          <code class="ruby">  prices_collect = prices_collect.map {|key, value| {key=&gt; value}}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby">  #puts prices_collect</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="118">
+          
+          
+          <code class="ruby">  #prices_collect.each do |k,v|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="119">
+          
+          
+          <code class="ruby">  #  puts &quot;#{k} ====&gt; #{v}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">  #end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby">  #puts prices_collect</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
+          <code class="ruby">  #puts @tax</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="123">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  if not @tax</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="124">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @tax = {:groups  =&gt; @groups[&#39;Exp. Canina de Cieza&#39;]}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="125">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @tax.merge!(:deadlines =&gt; @deadlines[&quot;#{exhib_name}&quot;])</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="126">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @tax[:prices] = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="127">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="128">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  @tax[:prices].push ({:&quot;#{clients.gsub(/\s+/, &#39;&#39;)}&quot; =&gt; prices_collect})</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="129">
+          
+          
+          <code class="ruby">  #puts @tax</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="130">
+          
+          
+          <code class="ruby">  #@tax[:prices].merge!(:partners =&gt; prices_collect) if clients == &#39;partners&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="131">
+          
+          
+          <code class="ruby">  #@tax[:prices].merge!(:nopartners =&gt; prices_collect) if clients == &#39;partners&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="132">
+          
+          
+          <code class="ruby">  #@tax[:prices].store :partners =&gt; prices_collect if clients == &#39;partners&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="133">
+          
+          
+          <code class="ruby">  #@tax[:prices].store :nopartners =&gt; prices_collect if clients == &#39;partners&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="134">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="135">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="136">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="137">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="138">
+          
+          
+          <code class="ruby">#@tax = {:groups=&gt; @groups[&#39;Exp. Canina de Cieza&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="139">
+          
+          
+          <code class="ruby">#        :deadlines=&gt; @fechas[&#39;Exp. Canina de Cieza&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="140">
+          
+          
+          <code class="ruby">#        :prices=&gt; [</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="141">
+          
+          
+          <code class="ruby">#            {:partners=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="142">
+          
+          
+          <code class="ruby">#                {@tax[:groups].first[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="143">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;24.00&#39;, &#39;19.00&#39;, &#39;14.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="144">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;30.00&#39;, &#39;23.00&#39;, &#39;18.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="145">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;36.00&#39;, &#39;27.00&#39;, &#39;21.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="146">
+          
+          
+          <code class="ruby">#                {@tax[:groups].second[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="147">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;12.00&#39;, &#39;9.50&#39;, &#39;7.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="148">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;15.00&#39;, &#39;11.50&#39;, &#39;9.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="149">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;18.00&#39;, &#39;13.50&#39;, &#39;10.50&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="150">
+          
+          
+          <code class="ruby">#                {@tax[:groups].third[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="151">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;16.00&#39;, &#39;12.00&#39;, &#39;9.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="152">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;20.00&#39;, &#39;15.00&#39;, &#39;12.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="153">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;24.00&#39;, &#39;18.00&#39;, &#39;15.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="154">
+          
+          
+          <code class="ruby">#                {@tax[:groups].fourth[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="155">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[:price1=&gt;&#39;20.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="156">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[:price1=&gt;&#39;25.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="157">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[:price1=&gt;&#39;29.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="158">
+          
+          
+          <code class="ruby">#                {@tax[:groups].fourth[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="159">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="160">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="161">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]}]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="162">
+          
+          
+          <code class="ruby">#            {:nopartners=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="163">
+          
+          
+          <code class="ruby">#                {@tax[:groups].first[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="164">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;30.00&#39;, &#39;25.00&#39;, &#39;20.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="165">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;37.50&#39;, &#39;32.00&#39;, &#39;25.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="166">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;43.50&#39;, &#39;37.00&#39;, &#39;29.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="167">
+          
+          
+          <code class="ruby">#                {@tax[:groups].second[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="168">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;15.00&#39;, &#39;12.50&#39;, &#39;10.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="169">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;18.70&#39;, &#39;16.00&#39;, &#39;12.50&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="170">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;21.75&#39;, &#39;18.50&#39;, &#39;14.50&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="171">
+          
+          
+          <code class="ruby">#                {@tax[:groups].third[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="172">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[&#39;21.00&#39;, &#39;15.00&#39;, &#39;11.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="173">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[&#39;27.00&#39;, &#39;19.00&#39;, &#39;14.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="174">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[&#39;31.00&#39;, &#39;21.00&#39;, &#39;17.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="175">
+          
+          
+          <code class="ruby">#                {@tax[:groups].fourth[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="176">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[:price1=&gt;&#39;25.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="177">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[:price1=&gt;&#39;32.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="178">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[:price1=&gt;&#39;37.00&#39;]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="179">
+          
+          
+          <code class="ruby">#                {@tax[:groups].fourth[:name]=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="180">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].first[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="181">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].second[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="182">
+          
+          
+          <code class="ruby">#                    {@tax[:deadlines].third[:name]=&gt;[:price1=&gt;&#39;0.00&#39;]}]}]}]}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="183">
+          
+          
+          <code class="ruby">#                   #{:nopartners=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="184">
+          
+          
+          <code class="ruby">#                   #    {:group1=&gt;[{:price1=&gt;&#39;30.00&#39;, :price2=&gt;&#39;25.00&#39;, :price3=&gt;&#39;20.00&#39;}, {:price1=&gt;&#39;37.50&#39;, :price2=&gt;&#39;32.00&#39;, :price3=&gt;&#39;25.00&#39;}, {:price1=&gt;&#39;43.50&#39;, :price2=&gt;&#39;37.00&#39;, :price3=&gt;&#39;29.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="185">
+          
+          
+          <code class="ruby">#                   #    {:group2=&gt;[{:price1=&gt;&#39;15.00&#39;, :price2=&gt;&#39;12.50&#39;, :price3=&gt;&#39;10.00&#39;}, {:price1=&gt;&#39;18.75&#39;, :price2=&gt;&#39;16.00&#39;, :price3=&gt;&#39;12.50&#39;}, {:price1=&gt;&#39;21.75&#39;, :price2=&gt;&#39;18.50&#39;, :price3=&gt;&#39;14.50&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="186">
+          
+          
+          <code class="ruby">#                   #    {:group3=&gt;[{:price1=&gt;&#39;21.00&#39;, :price2=&gt;&#39;15.00&#39;, :price3=&gt;&#39;11.00&#39;}, {:price1=&gt;&#39;27.00&#39;, :price2=&gt;&#39;19.00&#39;, :price3=&gt;&#39;14.00&#39;}, {:price1=&gt;&#39;31.00&#39;, :price2=&gt;&#39;21.00&#39;, :price3=&gt;&#39;17.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="187">
+          
+          
+          <code class="ruby">#                   #    {:group4=&gt;[{:price1=&gt;&#39;25.00&#39;}, {:price1=&gt;&#39;32.00&#39;}, {:price1=&gt;&#39;37.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="188">
+          
+          
+          <code class="ruby">#                   #    {:group5=&gt;[{:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}]}]}]}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="189">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="190">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="191">
+          
+          
+          <code class="ruby">#</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="192">
+          
+          
+          <code class="ruby">#@tax = {:groups=&gt; @groups[&#39;Exp. Canina de Cieza&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="193">
+          
+          
+          <code class="ruby">#        :deadlines=&gt; @deadlines[&#39;Exp. Canina de Cieza&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="194">
+          
+          
+          <code class="ruby">#        :prices=&gt; [{:partners=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="195">
+          
+          
+          <code class="ruby">#            {:group1=&gt;[{:price1=&gt;&#39;24.00&#39;, :price2=&gt;&#39;19.00&#39;, :price3=&gt;&#39;14.00&#39;}, {:price1=&gt;&#39;30.00&#39;, :price2=&gt;&#39;23.00&#39;, :price3=&gt;&#39;18.00&#39;}, {:price1=&gt;&#39;36.00&#39;, :price2=&gt;&#39;27.00&#39;, :price3=&gt;&#39;21.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="196">
+          
+          
+          <code class="ruby">#            {:group2=&gt;[{:price1=&gt;&#39;12.00&#39;, :price2=&gt;&#39;9.50&#39;, :price3=&gt;&#39;7.00&#39;}, {:price1=&gt;&#39;15.00&#39;, :price2=&gt;&#39;11.50&#39;, :price3=&gt;&#39;9.00&#39;}, {:price1=&gt;&#39;18.00&#39;, :price2=&gt;&#39;13.50&#39;, :price3=&gt;&#39;10.50&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="197">
+          
+          
+          <code class="ruby">#            {:group3=&gt;[{:price1=&gt;&#39;16.00&#39;, :price2=&gt;&#39;12.00&#39;, :price3=&gt;&#39;9.00&#39;}, {:price1=&gt;&#39;20.00&#39;, :price2=&gt;&#39;15.00&#39;, :price3=&gt;&#39;12.00&#39;}, {:price1=&gt;&#39;24.00&#39;, :price2=&gt;&#39;18.00&#39;, :price3=&gt;&#39;15.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="198">
+          
+          
+          <code class="ruby">#            {:group4=&gt;[{:price1=&gt;&#39;20.00&#39;}, {:price1=&gt;&#39;25.00&#39;}, {:price1=&gt;&#39;29.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="199">
+          
+          
+          <code class="ruby">#            {:group5=&gt;[{:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}]}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="200">
+          
+          
+          <code class="ruby">#                   {:nopartners=&gt;[</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="201">
+          
+          
+          <code class="ruby">#                       {:group1=&gt;[{:price1=&gt;&#39;30.00&#39;, :price2=&gt;&#39;25.00&#39;, :price3=&gt;&#39;20.00&#39;}, {:price1=&gt;&#39;37.50&#39;, :price2=&gt;&#39;32.00&#39;, :price3=&gt;&#39;25.00&#39;}, {:price1=&gt;&#39;43.50&#39;, :price2=&gt;&#39;37.00&#39;, :price3=&gt;&#39;29.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="202">
+          
+          
+          <code class="ruby">#                       {:group2=&gt;[{:price1=&gt;&#39;15.00&#39;, :price2=&gt;&#39;12.50&#39;, :price3=&gt;&#39;10.00&#39;}, {:price1=&gt;&#39;18.75&#39;, :price2=&gt;&#39;16.00&#39;, :price3=&gt;&#39;12.50&#39;}, {:price1=&gt;&#39;21.75&#39;, :price2=&gt;&#39;18.50&#39;, :price3=&gt;&#39;14.50&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="203">
+          
+          
+          <code class="ruby">#                       {:group3=&gt;[{:price1=&gt;&#39;21.00&#39;, :price2=&gt;&#39;15.00&#39;, :price3=&gt;&#39;11.00&#39;}, {:price1=&gt;&#39;27.00&#39;, :price2=&gt;&#39;19.00&#39;, :price3=&gt;&#39;14.00&#39;}, {:price1=&gt;&#39;31.00&#39;, :price2=&gt;&#39;21.00&#39;, :price3=&gt;&#39;17.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="204">
+          
+          
+          <code class="ruby">#                       {:group4=&gt;[{:price1=&gt;&#39;25.00&#39;}, {:price1=&gt;&#39;32.00&#39;}, {:price1=&gt;&#39;37.00&#39;}]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="205">
+          
+          
+          <code class="ruby">#                       {:group5=&gt;[{:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}, {:price1=&gt;&#39;0.00&#39;}]}]}]}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="206">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="207">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="208">
+          
+          
+          <code class="ruby">#Then /^&quot;([^&quot;]*)&quot; should be an option for &quot;([^&quot;]*)&quot;(?: within &quot;([^\&quot;]*)&quot;)?$/ do |value, field, selector|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="209">
+          
+          
+          <code class="ruby">#  with_scope(selector) do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="210">
+          
+          
+          <code class="ruby">#    field_labeled(field).first(:xpath, &quot;.//option[text() = &#39;#{value}&#39;]&quot;).send(:should, be_present)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="211">
+          
+          
+          <code class="ruby">#  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="212">
+          
+          
+          <code class="ruby">#end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="213">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="214">
+          
+          
+          <code class="ruby">#When /^I select &quot;(.*?)&quot; from &quot;(.*?)&quot;$/ do |option, field|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="215">
+          
+          
+          <code class="ruby">#  page.select option, :from =&gt; field</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="216">
+          
+          
+          <code class="ruby">#end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="217">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="218">
           
           
           <code class="ruby"></code>
@@ -8401,11 +9473,11 @@
         <div class="source_table" id="4c406d63ab97d9f6425d3be9986c555b9b1edd9c">
   <div class="header">
     <h3>features/support/paths.rb</h3>
-    <h4><span class="red">17.86 %</span> covered</h4>
+    <h4><span class="red">39.29 %</span> covered</h4>
     <div>
       <b>28</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>23</b> lines missed.</span>
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>17</b> lines missed.</span>
     </div>
   </div>
   
@@ -8466,8 +9538,8 @@
           <code class="ruby">  def path_to(page_name)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="10">
+          <span class="hits">3</span>
           
           <code class="ruby">    case page_name</code>
         </li>
@@ -8730,38 +9802,38 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
-          
+        <li class="covered" data-hits="2" data-linenumber="54">
+          <span class="hits">2</span>
           
           <code class="ruby">        begin</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="2" data-linenumber="55">
+          <span class="hits">2</span>
           
           <code class="ruby">          page_name =~ /^the (.*) page$/</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
+        <li class="covered" data-hits="2" data-linenumber="56">
+          <span class="hits">2</span>
           
           <code class="ruby">          path_components = $1.split(/\s+/)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
+        <li class="covered" data-hits="2" data-linenumber="57">
+          <span class="hits">2</span>
           
           <code class="ruby">          self.send(path_components.push(&#39;path&#39;).join(&#39;_&#39;).to_sym)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
-          
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
           
           <code class="ruby">        rescue NoMethodError, ArgumentError</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="59">
-          
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
           
           <code class="ruby">          raise &quot;Can&#39;t find mapping from \&quot;#{page_name}\&quot; to a path.\n&quot; +</code>
         </li>

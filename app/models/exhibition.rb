@@ -10,8 +10,8 @@ class Exhibition < ActiveRecord::Base
   end
 
   def end_start_before_today
-    errors.add(:start_date, 'must be after today') if self.start_date < DateTime.now
-    errors.add(:end_date, 'must be after today') if self.end_date < DateTime.now
+    errors.add(:start_date, 'must be after today') if self.start_date < Time.now
+    errors.add(:end_date, 'must be after today') if self.end_date < Time.now
   end
 
 end

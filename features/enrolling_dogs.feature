@@ -1,3 +1,4 @@
+@time_travel
 Feature: Enrolling a dog into a exhibition
   In order to enroll a dog to a exhibition
   As a user
@@ -25,11 +26,11 @@ Feature: Enrolling a dog into a exhibition
       | 2nd entry deadline | 23-02-2014 | 03-03-2014 |
       | 3rd entry deadline | 04-03-2014 | 14-03-2014 |
 
-    Given there are these payments for partners in "Exp. Canina de Cieza":
+    Given there are these payments for "partners" in "Exp. Canina de Cieza":
       | Class           | Dogs              | 1st entry deadline | 2nd entry deadline | 3rd entry deadline |
-      | J. I. A. T. CH. | 1st dog           | 24.00              | 30.00              | 36.00              |
-      | J. I. A. T. CH. | 2nd dog           | 19.00              | 23.00              | 27.00              |
-      | J. I. A. T. CH. | 3rd and following | 14.00              | 18.00              | 21.00              |
+      | J. I. O. W. CH. | 1st dog           | 24.00              | 30.00              | 36.00              |
+      | J. I. O. W. CH. | 2nd dog           | 19.00              | 23.00              | 27.00              |
+      | J. I. O. W. CH. | 3rd and following | 14.00              | 18.00              | 21.00              |
       | Veteran         | 1st dog           | 12.00              | 15.00              | 18.00              |
       | Veteran         | 2nd dog           | 9.50               | 11.50              | 13.50              |
       | Veteran         | 3rd and following | 7.00               | 9.00               | 10.50              |
@@ -39,11 +40,11 @@ Feature: Enrolling a dog into a exhibition
       | Couple          |                   | 20.00              | 25.00              | 29.00              |
       | Group Breeding  |                   | 0.00               | 0.00               | 0.00               |
 
-    And there are these payments for no partners in "Exp. Canina de Cieza":
+    And there are these payments for "no partners" in "Exp. Canina de Cieza":
       | Class           | Dogs              | 1st entry deadline | 2nd entry deadline | 3rd entry deadline |
-      | J. I. A. T. CH. | 1st dog           | 30.00              | 37.50              | 43.50              |
-      | J. I. A. T. CH. | 2nd dog           | 25.00              | 32.00              | 37.00              |
-      | J. I. A. T. CH. | 3rd and following | 20.00              | 25.00              | 29.00              |
+      | J. I. O. W. CH. | 1st dog           | 30.00              | 37.50              | 43.50              |
+      | J. I. O. W. CH. | 2nd dog           | 25.00              | 32.00              | 37.00              |
+      | J. I. O. W. CH. | 3rd and following | 20.00              | 25.00              | 29.00              |
       | Veteran         | 1st dog           | 15.00              | 18.75              | 21.75              |
       | Veteran         | 2nd dog           | 12.50              | 16.00              | 18.50              |
       | Veteran         | 3rd and following | 10.00              | 12.50              | 14.50              |
@@ -55,7 +56,7 @@ Feature: Enrolling a dog into a exhibition
 
     Given I am on the exhibitions page
     And I follow "Exp. Canina de Cieza"
-    And I press "Enter a new dog"
+    And I press "Inscribe a new dog"
     Then I should be on the "inscribe dog" page
 
   @actual

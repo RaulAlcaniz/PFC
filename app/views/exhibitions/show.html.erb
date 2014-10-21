@@ -5,6 +5,7 @@
   <li><%= link_to 'Edit exhibition', edit_exhibition_path(@exhibition) %></li>
   <li><%= link_to 'Delete exhibition', @exhibition, method: :delete, data: {confirm: 'Are you sure you want to delete this Exhibition'} %></li>
   </ul>
+  <%= button_to 'Inscribe a new dog', exhibitions_inscribe_dog_path(@exhibition)%>
 
   <h2><%= @exhibition.name %></h2>
   <% description = 'Description: ' + @exhibition.description %>
@@ -14,5 +15,7 @@
   <%= simple_format( description ) %>
   <%= simple_format( start ) %>
   <%= simple_format( end_date ) %>
+
+
 
 </div>
