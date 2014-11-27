@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924124732) do
+ActiveRecord::Schema.define(version: 20141024162832) do
 
   create_table "breeds", force: true do |t|
     t.string   "name"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20140924124732) do
 
   add_index "dogs", ["dogable_id", "dogable_type"], name: "index_dogs_on_dogable_id_and_dogable_type"
 
+  create_table "enrolments", force: true do |t|
+    t.integer  "dog_id"
+    t.integer  "exhibition_id"
+    t.integer  "payment_id"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "partner"
+    t.string   "dog_class"
+  end
+
   create_table "exhibitions", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -44,11 +55,18 @@ ActiveRecord::Schema.define(version: 20140924124732) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "tax"
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

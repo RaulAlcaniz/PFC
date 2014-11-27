@@ -1,21 +1,18 @@
 Rails.application.routes.draw do
 
-  #get 'dogs/new'
-
-  #get 'people/show'
-
   devise_for :users
 
   root :to => 'groups#index'
 
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
-  post 'exhibitions/inscribe_dog'
 
-  resources :exhibitions, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  resources :exhibitions do
+    resources :enrolments, only: [:new, :create, :index, :destroy]
+  end
 
   resources :people do
-    resources :dogs, only: [:show, :new, :create, :index, :edit, :update, :destroy]
+    resources :dogs
   end
 
   resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do

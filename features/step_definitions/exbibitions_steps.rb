@@ -17,3 +17,96 @@ end
 Given(/^there is an exhibition called "(.*?)"$/) do |name|
   @exhibition = FactoryGirl.create(:exhibition, name: name)
 end
+
+
+def get_abbreviations(text)
+  text.strip!
+  [
+      ['J', 'Junior'],
+      ['I', 'Intermediate'],
+      ['O', 'Open'],
+      ['W', 'Working'],
+      ['CH', 'Champion']
+
+  ].each do |input, output|
+    text.sub! input,output
+  end
+end
+
+Given(/^there are these entry deadlines for "(.*?)":$/) do |exhib_name, table|
+  table.map_headers!('Name' => :name, 'Start date' => :start_date, 'End date' => :end_date)
+  @deadlines = { "#{exhib_name}"  => table.hashes }
+  #puts @deadlines
+  #puts @deadlines["#{exhib_name}"]
+  #@deadlines["#{exhib_name}"].each do |att|
+  #  puts att[:name]
+  #  puts att[:start_date]
+  #  puts att[:end_date]
+  #end
+
+  #@deadlines.each do |att|
+  #  puts att['Name']
+  #end
+end
+
+Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_name, prices_table|
+
+  @classes =  prices_table.hashes.group_by { |type| type[:Class] }
+
+  group_deadline_prices = []
+  prices_collect= []
+  grouped_classes = []
+  index = 1
+  @classes.each do |class_name, class_group|
+    @deadlines["#{exhib_name}"].each do |date|
+      deadline_prices = []
+      class_group.each { |k| deadline_prices << k[date[:name]] }
+      group_deadline_prices << deadline_prices
+    end
+
+    grouped_classes << {:name => 'group'"#{index}", :classes =>"#{class_name}".split('.')}
+    prices_collect << ['group'"#{index}", group_deadline_prices]
+    group_deadline_prices = []
+    index += 1
+  end
+  grouped_classes.each do |normalize_hash|
+    normalize_hash[:classes].each {|normalize| get_abbreviations normalize}
+  end
+  @groups = Hash.new
+  @groups['Exp. Canina de Cieza'] = grouped_classes
+
+
+  prices_collect = prices_collect.map {|key, value| {key=> value}}
+
+  #prices_collect.each do |k,v|
+  #  puts "#{k} ====> #{v}"
+  #end
+
+  if not @tax
+    @tax = {:groups  => @groups['Exp. Canina de Cieza']}
+    @tax.merge!(:deadlines => @deadlines["#{exhib_name}"])
+    @tax[:prices] = []
+  end
+  @tax[:prices].push ({:"#{clients.gsub(/\s+/, '')}" => prices_collect})
+
+  Exhibition.find_by_name(exhib_name).update_attributes(tax: @tax.to_json)
+end
+
+Then(/^"(.*?)" should be enrolled for "(.*?)"$/) do |dog_name, exhibition_name|
+
+  @enrolment = Enrolment.find_by(dog_id: Dog.find_by(name: "#{dog_name}").id,
+                                 exhibition_id: Exhibition.find_by(name: "#{exhibition_name}").id)
+  @enrolment.should_not be_nil
+
+
+  puts @enrolment.to_yaml
+end
+
+Given(/^I have "(.*?)" enrolled in "(.*?)"$/) do |dog_name, exhibition_name|
+
+
+  puts @enrolment.to_yaml
+  puts Enrolment.count
+  #Enrolment.where(dog_id: Dog.find_by(name: "#{dog_name}").id).
+  #           where(exhibition_id: Exhibition.find_by(name: "#{exhibition_name}").id).should be_kind_of(Enrolment)
+end

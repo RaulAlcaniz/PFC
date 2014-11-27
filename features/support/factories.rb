@@ -47,6 +47,11 @@ FactoryGirl.define do
     exhib.end_date DateTime.now + 2.hour
   end
 
+  factory :enrolment do |enrolment|
+    enrolment.dog_id :dog_id
+    enrolment.exhibition_id :exhibition_id
+  end
+
   sequence :name do |n|
     "name no defined ##{n}"
   end

@@ -5,17 +5,17 @@
   <li><%= link_to 'Edit exhibition', edit_exhibition_path(@exhibition) %></li>
   <li><%= link_to 'Delete exhibition', @exhibition, method: :delete, data: {confirm: 'Are you sure you want to delete this Exhibition'} %></li>
   </ul>
-  <%= button_to 'Inscribe a new dog', exhibitions_inscribe_dog_path(@exhibition)%>
+  <%= button_to 'Inscribe a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%>
+
 
   <h2><%= @exhibition.name %></h2>
-  <% description = 'Description: ' + @exhibition.description %>
+  <% description = 'Description:<br> ' + @exhibition.description %>
   <% start = 'Start date: ' + @exhibition.start_date.strftime('%b %e, %Y - %H:%M') %>
   <% end_date = 'End date: ' + @exhibition.end_date.strftime('%b %e, %Y - %H:%M') %>
 
   <%= simple_format( description ) %>
   <%= simple_format( start ) %>
   <%= simple_format( end_date ) %>
-
-
+  <%#=  simple_format("#{@xm}") %>
 
 </div>

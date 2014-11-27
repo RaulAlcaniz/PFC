@@ -1,0 +1,40 @@
+<%= form_for [@exhibition, @enrolment] do |f|%>
+    <%# @enrolment.errors.full_messages.each do |msg| %>
+        <p><%#= msg %></p>
+    <%# end %>
+    <% @enrolment.errors.each do |att, msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p>
+        <%= f.label :dog %>
+        <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id), prompt: 'Select the dog...' %>
+    </p>
+    <p>
+        <% classes_to_select = []
+           JSON.parse(@exhibition.tax)['groups'].each do |groups|
+             groups['classes'].each { |classes| classes_to_select << classes}
+           end
+        %>
+        <%= f.label :class %>
+        <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}) %>
+    </p>
+    <p>
+        <%= f.check_box :partner %>
+        <%= f.label(:partner, 'Partner') %>
+    </p>
+
+    <!--div id="PaymentDiv" <#% if !Enrolment.where(dog_id: @enrolment.dog_id).
+            where(dog_class: @enrolment.dog_class).
+            first %> style='display:none;' <%# else %> style='display:block;' <%# end %> >
+      <%#= f.label :pepito
+      %>
+    </div!-->
+
+    <div id="PaymentDiv" <% if @enrolment.dog_id == nil || @price.to_f < 0 %> style='display:none;' <% else %> style='display:block;' <% end %> >
+      <%= f.label 'Price:' %>
+      <%= label_tag :price, "#{number_with_precision(@price.to_f, :precision => 2)} €" %>
+      <%= f.hidden_field :price, :value => @price %>
+    </div>
+
+    <%= f.submit %>
+<% end %>

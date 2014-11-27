@@ -6,10 +6,6 @@ Given(/^there are sections for this group:$/) do |table|
   end
 end
 
-#Given(/^there is a section called "(.*?)"$/) do |name|
-#  @section = FactoryGirl.create(:section, name: name)
-#end
-
 Given(/^there is a section which description is "(.*?)"$/) do |description|
   @section = FactoryGirl.create(:section, description: description)
 end

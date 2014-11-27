@@ -45,7 +45,7 @@ Feature: Enrolling a dog into a exhibition
       | J. I. O. W. CH. | 1st dog           | 30.00              | 37.50              | 43.50              |
       | J. I. O. W. CH. | 2nd dog           | 25.00              | 32.00              | 37.00              |
       | J. I. O. W. CH. | 3rd and following | 20.00              | 25.00              | 29.00              |
-      | Veteran         | 1st dog           | 15.00              | 18.75              | 21.75              |
+      | Veteran         | 1st dog           | 15.00              | 18.70              | 21.75              |
       | Veteran         | 2nd dog           | 12.50              | 16.00              | 18.50              |
       | Veteran         | 3rd and following | 10.00              | 12.50              | 14.50              |
       | Puppy           | 1st dog           | 21.00              | 27.00              | 31.00              |
@@ -57,25 +57,26 @@ Feature: Enrolling a dog into a exhibition
     Given I am on the exhibitions page
     And I follow "Exp. Canina de Cieza"
     And I press "Inscribe a new dog"
-    Then I should be on the "inscribe dog" page
 
   @actual
   Scenario: Enroll a first dog into a exhibition which I'm partner
     Given today is "10-02-2014"
-    When I select "Snoopy" from "Dogs"
-    And I select "Champion Class" from "Class"
+    When I select "Snoopy" from "enrolment_dog_id"
+    And I select "Champion" from "enrolment_dog_class"
     And I check "Partner"
+    When I press "Create Enrolment"
     Then I should see "Price:" and "24.00"
-    When I press "Save this dog"
-    Then I should be on the "exhibition dog" page
-    And I should see "Snoopy" and "Champion Class"
+    When I press "Create Enrolment"
+    Then "Snoopy" should be enrolled for "Exp. Canina de Cieza"
+    Then I should be on the enrolments page for "Exp. Canina de Cieza"
+    And I should see "Snoopy" and "Champion"
     And I should see "24.00"
-    And I should see "Total" and "24.00"
+    And I should see "TOTAL" and "24.00"
 
-  @pending
+  @actual
   Scenario: Enroll a second dog into a exhibition which I'm partner
     Given today is "6-03-2014"
-    Given I have "Snoopy" added in "Exp. Canina de Cieza"
+    Given I have "Snoopy" enrolled in "Exp. Canina de Cieza"
     When I select "Scooby Doo" from "Dogs"
     And I select "Open Class" from "Class"
     And I check "Partner"
