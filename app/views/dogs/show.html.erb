@@ -1,5 +1,4 @@
 <div id="dogs" >
-  <h1>dogs#show. Find me in app/views/dogs/show.html.erb</h1>
 
   <h2><%= @dog.name %></h2>
 
@@ -11,6 +10,10 @@
   </ul>
 
   <table id="dogs">
+    <tr>
+      <td>Name:</td>
+      <td><%= @dog.name %></td>
+    </tr>
     <tr>
       <td>Sire:</td>
       <td><%= @dog.sire %></td>

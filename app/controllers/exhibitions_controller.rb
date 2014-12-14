@@ -11,18 +11,6 @@ class ExhibitionsController < ApplicationController
     @exhibitions = Exhibition.all
   end
 
-  #def show
-  #
-  #  data = [@exhibition.prices_hash]
-  #  @xm = Builder::XmlMarkup.new(:indent => 2)
-  #  @xm.table {
-  #    @xm.tr { data[0].keys.each { |key| @xm.th(key)}}
-  #    data.each { |row| @xm.tr { row.values.each { |value| @xm.td(value)}}}
-  #  }
-  #
-  #  #get_prices_table @exhibition.prices_hash
-  #end
-
   def create
     @exhibition = Exhibition.new(exhibition_params)
     if @exhibition.save
@@ -61,8 +49,4 @@ class ExhibitionsController < ApplicationController
   def exhibition_params
     params.require(:exhibition).permit(:name, :description, :start_date, :end_date)
   end
-
-  #def get_prices_table (prices)
-  #
-  #end
 end

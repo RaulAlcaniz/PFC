@@ -4,6 +4,10 @@ Given(/^there are exhibitions with these entries:$/) do |table|
   table.hashes.map{|hash| FactoryGirl.create(:exhibition, hash)}
 end
 
+Given(/^there is an exhibition called "(.*?)"$/) do |name|
+  @exhibition = FactoryGirl.create(:exhibition, name: name)
+end
+
 When(/^the exhibitions page is visited$/) do
   visit 'exhibitions'
 end
@@ -13,11 +17,6 @@ Then(/^the exhibitions page should content:$/) do |expected_table|
   actual_table = rows.map{ |row| row.all('th, td').map{ |cell| cell.text} }
   expected_table.diff!(actual_table)
 end
-
-Given(/^there is an exhibition called "(.*?)"$/) do |name|
-  @exhibition = FactoryGirl.create(:exhibition, name: name)
-end
-
 
 def get_abbreviations(text)
   text.strip!
@@ -75,12 +74,7 @@ Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_n
   @groups = Hash.new
   @groups['Exp. Canina de Cieza'] = grouped_classes
 
-
   prices_collect = prices_collect.map {|key, value| {key=> value}}
-
-  #prices_collect.each do |k,v|
-  #  puts "#{k} ====> #{v}"
-  #end
 
   if not @tax
     @tax = {:groups  => @groups['Exp. Canina de Cieza']}
@@ -90,23 +84,4 @@ Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_n
   @tax[:prices].push ({:"#{clients.gsub(/\s+/, '')}" => prices_collect})
 
   Exhibition.find_by_name(exhib_name).update_attributes(tax: @tax.to_json)
-end
-
-Then(/^"(.*?)" should be enrolled for "(.*?)"$/) do |dog_name, exhibition_name|
-
-  @enrolment = Enrolment.find_by(dog_id: Dog.find_by(name: "#{dog_name}").id,
-                                 exhibition_id: Exhibition.find_by(name: "#{exhibition_name}").id)
-  @enrolment.should_not be_nil
-
-
-  puts @enrolment.to_yaml
-end
-
-Given(/^I have "(.*?)" enrolled in "(.*?)"$/) do |dog_name, exhibition_name|
-
-
-  puts @enrolment.to_yaml
-  puts Enrolment.count
-  #Enrolment.where(dog_id: Dog.find_by(name: "#{dog_name}").id).
-  #           where(exhibition_id: Exhibition.find_by(name: "#{exhibition_name}").id).should be_kind_of(Enrolment)
 end

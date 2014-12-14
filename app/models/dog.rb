@@ -6,13 +6,16 @@ class Dog < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # Months between today and dog date of birth
   def how_many_months(date1, date2)
     (date2.year - date1.year) * 12 + date2.month - date1.month - (date2.day >= date1.day ? 0 : 1)
   end
 
   define_method('what_classes?'){ |date|
+    # Months between today and the date of birth of the dog
     months = how_many_months((self.date_of_birth).to_datetime,DateTime.parse(date))
-    classes=['Working']
+
+    classes=['Working', 'Couple']
     [
         ['Baby',3,5],
         ['Puppy',5,9],
@@ -26,40 +29,5 @@ class Dog < ActiveRecord::Base
       classes << 'Champion' if self.titles != ''
       classes
   }
-
-=begin  attr_accessor :dogable_variety, :dogable_breed, :dogable_subvariety
-
-  def dogable_variety
-    self.dogable.id if self.dogable.is_a? Variety
-  end
-
-  def dogable_breed
-    self.dogable.id if self.dogable.is_a? Breed
-  end
-
-  def dogable_subvariety
-    self.dogable.id if self.dogable.is_a? Subvariety
-  end
-
-  protected
-  def assign_dogable
-    if !@dogable_variety.blank? && !@dogable_subvariety.blank? && !@dogable_breed.blank?
-      errors.add(:dogable, "can't have both a domain and a service")
-    end
-
-    unless @dogable_breed.blank?
-      self.dogable = Breed.find(@dogable_breed)
-    end
-
-    unless @dogable_variety.blank?
-      self.dogable = Variety.find(@dogable_variety)
-    end
-
-    unless @dogable_subvariety.blank?
-      self.dogable = Subvariety.find(@dogable_subvariety)
-    end
-  end
-=end
-
 
 end

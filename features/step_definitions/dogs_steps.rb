@@ -49,8 +49,6 @@ Given(/^"(.*?)" breed is "(.*?)"( with "(.*?)" variety)?( and "(.*?)" subvariety
         Variety.find_by_name(variety_name) ||
         Breed.find_by_name!(breed)
     dog.save!
-  else
-    fail(ArgumentError.new('Syntax Error!'))
   end
 end
 

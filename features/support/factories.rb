@@ -48,8 +48,10 @@ FactoryGirl.define do
   end
 
   factory :enrolment do |enrolment|
-    enrolment.dog_id :dog_id
+
+    enrolment.dog_id '1'
     enrolment.exhibition_id :exhibition_id
+    enrolment.price :price
   end
 
   sequence :name do |n|

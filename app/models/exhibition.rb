@@ -9,11 +9,7 @@ class Exhibition < ActiveRecord::Base
   has_many :enrolments
   has_many :dogs, :through => :enrolments
 
-  #def prices_hash
-  #  JSON.parse(tax) if tax
-  #end
-
-  def partners_prices(day, dog_class, type_of_partner)
+  def exhibition_prices(day, dog_class, type_of_partner)
     group = what_group_has "#{dog_class}"
     return 'ERROR: There is no entries for this dog class' if group == nil
     entry = -1

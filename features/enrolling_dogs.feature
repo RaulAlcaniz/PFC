@@ -1,25 +1,26 @@
 @time_travel
-Feature: Enrolling a dog into a exhibition
-  In order to enroll a dog to a exhibition
+Feature: Enrolling a dog in an exhibition
+  In order to enroll a dog to an exhibition
   As a user
   I want to add it easily
 
   Background:
+    Given today is "10-12-2013"
     Given there are the following users:
       | email             | password |
       | user@testing.com  | password |
     And I am signed in as "user@testing.com"
 
     Given "user@testing.com" is owner for some dogs:
-      | Name       | Date of birth | Sire | Dam   | Sex  | Titles           |
-      | Snoopy     | 07/05/2010    | Rex  | Missy | Male | PORTO WINNER Jr. |
-      | Scooby Doo | 27/01/2008    | Skip | Peggy | Male |                  |
-#    And "Snoopy" breed is "Australian Kelpie"
-#    And "Scooby Doo" breed is "Dachshund"
+      | Name       | Date of birth | Sire | Dam   | Sex    | Titles           |
+      | Snoopy     | 07/05/2010    | Rex  | Missy | Male   | PORTO WINNER Jr. |
+      | Scooby Doo | 27/01/2008    | Skip | Peggy | Male   |                  |
+      | Pancho     | 27/01/2008    | Skip | Peggy | Male   |                  |
+      | Lassie     | 02/02/2008    | Rolf | Linda | Female |                  |
 
     Given there are exhibitions with these entries:
       | Name                 | Description     | Start date     | End date       |
-      | Exp. Canina de Cieza | www.example.org | Sep 1, 2015    | Sep 3, 2015    |
+      | Exp. Canina de Cieza | www.example.org | Sep 1, 2014    | Sep 3, 2014    |
     Given there are these entry deadlines for "Exp. Canina de Cieza":
       | Name               | Start date | End date   |
       | 1st entry deadline | 08-01-2014 | 22-02-2014 |
@@ -58,8 +59,8 @@ Feature: Enrolling a dog into a exhibition
     And I follow "Exp. Canina de Cieza"
     And I press "Inscribe a new dog"
 
-  @actual
-  Scenario: Enroll a first dog into a exhibition which I'm partner
+  @done
+  Scenario: Enrolling a first dog in an exhibition which I'm partner
     Given today is "10-02-2014"
     When I select "Snoopy" from "enrolment_dog_id"
     And I select "Champion" from "enrolment_dog_class"
@@ -68,36 +69,92 @@ Feature: Enrolling a dog into a exhibition
     Then I should see "Price:" and "24.00"
     When I press "Create Enrolment"
     Then "Snoopy" should be enrolled for "Exp. Canina de Cieza"
-    Then I should be on the enrolments page for "Exp. Canina de Cieza"
+    And I should be on the enrolments page for "Exp. Canina de Cieza"
+    And I should see "Inscription has been created"
     And I should see "Snoopy" and "Champion"
     And I should see "24.00"
     And I should see "TOTAL" and "24.00"
 
-  @actual
-  Scenario: Enroll a second dog into a exhibition which I'm partner
-    Given today is "6-03-2014"
-    Given I have "Snoopy" enrolled in "Exp. Canina de Cieza"
-    When I select "Scooby Doo" from "Dogs"
-    And I select "Open Class" from "Class"
+  @done
+  Scenario: Enrolling a fourth dog in an exhibition which I'm partner
+    Given I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
+    Given I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "06-03-2014"
+    Given I have "Pancho" enrolled in "Exp. Canina de Cieza" in "Working" class on "06-03-2014"
+    And today is "6-03-2014"
+
+    When I select "Lassie" from "enrolment_dog_id"
+    And I select "Open" from "enrolment_dog_class"
     And I check "Partner"
-    Then I should see "Price:" and "27.00"
-    When I press "Save this dog"
-    Then I should be on the "exhibition dog" page
-    And I should see "Snoopy" and "Champion Class"
+    When I press "Create Enrolment"
+    Then I should see "Price:" and "21.00"
+    When I press "Create Enrolment"
+
+    Then "Lassie" should be enrolled for "Exp. Canina de Cieza"
+    And I should be on the enrolments page for "Exp. Canina de Cieza"
+    And I should see "Inscription has been created"
+    And I should see "Snoopy" and "Champion"
     And I should see "24.00"
-    And I should see "Scooby Doo" and "Open Class"
+    And I should see "Scooby Doo" and "Open"
     And I should see "27.00"
-    And I should see "Total" and "51.00"
+    And I should see "Pancho" and "Working"
+    And I should see "21.00"
+    And I should see "Lassie" and "Open"
+    And I should see "21.00"
+    And I should see "TOTAL" and "93.00"
+
+  @done
+  Scenario: Enrolling a first dog in an exhibition which I'm not partner
+    Given today is "25-02-2014"
+    When I select "Snoopy" from "enrolment_dog_id"
+    And I select "Champion" from "enrolment_dog_class"
+    And I uncheck "Partner"
+    When I press "Create Enrolment"
+    Then I should see "Price:" and "37.50"
+    When I press "Create Enrolment"
+    Then "Snoopy" should be enrolled for "Exp. Canina de Cieza"
+    And I should be on the enrolments page for "Exp. Canina de Cieza"
+    And I should see "Inscription has been created"
+    And I should see "Snoopy" and "Champion"
+    And I should see "37.50"
+    And I should see "TOTAL" and "37.50"
 
   @pending
-  Scenario: Enroll a first dog into a exhibition which I'm not partner
-    Given today is "25-02-2014"
-    When I select "Snoopy" from "Dogs"
-    And I select "Champion Class" from "Class"
+  Scenario: Enrolling a dog 2 times selecting couple class
+
+
+  @done
+  Scenario: Enrolling a dog 2 times in an exhibition for not couple class is bad
+    Given I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
+    When I select "Snoopy" from "enrolment_dog_id"
+    And I select "Open" from "enrolment_dog_class"
+    And I check "Partner"
+    When I press "Create Enrolment"
+    Then I should see "Inscription has not been created"
+    And I should see "Your dog has already been enrolled in this exhibition"
+
+  @done
+  Scenario: Not select a dog that I want to enroll is bad
+    Given I select "Select the dog..." from "enrolment_dog_id"
+    When I press "Create Enrolment"
+    Then I should see "Inscription has not been created"
+    And I should see "You have to select a dog"
+    And "your dog" should not be enrolled for "Exp. Canina de Cieza"
+
+  @done
+  Scenario: Class selected must be correct for your dog
+    When I select "Snoopy" from "enrolment_dog_id"
+    And I select "Puppy" from "enrolment_dog_class"
+    When I press "Create Enrolment"
+    Then I should see "Inscription has not been created"
+    And I should see "Must select a class or your dog is not accepted for this class"
+    And "Snoopy" should not be enrolled for "Exp. Canina de Cieza"
+
+  @done
+  Scenario: Try to enrol a dog out of time is bad
+    Given today is "12-12-2013"
+    When I select "Snoopy" from "enrolment_dog_id"
+    And I select "Champion" from "enrolment_dog_class"
     And I uncheck "Partner"
-    Then I should see "Price:" and "37.50"
-    When I press "Save this dog"
-    Then I should be on the "exhibition dog" page
-    And I should see "Snoopy" and "Champion Class"
-    And I should see "37.50"
-    And I should see "Total" and "37.50"
+    When I press "Create Enrolment"
+    Then I should see "ERROR: Out of time"
+

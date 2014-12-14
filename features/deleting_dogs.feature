@@ -1,4 +1,4 @@
-Feature: Deleting people
+Feature: Deleting dogs
   In order to remove dogs
   As user
   I want to make it disappear

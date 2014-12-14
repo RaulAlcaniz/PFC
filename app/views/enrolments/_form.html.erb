@@ -6,6 +6,7 @@
         <p><%= msg %></p>
     <% end %>
     <p>
+        <%#= puts Dog.order('name ASC').where(person_id: @person.id), 'asd' %>
         <%= f.label :dog %>
         <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id), prompt: 'Select the dog...' %>
     </p>

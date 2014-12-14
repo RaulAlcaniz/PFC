@@ -42,7 +42,7 @@ Feature: Viewing dogs
   Scenario: Viewing a dog
     When I follow "Snoopy"
     Then I should be on the dog page for "Snoopy"
-    And I should see "Snoopy"
+    And I should see "Name" and "Snoopy"
     And I should see "Date of birth" and "07/05/2010"
     And I should see "Sire" and "Rex"
     And I should see "Dam" and "Missy"
