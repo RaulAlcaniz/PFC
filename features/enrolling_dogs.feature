@@ -154,7 +154,6 @@ Feature: Enrolling a dog in an exhibition
     Given today is "12-12-2013"
     When I select "Snoopy" from "enrolment_dog_id"
     And I select "Champion" from "enrolment_dog_class"
-    And I uncheck "Partner"
     When I press "Create Enrolment"
     Then I should see "ERROR: Out of time"
-
+    And "Snoopy" should not be enrolled for "Exp. Canina de Cieza"

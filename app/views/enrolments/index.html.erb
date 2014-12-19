@@ -25,7 +25,11 @@
     </tr>
   </table>
 
-    <%=button_tag(type: 'button') do
-        content_tag(:strong, 'Ask me!')
-    end%>
+  <% form_tag('/payments_path', :method => :post) do %>
+      <label for="payment">Create Payment</label>
+      <%= text_field_tag :payment %>
+      <%= submit_tag 'Submit' %>
+  <% end %>
+  <%= link_to "Create Payment", payments_path(:exhibition_id => @exhibition.id), :class => 'button', :method => :post %>
+  <%#= button_to 'Create Payment', payments_path, :class => 'button', :method => :post  %>
 </div>
