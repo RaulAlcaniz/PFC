@@ -1,14 +1,14 @@
 <%= form_for [@exhibition, @enrolment] do |f|%>
     <%# @enrolment.errors.full_messages.each do |msg| %>
-        <p><%#= msg %></p>
+        <!--<p><%#= msg %></p>-->
     <%# end %>
     <% @enrolment.errors.each do |att, msg| %>
         <p><%= msg %></p>
     <% end %>
     <p>
-        <%#= puts Dog.order('name ASC').where(person_id: @person.id), 'asd' %>
         <%= f.label :dog %>
-        <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id), prompt: 'Select the dog...' %>
+        <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id),{prompt: 'Select the dog...'}, {disabled: @enrolment.disable_select} %>
+        <%= f.hidden_field :dog_id, :value => @enrolment.dog_id if @price.to_f >= 0 %>
     </p>
     <p>
         <% classes_to_select = []
@@ -17,7 +17,8 @@
            end
         %>
         <%= f.label :class %>
-        <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}) %>
+        <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}, {disabled: @enrolment.disable_select}) %>
+        <%= f.hidden_field :dog_class, :value => @enrolment.dog_class if @price.to_f >= 0 %>
     </p>
     <p>
         <%= f.check_box :partner %>

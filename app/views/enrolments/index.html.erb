@@ -25,8 +25,8 @@
     </tr>
   </table>
 
-  <% form_tag('/payments_path', :method => :post) do %>
-      <label for="payment">Create Payment</label>
+  <%= form_tag('/payments_path', :method => :post) do %>
+      <label for="payment">Upload </label>
       <%= text_field_tag :payment %>
       <%= submit_tag 'Submit' %>
   <% end %>
