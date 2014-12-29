@@ -26,6 +26,9 @@ gem 'spring',        group: :development
 # Gema para los usuarios
 gem 'devise', '3.2.4'
 
+# Carrierwave para subida de ficheros
+gem 'carrierwave'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'

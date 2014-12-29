@@ -40,4 +40,4 @@ Feature: Creating payments
   Scenario: Creating payments
     When I press "Create Payment"
     Then the payment should be created for "Snoopy" and "Scooby Doo" for the amount of "43.00"
-    Then I should see "Payment has been created. Pay now the quantity and upload your checkout receipt"
+    Then I should see "Payment has been created. Pay now the quantity and upload your bank receipt"

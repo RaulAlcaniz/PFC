@@ -10,11 +10,15 @@ class EnrolmentsController < ApplicationController
 
   def index
     @enrolments = []
-
+    @paid_enrolments = []
     @exhibition.enrolments.find_all{|enrolment|
-      @person.dogs.each{|dog| @enrolments << enrolment if dog.id == enrolment.dog_id}
+      @person.dogs.each{|dog| @enrolments << enrolment if (dog.id == enrolment.dog_id and !enrolment.payment_id)}
     }
     @enrolments_price = @enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
+
+    @exhibition.enrolments.find_all{|enrolment|
+      @person.dogs.each{|dog| @paid_enrolments << enrolment if (dog.id == enrolment.dog_id and enrolment.payment_id)}
+    }
 
   end
 
@@ -42,7 +46,6 @@ class EnrolmentsController < ApplicationController
   end
 
   def destroy
-
     if @enrolment.destroy
       update_price
       flash[:notice] = 'Enrolment has been deleted.'
@@ -52,7 +55,6 @@ class EnrolmentsController < ApplicationController
   end
 
   private
-
   def set_exhibition
     @exhibition = Exhibition.find(params[:exhibition_id])
   end
@@ -99,17 +101,13 @@ class EnrolmentsController < ApplicationController
 
   def update_price
     date = @enrolment.created_at.strftime('%d/%m/%Y')
-    puts date
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'nopartners') if @enrolment.partner == 0
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'partners') if @enrolment.partner == 1
-    puts prices
     grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)
     owner_id = @enrolment.dog_owner
     Enrolment.order(:created_at).find_all{|enrolment| enrolment.dog_owner == owner_id}.
         find_all{|enrolment| grouped_classes.include? "#{enrolment.dog_class}"}.
         each_with_index{|enrolment, index|
-      puts prices
-      puts index
       enrolment.update_attribute(:price, prices[index])  if index < prices.count
       enrolment.update_attribute(:price, prices.last)  if index >= prices.count
     }

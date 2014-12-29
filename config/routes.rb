@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
 
-  resources :payments, only: [:create]
+  resources :payments, only: [:new, :create]
+
+  # resources :enrolments, only: [:new, :create, :index, :destroy] do
+  #   resources :payments, only: [:new, :create]
+  # end
 
   resources :exhibitions do
     resources :enrolments, only: [:new, :create, :index, :destroy]

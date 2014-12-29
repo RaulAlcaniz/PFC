@@ -1,0 +1,15 @@
+<%= form_for [@payment] do |f|%>
+    <% @payment.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+    <p> Upload your bank receipt for <b> <%=  @dogs.to_sentence  %> </b>
+      enrolled in: <b> <%= @exhibition.name %> </b>
+      for the amount of: <b><%= number_with_precision(@price.to_f, :precision => 2) %> €</b>
+    </p>
+    <p>
+        <%= f.text_area(:comment, cols: 20, rows: 5, placeholder: 'Do you have any comment on this?') %>
+    </p>
+    <%= hidden_field_tag :exhibition_id, @exhibition.id %>
+    <%= f.hidden_field :amount, :value => @price %>
+    <%= f.submit%>
+<% end %>
