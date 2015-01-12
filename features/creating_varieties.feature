@@ -29,7 +29,7 @@ Feature: Creating varieties
     And I should be on the variety page for "Black with rust red markings"
 
   @done
-  Scenario: Creating a variety without a name
+  Scenario: Creating a variety without a name is bad
     When I fill in "Name" with ""
     And I press "Create Variety"
     Then I should see "Variety has not been created."

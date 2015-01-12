@@ -9,17 +9,31 @@ class EnrolmentsController < ApplicationController
   end
 
   def index
-    @enrolments = []
+    @unpaid_enrolments = []
     @paid_enrolments = []
-    @exhibition.enrolments.find_all{|enrolment|
-      @person.dogs.each{|dog| @enrolments << enrolment if (dog.id == enrolment.dog_id and !enrolment.payment_id)}
-    }
-    @enrolments_price = @enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
+    @enrolments_index = []
+    @out_of_time = false
 
     @exhibition.enrolments.find_all{|enrolment|
-      @person.dogs.each{|dog| @paid_enrolments << enrolment if (dog.id == enrolment.dog_id and enrolment.payment_id)}
+      @person.dogs.each{|dog|
+        if (dog.id == enrolment.dog_id and !enrolment.payment_id and
+            !((@exhibition.exhibition_prices enrolment.created_at.strftime('%d/%m/%Y'), enrolment.dog_class, 'nopartners').is_a? String))
+          @unpaid_enrolments << enrolment if (Date.today <= @exhibition.end_date) # Enrolments not payed at the end of the exhibition are not displayed
+          @out_of_time = true if (@exhibition.exhibition_prices Date.today.strftime('%d/%m/%Y'), enrolment.dog_class, 'nopartners').include? 'ERROR'
+        end   #if ((Date.today - enrolment.created_at.to_date).to_i < 15)
+      }
     }
 
+    @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
+
+    @enrolments_index = @exhibition.enrolments.group(:payment_id).collect(&:id)
+
+    @exhibition.enrolments.order('payment_id').order('created_at DESC').
+        where(payment_id: @exhibition.enrolments.group(:payment_id).
+                  collect(&:payment_id)).find_all{|enrolment|
+                    @person.dogs.each{|dog|
+                      @paid_enrolments << enrolment if (dog.id == enrolment.dog_id and enrolment.payment_id)}
+    }
   end
 
   def create
@@ -46,12 +60,19 @@ class EnrolmentsController < ApplicationController
   end
 
   def destroy
-    if @enrolment.destroy
-      update_price
-      flash[:notice] = 'Enrolment has been deleted.'
-      redirect_to exhibition_enrolments_path
-    else
-    end
+     # begin
+     #   update_price
+     # rescue Exception => ex
+     #   flash[:alert] = 'This enrolment can\'t be removed. Contact with the webmaster'
+     #   redirect_to exhibition_enrolments_path
+     #   return
+     # end
+     if @enrolment.destroy
+       update_price
+       flash[:notice] = 'Enrolment has been deleted.'
+       redirect_to exhibition_enrolments_path
+     else
+     end
   end
 
   private
@@ -89,8 +110,8 @@ class EnrolmentsController < ApplicationController
       prices = (@exhibition.exhibition_prices today, @enrolment.dog_class, 'partners') if @enrolment.partner == 1
       raise "#{prices}" if prices.include? 'ERROR'
 
-      number_of_dogs = @enrolment.how_many_dogs_for_this_exhibition(@exhibition.what_classes_has(@enrolment.dog_class), @enrolment.dog_owner)
-
+      number_of_dogs = @enrolment.how_many_dogs_for_this_exhibition(@exhibition.what_classes_has(@enrolment.dog_class),
+                                                                    @enrolment.dog_owner, @exhibition.id)
       if number_of_dogs >= prices.count
         @price = prices.last
       else
@@ -101,12 +122,17 @@ class EnrolmentsController < ApplicationController
 
   def update_price
     date = @enrolment.created_at.strftime('%d/%m/%Y')
+
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'nopartners') if @enrolment.partner == 0
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'partners') if @enrolment.partner == 1
+
+    raise "#{prices}" if prices.include? 'ERROR'
+
     grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)
     owner_id = @enrolment.dog_owner
     Enrolment.order(:created_at).find_all{|enrolment| enrolment.dog_owner == owner_id}.
         find_all{|enrolment| grouped_classes.include? "#{enrolment.dog_class}"}.
+        find_all{|enrolment| enrolment.exhibition_id == @exhibition.id}.
         each_with_index{|enrolment, index|
       enrolment.update_attribute(:price, prices[index])  if index < prices.count
       enrolment.update_attribute(:price, prices.last)  if index >= prices.count

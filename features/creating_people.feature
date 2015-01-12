@@ -28,14 +28,14 @@ Feature: Creating people
     And I should be on the person page for "Personal name"
 
   @done
-  Scenario: Creating a person without a name
+  Scenario: Creating a person without a name is bad
     When I fill in "Name" with ""
     And I press "Create Person"
     Then I should see "Person has not been created."
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Creating a person with a name already taken
+  Scenario: Creating a person with a name already taken is bad
     Given there is a person called "Personal Name"
     When I fill in "Name" with "Personal name"
     And I press "Create Person"
@@ -43,14 +43,14 @@ Feature: Creating people
     And I should see "Name has already been taken"
 
   @done
-  Scenario: Creating a person with an invalid sex
+  Scenario: Creating a person with an invalid sex is bad
     When I select "Select one..." from "Sex"
     And I press "Create Person"
     Then I should see "Person has not been created."
     And I should see "Sex can't be blank"
 
   @done
-  Scenario: Creating a person with an invalid country
+  Scenario: Creating a person with an invalid country is bad
     When I select "Choose one..." from "Country"
     And I press "Create Person"
     Then I should see "Person has not been created."

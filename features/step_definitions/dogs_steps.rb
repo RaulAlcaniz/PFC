@@ -52,10 +52,10 @@ Given(/^"(.*?)" breed is "(.*?)"( with "(.*?)" variety)?( and "(.*?)" subvariety
   end
 end
 
-Then(/^I should see "(.*?)" and "(.*?)"$/) do |arg1, arg2|
+Then(/^I should( not)? see "(.*?)" and "(.*?)"$/) do |negate, text1, text2|
   steps %Q{
-    Then I should see "#{arg1}"
-    Then I should see "#{arg2}"
+    Then I should#{negate} see "#{text1}"
+    Then I should#{negate} see "#{text2}"
   }
 end
 

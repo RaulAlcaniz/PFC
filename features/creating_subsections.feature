@@ -21,21 +21,21 @@ Feature: Creating subsections
     And I should be on the subsection page for "Subsection 1"
 
   @done
-  Scenario: Creating a subsection without a name
+  Scenario: Creating a subsection without a name is bad
     When I fill in "Name" with ""
     And I press "Create Subsection"
     Then I should see "Subsection has not been created."
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Creating a subsection without a description
+  Scenario: Creating a subsection without a description is bad
     When I fill in "Description" with ""
     And I press "Create Subsection"
     Then I should see "Subsection has not been created."
     And I should see "Description can't be blank"
 
   @done
-  Scenario: Creating an existing subsection
+  Scenario: Creating an existing subsection is bad
     Given there is a subsection which description is "Smoushond"
     When I fill in "Description" with "Smoushond"
     And I press "Create Subsection"

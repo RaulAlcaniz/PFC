@@ -17,7 +17,7 @@ Feature: Viewing sections
     Given I am on the groups page
 
   @done
-  Scenario: Viewing sections for a given group
+  Scenario: Viewing sections for a group
     When I follow "Group I"
     Then I should see "Sheepdogs"
     And I should not see "Large and medium-sized Terriers"

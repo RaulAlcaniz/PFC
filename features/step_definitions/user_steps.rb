@@ -22,7 +22,7 @@ end
 
 Given(/^I am signed in as "(.*?)"$/) do |email|
   @user = User.find_by_email!(email)
-  step("I am signed in as them")
+  step('I am signed in as them')
 end
 
 Then(/^should be created a person called "(.*?)"$/) do |name|

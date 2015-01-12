@@ -1,0 +1,22 @@
+<div id="payments">
+  <%
+     status = 'Status: ' + @payment.status.humanize
+     comment = 'Comment: ' + @payment.comment.humanize
+     dogs = []
+     @same_payment_dogs.each{|dog| dogs << dog.name}
+     dogs = 'Payment for: ' + dogs.to_sentence
+  %>
+
+  <p><%= simple_format( dogs ) %></p>
+  <p><%= simple_format( status ) %></p>
+  <p><%= simple_format( comment ) %></p>
+  <%= link_to 'View the bank receipt', @payment.receipt_url%>
+  <p> admin siempre debe ver el update</p>
+  <% if !@payment.accepted? and !@out_of_time %>
+      <p><%= link_to 'Edit Payment', edit_payment_path(payment_id: @payment.id)%></p>
+  <% end %>
+  <% if @out_of_time %>
+    <p><b>The exhibition is already finished.</b></p>
+  <% end %>
+
+</div>

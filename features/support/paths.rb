@@ -41,10 +41,14 @@ module NavigationHelpers
       when /the enrolments page for "([^\"]*)"/
         exhibition = Exhibition.find_by_name!($1)
         exhibition_enrolments_path(exhibition)
-
-      #when /my profile page/
-       # user_path(User.find_by_name!($1))
-
+      when /my profile page/
+        person_path((User.find_by_email!(@user.email)))
+      when /the payment page for "([^\"]*)"/
+        dog = ($1).gsub(/and/,',').split(',').first.strip
+        enrolment = Enrolment.find_by_dog_id(Dog.find_by_name((dog)).id)
+        payment_path(enrolment.payment_id)
+      when /my exhibitions page/
+        people_my_exhibitions_path((User.find_by_email!(@user.email)))
 
 
 # Add more mappings here.

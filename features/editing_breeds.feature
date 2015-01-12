@@ -42,7 +42,6 @@ Feature: Editing breeds
     Given I am on the subsection page for "Subsection 1.1"
     And I follow "Dobermann"
     And I follow "Edit Breed"
-    # Then I should see una div con el nombre: formulario de nueva raza con campos nombre...?
 
     When I fill in "Name" with "beta 2"
     And I press "Update Breed"
@@ -52,7 +51,7 @@ Feature: Editing breeds
     But I should not see "Australian Terrier" within "#breeds"
 
   @done
-  Scenario: Creating a breed without a name
+  Scenario: Creating a breed without a name is bad
     Given I am on the section page for "Section 2"
     And I follow "Australian Terrier"
     And I follow "Edit Breed"

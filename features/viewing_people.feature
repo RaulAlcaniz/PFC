@@ -23,7 +23,7 @@ Feature: Viewing people
       | Allende  |02/08/1942    | Female | Chile   |
 
   @done
-  Scenario: An admin wants to see one person information
+  Scenario: An admin wants see one person information
     When the people page is visited
     And I follow "Gamoneda"
     Then I should be on the person page for "Gamoneda"

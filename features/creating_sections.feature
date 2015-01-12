@@ -18,7 +18,7 @@ Feature: Creating sections
     And I should be on the section page for "1"
 
   @done
-  Scenario: Creating an existing section
+  Scenario: Creating an existing section is bad
     Given there is a section which description is "Sheepdogs"
     When I fill in "Description" with "Sheepdogs"
     And I press "Create Section"
@@ -26,14 +26,14 @@ Feature: Creating sections
     And I should see "Description has already been taken"
 
   @done
-  Scenario: Creating a section without a name
+  Scenario: Creating a section without a name is bad
     When I fill in "Name" with ""
     And I press "Create Section"
     Then I should see "Section has not been created."
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Creating a section without a description
+  Scenario: Creating a section without a description is bad
     When I fill in "Description" with ""
     And I press "Create Section"
     Then I should see "Section has not been created."

@@ -1,0 +1,40 @@
+<div id="my_exhibitions">
+  <h2>My exhibitions</h2>
+
+
+    <div id="current_exhibitions" >
+      <p>
+          <table id="current_exhibitions", border = 1>
+            <tr>
+                <th colspan="2"> Current exhibitions </th>
+            </tr>
+            <% @exhibitions.each do |exhibition| %>
+                <tr>
+                  <% if exhibition.end_date < Date.today %>
+                      <td><%= exhibition.name %> </td>
+                      <td><%= link_to 'View', exhibition_path(exhibition) %> </td>
+                  <%end%>
+                </tr>
+            <% end %>
+          </table>
+      </p>
+    </div>
+
+    <div id="finished_exhibitions" >
+      <p>
+          <table id="finished_exhibitions", border = 1>
+            <tr>
+              <th colspan="2"> Finished exhibitions </th>
+            </tr>
+            <% @exhibitions.each do |exhibition| %>
+                <tr>
+                  <% if exhibition.end_date > Date.today %>
+                      <td><%= exhibition.name %> </td>
+                      <td><%= link_to 'View', exhibition_path(exhibition) %> </td>
+                  <%end%>
+                </tr>
+            <% end %>
+          </table>
+      </p>
+    </div>
+</div>

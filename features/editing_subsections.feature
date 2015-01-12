@@ -27,7 +27,7 @@ Feature: Editing Subsections
     But I should not see "3" within "#subsections"
 
   @done
-  Scenario: Creating an existing subsection
+  Scenario: Creating an existing subsection is bad
     Given there is a subsection which description is "Pinscher"
 
     When I fill in "Description" with "Pinscher"
@@ -36,14 +36,14 @@ Feature: Editing Subsections
     And I should see "Description has already been taken"
 
   @done
-  Scenario: Updating a subsection without a name
+  Scenario: Updating a subsection without a name is bad
     When I fill in "Name" with ""
     And I press "Update Subsection"
     Then I should see "Subsection has not been updated."
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Updating a subsection without a description
+  Scenario: Updating a subsection without a description is bad
     When I fill in "Description" with ""
     And I press "Update Subsection"
     Then I should see "Subsection has not been updated."

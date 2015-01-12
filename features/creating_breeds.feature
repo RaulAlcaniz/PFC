@@ -24,8 +24,6 @@ Feature: Creating breeds
     When I follow "Group III"
     And I follow "Small-sized Terriers"
     And I follow "New Breed"
-    # Then I should see una div con el nombre: formulario de nueva raza con campos nombre...?
-
     When I fill in "Name" with "Terrier Brasileiro"
     And I press "Create Breed"
     Then I should see "Breed has been created."
@@ -37,8 +35,6 @@ Feature: Creating breeds
     And I follow "Pinscher and Schnauzer type"
     And I follow "Pinscher"
     And I follow "New Breed"
-    # Then I should see una div con el nombre: formulario de nueva raza con campos nombre...?
-
     When I fill in "Name" with "Dobermann"
     And I press "Create Breed"
     Then I should see "Breed has been created."

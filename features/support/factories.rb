@@ -48,10 +48,16 @@ FactoryGirl.define do
   end
 
   factory :enrolment do |enrolment|
-
     enrolment.dog_id '1'
     enrolment.exhibition_id :exhibition_id
     enrolment.price :price
+  end
+
+  factory :payment do |payment|
+    payment.status 'unverified'
+    payment.amount :amount
+    payment.comment 'No comment'
+    payment.receipt ActionDispatch::Http::UploadedFile.new(:tempfile => File.new("#{Rails.root}/features/support/attachments/receipt_example.txt"), :filename => 'receipt_example.txt')
   end
 
   sequence :name do |n|

@@ -1,5 +1,7 @@
 class Payment < ActiveRecord::Base
-  states = %w{ verified unverified rejected recent }
+  states = %w{ accepted rejected unverified }
+  validates_presence_of :receipt, message: 'You must select a file to attach.'
+  mount_uploader :receipt, ReceiptUploader
 
   states.each do |state|
     define_method("#{state}?") do
@@ -10,7 +12,7 @@ class Payment < ActiveRecord::Base
       self.update_attribute(:status, state)
     end
   end
-  define_method('status?') do
-    self.status
-  end
+   define_method('states') do
+     states
+   end
 end

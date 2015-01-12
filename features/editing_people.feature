@@ -11,7 +11,6 @@ Feature: Editing People
   @done
   Scenario: Updating a person
     When I fill in "Name" with "Personal Name beta"
-    #And I fill in "Date of birth" with "2/02/2002"
     And I select "1990 January 16" as the person "date_of_birth"
     And I select "Female" from "Sex"
     And I select "Germany" from "Country"
@@ -20,7 +19,7 @@ Feature: Editing People
     And I should be on the person page for "Personal Name beta"
 
   @done
-  Scenario: Updating a person with a name already taken
+  Scenario: Updating a person with a name already taken is bad
     Given there is a person called "Personal Name beta"
     When I fill in "Name" with "Personal Name beta"
     And I press "Update Person"

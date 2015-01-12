@@ -35,17 +35,6 @@ end
 Given(/^there are these entry deadlines for "(.*?)":$/) do |exhib_name, table|
   table.map_headers!('Name' => :name, 'Start date' => :start_date, 'End date' => :end_date)
   @deadlines = { "#{exhib_name}"  => table.hashes }
-  #puts @deadlines
-  #puts @deadlines["#{exhib_name}"]
-  #@deadlines["#{exhib_name}"].each do |att|
-  #  puts att[:name]
-  #  puts att[:start_date]
-  #  puts att[:end_date]
-  #end
-
-  #@deadlines.each do |att|
-  #  puts att['Name']
-  #end
 end
 
 Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_name, prices_table|
@@ -84,4 +73,9 @@ Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_n
   @tax[:prices].push ({:"#{clients.gsub(/\s+/, '')}" => prices_collect})
 
   Exhibition.find_by_name(exhib_name).update_attributes(tax: @tax.to_json)
+end
+
+
+Given(/^"(.*?)" has the same specifications than "(.*?)"$/) do |exhibition1, exhibition2|
+  Exhibition.find_by_name(exhibition1).update_attributes(tax:  Exhibition.find_by_name(exhibition2).tax)
 end

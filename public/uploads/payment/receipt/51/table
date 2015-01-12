@@ -1,0 +1,23 @@
+              <% if enrolment.payment_id and
+                      Payment.find(enrolment.payment_id).receipt_url and
+                      @payments_to_show.include? enrolment.id %>
+                  <td <% if !@payments_to_show.include? enrolment.id%> style="border: 1px solid blue" <% end %>><%= link_to 'View Bank Receipt', Payment.find(enrolment.payment_id).receipt_url%></td>
+              <%end%>
+
+
+
+            <tr>
+              <td><%= Dog.find(enrolment.dog_id).name %></td>
+              <td><%= enrolment.dog_class %></td>
+              <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
+
+
+              <td> <%= link_to 'View Bank Receipt', Payment.find(enrolment.payment_id).receipt_url if enrolment.payment_id and
+                              Payment.find(enrolment.payment_id).receipt_url
+
+            </tr>
+
+
+              <td rowspan=<%="#{enrolment.enrolments_with_same_payment}"%> <% if @enrolments_index.include? enrolment.id%>, style="border: 1px solid blue" <% end %>><%= link_to 'View Bank Receipt', Payment.find(enrolment.payment_id).receipt_url if enrolment.payment_id and
+                              Payment.find(enrolment.payment_id).receipt_url and
+                              @enrolments_index.include? enrolment.id %></td>

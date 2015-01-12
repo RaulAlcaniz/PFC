@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DoggyHouse</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+      <title>DoggyHouse</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
 
-<nav>
-  <%# if user_signed_in? %>
-      Signed in as <%= current_user.try :email %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <%# else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>
-  <%# end %>
+        <nav>
+          <% if user_signed_in? %>
+              Signed in as <%= current_user.try :email %>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              <%= link_to 'Profile', current_user.person %>
+          <% else %>
+              <%= link_to 'Sign up', new_user_registration_path %>
+              <%= link_to 'Sign in', new_user_session_path %>
+          <% end %>
+          <%= link_to 'Home', groups_path %>
+        </nav>
 
-  <% if user_signed_in? %>
-      <%= link_to "Profile", current_user.person %>
-  <% end %>
-</nav>
+        <% flash.each do |key, value| %>
+            <div class="flash" id="<%= key %>">
+              <%= value %>
+            </div>
+        <% end %>
 
-<% flash.each do |key, value| %>
-    <div class="flash" id="<%= key %>">
-      <%= value %>
-    </div>
-<% end %>
+        <p class="notice"><%#= notice %></p>
+        <p class="alert"><%#= alert %></p>
 
-<p class="notice"><%#= notice %></p>
-<p class="alert"><%#= alert %></p>
+        <%= yield %>
 
-<%= yield %>
-
-</body>
+    </body>
 </html>

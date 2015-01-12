@@ -15,6 +15,10 @@
         <td><%= link_to exhibition.name, exhibition_path(exhibition) %></td>
         <td><%= exhibition.start_date.strftime('%b %e, %Y - %H:%M') %></td>
         <td><%= exhibition.end_date.strftime('%b %e, %Y - %H:%M') %></td>
+        <% if user_signed_in? %>
+            <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id) if user_signed_in?%></td>
+        <% end %>
+
       </tr>
   <% end %>
 </table>

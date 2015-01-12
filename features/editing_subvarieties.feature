@@ -35,7 +35,7 @@ Feature: Editing Subvarieties
     But I should not see "Smooth-haired" within "#subvarieties"
 
   @done
-  Scenario: Updating a subvariety without a name
+  Scenario: Updating a subvariety without a name is bad
     When I fill in "Name" with ""
     And I press "Update Subvariety"
     Then I should see "Subvariety has not been updated."

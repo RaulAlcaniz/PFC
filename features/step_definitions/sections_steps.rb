@@ -13,11 +13,3 @@ end
 Then(/^all "(.*?)" for this section should have been removed$/) do |arg|
   @section.send(arg).count.should eq 0
 end
-
-#Given(/^there are some breeds for the section "(.*?)":$/) do |description, table|
-#  number = Section.find_by_description(description).name
-# step "there are some breeds for the section number \"#{number}\":", table(%{
-#     | Name                  |
-#     | Australian Cattle Dog |
-#  })
-#end

@@ -27,7 +27,7 @@ Feature: Creating Subvarieties
     And I should be on the subvariety page for "Smooth-haired"
 
   @done
-  Scenario: Creating a subvariety without a name
+  Scenario: Creating a subvariety without a name is bad
     When I fill in "Name" with ""
     And I press "Create Subvariety"
     Then I should see "Subvariety has not been created."

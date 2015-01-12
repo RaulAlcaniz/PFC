@@ -13,6 +13,8 @@
   <ul>
     <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
     <li><%= link_to 'My dogs', person_dogs_path(@person) %></li>
+    <li><%= link_to 'My enrolments', exhibitions_path %></li>
+    <li><%= link_to 'My exhibitions --------------------> ???', people_my_exhibitions_path(@person) %></li>
     <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
     <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
     <li><%= link_to 'Standards and nomenclature page', groups_path %></li>

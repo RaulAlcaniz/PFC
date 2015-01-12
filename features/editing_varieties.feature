@@ -36,7 +36,7 @@ Feature: Editing Varieties
     But I should not see "Dobermann" within "#varieties"
 
   @done
-  Scenario: Updating a variety without a name
+  Scenario: Updating a variety without a name is bad
     When I fill in "Name" with ""
     And I press "Update Variety"
     Then I should see "Variety has not been updated."

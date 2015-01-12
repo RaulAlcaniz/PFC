@@ -6,7 +6,7 @@
         <p><%= msg %></p>
     <% end %>
     <p>
-        <%= f.label :dog %>
+        <%= f.label :dog_id %>
         <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id),{prompt: 'Select the dog...'}, {disabled: @enrolment.disable_select} %>
         <%= f.hidden_field :dog_id, :value => @enrolment.dog_id if @price.to_f >= 0 %>
     </p>
@@ -16,13 +16,14 @@
              groups['classes'].each { |classes| classes_to_select << classes}
            end
         %>
-        <%= f.label :class %>
+        <%= f.label :dog_class, 'Class' %>
         <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}, {disabled: @enrolment.disable_select}) %>
         <%= f.hidden_field :dog_class, :value => @enrolment.dog_class if @price.to_f >= 0 %>
     </p>
     <p>
-        <%= f.check_box :partner %>
+        <%= f.check_box :partner, disabled: @enrolment.disable_select%>
         <%= f.label(:partner, 'Partner') %>
+        <%= f.hidden_field :partner, :value => @enrolment.partner if @price.to_f >= 0 %>
     </p>
 
     <!--div id="PaymentDiv" <#% if !Enrolment.where(dog_id: @enrolment.dog_id).

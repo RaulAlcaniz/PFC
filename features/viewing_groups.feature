@@ -20,7 +20,7 @@ Feature: Viewing groups
       |Group IX   |Companion and Toy Dogs                             |
 
   @done
-  Scenario: A visit wants see a specific group properties
+  Scenario: Viewing a specific group properties
     When the standards and nomenclature page is visited
     And I follow "Group I"
     Then I should be on the group page for "Group I"

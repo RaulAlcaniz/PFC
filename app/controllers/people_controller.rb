@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :update, :edit, :destroy]
+  before_action :set_person, only: [:show, :update, :edit, :destroy, :my_exhibitions]
+  before_action :set_exhibitions, only:[:my_exhibitions]
 
   def new
     @person = Person.new
@@ -41,6 +42,10 @@ class PeopleController < ApplicationController
   private
   def person_params
     params.require(:person).permit(:name, :date_of_birth, :sex, :country)
+  end
+
+  def set_exhibitions
+     @exhibitions = Exhibition.where(id: (Enrolment.select(:exhibition_id).where(dog_id: Dog.where(person_id: current_user))))
   end
 
   def set_person

@@ -14,12 +14,12 @@
 
     <p>
       <%= f.label :start_date %>
-      <%= f.datetime_select :start_date, start_year: DateTime.now.year %>
+      <%= f.datetime_select :start_date, start_year: Date.current.year %>
     </p>
 
     <p>
       <%= f.label :end_date %>
-      <%= f.datetime_select :end_date, start_year: DateTime.now.year %>
+      <%= f.datetime_select :end_date, start_year: Date.current.year %>
     </p>
 
     <%= f.submit %>

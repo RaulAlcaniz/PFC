@@ -8,8 +8,6 @@ Then(/^"(.*?)" should( not)? be enrolled for "(.*?)"$/) do |dog_name, negate, ex
   end
 end
 
-#When /^as admin I (press|follow|check|uncheck|choose) "([^\"]*)" for (.*) whose (.*) is "([^\"]*)"$/ do |action, whatyouclick, class_name, var_name, value|
-
 When(/^I follow "(.*?)" for "(.*?)" enrolled in "(.*?)" class$/) do |action, dog_name, dog_class|
 
   enrol_id = Enrolment.find_by(dog_id: Dog.find_by_name("#{dog_name}").id, dog_class: dog_class).id
@@ -38,3 +36,32 @@ Given(/^I have "(.*?)" enrolled in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |do
     And I press "Inscribe a new dog"
   }
 end
+
+Then(/^I should see "(.*?)" for the payment of "(.*?)"$/) do |text, dog_names|
+  flag = false
+  dog_names.gsub(/and/,',').split(',').each do |dog_name|
+    Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
+      if Enrolment.where(payment_id: enrolment.id).count  == dog_names.gsub(/and/,',').split(',').count
+        page.all('a', text: "#{text}").each do |link|
+          flag = true if link[:href] == "/payments/#{enrolment.payment_id}?exhibition_id=#{enrolment.exhibition_id}"
+        end
+      end
+    end
+  end
+  flag.should be true
+end
+
+Then(/^I should see "(.*?)" button$/) do |name|
+  find_button(name).should_not be_nil
+end
+
+Given(/^the exhibition "(.*?)" has already finished$/) do |exhibition|
+  (Exhibition.find_by_name exhibition).end_date.should < Date.today
+end
+
+Then(/^the last deadline ended for "(.*?)"$/) do |exhibition|
+  JSON.parse((Exhibition.find_by_name exhibition).tax)['deadlines'].last['end_date'].should < Date.today.strftime('%d/%m/%Y')
+end
+
+
+

@@ -1,0 +1,80 @@
+Given(/^I have( not)? sent the payment of "(.*?)" for "(.*?)" class$/) do |negate, dog_names, dog_classes|
+  amount = 0
+  dog_names.gsub(/and/,',').split(',').each_with_index do |dog_name,index|
+    amount += Enrolment.find_by(dog_id: Dog.find_by_name("#{dog_name.strip}").id,
+                      dog_class: "#{dog_classes.gsub(/and/,',').split(',')[index].strip}").price
+  end
+  payment = FactoryGirl.create(:payment, amount: amount) if not negate
+  dog_names.gsub(/and/,',').split(',').each_with_index do |dog_name,index|
+    if negate
+      Enrolment.find_by(dog_id: Dog.find_by_name("#{dog_name.strip}").id,
+                        dog_class: "#{dog_classes.gsub(/and/,',').split(',')[index].strip}").
+          payment_id.should be_nil
+    else
+      Enrolment.find_by(dog_id: Dog.find_by_name("#{dog_name.strip}").id,
+                        dog_class: "#{dog_classes.gsub(/and/,',').split(',')[index].strip}").
+          update_attributes(payment_id: payment.id)
+    end
+  end
+end
+
+Then(/^I can't remove both enrolments$/) do
+  step 'I am on the enrolments page for "Exp. Canina de Cieza"'
+  step 'I should not see "Remove"'
+end
+
+When(/^I follow "(.*?)" for "(.*?)"$/) do |text, dog_names|
+  dog_names.gsub(/and/,',').split(',').each do |dog_name|
+    Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
+      if Enrolment.where(payment_id: enrolment.id).count  == dog_names.gsub(/and/,',').split(',').count
+        page.all('a', text: "#{text}").each do |link|
+          if text.include? 'Payment'
+            link.click if link[:href] == "/payments/#{enrolment.payment_id}?exhibition_id=#{enrolment.exhibition_id}"
+          else
+            link.click if link[:href] == "/payments/#{enrolment.payment_id}/#{Payment.find{enrolment.payment_id}.receipt}"
+          end
+        end
+      end
+    end
+  end
+end
+
+Then(/^I should see the "(.*?)" for "(.*?)"$/) do |action, dog_names|
+  puts current_path
+  dog_names.gsub(/and/,',').split(',').each do |dog_name|
+    Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
+      if Enrolment.where(payment_id: enrolment.id).count  == dog_names.gsub(/and/,',').split(',').count
+        if action.include? 'Payment'
+          current_path.should == "/payments/#{enrolment.payment_id}?exhibition_id=#{enrolment.exhibition_id}"
+        else
+          puts 'pepepep'
+        end
+
+      end
+    end
+  end
+end
+
+# When(/^I follow "(.*?)" for "(.*?)"$/) do |text, exhibition_name|
+#   page.all('a', text: "#{text}").each do |link|
+#     link.click if link[:href] == "/exhibitions/#{Exhibition.find_by_name(exhibition_name).id}/enrolments"
+#   end
+# end
+
+
+
+        enrolment = Enrolment.find_by_dog_id(Dog.find_by_name(($1)).id)
+        payment_path(enrolment.payment_id)
+
+
+        dog_names = ($1)
+        dog_names.gsub(/and/,',').split(',').each do |dog_name|
+          Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
+            if Enrolment.where(payment_id: enrolment.id).count  == dog_names.gsub(/and/,',').split(',').count
+        # name = ($1).gsub(/and/,',').split(',').first
+              puts enrolment.payment_id
+              payment_path(enrolment.payment_id)
+            end
+          end
+        end
+

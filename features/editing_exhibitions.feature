@@ -28,21 +28,21 @@ Feature: Editing exhibitions
     And I should see "Exhibition has been updated."
 
   @done
-  Scenario: Update exhibitions without a name is not permitted
+  Scenario: Update exhibitions without a name is bad
     When I fill in "Name" with ""
     And I press "Update Exhibition"
     Then I should see "Exhibition has not been updated."
     And I should see "Name can't be blank"
 
   @done
-  Scenario: Update exhibitions with a start date before today is not permitted
+  Scenario: Update exhibitions with a start date before today is bad
     When I select "Jan 1, 2014" as the exhibition "start_date"
     And I press "Update Exhibition"
     Then I should see "Exhibition has not been updated."
     And I should see "Start date must be after today"
 
   @done
-  Scenario: Update exhibitions with a end date before today is not permitted
+  Scenario: Update exhibitions with a end date before today is bad
     When I select "Jan 1, 2014" as the exhibition "end_date"
     And I press "Update Exhibition"
     Then I should see "Exhibition has not been updated."
