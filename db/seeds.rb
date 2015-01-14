@@ -43,6 +43,7 @@ No se confirmará, quien de antemano no haya sido inscrito en su clase correspon
 
 admin = User.where(email: 'admin@example.com').first_or_create! do |user|
   user.password = 'password'
+  user.admin = true
 end
 admin.confirm!
 

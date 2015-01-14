@@ -63,5 +63,19 @@ Then(/^the last deadline ended for "(.*?)"$/) do |exhibition|
   JSON.parse((Exhibition.find_by_name exhibition).tax)['deadlines'].last['end_date'].should < Date.today.strftime('%d/%m/%Y')
 end
 
+When(/^I try to "(.*?)" the enrolments for "(.*?)" in "(.*?)"$/) do |action, user, exhibition|
+  case action
+    when 'view'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}")
+    when 'add'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/new")
+    when 'delete'
+      page.driver.submit :delete, "people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}", {}
+    when 'update'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}/edit")
+  end
+end
+
+
 
 

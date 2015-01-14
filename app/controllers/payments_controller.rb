@@ -57,7 +57,10 @@ class PaymentsController < ApplicationController
   end
 
   def set_payment
-    @payment = Payment.find(params[:id])
+    @payment = Payment.for(current_user).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+     flash[:alert] = 'The payment you were looking for could not be found.'
+     redirect_to groups_path
   end
 
   def set_exhibition

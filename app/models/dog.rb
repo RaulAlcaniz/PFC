@@ -6,6 +6,11 @@ class Dog < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :for, ->(user) do
+    #user.admin? ? Dog.all :
+    where(person_id: user)
+  end
+
   # Months between 'date1' and 'date2'
   def how_many_months(date1, date2)
     (date2.year - date1.year) * 12 + date2.month - date1.month - (date2.day >= date1.day ? 0 : 1)

@@ -1,16 +1,23 @@
 Feature: Editing Groups
   In order to update a group information
   As a user
-  I want to be able to do that through an interface
+  I want to be able to do that through an interface when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given there is a group called "Group I"
     And I am on the groups page
+
     When I follow "Group I"
     And I follow "Edit group"
 
   @done
-  Scenario: Updating a group
+  Scenario: Updating a group as admin
     When I fill in "Name" with "Group I beta"
     And I fill in "Description" with "Description beta"
     And I press "Update Group"

@@ -26,13 +26,6 @@
         <%= f.hidden_field :partner, :value => @enrolment.partner if @price.to_f >= 0 %>
     </p>
 
-    <!--div id="PaymentDiv" <#% if !Enrolment.where(dog_id: @enrolment.dog_id).
-            where(dog_class: @enrolment.dog_class).
-            first %> style='display:none;' <%# else %> style='display:block;' <%# end %> >
-      <%#= f.label :pepito
-      %>
-    </div!-->
-
     <div id="PaymentDiv" <% if @enrolment.dog_id == nil || @price.to_f < 0 %> style='display:none;' <% else %> style='display:block;' <% end %> >
       <%= f.label 'Price:' %>
       <%= label_tag :price, "#{number_with_precision(@price.to_f, :precision => 2)} €" %>

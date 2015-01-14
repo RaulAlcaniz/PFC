@@ -1,10 +1,15 @@
 Feature: Viewing people
   In order to view people
   As a user
-  I want to see them on the people page
+  I want to see them on the people page when I'm an admin
 
   Background:
-    There are people with a name, a date of birth, a sex and a country
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given there are people with these entries:
       | Name     |Date of birth | Sex    | Country |
       | Gamoneda |30/05/1930    | Male   | Spain   |
@@ -17,10 +22,12 @@ Feature: Viewing people
   Scenario: An admin wants see what people are in the system
     When the people page is visited
     Then people page should content:
-      | Name     |Date of birth | Sex    | Country |
-      | Gamoneda |30/05/1930    | Male   | Spain   |
-      | Morrison |18/02/1931    | Male   | U.S.A   |
-      | Allende  |02/08/1942    | Female | Chile   |
+      | Name              |Date of birth | Sex          | Country      |
+      | admin@testing.com | 01/01/2000   | Not selected | Not selected |
+      | user@testing.com  | 01/01/2000   | Not selected | Not selected |
+      | Gamoneda          | 30/05/1930   | Male         | Spain        |
+      | Morrison          | 18/02/1931   | Male         | U.S.A        |
+      | Allende           | 02/08/1942   | Female       | Chile        |
 
   @done
   Scenario: An admin wants see one person information

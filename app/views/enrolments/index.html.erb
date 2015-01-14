@@ -79,6 +79,8 @@
 
 <div id="enrol_dog" >
   <p>
-    <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%>
+  <% if !User.find(current_user).admin? %>
+        <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%>
+  <% end %>
   </p>
 </div>

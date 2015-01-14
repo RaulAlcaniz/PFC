@@ -1,5 +1,4 @@
 <h1>Exhibitions page</h1>
-
 <ul>
   <li><%= link_to 'New Exhibition', new_exhibition_path %></li>
 </ul>
@@ -16,8 +15,13 @@
         <td><%= exhibition.start_date.strftime('%b %e, %Y - %H:%M') %></td>
         <td><%= exhibition.end_date.strftime('%b %e, %Y - %H:%M') %></td>
         <% if user_signed_in? %>
-            <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id) if user_signed_in?%></td>
+            <% if User.find(current_user).admin? %>
+                <td><%= link_to 'View enrolments', exhibition_enrolments_path(exhibition.id, user: @person)%></td>
+            <% else %>
+                <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id)%></td>
+            <% end %>
         <% end %>
+
 
       </tr>
   <% end %>

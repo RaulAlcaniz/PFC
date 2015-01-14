@@ -1,13 +1,14 @@
 class Enrolment < ActiveRecord::Base
+  belongs_to :payment
+  belongs_to :dog
+  belongs_to :exhibition
+
   classes_not_available = ['Couple', 'Working', 'Group Breeding']
   validate :check_available_classes
   validate :check_class  #Errores de si el perro no ha sido seleccionado, o si la clase no está permitida para un perro
 
   validates_uniqueness_of :dog_id, :scope => :exhibition_id, unless: :skip_validation,
                           :message => 'Your dog has already been enrolled in this exhibition'
-
-  belongs_to :dog
-  belongs_to :exhibition
 
   define_method('class_available?'){|dog_class| classes_not_available.include? dog_class }
 

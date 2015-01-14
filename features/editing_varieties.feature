@@ -1,9 +1,15 @@
 Feature: Editing Varieties
   In order to alter a variety information
   As a user
-  I want a form to edit the variety
+  I want a form to edit the variety when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given there is a group called "Group II"
     And there are sections for this group:
       |Section number|Description                |

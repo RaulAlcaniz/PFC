@@ -2,13 +2,14 @@
 Feature: Creating exhibitions
   In order to create exhibitions
   As a user
-  I want to create them easily
+  I want to create them easily when I'm an admin
 
   Background:
     Given there are the following users:
-      | email             | password |
-      | user@testing.com  | password |
-    And I am signed in as "user@testing.com"
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
 
     Given I am on the exhibitions page
     Given today is "April 15, 2014"

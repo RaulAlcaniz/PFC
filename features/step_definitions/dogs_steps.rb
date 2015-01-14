@@ -7,7 +7,7 @@ end
 
 Given(/^"(.*?)" is an owner for a dog which name is "(.*?)"$/) do |owner, name|
   step "there is a person called \"#{owner}\"" unless Person.find_by_name(owner)
-  @dog = FactoryGirl.create(:dog, name: name, person_id: @person.id)
+  @dog = FactoryGirl.create(:dog, name: name, person_id: Person.find_by_name(owner).id)
 end
 
 Given /^today is "([^"]*)"$/ do |date|
@@ -58,6 +58,21 @@ Then(/^I should( not)? see "(.*?)" and "(.*?)"$/) do |negate, text1, text2|
     Then I should#{negate} see "#{text2}"
   }
 end
+
+When(/^I try to "(.*?)" "(.*?)" for "(.*?)"$/) do |action, dog_name, owner|
+  case action
+    when 'view'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}")
+    when 'add'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/new")
+    when 'delete'
+      page.driver.submit :delete, "people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}", {}
+    when 'update'
+      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}/edit")
+  end
+end
+
+
 
 
 #Then /^"([^"]*)" should be an option for "([^"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|

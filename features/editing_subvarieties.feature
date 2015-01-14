@@ -1,9 +1,16 @@
 Feature: Editing Subvarieties
   In order to alter a subvariety information
   As a user
-  I want a form to edit the subvariety
+  I want a form to edit the subvariety when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+
+    Given I am signed in as "admin@testing.com"
+
     Given there is a group called "Group IV"
     And there are sections for this group:
       |Section number|Description|

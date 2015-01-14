@@ -1,7 +1,9 @@
 class DogsController < ApplicationController
 
+  before_filter :authenticate_user!
   before_action :set_person, only: [:new, :create, :index, :show, :destroy, :edit, :update]
   before_action :set_dog, only: [:show, :destroy, :edit, :update]
+  before_action :authorized_people, :except => [:update_varieties, :update_subvarieties]
 
   def new
     @dog = @person.dogs.new
@@ -132,11 +134,27 @@ class DogsController < ApplicationController
   end
 
   def set_dog
-    @dog = Dog.find(params[:id])
+    if User.find(current_user).admin?
+      @dog = Dog.find(params[:id])
+    else
+      @dog = Dog.for(current_user).find(params[:id])
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You can\'t access to this page.'
+    redirect_to root_path
   end
 
   def dog_params
     params.require(:dog).permit(:name, :titles, :sire, :dam, :sex, :date_of_birth)
+  end
+
+  def authorized_people
+    if @person.user_id != current_user.id
+      raise(ActiveRecord::RecordNotFound) if not User.find(current_user).admin?
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You can\'t access to this page.'
+    redirect_to root_path
   end
 
 end

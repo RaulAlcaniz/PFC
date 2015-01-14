@@ -1,16 +1,22 @@
 Feature: Creating subsections
   In order to create subsections for sections
   As a user
-  I want to be able to follow a section and do it
+  I want to be able to follow a section and do it when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+
+    Given I am signed in as "admin@testing.com"
+
     Given there is a group called "Group II"
     And there are sections for this group:
       |Section number|Description                |
       |Section 1     |Pinscher and Schnauzer type|
     And I am on the section page for "Section 1"
     When I follow "New Subsection"
-   # Then I should see una div con el nombre: formulario de nueva subsección con campos nombre, descripción?
 
   @done
   Scenario: Creating a subsection

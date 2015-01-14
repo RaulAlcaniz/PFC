@@ -1,8 +1,11 @@
 class EnrolmentsController < ApplicationController
+
+  before_filter :authenticate_user!
   before_action :set_exhibition, only: [:new, :create, :index, :destroy]
   before_action :set_enrolment, only: [:destroy]
   before_action :set_person, only: [:new, :create, :index]
   before_action :set_price, only: [:new, :create]
+  before_action :authorized_people
 
   def new
     @enrolment = @exhibition.enrolments.new
@@ -60,13 +63,6 @@ class EnrolmentsController < ApplicationController
   end
 
   def destroy
-     # begin
-     #   update_price
-     # rescue Exception => ex
-     #   flash[:alert] = 'This enrolment can\'t be removed. Contact with the webmaster'
-     #   redirect_to exhibition_enrolments_path
-     #   return
-     # end
      if @enrolment.destroy
        update_price
        flash[:notice] = 'Enrolment has been deleted.'
@@ -81,20 +77,18 @@ class EnrolmentsController < ApplicationController
   end
 
   def set_person
-    #begin
-    #  is_logged?
-    #rescue Exception => ex
-    #  flash[:alert] = ex.message
-    #  @price = -1
-    #  render 'exhibitions/show'
-    #  return
-    #end
-    @person = Person.find_by_user_id(current_user.id)
+    if User.find(current_user).admin?
+      @person = Person.find_by_user_id(params[:user])
+      puts params
+      puts @person.to_yaml
+    else
+      raise(ActiveRecord::RecordNotFound) if params[:user]
+      @person = Person.find_by_user_id(current_user.id)
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You can\'t access to this page.'
+    redirect_to root_path
   end
-
-  #def is_logged?
-  #  raise 'You should be log in to do this action' if current_user == nil
-  #end
 
   def set_enrolment
     @enrolment = Enrolment.find(params[:id])
@@ -140,7 +134,15 @@ class EnrolmentsController < ApplicationController
   end
 
   def enrolment_params
-    #params.permit({enrolment: [:dog_id, :partner]}, :dog_class)
     params.require(:enrolment).permit(:dog_id, :partner, :dog_class, :price)
+  end
+
+  def authorized_people
+    if @person.user_id != current_user.id
+      raise(ActiveRecord::RecordNotFound) if not User.find(current_user).admin?
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You can\'t access to this page.'
+    redirect_to root_path
   end
 end

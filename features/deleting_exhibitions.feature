@@ -1,7 +1,14 @@
 Feature: Deleting exhibitions
   In order to remove exhibitions
   As user
-  I want to make it disappear
+  I want to make it disappear when I'm an admin
+
+  Background:
+  Given there are the following users:
+  | email              | password | admin  |
+  | admin@testing.com  | password | true   |
+  | user@testing.com   | password | false  |
+  Given I am signed in as "admin@testing.com"
 
   @done
   Scenario: Deleting exhibitions

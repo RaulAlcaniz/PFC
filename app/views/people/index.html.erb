@@ -12,12 +12,14 @@
 
   </tr>
   <% @people.each do |person| %>
-      <tr>
-        <td><%= link_to person.name, person_path(person) %></td>
-        <td><%= person.date_of_birth.strftime('%d/%m/%Y') %></td>
-        <td><%= person.sex %></td>
-        <td><%= person.country %></td>
-      </tr>
+      <%# if User.where(id: person.user_id, admin: false, confirmation_token: nil).exists? %>
+          <tr>
+            <td><%= link_to person.name, person_path(person) %></td>
+            <td><%= person.date_of_birth.strftime('%d/%m/%Y') %></td>
+            <td><%= person.sex %></td>
+            <td><%= person.country %></td>
+          </tr>
+      <%# end %>
   <% end %>
 
 </table>

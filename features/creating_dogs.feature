@@ -8,7 +8,8 @@ Feature: Creating dogs
       | email             | password |
       | user@testing.com  | password |
     And I am signed in as "user@testing.com"
-    And I am on the person page for "user@testing.com"
+    And I am on my profile page
+
     Given there are some breeds ordered by name:
       | Name              |
       | Australian Kelpie |

@@ -2,11 +2,15 @@
 Feature: Editing exhibitions
   In order to update a exhibition information
   As a user
-  I want to be able to do that through an interface
-
+  I want to be able to do that through an interface when I'm an admin
 
   Background:
-    There are exhibitions with name, description, and dates for start/end
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given today is "April 7, 2014"
     Given there are exhibitions with these entries:
       | Name                | Description     | Start date          | End date            |

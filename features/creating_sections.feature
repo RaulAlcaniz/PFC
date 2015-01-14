@@ -1,16 +1,23 @@
 Feature: Creating sections
   In order to create sections for groups
   As a user
-  I want to be able to follow a group and do it
+  I want to be able to follow a group and do it when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given there is a group called "Group I"
     And I am on the groups page
+
     When I follow "Group I"
     And I follow "New Section"
 
   @done
-  Scenario: Creating a section
+  Scenario: Creating a section as admin
     When I fill in "Name" with "1"
     And I fill in "Description" with "Sheepdogs"
     And I press "Create Section"

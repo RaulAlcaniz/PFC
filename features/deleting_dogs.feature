@@ -4,8 +4,14 @@ Feature: Deleting dogs
   I want to make it disappear
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | user@testing.com   | password | false  |
+    And I am signed in as "user@testing.com"
+
     Given "user@testing.com" is an owner for a dog which name is "Iris"
     Given "user@testing.com" is an owner for a dog which name is "Sena"
+
     And I am on the dog page for "Iris"
 
   @done

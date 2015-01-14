@@ -1,9 +1,15 @@
 Feature: Creating varieties
   In order to create varieties for some breed
   As a user
-  I want to create them easily
+  I want to create them easily when I'm an admin
 
   Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    And I am signed in as "admin@testing.com"
+
     Given there is a group called "Group II"
     And there are sections for this group:
       |Section number|Description                |

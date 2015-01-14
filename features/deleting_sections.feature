@@ -1,10 +1,17 @@
 Feature: Deleting Sections
   In order to remove sections
   As a user
-  I want to press a button and make it disappear
+  I want to press a button and make it disappear when I'm an admin
+
+  Background:
+    Given there are the following users:
+      | email              | password | admin  |
+      | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+    Given I am signed in as "admin@testing.com"
 
   @done
-  Scenario: Deleting a section with breeds
+  Scenario: Deleting a section with breeds as admin
     Given there is a group called "Group I"
     And there are sections for this group:
       |Section number|Description|
@@ -22,7 +29,7 @@ Feature: Deleting Sections
     And all "breeds" for this section should have been removed
 
   @done
-  Scenario: Deleting a section with subsections
+  Scenario: Deleting a section with subsections as admin
     Given there is a group called "Group II"
     And there are sections for this group:
       |Section number|Description                |
@@ -38,4 +45,3 @@ Feature: Deleting Sections
     And I should be on the group page for "Group II"
     And I should not see "Pinscher and Schnauzer type"
     And all "subsections" for this section should have been removed
-
