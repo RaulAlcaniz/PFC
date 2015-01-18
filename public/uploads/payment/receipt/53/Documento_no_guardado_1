@@ -1,0 +1,42 @@
+  def update
+    @breed_form = params[:breed]
+    @variety_form = Variety.where(breed_id: params[:breed]).first
+    @subvariety_form = Subvariety.where(variety_id: @variety_form).first
+
+    puts @breed_form, @variety_form, @subvariety_form
+
+    @dog.dogable = @subvariety_form ||
+        @variety_form ||
+        Breed.find_by_id(params[:breed])
+
+    if @subvariety_form
+      flash[:alert] = 'Select the subvariety.'
+      puts 'Subvariedad'
+      render 'edit'
+    elsif @variety_form and params[:variety] == ''
+      flash[:alert] = 'Select the variety.'
+      puts 'Variedad'
+      render 'edit'
+    elsif @dog.update_attributes(dog_params)
+      flash[:notice] = 'Dog has been updated.'
+      redirect_to [@person,@dog]
+    else
+      flash[:notice] = 'Dog has not been updated.'
+      render 'edit'
+    end
+  end
+
+
+  def update
+    @dog.dogable = Subvariety.find_by_id(params[:subvariety]) ||
+        Variety.find_by_id(params[:variety]) ||
+        Breed.find_by_id(params[:breed])
+
+    if @dog.update_attributes(dog_params)
+      flash[:notice] = 'Dog has been updated.'
+      redirect_to [@person,@dog]
+    else
+      flash[:notice] = 'Dog has not been updated.'
+      render 'edit'
+    end
+  end

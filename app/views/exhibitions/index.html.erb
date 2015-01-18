@@ -15,9 +15,12 @@
         <td><%= exhibition.start_date.strftime('%b %e, %Y - %H:%M') %></td>
         <td><%= exhibition.end_date.strftime('%b %e, %Y - %H:%M') %></td>
         <% if user_signed_in? %>
-            <% if User.find(current_user).admin? %>
-                <td><%= link_to 'View enrolments', exhibition_enrolments_path(exhibition.id, user: @person)%></td>
-            <% else %>
+            <% admins_only do %>
+                <%  if @person %>
+                    <td><%= link_to 'View enrolments', person_exhibition_enrolments_path(@person, exhibition.id)%></td>
+                <% end %>
+            <% end
+               users_only do %>
                 <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id)%></td>
             <% end %>
         <% end %>

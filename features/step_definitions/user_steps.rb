@@ -10,7 +10,7 @@ Given(/^there are the following users:$/) do |table|
   end
 end
 
-Given(/^I am signed in as them$/) do
+Given(/^I am( not)? signed in as them$/) do |negate|
   steps(%Q{
     Given I am on the homepage
     When I follow "Sign in"
@@ -18,6 +18,7 @@ Given(/^I am signed in as them$/) do
     And I fill in "Password" with "password"
     And I press "Sign in"
   })
+  step 'I follow "Sign out"' if negate
 end
 
 Given(/^I am signed in as "(.*?)"$/) do |email|

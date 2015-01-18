@@ -53,6 +53,12 @@ module NavigationHelpers
         payment_path(enrolment.payment_id)
       when /my exhibitions page/
         people_my_exhibitions_path((User.find_by_email!(@user.email)))
+      when /the admin exhibitions page for "([^\"]*)"/
+        person_exhibitions_path((Person.find_by_name!($1)))
+      when /the admin enrolments page for "([^\"]*)" for "([^\"]*)"/
+        person_exhibition_enrolments_path((Person.find_by_name!($2)), (Exhibition.find_by_name!($1)))
+      when /the payments page for "([^\"]*)"/
+        person_payments_path(Person.find_by_name!($1))
 
 
 # Add more mappings here.

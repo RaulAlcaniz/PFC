@@ -6,12 +6,7 @@ Rails.application.routes.draw do
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
 
-  #get 'people/:person_id/myexhibitions'
-
   get 'people/:id/my_exhibitions' => 'people#my_exhibitions', :as => :people_my_exhibitions
-
-  #get 'user/eat_chocolate/:id' => 'user#eat_chocolate', :as => :eat_chocolate_user
-
 
   resources :payments, only: [:new, :create, :show, :edit, :update]
 
@@ -25,6 +20,10 @@ Rails.application.routes.draw do
 
   resources :people do
     resources :dogs
+    resources :exhibitions do
+      resources :enrolments, only: [:new, :create, :index, :destroy]
+    end
+    resources :payments, only: [:index]
   end
 
   resources :varieties, only: [:show, :new, :create, :edit, :update, :destroy] do

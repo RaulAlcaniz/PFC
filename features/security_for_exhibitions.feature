@@ -9,6 +9,8 @@ Feature: Security for exhibitions
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
+      | boy@testing.com    | password | false  |
+
     And I am signed in as "user@testing.com"
 
     Given today is "April 7, 2014"
@@ -30,7 +32,7 @@ Feature: Security for exhibitions
   Scenario: Deleting exhibitions when the user is not an admin is bad
     Given there is an exhibition called "9th Annual Dog Show"
     And I am on the exhibition page for "9th Annual Dog Show"
-    When I follow "Delete exhibition"
+    When I follow "Delete Exhibition"
 
     Then I should be redirected to the home page
     And I should see "You can't access to this page."
@@ -38,7 +40,14 @@ Feature: Security for exhibitions
   @done
   Scenario: Updating a exhibition when the user is not an admin is bad
     Given I am on the exhibition page for "TWK 139th Dog Show"
-    And I follow "Edit exhibition"
+    And I follow "Edit Exhibition"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."
+
+  @done
+  Scenario: Trying to access to the admin page for the users exhibitions as not admin is bad
+    When I try to access the admin page for exhibitions of "boy@testing.com"
 
     Then I should be redirected to the home page
     And I should see "You can't access to this page."

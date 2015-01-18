@@ -23,7 +23,7 @@ Then(/^I can't remove both enrolments$/) do
   step 'I should not see "Remove"'
 end
 
-When(/^I follow "(.*?)" for my dogs? "(.*?)"$/) do |text, dog_names|
+When(/^I follow "(.*?)" for the dogs? "(.*?)"$/) do |text, dog_names|
   flag = false
   dog_names.gsub(/and/,',').split(',').each do |dog_name|
     Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
@@ -45,11 +45,7 @@ Then(/^I should see the bank receipt for "(.*?)"$/) do |dog_names|
   dog_names.gsub(/and/,',').split(',').each do |dog_name|
     Enrolment.where(dog_id: Dog.find_by_name("#{dog_name.strip}").id).each do |enrolment|
       if Enrolment.where(payment_id: enrolment.id).count  == dog_names.gsub(/and/,',').split(',').count
-        # if action.include? 'Payment'
-        #   current_path.should == "/payments/#{enrolment.payment_id}?exhibition_id=#{enrolment.exhibition_id}"
-        # else
           current_path.should == "#{Payment.find{enrolment.payment_id}.receipt}"
-        # end
       end
     end
   end
@@ -57,7 +53,11 @@ end
 
 When(/^I follow "(.*?)" for "(.*?)"$/) do |text, exhibition_name|
   page.all('a', text: "#{text}").each do |link|
-    link.click if link[:href] == "/exhibitions/#{Exhibition.find_by_name(exhibition_name).id}/enrolments"
+    if text.include? 'View'
+      link.click if link[:href] == "#{current_path}/#{Exhibition.find_by_name(exhibition_name).id}/enrolments"
+    else
+      link.click if link[:href] == "/exhibitions/#{Exhibition.find_by_name(exhibition_name).id}/enrolments"
+    end
   end
 end
 
@@ -74,21 +74,27 @@ Given(/^the payment status of "(.*?)" for "(.*?)" class is( not)? "(.*?)"$/) do 
      end
   end
 end
-#
-# When(/^I follow "(.*?)" for "(.*?)" for "(.*?)" class in "(.*?)"$/) do |text, dog_name, dog_class, exhibition|
-#   pay_id = Enrolment.where(dog_id: Dog.find_by_name(dog_name)).where(dog_class: dog_class).first.payment_id
-#   puts (Exhibition.find_by_name exhibition).id
-#   page.all('a', text: "#{text}").each do |link|
-#     puts link[:href]
-#     link.click if link[:href] == "/payments/#{pay_id}?exhibition_id=#{(Exhibition.find_by_name exhibition).id}"
-#   end
-# end
-#
-# # When(/^I follow "(.*?)" for "(.*?)" in "(.*?)" for "(.*?)" class$/) do |text, dog_name, exhibition, dog_class|
-# #   pay_id = Enrolment.where(dog_id: Dog.find_by_name(dog_name)).where(dog_class: dog_class).first.payment_id
-# #   page.all('a', text: "#{text}").each do |link|
-# #     link.click if link[:href] == "/payments/#{pay_id}?exhibition_id=#{(Exhibition.find_by_name exhibition).id}"
-# #   end
-# # end
 
+When(/^I try to "(.*?)" the payments for "(.*?)" in "(.*?)"$/) do |action, user, exhibition|
+  case action
+    when 'view'
+      visit ("payments/#{Payment.find(Enrolment.find_by(
+                                          dog_id: Dog.find_by_person_id(
+                                              User.find_by_email(user)))).id}?exhibition_id=#{Exhibition.find_by_name(exhibition).id}")
+    when 'edit'
+      visit ("payments/#{Payment.find(Enrolment.find_by(
+                                          dog_id: Dog.find_by_person_id(
+                                              User.find_by_email(user)))).id}/edit")
+  end
+end
+
+When(/^I try to access to a invalid payment$/) do
+  visit ('payments/-1/edit')
+end
+
+When(/^I follow "(.*?)" for "(.*?)" payment$/) do |text, arg2|
+  page.all('a', text: "#{text}").each do |link|
+      link.click if link[:href].include? "#{Payment.find_by_id(Enrolment.select(:payment_id).where(dog_id: Dog.select(:id).where(name: arg2))).id}"
+  end
+end
 

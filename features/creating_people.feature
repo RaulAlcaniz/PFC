@@ -1,3 +1,4 @@
+@time_travel
 Feature: Creating people
   In order to create people
   As a user
@@ -60,3 +61,11 @@ Feature: Creating people
     And I press "Create Person"
     Then I should see "Person has not been created."
     And I should see "Country can't be blank"
+
+  @done
+  Scenario: Can't be born in the future
+    Given today is "01-01-2015"
+    When I select "2015 December 16" as the person "date_of_birth"
+    And I press "Create Person"
+    Then I should see "Person has not been created."
+    And I should see "Date of birth must be before today"

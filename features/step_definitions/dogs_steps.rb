@@ -71,18 +71,3 @@ When(/^I try to "(.*?)" "(.*?)" for "(.*?)"$/) do |action, dog_name, owner|
       visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}/edit")
   end
 end
-
-
-
-
-#Then /^"([^"]*)" should be an option for "([^"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
-#  with_scope(selector) do
-#    field_labeled(field).first(:xpath, ".//option[text() = '#{value}']").send(:should, be_present)
-#  end
-#end
-
-#When /^I select "(.*?)" from "(.*?)"$/ do |option, field|
-#  page.select option, :from => field
-#end
-
-

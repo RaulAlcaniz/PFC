@@ -11,12 +11,17 @@
   <p><%= simple_format( status ) %></p>
   <p><%= simple_format( comment ) %></p>
   <%= link_to 'View the bank receipt', @payment.receipt_url%>
-  <p> admin siempre debe ver el update</p>
-  <% if !@payment.accepted? and !@out_of_time %>
-      <p><%= link_to 'Edit Payment', edit_payment_path(payment_id: @payment.id)%></p>
-  <% end %>
   <% if @out_of_time %>
-    <p><b>The exhibition is already finished.</b></p>
+      <p><b>The exhibition has already finished.</b></p>
   <% end %>
+  <% admins_only do %>
+      <p><%= link_to 'Edit Payment', edit_payment_path%></p>
+  <% end %>
+  <% users_only do %>
+      <% if !@payment.accepted? and !@out_of_time %>
+          <p><%= link_to 'Edit Payment', edit_payment_path%></p>
+      <% end %>
+  <% end %>
+
 
 </div>

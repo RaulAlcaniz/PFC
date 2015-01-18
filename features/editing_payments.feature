@@ -46,35 +46,47 @@ Feature: Editing payments
     Then I should see "See Payment" for the payment of "Scooby Doo"
     And I should see "See Payment" for the payment of "Snoopy"
 
-    @done
-    Scenario: Update a payment
-      When I follow "See Payment" for my dog "Scooby Doo"
-      Then I should be on the payment page for "Scooby Doo"
-      And I should see "Status:"
-      And I should not see "Accepted"
-      And I should see "Edit Payment"
-      When I follow "Edit Payment"
+  @done
+  Scenario: Update a payment
+    When I follow "See Payment" for the dog "Scooby Doo"
+    Then I should be on the payment page for "Scooby Doo"
+    And I should see "Status:"
+    And I should not see "Accepted"
+    And I should see "Edit Payment"
+    When I follow "Edit Payment"
 
-      When I fill in "Comment" with "Bank receipt for Scooby Doo"
-      And I attach the file "receipt_example.txt" to "Receipt"
+    When I fill in "Comment" with "Bank receipt for Scooby Doo"
+    And I attach the file "receipt_example.txt" to "Receipt"
 
-      When I press "Update Payment"
-      Then I have sent the payment of "Scooby Doo" for "Open" class
-      And I should see "Payment has been updated."
+    When I press "Update Payment"
+    Then I have sent the payment of "Scooby Doo" for "Open" class
+    And I should see "Payment has been updated."
 
-    @done
-    Scenario: Payment already accept can't be updated
-      When I follow "See Payment" for my dog "Snoopy"
-      Then I should be on the payment page for "Snoopy"
-      And I should see "Status:" and "Accepted"
-      And I should not see "Edit Payment"
+  @done
+  Scenario: Payment already accept can't be updated
+    When I follow "See Payment" for the dog "Snoopy"
+    Then I should be on the payment page for "Snoopy"
+    And I should see "Status:" and "Accepted"
+    And I should not see "Edit Payment"
 
-    @done
-    Scenario: Payment for exhibition already finished can't be update
-      Given today is "04-09-2014"
-      Then the exhibition "Exp. Canina de Cieza" has already finished
+  @done
+  Scenario: Payment for exhibitions already finished can't be updated
+    Given today is "04-09-2014"
+    Then the exhibition "Exp. Canina de Cieza" has already finished
 
-      When I follow "See Payment" for my dog "Scooby Doo"
-      Then I should be on the payment page for "Scooby Doo"
-      And I should see "The exhibition is already finished."
-      And I should not see "Edit Payment"
+    When I follow "See Payment" for the dog "Scooby Doo"
+    Then I should be on the payment page for "Scooby Doo"
+    And I should see "The exhibition has already finished."
+    And I should not see "Edit Payment"
+
+  @done
+  Scenario: Payment for exhibitions already finished can't be updated
+    Given today is "04-09-2014"
+    Then the exhibition "Exp. Canina de Cieza" has already finished
+
+    Given I am on the person page for "user@testing.com"
+    When I follow "My payments"
+    When I follow "Edit" for "Scooby Doo" payment
+
+    And I should see "The exhibition has already finished."
+    And I should be redirected to the enrolments page for "Exp. Canina de Cieza"

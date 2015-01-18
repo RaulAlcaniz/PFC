@@ -21,3 +21,14 @@ Feature: Signing in
     And I am signed in as them
     Then I should see "Signed in successfully"
     And I should see "Signed in as user@example.com"
+
+  @done
+  Scenario: Trying to access to an area that requires authentication
+    Given there are the following users:
+      | email            | password |
+      | user@example.com | password |
+
+    Given I am not signed in as them
+    When I go to the profile for "user@example.com"
+
+    And I should see "You need to sign in or sign up before continuing."

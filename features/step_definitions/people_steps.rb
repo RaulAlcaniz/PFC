@@ -15,7 +15,6 @@ end
 Then(/^people page should content:$/) do |expected_table|
   rows = find('table#people').all('tr')
   actual_table = rows.map{ |row| row.all('th, td').map{ |cell| cell.text} }
-  puts actual_table
   expected_table.diff!(actual_table)
 end
 

@@ -1,3 +1,4 @@
+@time_travel
 Feature: Editing People
   In order to update person information
   As a user
@@ -23,6 +24,21 @@ Feature: Editing People
     And I press "Update Person"
     Then I should see "Person has been updated."
     And I should be on the person page for "Shaggy Doo"
+
+  @done
+  Scenario: Updating a person without a name is bad
+    When I fill in "Name" with ""
+    And I press "Update Person"
+    Then I should see "Person has not been updated."
+    And I should see "Name can't be blank"
+
+  @done
+  Scenario: Can't be born in the future
+    Given today is "01-01-2015"
+    When I select "2015 December 16" as the person "date_of_birth"
+    And I press "Update Person"
+    Then I should see "Person has not been updated."
+    And I should see "Date of birth must be before today"
 
 #  @done
 #  Scenario: Updating a person with a name already taken is bad

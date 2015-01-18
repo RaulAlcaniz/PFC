@@ -14,11 +14,6 @@ class Enrolment < ActiveRecord::Base
 
   scope :enrolled, ->(dog_id) { where(dog_id: dog_id) }
   scope :enrolled_with_class, ->(dog_id, dog_class) { enrolled(dog_id).where(dog_class: dog_class) }
-  # scope :old, ->{where(['created_at < ?', 15.days.ago]).where([payment_id: 'null'])}
-  #
-  # every 1.day do
-  #   runner 'self.old.destroy'
-  # end
 
   def skip_validation
     errors.include? :dog_class or
@@ -33,7 +28,7 @@ class Enrolment < ActiveRecord::Base
   end
 
   def dog_owner
-    Dog.find_by(:id => self.dog_id).person_id
+    Dog.where(id: self.dog_id).try(:person_id)
   end
 
   def disable_select
@@ -41,7 +36,12 @@ class Enrolment < ActiveRecord::Base
   end
 
   def enrolments_with_same_payment
-    Enrolment.where(payment_id: self.payment_id).count
+    #Enrolment.where(payment_id: self.payment_id).count
+    count=0
+    Enrolment.all.each do |enrolment|
+      count=count+1 if enrolment.payment_id == self.payment_id and Dog.try(:find_by_id, enrolment.dog_id)
+    end
+    count
   end
 
   private

@@ -60,11 +60,12 @@ Feature: Enrolling a dog in an exhibition
     Given "Amsterdam Winner Show" has the same specifications than "Exp. Canina de Cieza"
     Given I am on the exhibitions page
     And I follow "Exp. Canina de Cieza"
-    And I press "Inscribe a new dog"
 
   @done
   Scenario: Enroll a first dog in an exhibition which I'm partner from the exhibition page
     Given today is "10-02-2014"
+    And I press "Enroll a new dog"
+
     When I select "Snoopy" from "Dog"
     And I select "Champion" from "Class"
     And I check "Partner"
@@ -81,9 +82,11 @@ Feature: Enrolling a dog in an exhibition
   @done
   Scenario: Enroll a fourth dog in an exhibition which I'm partner from the exhibition page
     Given I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "01-03-2014"
-    Given I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "06-03-2014"
-    Given I have "Pancho" enrolled in "Exp. Canina de Cieza" in "Open" class on "06-03-2014"
-    And today is "6-03-2014"
+    And I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "06-03-2014"
+    And I have "Pancho" enrolled in "Exp. Canina de Cieza" in "Open" class on "06-03-2014"
+
+    Given today is "6-03-2014"
+    And I press "Enroll a new dog"
 
     When I select "Lassie" from "Dog"
     And I select "Open" from "Class"
@@ -108,6 +111,8 @@ Feature: Enrolling a dog in an exhibition
   @done
   Scenario: Enroll a first dog in an exhibition which I'm not partner
     Given today is "25-02-2014"
+    And I press "Enroll a new dog"
+
     When I select "Snoopy" from "Dog"
     And I select "Champion" from "Class"
     And I uncheck "Partner"
@@ -123,9 +128,10 @@ Feature: Enrolling a dog in an exhibition
 
   @done
   Scenario: Enroll a dog from the enrolments page
+    Given today is "10-02-2014"
     Given I am on the enrolments page for "Exp. Canina de Cieza"
     And I press "Enroll a new dog"
-    Given today is "10-02-2014"
+
     When I select "Snoopy" from "Dog"
     And I select "Champion" from "Class"
     And I check "Partner"
@@ -142,6 +148,9 @@ Feature: Enrolling a dog in an exhibition
   @done
   Scenario: Try to enroll 2 times for the same dog in the same exhibition is bad
     Given I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
+    Given today is "10-02-2014"
+    And I press "Enroll a new dog"
+
     When I select "Snoopy" from "Dog"
     And I select "Open" from "Class"
     And I check "Partner"
@@ -151,11 +160,11 @@ Feature: Enrolling a dog in an exhibition
 
   @done
   Scenario: Enroll 2 times for the same dog in different exhibitions is allowed
-    Given today is "10-02-2014"
     And I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
+    Given today is "10-02-2014"
     Given I am on the exhibitions page
     And I follow "Amsterdam Winner Show"
-    And I press "Inscribe a new dog"
+    And I press "Enroll a new dog"
 
     When I select "Snoopy" from "Dog"
     And I select "Open" from "Class"
@@ -173,6 +182,8 @@ Feature: Enrolling a dog in an exhibition
 
   @done
   Scenario: Not to select a dog that I want to enroll is bad
+    Given today is "10-02-2014"
+    And I press "Enroll a new dog"
     Given I select "Select the dog..." from "Dog"
     When I press "Create Enrolment"
     Then I should see "Inscription has not been created"
@@ -181,6 +192,9 @@ Feature: Enrolling a dog in an exhibition
 
   @done
   Scenario: 'Couple', 'Working' and 'Group Breeding' are not available classes
+    Given today is "10-02-2014"
+    And I press "Enroll a new dog"
+
     Given I select "Snoopy" from "Dog"
     And I select "Couple" from "Class"
     And I check "Partner"
@@ -189,6 +203,9 @@ Feature: Enrolling a dog in an exhibition
 
   @done
   Scenario: Class selected must be correct for your dog
+    Given today is "10-02-2014"
+    And I press "Enroll a new dog"
+
     When I select "Snoopy" from "Dog"
     And I select "Puppy" from "Class"
     When I press "Create Enrolment"
@@ -199,8 +216,19 @@ Feature: Enrolling a dog in an exhibition
   @done
   Scenario: Try to enrol a dog out of time is bad
     Given today is "12-12-2013"
-    When I select "Snoopy" from "Dog"
-    And I select "Champion" from "Class"
-    When I press "Create Enrolment"
-    Then I should see "ERROR: Out of time"
+    And I am on the exhibition page for "Exp. Canina de Cieza"
+    When I press "Enroll a new dog"
+    Then I should see "This exhibition is not available to enroll at the moment."
     And "Snoopy" should not be enrolled for "Exp. Canina de Cieza"
+    And I should be on the exhibition page for "Exp. Canina de Cieza"
+
+  @done
+  Scenario: Try to enrol a dog when no prices have been set for this is bad
+    Given today is "12-12-2013"
+    And the exhibition "TWK 139th Dog Show" exists
+    And there are no prices set for "TWK 139th Dog Show"
+    And I am on the exhibition page for "Exp. Canina de Cieza"
+    When I press "Enroll a new dog"
+    Then I should see "This exhibition is not available to enroll at the moment."
+    And "Snoopy" should not be enrolled for "Exp. Canina de Cieza"
+    And I should be on the exhibition page for "Exp. Canina de Cieza"

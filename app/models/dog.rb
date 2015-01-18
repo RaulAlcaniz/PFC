@@ -1,13 +1,12 @@
 class Dog < ActiveRecord::Base
   belongs_to :dogable, polymorphic: true
   belongs_to :person
-  has_many :enrolments
+  has_many :enrolments, dependent: :destroy
   has_many :exhibitions, :through => :enrolments
 
   validates :name, presence: true
 
   scope :for, ->(user) do
-    #user.admin? ? Dog.all :
     where(person_id: user)
   end
 

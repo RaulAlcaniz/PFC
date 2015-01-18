@@ -20,9 +20,16 @@
           <td><%= Dog.find(enrolment.dog_id).name %></td>
           <td><%= enrolment.dog_class %></td>
           <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
-          <% if !@out_of_time %>
+          <% if !@out_of_time
+               users_only do %>
             <td><%= link_to 'Remove', [@exhibition, enrolment], method: :delete, data: {confirm: 'Are you sure you want to remove this dog'} %></td>
-          <% end %>
+          <% end
+             end %>
+          <% if @out_of_time
+               admins_only do %>
+                  <td><%#= link_to 'Remove to do for action', [@exhibition, enrolment], method: :delete, data: {confirm: 'Are you sure you want to remove this dog'} %></td>
+              <% end
+                 end %>
         </tr>
     <% end %>
     <tr>
@@ -30,14 +37,16 @@
       <td colspan="3" align="right"><%= number_with_precision(@enrolments_price, :precision => 2) %> €</td>
       <td>TOTAL</td>
     </tr>
-    <%  if @unpaid_enrolments.any? %>
-        <td colspan="5" align="center">
-          <%= form_tag(new_payment_path, method: :get) do %>
-              <%= hidden_field_tag :exhibition_id, @exhibition.id %>
-              <%= submit_tag 'Upload the Bank Receipt' %>
-          <% end %>
-        </td>
-    <%end%>
+    <% users_only do %>
+        <%  if @unpaid_enrolments.any? %>
+            <td colspan="5" align="center">
+              <%= form_tag(new_payment_path, method: :get) do %>
+                  <%= hidden_field_tag :exhibition_id, @exhibition.id %>
+                  <%= submit_tag 'Upload the Bank Receipt' %>
+              <% end %>
+            </td>
+        <%end%>
+    <% end %>
   </table>
 
   <table id="paid_enrolments", border = 1>
@@ -71,16 +80,12 @@
         <% end %>
     </tbody>
   </table>
-
-  <%#= link_to "Create Payment", payments_path(:exhibition_id => @exhibition.id), :class => 'button', :method => :post %>
-  <%#= button_to 'Upload the Bank Receipt', new_payment_path, :class => 'button', :method => :get  %>
-  <%#= button_to 'Upload the Bank Receipt', new_enrolment_payment_path(@enrolments), :class => 'button', :method => :get  %>
 </div>
 
-<div id="enrol_dog" >
-  <p>
-  <% if !User.find(current_user).admin? %>
+<% users_only do %>
+    <div id="enrol_dog" >
+      <p>
         <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%>
-  <% end %>
-  </p>
-</div>
+      </p>
+    </div>
+<% end %>

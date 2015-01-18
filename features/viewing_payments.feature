@@ -33,6 +33,19 @@ Feature: Viewing payments
       | J. I. O. W. CH. | 3rd and following | 14.00              | 18.00              | 21.00              |
 
   @done
+  Scenario: Viewing my payments page
+    Given I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "11-02-2014"
+    And I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "11-02-2014"
+    And I have sent the payment of "Scooby Doo and Snoopy" for "Open and Champion" class
+
+    Given I am on the person page for "user@testing.com"
+    When I follow "My payments"
+    Then I should be on the payments page for "user@testing.com"
+    And the payments page should content:
+      |Dogs                  |Exhibition          |Amount|Status    |Payment deadline|See | Edit |
+      |Snoopy and Scooby Doo |Exp. Canina de Cieza|43.00 |unverified|Open            |View| Edit |
+
+  @done
   Scenario: Viewing payments already uploaded for one dog
     Given I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "11-02-2014"
     And I have sent the payment of "Scooby Doo" for "Open" class
@@ -42,13 +55,13 @@ Feature: Viewing payments
     When I am on the enrolments page for "Exp. Canina de Cieza"
     Then I should see "See Payment" for the payment of "Scooby Doo"
 
-    When I follow "See Payment" for my dog "Scooby Doo"
+    When I follow "See Payment" for the dog "Scooby Doo"
     Then I should be on the payment page for "Scooby Doo"
     And I should see "Payment for: Scooby Doo"
     And I should see "Status:" and "Comment:"
     And I should see "View the bank receipt"
 
-    When I follow "View the bank receipt" for my dog "Scooby Doo"
+    When I follow "View the bank receipt" for the dog "Scooby Doo"
     Then I should see the bank receipt for "Scooby Doo"
 
   @done
@@ -60,11 +73,11 @@ Feature: Viewing payments
     When I am on the enrolments page for "Exp. Canina de Cieza"
     Then I should see "See Payment" for the payment of "Scooby Doo and Snoopy"
 
-    When I follow "See Payment" for my dogs "Scooby Doo and Snoopy"
+    When I follow "See Payment" for the dogs "Scooby Doo and Snoopy"
     Then I should be on the payment page for "Scooby Doo and Snoopy"
     And I should see "Payment for: Scooby Doo and Snoopy"
     And I should see "Status:" and "Comment:"
     And I should see "View the bank receipt"
 
-    When I follow "View the bank receipt" for my dogs "Scooby Doo and Snoopy"
+    When I follow "View the bank receipt" for the dogs "Scooby Doo and Snoopy"
     Then I should see the bank receipt for "Scooby Doo and Snoopy"

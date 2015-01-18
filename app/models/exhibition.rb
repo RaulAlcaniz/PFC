@@ -9,6 +9,16 @@ class Exhibition < ActiveRecord::Base
   has_many :enrolments
   has_many :dogs, :through => :enrolments
 
+  def payment_time_started?
+    return false if tax.nil?
+    Date.parse(JSON.parse(tax)['deadlines'].first['start_date']) <= Date.today
+  end
+
+  def payment_time_ended?
+    return true if tax.nil?
+    Date.parse(JSON.parse(tax)['deadlines'].last['end_date']) < Date.today
+  end
+
   def exhibition_prices(day, dog_class, type_of_partner)
     group = what_group_has "#{dog_class}"
     return 'ERROR: There is no entries for this dog class' if group == nil

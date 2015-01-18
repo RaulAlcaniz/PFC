@@ -1,44 +1,45 @@
-<h2>Payments#edit</h2>
 <%= form_for @payment, html: {multipart: true} do |f|%>
     <% @payment.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
 
-    <p> Upload your bank receipt for <b> <%=  dogs = []
-                                              @same_payment_dogs.each{|dog| dogs << dog.name}
-                                              dogs.to_sentence  %> </b>
-      enrolled in: <b> <%= @exhibition.name %> </b>
-      for the amount of: <b><%= number_with_precision(@price.to_f, :precision => 2) %> €</b>
-    </p>
-    <p>
-      <%= f.label :receipt, hidden: true %>
-      <%= f.file_field :receipt %>
-    </p>
-    <p>
-      <%= f.label :comment, hidden: true %>
-      <%= f.text_area(:comment, cols: 20, rows: 5, placeholder: 'Do you have any comment on this?') %>
-    </p>
 
-    <%= hidden_field_tag :exhibition_id, @exhibition.id %>
-    <%= f.hidden_field :amount, :value => @price %>
+        <p> Payment for <b> <%=  dogs = []
+                                 @same_payment_dogs.each{|dog| dogs << dog.name}
+                                 dogs.to_sentence  %> </b>
+          enrolled in: <b> <%= @exhibition.name %> </b>
+          for the amount of: <b><%= number_with_precision(@price.to_f, :precision => 2) %> €</b>
+        </p>
+    <% users_only do %>
+        <p>
+          <%= f.label :receipt, hidden: true %>
+          <%= f.file_field :receipt %>
+        </p>
+        <p>
+          <%= f.label :comment, hidden: true %>
+          <%= f.text_area(:comment, cols: 20, rows: 5, placeholder: 'Do you have any comment on this?') %>
+        </p>
 
-    <p> Admin: </p>
-    <p>
-      <%= link_to 'View the bank receipt', @payment.receipt_url%>
-    </p>
-    <p> Allright? Select the status for the payment:</p>
+        <%= hidden_field_tag :exhibition_id, @exhibition.id %>
+        <%= f.hidden_field :amount, :value => @price %>
+    <%end%>
 
-    <div id="payment_status">
-      <p>
-        <%= f.label :status, hidden: true %>
-        <%= f.select :status,
-                       options_for_select(@payment.states, @payment.status)
+    <% admins_only do %>
+        <p>
+          <%= link_to 'View the bank receipt', @payment.receipt_url%>
+        </p>
+        <p> All right? Select the status for the payment </p>
 
-        %>
-      </p>
-    </div>
+        <div id="payment_status">
+          <p>
+            <%= f.label :status, hidden: true %>
+            <%= f.select :status,
+                           options_for_select(@payment.states, @payment.status)
+
+            %>
+          </p>
+        </div>
+    <% end %>
 
     <%= f.submit%>
-
-
 <% end %>

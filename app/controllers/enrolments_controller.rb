@@ -2,10 +2,12 @@ class EnrolmentsController < ApplicationController
 
   before_filter :authenticate_user!
   before_action :set_exhibition, only: [:new, :create, :index, :destroy]
+  before_action :check_deadlines, only: [:new, :create]
   before_action :set_enrolment, only: [:destroy]
-  before_action :set_person, only: [:new, :create, :index]
+  before_action :set_person, only: [:new, :create, :index, :destroy]
   before_action :set_price, only: [:new, :create]
   before_action :authorized_people
+  before_action :authorize_route
 
   def new
     @enrolment = @exhibition.enrolments.new
@@ -26,10 +28,12 @@ class EnrolmentsController < ApplicationController
         end   #if ((Date.today - enrolment.created_at.to_date).to_i < 15)
       }
     }
-
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
-    @enrolments_index = @exhibition.enrolments.group(:payment_id).collect(&:id)
+    @enrolments_index = @exhibition.enrolments.where(dog_id: Dog.all.ids).group(:payment_id).collect(&:id)
+
+    #@enrolments_index = @exhibition.enrolments.group(:payment_id).collect(&:id)
+
 
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.group(:payment_id).
@@ -41,16 +45,15 @@ class EnrolmentsController < ApplicationController
 
   def create
     @enrolment = @exhibition.enrolments.build(enrolment_params)
-
     if @enrolment[:price] < 0 && @enrolment.valid?
-      begin
+      # begin
         set_price
-      rescue Exception => ex
-        flash[:alert] = ex.message
-        @price = -1
-        render 'new'
-        return
-      end
+      # rescue Exception => ex
+      #   flash[:alert] = ex.message
+      #   @price = -1
+      #   render 'new'
+      #   return
+      # end
       flash[:notice] = 'Confirm your inscription for the price showed below'
       render 'new'
     elsif @enrolment.save
@@ -78,16 +81,10 @@ class EnrolmentsController < ApplicationController
 
   def set_person
     if User.find(current_user).admin?
-      @person = Person.find_by_user_id(params[:user])
-      puts params
-      puts @person.to_yaml
+      @person = Person.find_by_user_id(params[:person_id])
     else
-      raise(ActiveRecord::RecordNotFound) if params[:user]
       @person = Person.find_by_user_id(current_user.id)
     end
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'You can\'t access to this page.'
-    redirect_to root_path
   end
 
   def set_enrolment
@@ -120,7 +117,9 @@ class EnrolmentsController < ApplicationController
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'nopartners') if @enrolment.partner == 0
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'partners') if @enrolment.partner == 1
 
-    raise "#{prices}" if prices.include? 'ERROR'
+    raise(ActiveRecord::ActiveRecordError) if prices.include? 'ERROR'
+
+    #raise "#{prices}" if prices.include? 'ERROR'
 
     grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)
     owner_id = @enrolment.dog_owner
@@ -138,11 +137,29 @@ class EnrolmentsController < ApplicationController
   end
 
   def authorized_people
-    if @person.user_id != current_user.id
-      raise(ActiveRecord::RecordNotFound) if not User.find(current_user).admin?
+    if @person.try(:user_id) != current_user.id
+      raise(ActiveRecord::RecordNotFound) if (!User.find(current_user).admin?) or (User.find(current_user).admin? and !params.has_key?(:person_id))
     end
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'You can\'t access to this page.'
     redirect_to root_path
+  end
+
+  def authorize_route
+    if params[:person_id]
+      raise(ActiveRecord::RecordNotFound) if !User.find(current_user.id).admin?
+      @person = Person.find_by_user_id(params[:person_id]) if params[:person_id]
+    end
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You can\'t access to this page.'
+    redirect_to root_path
+  end
+
+  def check_deadlines
+    raise(ActiveRecord::ActiveRecordError) if !@exhibition.try(:payment_time_started?) or @exhibition.try(:payment_time_ended?)
+
+  rescue ActiveRecord::ActiveRecordError
+    flash[:alert] = 'This exhibition is not available to enroll at the moment.'
+    redirect_to @exhibition
   end
 end

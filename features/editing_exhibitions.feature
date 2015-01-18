@@ -18,7 +18,7 @@ Feature: Editing exhibitions
       | 9th Annual Dog Show | www.example.org | Sep 1, 2014 - 17:00 | Sep 3, 2014 - 20:00 |
 
     Given I am on the exhibition page for "TWK 139th Dog Show"
-    And I follow "Edit exhibition"
+    And I follow "Edit Exhibition"
 
   @done
   Scenario: Updating a exhibition

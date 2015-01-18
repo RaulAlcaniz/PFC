@@ -10,27 +10,36 @@
   <%= simple_format( sex ) %>
   <%= simple_format( country ) %>
 
-  <ul>
-    <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
-    <li><%= link_to 'My dogs', person_dogs_path(@person) %></li>
-    <li><%= link_to 'My enrolments', exhibitions_path %></li>
-    <li><%= link_to 'My exhibitions', people_my_exhibitions_path(@person) %></li>
-    <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
-    <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-  </ul>
-
-</div>
-
-<% if User.find(current_user).admin? %>
-    <div id="admin_people">
+  <% users_only do %>
       <ul>
         <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
-        <li><%= link_to 'View dogs', person_dogs_path(@person) %></li>
-        <li><%= link_to 'View enrolments', exhibitions_path(user: @person) %></li>
-        <li><%= link_to 'View exhibitions', people_my_exhibitions_path(@person) %></li>
+        <li><%= link_to 'My dogs', person_dogs_path(@person) %></li>
+        <li><%= link_to 'My enrolments', exhibitions_path %></li>
+        <li><%= link_to 'My exhibitions', people_my_exhibitions_path(@person) %></li>
+        <li><%= link_to 'My payments', person_payments_path(@person) %></li>
         <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
         <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
-      </ul>
-    </div>
-<% end %>
+        <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+    </ul>
+  <% end %>
+
+  <% admins_only do %>
+      <div id="admin_people">
+      <% if User.where(id: Person.find(@person.id)).exists? %>
+            <% if User.find(Person.find(@person.id).user_id).admin? %>
+                <h2> Admin </h2>
+            <%else%>
+                <ul>
+                  <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
+                  <li><%= link_to 'View dogs', person_dogs_path(@person) %></li>
+                  <li><%= link_to 'View enrolments', person_exhibitions_path(@person) %></li>
+                  <li><%= link_to 'View payments', person_payments_path(@person) %></li>
+
+          <%end%>
+      <%end%>
+            <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
+            <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
+        </ul>
+      </div>
+  <% end %>
+</div>

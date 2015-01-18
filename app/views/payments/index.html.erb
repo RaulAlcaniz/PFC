@@ -1,0 +1,46 @@
+<h1>Payments page</h1>
+
+<% if @payments.any? %>
+    <table id="payments" border="1">
+      <tr>
+        <% admins_only do %> <th> Identifier </th> <% end %>
+        <% users_only do %> <th> Dogs </th> <% end %>
+        <th> Exhibition </th>
+        <th> Amount </th>
+        <% admins_only do %>
+            <th> Last modification </th>
+        <% end %>
+        <th> Status </th>
+        <th> Payment deadline </th>
+        <th> See </th>
+        <th> Edit </th>
+
+      </tr>
+      <% @payments.order(updated_at: :desc).for(@person).each do |payment| %>
+          <tr>
+            <% users_only do %>
+                <% dogs = [] %>
+                <% Dog.where(id: (Enrolment.select(:dog_id).where(payment_id: payment))).each do |dog| dogs << dog.name end  %>
+                <td><%= dogs.to_sentence  %></td>
+            <% end %>
+            <% admins_only do %> <td><%= payment.id %></td> <% end %>
+            <td><%= (Exhibition.find_by_id(Enrolment.select(:exhibition_id).where(payment_id: payment))).try(:name) %></td>
+            <td><%= number_with_precision(payment.amount, :precision => 2) %></td>
+            <% admins_only do %>
+                <td><%= payment.updated_at.strftime('%m/%d/%Y') %></td> <!-- at %I:%M %p -->
+            <% end %>
+            <td><%= payment.status %></td>
+            <%if (Exhibition.find_by_id(Enrolment.select(:exhibition_id).where(payment_id: payment))).payment_time_started? and
+                    !(Exhibition.find_by_id(Enrolment.select(:exhibition_id).where(payment_id: payment))).payment_time_ended? %>
+                <td> Open </td>
+            <% else %>
+                <td> Closed </td>
+            <% end %>
+            <td><%= link_to 'View', payment_path(payment.id, exhibition_id: (Exhibition.find_by_id(Enrolment.select(:exhibition_id).where(payment_id: payment))).try(:id)) %></td>
+            <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    <p> There are not payments to view. </p>
+<% end %>

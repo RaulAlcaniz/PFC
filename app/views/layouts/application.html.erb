@@ -18,6 +18,13 @@
               <%= link_to 'Sign in', new_user_session_path %>
           <% end %>
           <%= link_to 'Home', groups_path %>
+          <% admins_only do %>
+              <p> menu de administradores </p>
+              <% if defined? @person and @person.id != current_user.id %>
+                  <h2> Watching to the person: <%= @person.name %> </h2>
+              <% end %>
+
+          <% end %>
         </nav>
 
         <% flash.each do |key, value| %>

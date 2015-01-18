@@ -75,7 +75,20 @@ Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_n
   Exhibition.find_by_name(exhib_name).update_attributes(tax: @tax.to_json)
 end
 
-
 Given(/^"(.*?)" has the same specifications than "(.*?)"$/) do |exhibition1, exhibition2|
   Exhibition.find_by_name(exhibition1).update_attributes(tax:  Exhibition.find_by_name(exhibition2).tax)
 end
+
+When(/^I try to access the admin page for exhibitions of "(.*?)"$/) do |user|
+  visit ("people/#{Person.find_by_name(user).id}/exhibitions/")
+end
+
+Given(/^payment deadlines began for "(.*?)"$/) do |exhibition|
+  step "today is \"#{(Date.parse(JSON.parse(Exhibition.find_by_name(exhibition).tax)['deadlines'].first['start_date']))+1.day}\""
+end
+
+Given(/^there are no prices set for "(.*?)"$/) do |exhibition|
+  Exhibition.find_by_name(exhibition).update_attributes(tax: nil)
+end
+
+

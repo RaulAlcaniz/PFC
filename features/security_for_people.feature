@@ -8,7 +8,8 @@ Feature: Security for people
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
-    And I am signed in as "user@testing.com"
+
+    Given I am signed in as "user@testing.com"
 
   @done
   Scenario: Access to the people page when the user is not an admin is bad
@@ -19,15 +20,15 @@ Feature: Security for people
 
   @done
   Scenario: Creating a person when the user is not an admin is bad
-    Given I try to access to "New Person" page
+    When I try to access to "New Person" page
 
     Then I should be redirected to the home page
     And I should see "You can't access to this page."
 
   @done
   Scenario: Trying to access to the another user profile when the user is not an admin is bad
-    Given there is a person called "Dorothy Oz"
-    And I try to access to the person page for "Dorothy Oz"
+    And there is a person called "Dorothy Oz"
+    When I try to access to the person page for "Dorothy Oz"
 
     Then I should be redirected to the home page
     And I should see "You can't access to this page."

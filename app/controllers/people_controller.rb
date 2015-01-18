@@ -36,10 +36,18 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    if @person.delete
-      flash[:notice] = 'Person has been deleted.'
-      redirect_to people_path
+    if User.find(current_user).admin? and @person.id == current_user.id
+      flash[:notice] = 'You can\'t delete yourself as admin'
+      redirect_to @person
     else
+      if @person.delete
+        flash[:notice] = 'Person has been deleted.'
+        if User.find(current_user).admin?
+          redirect_to people_path
+        else
+          redirect_to root_path
+        end
+      end
     end
   end
 
@@ -53,11 +61,7 @@ class PeopleController < ApplicationController
   end
 
   def set_person
-    # raise(ActiveRecord::RecordNotFound) if !current_user
     @person = Person.find(params[:id])
-    # rescue ActiveRecord::RecordNotFound
-    #   flash[:alert] = 'You can\'t access to this page. Please sign in if you are not.'
-    #   redirect_to root_path
   end
 
   def authorized_people

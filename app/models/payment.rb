@@ -5,9 +5,8 @@ class Payment < ActiveRecord::Base
   mount_uploader :receipt, ReceiptUploader
 
   #scope to check that one user owns the payment that is attempting to access
-  scope :for, ->(user) do
-     #user.admin? ? Payment.all :
-    Payment.where(id: Enrolment.select(:payment_id).where(dog_id: Dog.select(:id).where(person_id: user)))
+  scope :for, ->(person) do
+    User.find(person).admin? ? Payment.all : Payment.where(id: Enrolment.select(:payment_id).where(dog_id: Dog.select(:id).where(person_id: person)))
   end
 
   states.each do |state|

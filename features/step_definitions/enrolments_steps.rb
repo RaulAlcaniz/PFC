@@ -23,8 +23,8 @@ Given(/^I have "(.*?)" enrolled in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |do
   steps %{
     Given I am on the exhibitions page
     And I follow "#{exhibition_name}"
-    And I press "Inscribe a new dog"
     Given today is "#{date}"
+    And I press "Enroll a new dog"
     When I select "#{dog_name}" from "enrolment_dog_id"
     And I select "#{dog_class}" from "enrolment_dog_class"
     And I check "Partner"
@@ -33,8 +33,9 @@ Given(/^I have "(.*?)" enrolled in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |do
     Then "#{dog_name}" should be enrolled for "#{exhibition_name}"
     Given I am on the exhibitions page
     And I follow "#{exhibition_name}"
-    And I press "Inscribe a new dog"
   }
+  #And I press "Inscribe a new dog"
+  #puts Enrolment.all.to_yaml
 end
 
 Then(/^I should see "(.*?)" for the payment of "(.*?)"$/) do |text, dog_names|
@@ -66,15 +67,17 @@ end
 When(/^I try to "(.*?)" the enrolments for "(.*?)" in "(.*?)"$/) do |action, user, exhibition|
   case action
     when 'view'
-      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}")
-    when 'add'
-      visit ("people/#{Person.find_by_name(owner).id}/dogs/new")
-    when 'delete'
-      page.driver.submit :delete, "people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}", {}
-    when 'update'
-      visit ("people/#{Person.find_by_name(owner).id}/dogs/#{Dog.find_by_name(dog_name).id}/edit")
+      visit ("people/#{Person.find_by_name(user).id}/exhibitions/#{Exhibition.find_by_name(exhibition).id}/enrolments")
+    when 'create'
+      visit ("people/#{Person.find_by_name(user).id}/exhibitions/#{Exhibition.find_by_name(exhibition).id}/enrolments/new")
   end
 end
+
+When(/^I try to access to a user enrolments page "(.*?)" as admin$/) do |exhibition|
+  visit ("/exhibitions/#{Exhibition.find_by_name(exhibition).id}/enrolments")
+end
+
+
 
 
 
