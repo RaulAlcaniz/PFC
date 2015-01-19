@@ -9,8 +9,6 @@ Feature: Deleting Subvarieties
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
 
-    Given I am signed in as "admin@testing.com"
-
     Given there is a group called "Group IV"
     And there are sections for this group:
       |Section number|Description|
@@ -28,11 +26,24 @@ Feature: Deleting Subvarieties
       |Long-haired  |
       |Wire-haired  |
 
-    Given I am on the subvariety page for "Smooth-haired"
+
 
   @done
   Scenario: Deleting a subvariety
+    Given I am signed in as "admin@testing.com"
+    And I am on the subvariety page for "Smooth-haired"
+
     When I follow "Delete Subvariety"
     Then I should see "Subvariety has been deleted."
     And I should be on the variety page for "Standard"
     And I should not see "Smooth-haired"
+
+  @done
+  Scenario: Deleting subvarieties as no admin is bad
+    Given I am signed in as "user@testing.com"
+    And I am on the subvariety page for "Smooth-haired"
+
+    And I try to delete the "subvariety" "Smooth-haired"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."

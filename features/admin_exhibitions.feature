@@ -9,6 +9,8 @@ Feature: Admin exhibitions
     Given there are the following users:
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
+      | user@testing.com   | password | false  |
+      | boy@testing.com    | password | false  |
 
     Given I am signed in as "admin@testing.com"
 
@@ -31,3 +33,12 @@ Feature: Admin exhibitions
 
     Then I should be on the exhibition page for "TWK 139th Dog Show"
     And I should see "Exhibition can't be updated or deleted because payment deadlines began."
+
+  @done
+  Scenario: Trying to access to the admin page for the users exhibitions as not admin is bad
+    Given I follow "Sign out"
+    And I am signed in as "user@testing.com"
+    When I try to access the admin page for exhibitions of "boy@testing.com"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."

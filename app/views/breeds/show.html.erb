@@ -1,15 +1,18 @@
 <div id="breeds" >
 
   <h2><%= @breed.name %></h2>
-
   <ul>
-    <li><%= link_to 'Edit Breed', send('edit_' + "#{@breed.breedable_type.downcase}" + '_breed_path',@breedable, @breed)%></li>
-    <li><%= link_to "Delete Breed", [@breedable, @breed], method: :delete,
+    <% admins_only do %>
+        <li><%= link_to 'Edit Breed', send('edit_' + "#{@breed.breedable_type.downcase}" + '_breed_path',@breedable, @breed)%></li>
+        <li><%= link_to "Delete Breed", [@breedable, @breed], method: :delete,
                     data: {confirm: 'Are you sure you want to delete this Breed?'} %></li>
+        <li><%= link_to 'New Variety', new_breed_variety_path(@breed, @variety) %></li>
+    <% end %>
+    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+
   </ul>
 
   <table id="varieties">
-    <li><%= link_to 'New Variety', new_breed_variety_path(@breed, @variety) %></li>
     <tr>
       <th>Varieties</th>
     </tr>

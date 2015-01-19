@@ -14,38 +14,109 @@
 
 Exhibition.where(name: 'Exposicion Canina de Cieza',
                  description: 'Exposición de Campeonato para todas las Razas, que se regirá por el Reglamento de Exposiciones de la Real Sociedad Canina, poniendo en competición el C.A.C. Nacional, autorizado por la R.S.C.E.
-La inspección veterinaria es obligatoria e indispensable para todos los ejemplares. La entrega del catálogos será por expositor y no por el numero de ejemplares inscritos. Los ejemplares residentes fuera de España y que estén
-inscritos en Libros de Origen Extranjeros reconocidos por la F.C.I. y la R.S.C.E., deberán de acompañar la fotocopia del pedigrí y enviarla junto con la inscripción.
+La inspección veterinaria es obligatoria e indispensable para todos los ejemplares. La entrega del catálogos será por expositor y no por el numero de ejemplares inscritos. Los ejemplares residentes fuera de España y que estén inscritos en Libros de Origen Extranjeros reconocidos por la F.C.I. y la R.S.C.E., deberán de acompañar la fotocopia del pedigrí y enviarla junto con la inscripción.
 No puede admitirse en Clase Abierta ningún ejemplar con Libro de Origen Extranjero cuando el propietario sea español o extranjero residente en España. Se pueden admitir ejemplares con Libro de Origen Extranjero en Clase Jóvenes.
-Igualmente se pueden admitir ejemplares en Clase Cachorros con Libro de Orígenes en tramite o Extranjero.
-Todo ejemplar que haya obtenido una de las calificaciones Mejor de Raza en cada Clase, y no esté presente en la final de grupos correspondiente, SERA DESCALIFICADO. Igualmente, todo ejemplar que haya obtenido la calificación
-necesaria para las Grandes Finales y no esté presente en las mismas, SERA TAMBIÉN DESCALIFICADO.
+Igualmente se pueden admitir ejemplares en Clase Cachorros con Libro de Orígenes en tramite o Extranjero. Todo ejemplar que haya obtenido una de las calificaciones Mejor de Raza en cada Clase, y no esté presente en la final de grupos correspondiente, SERA DESCALIFICADO. Igualmente, todo ejemplar que haya obtenido la calificación necesaria para las Grandes Finales y no esté presente en las mismas, SERA TAMBIÉN DESCALIFICADO.
+
 No se confirmará, quien de antemano no haya sido inscrito en su clase correspondiente.',
                  start_date: '2015-03-29 14:00:00', end_date: '2015-03-30 20:00:00', tax: @tax).first_or_create!
 
 
-# @tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Veteran"]}, {:name=>"group3", :classes=>["Puppy"]}, {:name=>"group4", :classes=>["Couple"]}, {:name=>"group5", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>"08-01-2015", :end_date=>"22-02-2015"}, {:name=>"2nd entry deadline", :start_date=>"23-02-2015", :end_date=>"03-03-2015"}, {:name=>"3rd entry deadline", :start_date=>"04-03-2015", :end_date=>"14-03-2015"}], :prices=>[{:partners=>[{"group1"=>[["24.00", "19.00", "14.00"], ["30.00", "23.00", "18.00"], ["36.00", "27.00", "21.00"]]}, {"group2"=>[["12.00", "9.50", "7.00"], ["15.00", "11.50", "9.00"], ["18.00", "13.50", "10.50"]]}, {"group3"=>[["16.00", "12.00", "9.00"], ["20.00", "15.00", "12.00"], ["24.00", "18.00", "15.00"]]}, {"group4"=>[["20.00"], ["25.00"], ["29.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "25.00", "20.00"], ["37.50", "32.00", "25.00"], ["43.50", "37.00", "29.00"]]}, {"group2"=>[["15.00", "12.50", "10.00"], ["18.70", "16.00", "12.50"], ["21.75", "18.50", "14.50"]]}, {"group3"=>[["21.00", "15.00", "11.00"], ["27.00", "19.00", "14.00"], ["31.00", "21.00", "17.00"]]}, {"group4"=>[["25.00"], ["32.00"], ["37.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}]}.to_json
 #
-# Exhibition.where(name: 'Exposicion Canina de Cieza',
-#                  description: 'Exposición de Campeonato para todas las Razas, que se regirá por el Reglamento de Exposiciones de la Real Sociedad Canina, poniendo en competición el C.A.C. Nacional, autorizado por la R.S.C.E.
-# La inspección veterinaria es obligatoria e indispensable para todos los ejemplares. La entrega del catálogos será por expositor y no por el numero de ejemplares inscritos. Los ejemplares residentes fuera de España y que estén
-# inscritos en Libros de Origen Extranjeros reconocidos por la F.C.I. y la R.S.C.E., deberán de acompañar la fotocopia del pedigrí y enviarla junto con la inscripción.
-# No puede admitirse en Clase Abierta ningún ejemplar con Libro de Origen Extranjero cuando el propietario sea español o extranjero residente en España. Se pueden admitir ejemplares con Libro de Origen Extranjero en Clase Jóvenes.
-# Igualmente se pueden admitir ejemplares en Clase Cachorros con Libro de Orígenes en tramite o Extranjero.
-# Todo ejemplar que haya obtenido una de las calificaciones Mejor de Raza en cada Clase, y no esté presente en la final de grupos correspondiente, SERA DESCALIFICADO. Igualmente, todo ejemplar que haya obtenido la calificación
-# necesaria para las Grandes Finales y no esté presente en las mismas, SERA TAMBIÉN DESCALIFICADO.
-# No se confirmará, quien de antemano no haya sido inscrito en su clase correspondiente.',
-#                  start_date: '2015-03-29 14:00:00', end_date: '2015-03-30 20:00:00', tax: @tax).first_or_create!
+# Exhibition - 'Exposición canina de Jerez de la Frontera'
+#
+@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Couple"]}, {:name=>"group3", :classes=>["Group Breeding"]}, {:name=>"group4", :classes=>["Veteran"]}, {:name=>"group5", :classes=>["Puppy"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 10.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 4.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today - 3.day).strftime('%d/%m/%Y'), :end_date=>(Date.today).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 1.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 5.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["19.00", "14.00", "9.50"], ["23.50", "17.50", "11.50"], ["28.00", "21.00", "15.00"]]}, {"group2"=>[["15.00"], ["19.00"], ["22.00"]]}, {"group3"=>[["0.00"], ["0.00"], ["0.00"]]}, {"group4"=>[["10.00", "7.00", "5.00"], ["12.50", "9.00", "6.50"], ["14.00", "11.00", "7.50"]]}, {"group5"=>[["10.00", "7.00", "5.00"], ["12.50", "9.00", "6.50"], ["15.00", "11.50", "8.00"]]}]}, {:nopartners=>[{"group1"=>[["24.00", "19.00", "13.50"], ["29.50", "23.00", "17.00"], ["34.00", "27.00", "20.00"]]}, {"group2"=>[["18.00"], ["23.00"], ["28.00"]]}, {"group3"=>[["0.00"], ["0.00"], ["0.00"]]}, {"group4"=>[["12.00", "9.50", "7.50"], ["15.50", "11.50", "9.00"], ["17.00", "14.00", "10.50"]]}, {"group5"=>[["12.50", "9.00", "7.00"], ["15.50", "11.50", "9.00"], ["18.00", "15.50", "12.00"]]}]}]}.to_json
+Exhibition.where(name: 'Exposición canina de Jerez de la Frontera',
+                  description: 'XXXIV Exposición nacional y XVII Exposición internacional canina, Provincia de Cádiz, Jerez de la Frontera. A partir de las 08:00 H. Apertura del recinto y control veterinario itinerante.
+Juicios a partir de las 09:00 H. con arreglo a los horarios que se establezcan para cada raza. Todos los perros participantes deberán estar dispuestos a la entrada del ring media hora antes de ser juzgados.
+                                                                                                                                                                                                         Las finales del grupo y Gran Final se iniciarán a partir de las 15:30 h. de cada día. Los ejemplares que obtengan Mejor Raza en Clase Muy Cachorros, Cachorros, Jóvenes, Veteranos, Intermedia, Trabajo, Abierta y Campeons, así como los ganadores de grupo y Razas Españolas, deberán estar presentes en sus finales respectivas. De no hacerlo, serán descalificados. ',
+                  start_date: '2015-11-01 08:00:00', end_date: '2015-11-02 20:00:00', tax: @tax).first_or_create!
 
 #
-# Admin user
+# Exhibition - 'Amsterdam Holland Cup'
+#
+@tax = {:groups=>[{:name=>"group1", :classes=>["Puppy"]}, {:name=>"group2", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion", "Veteran"]}, {:name=>"group3", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 10.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 4.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 5.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 15.day).strftime('%d/%m/%Y')}], :prices=>[{:partner=>[{"group1"=>[["30.00"], ["30.00"]]}, {"group2"=>[["55.00"], ["65.00"]]}, {"group3"=>[["5.00"], ["5.00"]]}]}]}.to_json
+Exhibition.where(name: '125ste Amsterdam Winner Show',
+                 description: 'Wij hebben we gekozen voor een laag inschrijfgeld. Het aantal deelnemers is beperkt en VOL=VOL. Het inschrijfgeld moet uiterlijk 25 november 2014 op onze rekening zijn bijgeschreven. Na 25 november wordt het inschrijfgeld met € 10.00 per hond verhoogd voor administratiekosten. Betaling op show is, tenzij uitdrukkelijk overeengekomen, niet mogelijk. U betaalt dan een toeslag van € 15.00 per hond. Betalingen bijgeschreven op onze rekening op of na 8 december worden beschouwd als niet ontvangen . U dient op show dan nogmaals het verschuldigde bedrag te voldoen (incl. administratiekosten). Mocht dan blijken dat uw betaling op of na 8 december is bijgeschreven op onze rekening, dan wordt het op de bankrekening ontvangen bedrag, na de show aan u terugbetaald.',
+                 start_date: '2015-12-12 08:00:00', end_date: '2015-12-14 20:00:00', tax: @tax).first_or_create!
+#
+# Users
 #
 
 admin = User.where(email: 'admin@example.com').first_or_create! do |user|
-  user.password = 'password'
+  user.password = 'adminpassword'
   user.admin = true
 end
 admin.confirm!
+
+user1 = User.where(email: 'usuario1@example.com').first_or_create! do |user|
+  user.password = 'password'
+  user.admin = false
+end
+user1.confirm!
+
+user2 = User.where(email: 'usuario2@example.com').first_or_create! do |user|
+  user.password = 'password'
+  user.admin = false
+end
+user2.confirm!
+
+user3 = User.where(email: 'usuario3@example.com').first_or_create! do |user|
+  user.password = 'password'
+  user.admin = false
+end
+user3.confirm!
+
+Dog.where(name:'Viejito').first_or_create! do |dog|
+  dog.sex = 'Male'
+  dog.date_of_birth = '2002-01-17'
+  dog.sire = 'Rex'
+  dog.dam = 'Missy'
+  dog.dogable_id = '39'
+  dog.dogable_type = 'Breed'
+  dog.person_id = Person.find_by_name('usuario1@example.com').id
+end
+
+Dog.where(name:'Campeona').first_or_create! do |dog|
+  dog.sex = 'Female'
+  dog.titles = 'PORTO WINNER Jr.'
+  dog.date_of_birth = '2013-12-18'
+  dog.sire = 'Tono'
+  dog.dam = 'Lili'
+  dog.dogable_id = '9'
+  dog.dogable_type = 'Subvariety'
+  dog.person_id = Person.find_by_name('usuario1@example.com').id
+end
+
+dog = Dog.where(name:'Scooby Doo').first_or_create! do |dog|
+  dog.sex = 'Male'
+  dog.date_of_birth = '2009-10-23'
+  dog.sire = 'Skip'
+  dog.dam = 'Laika'
+  dog.dogable_id = '95'
+  dog.dogable_type = 'Variety'
+  dog.person_id = Person.find_by_name('usuario1@example.com').id
+end
+#
+asd = Dog.where(name:'Baby').first_or_create! do |dog|
+  dog.sex = 'Female'
+  dog.date_of_birth = '2014-06-17'
+  dog.sire = 'Snoopy'
+  dog.dam = 'Iris'
+  dog.dogable_id = '119'
+  dog.dogable_type = 'Variety'
+  dog.person_id = Person.find_by_name('usuario1@example.com').id
+end
+
+Dog.where(name:'Lassie').first_or_create! do |dog|
+  dog.sex = 'Female'
+  dog.date_of_birth = '2008-02-02'
+  dog.sire = 'Rolf'
+  dog.dam = 'Linda'
+  dog.dogable_id = '229'
+  dog.dogable_type = 'Breed'
+  dog.person_id = Person.find_by_name('usuario2@example.com').id
+end
 
 #
 # Groups

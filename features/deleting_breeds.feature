@@ -8,7 +8,6 @@ Feature: Deleting Breeds
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
-    And I am signed in as "admin@testing.com"
 
     Given there is a group called "Group II"
     And there are sections for this group:
@@ -32,8 +31,10 @@ Feature: Deleting Breeds
 
   @done
   Scenario: Deleting a breed for a section
-    Given I am on the section page for "Section 2"
-    And I follow "Australian Terrier"
+    Given I am signed in as "admin@testing.com"
+    And I am on the section page for "Section 2"
+
+    When I follow "Australian Terrier"
     And I follow "Delete Breed"
 
     Then I should see "Breed has been deleted."
@@ -42,10 +43,23 @@ Feature: Deleting Breeds
 
   @done
   Scenario: Deleting a breed for a subsection
-    Given I am on the subsection page for "Subsection 1.1"
-    And I follow "Dobermann"
+    Given I am signed in as "admin@testing.com"
+    And I am on the subsection page for "Subsection 1.1"
+
+    When I follow "Dobermann"
     And I follow "Delete Breed"
 
     Then I should see "Breed has been deleted."
     And I should be on the subsection page for "Subsection 1.1"
     And I should not see "Dobermann"
+
+  @done
+  Scenario: Deleting breeds as no admin is bad
+    Given I am signed in as "user@testing.com"
+    And I am on the section page for "Section 2"
+
+    When I follow "Australian Terrier"
+    And I try to delete the "breed" "Australian Terrier"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."

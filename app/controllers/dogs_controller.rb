@@ -117,7 +117,6 @@ class DogsController < ApplicationController
     end
   end
 
-
   private
   # breed_has_variety is used to know if a given breed has a given variety
   def breed_has_variety( breed_id, variety_id )

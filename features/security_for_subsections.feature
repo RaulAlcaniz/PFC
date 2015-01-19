@@ -19,27 +19,27 @@ Feature: Security for subsections
       |Subsection 1     |Pinscher   |
     And I am on the section page for "Section 1"
 
-  @done
-  Scenario: Creating a subsection when the user is not an admin is bad
-    When I follow "New Subsection"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Deleting a subsection when the user is not an admin is bad
-    When I follow "Pinscher"
-    And I follow "Delete Subsection"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Updating a subsection when the user is not an admin is bad
-    When I follow "Pinscher"
-    And I follow "Edit Subsection"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Creating a subsection when the user is not an admin is bad
+#    When I follow "New Subsection"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Deleting a subsection when the user is not an admin is bad
+#    When I follow "Pinscher"
+#    And I follow "Delete Subsection"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Updating a subsection when the user is not an admin is bad
+#    When I follow "Pinscher"
+#    And I follow "Edit Subsection"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
 
 

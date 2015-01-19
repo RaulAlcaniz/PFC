@@ -25,6 +25,7 @@ Feature: Creating exhibitions
     Then I should see "Exhibition has been created"
     And I should be on the exhibition page for "The Westminster Kennel Club 139th Annual Dog Show"
 
+    And I should see "No payment list available at the moment."
 
   @done
   Scenario: Create exhibitions without a name is bad

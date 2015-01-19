@@ -29,25 +29,25 @@ Feature: Security for varieties
 
     Given I am on the breed page for "Dobermann"
 
-  @done
-  Scenario: Creating a variety when the user is not an admin is bad
-    When I follow "New Variety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Deleting a variety when the user is not an admin is bad
-    Given I am on the variety page for "Black with rust red markings"
-    When I follow "Delete Variety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Updating a variety when the user is not an admin is bad
-    Given I am on the variety page for "Black with rust red markings"
-    When I follow "Edit Variety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Creating a variety when the user is not an admin is bad
+#    When I follow "New Variety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Deleting a variety when the user is not an admin is bad
+#    Given I am on the variety page for "Black with rust red markings"
+#    When I follow "Delete Variety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Updating a variety when the user is not an admin is bad
+#    Given I am on the variety page for "Black with rust red markings"
+#    When I follow "Edit Variety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."

@@ -1,7 +1,9 @@
 <h1>Exhibitions page</h1>
-<ul>
-  <li><%= link_to 'New Exhibition', new_exhibition_path %></li>
-</ul>
+<% admins_only do%>
+    <ul>
+      <li><%= link_to 'New Exhibition', new_exhibition_path %></li>
+    </ul>
+<% end %>
 
 <table id="exhibitions">
   <tr>

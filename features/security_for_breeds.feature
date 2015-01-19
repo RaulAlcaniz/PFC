@@ -21,29 +21,29 @@ Feature: Security for breeds
 
     Given I am on the groups page
 
-  @done
-  Scenario: Creating a breed when the user is not an admin is bad
-    When I follow "Group III"
-    And I follow "Small-sized Terriers"
-    And I follow "New Breed"
+#  @done
+#  Scenario: Creating a breed when the user is not an admin is bad
+#    When I follow "Group III"
+#    And I follow "Small-sized Terriers"
+#    And I follow "New Breed"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
 
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Deleting a breed when the user is not an admin is bad
+#    Given I am on the section page for "Section 2"
+#    And I follow "Australian Terrier"
+#    And I follow "Delete Breed"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
 
-  @done
-  Scenario: Deleting a breed when the user is not an admin is bad
-    Given I am on the section page for "Section 2"
-    And I follow "Australian Terrier"
-    And I follow "Delete Breed"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Updating a breed when the user is not an admin is bad
-    Given I am on the section page for "Section 2"
-    And I follow "Australian Terrier"
-    And I follow "Edit Breed"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Updating a breed when the user is not an admin is bad
+#    Given I am on the section page for "Section 2"
+#    And I follow "Australian Terrier"
+#    And I follow "Edit Breed"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."

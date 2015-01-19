@@ -4,10 +4,12 @@
   <%= simple_format( @subsection.description ) %>
 
   <ul>
-    <li><%= link_to 'Edit Subsection', edit_section_subsection_path(@section, @subsection) %></li>
-    <li><%= link_to "Delete Subsection", [@group, @section, @subsection], method: :delete,
-                    data: {confirm: 'Are you sure you want to delete this Subsection?'} %></li>
-    <li><%= link_to 'New Breed', new_subsection_breed_path(@subsection) %></li>
+    <% admins_only do %>
+        <li><%= link_to 'Edit Subsection', edit_section_subsection_path(@section, @subsection) %></li>
+        <li><%= link_to "Delete Subsection", [@group, @section, @subsection], method: :delete,
+                        data: {confirm: 'Are you sure you want to delete this Subsection?'} %></li>
+        <li><%= link_to 'New Breed', new_subsection_breed_path(@subsection) %></li>
+    <% end %>
     <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
   </ul>
 

@@ -18,25 +18,25 @@ Feature: Security for sections
     And I am on the groups page
     When I follow "Group I"
 
-  @done
-  Scenario: Creating a section when the user is not an admin is bad
-    When I follow "New Section"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Deleting a section when the user is not an admin is bad
-    Given I am on the section page for "Section 2"
-    And I follow "Delete Section"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Editing a section when the user is not an admin is bad
-    Given I am on the section page for "Section 2"
-    And I follow "Edit Section"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Creating a section when the user is not an admin is bad
+#    When I follow "New Section"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Deleting a section when the user is not an admin is bad
+#    Given I am on the section page for "Section 2"
+#    And I follow "Delete Section"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Editing a section when the user is not an admin is bad
+#    Given I am on the section page for "Section 2"
+#    And I follow "Edit Section"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."

@@ -8,7 +8,6 @@ Feature: Deleting Varieties
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
-    And I am signed in as "admin@testing.com"
 
     Given there is a group called "Group II"
     And there are sections for this group:
@@ -27,11 +26,22 @@ Feature: Deleting Varieties
       |Name                        |
       |Black with rust red markings|
 
-    Given I am on the variety page for "Black with rust red markings"
-
   @done
   Scenario: Deleting a variety
+    Given I am signed in as "admin@testing.com"
+    And I am on the variety page for "Black with rust red markings"
+
     When I follow "Delete Variety"
     Then I should see "Variety has been deleted."
     And I should be on the breed page for "Dobermann"
     And I should not see "Black with rust red markings"
+
+  @done
+  Scenario: Deleting subvariety as no admin is bad
+    Given I am signed in as "user@testing.com"
+    And I am on the variety page for "Black with rust red markings"
+
+    When I try to delete the "variety" "Black with rust red markings"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."

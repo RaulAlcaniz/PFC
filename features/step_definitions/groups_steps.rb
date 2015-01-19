@@ -8,7 +8,6 @@ When(/^the standards and nomenclature page is visited$/) do
 end
 
 Then(/^the standards and nomenclature page should content:$/) do |expected_table|
-  # table is a Cucumber::Ast::Table
   rows = find('table#groups').all('tr')
   actual_table = rows.map{ |row| row.all('th, td').map{ |cell| cell.text} }
   expected_table.diff!(actual_table)
@@ -25,3 +24,8 @@ end
 Then(/^all sections for this group should have been removed$/) do
   @group.sections.count.should eq 0
 end
+
+Given(/^I try to delete the "(.*?)" "(.*?)"$/) do |model, name|
+  page.driver.submit :delete, "#{model.capitalize.constantize.find_by_name(name).id}", {}
+end
+

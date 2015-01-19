@@ -3,15 +3,16 @@
   <h2><%= @variety.name %></h2>
 
   <ul>
-    <li><%= link_to 'Edit Variety', edit_breed_variety_path(@breed, @variety) %></li>
-    <li><%= link_to "Delete Variety", [@breed, @variety], method: :delete,
+    <% admins_only do %>
+        <li><%= link_to 'Edit Variety', edit_breed_variety_path(@breed, @variety) %></li>
+        <li><%= link_to "Delete Variety", [@breed, @variety], method: :delete,
                     data: {confirm: 'Are you sure you want to delete this Variety?'} %></li>
+        <li><%= link_to 'New Subvariety', new_variety_subvariety_path(@variety, @subvariety) %></li>
+    <% end %>
+    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
   </ul>
 
   <table id="subvarities">
-    <ul>
-      <li><%= link_to 'New Subvariety', new_variety_subvariety_path(@variety, @subvariety) %></li>
-    </ul>
 
     <tr>
       <th>Subvarities</th>

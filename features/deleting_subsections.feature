@@ -8,7 +8,6 @@ Feature: Deleting Subsections
       | email              | password | admin  |
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
-    And I am signed in as "admin@testing.com"
 
     Given there is a group called "Group II"
     And there are sections for this group:
@@ -22,13 +21,25 @@ Feature: Deleting Subsections
       |Dobermann    |
       |Affenpinscher|
 
-    And I am on the section page for "Section 1"
-    And I follow "Pinscher"
-
   @done
   Scenario: Deleting a subsection
-    When I follow "Delete Subsection"
+    Given I am signed in as "admin@testing.com"
+    And I am on the section page for "Section 1"
+    When I follow "Pinscher"
+    And I follow "Delete Subsection"
+
     Then I should see "Subsection has been deleted."
     And I should be on the section page for "Section 1"
     And I should not see "Smoushond"
     And all "breeds" for this subsection should have been removed
+
+  @done
+  Scenario: Deleting subsections as no admin is bad
+    Given I am signed in as "user@testing.com"
+    And I am on the section page for "Section 1"
+
+    When I follow "Pinscher"
+    And I try to delete the "subsection" "Subsection 1"
+
+    Then I should be redirected to the home page
+    And I should see "You can't access to this page."

@@ -29,25 +29,25 @@ Feature: Security for subvarieties
 
     Given I am on the variety page for "Standard"
 
-  @done
-  Scenario: Creating a subvariety when the user is not an admin is bad
-    When I follow "New Subvariety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Deleting a subvariety when the user is not an admin is bad
-    Given I am on the subvariety page for "Smooth-haired"
-    When I follow "Delete Subvariety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
-
-  @done
-  Scenario: Updating a subvariety when the user is not an admin is bad
-    Given I am on the subvariety page for "Smooth-haired"
-    When I follow "Edit Subvariety"
-
-    Then I should be redirected to the home page
-    And I should see "You can't access to this page."
+#  @done
+#  Scenario: Creating a subvariety when the user is not an admin is bad
+#    When I follow "New Subvariety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Deleting a subvariety when the user is not an admin is bad
+#    Given I am on the subvariety page for "Smooth-haired"
+#    When I follow "Delete Subvariety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."
+#
+#  @done
+#  Scenario: Updating a subvariety when the user is not an admin is bad
+#    Given I am on the subvariety page for "Smooth-haired"
+#    When I follow "Edit Subvariety"
+#
+#    Then I should be redirected to the home page
+#    And I should see "You can't access to this page."

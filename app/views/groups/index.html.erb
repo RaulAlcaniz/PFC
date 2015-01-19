@@ -1,10 +1,12 @@
 <h1>Standars and Nomenclature Page</h1>
 
 <ul>
-  <li><%= link_to 'People page', people_path %></li>
+  <% admins_only do %>
+      <li><%= link_to 'People page', people_path %></li>
+      <li><%= link_to 'New Group', new_group_path %></li>
+  <% end %>
   <li><%= link_to 'Exhibitions page', exhibitions_path %></li>
 
-  <li><%= link_to 'New Group', new_group_path %></li>
 </ul>
 
 <table id="groups">
