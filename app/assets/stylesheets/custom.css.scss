@@ -22,7 +22,7 @@ $colHighlight   : #ababab;
   background: white;
   padding-right: 0;
   padding-left: 0;
-  border: 3px solid #DDD;
+  border: 2px solid #DDD; //2px solid
   border-top: 0;
 }
 
@@ -33,6 +33,7 @@ html {
 body {
   padding-top: 7%;
   font-size: $font-size-base;
+  //background-image: image-url("nice_snow.png");
 }
 
 section {
