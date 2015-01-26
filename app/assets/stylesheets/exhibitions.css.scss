@@ -27,6 +27,8 @@
 }
 
 #exhibitions{
+  padding-left: 0px;
+  padding-right: 2px;
   border-collapse: separate ;
   > tbody > tr > td {
     max-width: 350px;
@@ -51,7 +53,7 @@
   padding-right: 4%;
 }
 
-#exhibitions{
-  padding-left: 0px;
-  padding-right: 2px;
-}
+//#exhibitions{
+//  padding-left: 0px;
+//  padding-right: 2px;
+//}
