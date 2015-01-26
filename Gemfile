@@ -29,14 +29,16 @@ gem 'devise', '3.2.4'
 # Carrierwave para subida de ficheros
 gem 'carrierwave'
 
+gem 'countries'
+gem 'country_select'
+
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
-  gem 'countries'
-  gem 'country_select'
 end
 
 # Gemas para el cucumber
