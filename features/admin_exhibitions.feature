@@ -42,3 +42,10 @@ Feature: Admin exhibitions
 
     Then I should be redirected to the home page
     And I should see "You can't access to this page."
+
+  @actual
+  Scenario: Trying to access a non existent exhibition is bad
+    When I try to access to a non existent exhibition page
+
+    Then I should be redirected to the home page
+    And I should see "404 Not Found"

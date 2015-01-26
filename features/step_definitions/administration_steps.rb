@@ -109,4 +109,7 @@ Then(/^the payments page should content:$/) do |expected_table|
   expected_table.diff!(actual_table)
 end
 
+When(/^I try to access to a non existent exhibition page$/) do
+  visit 'exhibitions/999999'
+end
 
