@@ -47,7 +47,7 @@ class ExhibitionsController < ApplicationController
 
   private
   def set_exhibition
-    @exhibition = Exhibition.find(params[:id])
+    @exhibition = Exhibition.find_by_id!(params[:id])
   end
 
   def set_person

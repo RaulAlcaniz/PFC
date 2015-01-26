@@ -41,9 +41,6 @@ Feature: Admin payments
     And the payments page should content:
     |Identifier|Exhibition          |Amount|Last modification|Status    |Payment deadline|See | Edit |
     |1         |Exp. Canina de Cieza|24.00 |02/10/2014       |unverified|Open            |View| Edit |
-#    And I should see the payment identifier for "Snoopy"
-#    And I should see "Status" and "unverified"
-#    And I should not see the payment identifier for "Dundee"
 
   @done
   Scenario: Viewing all payments in the system

@@ -51,7 +51,7 @@ class PaymentsController < ApplicationController
     @out_of_time = false
     @enrolments.each do |enrolment|
       if enrolment.payment_id == @payment.id
-        @out_of_time = true if @exhibition.end_date < Date.today #(@exhibition.exhibition_prices Date.today.strftime('%d/%m/%Y'), enrolment.dog_class, 'nopartners').include? 'ERROR'
+        @out_of_time = true if @exhibition.end_date < Date.today
       end
     end
   end

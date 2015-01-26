@@ -99,7 +99,6 @@ Feature: Editing Dogs
     Then I should be on the dog page for "Snoopy"
     And I should see "Dog has been updated"
 
-
   @done
   Scenario: Updating a dog without a name is bad
     Given I am on the dog page for "Snoopy"

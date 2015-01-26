@@ -26,8 +26,6 @@ Feature: Deleting Subvarieties
       |Long-haired  |
       |Wire-haired  |
 
-
-
   @done
   Scenario: Deleting a subvariety
     Given I am signed in as "admin@testing.com"

@@ -31,14 +31,12 @@ class EnrolmentsController < ApplicationController
             !((@exhibition.exhibition_prices enrolment.created_at.strftime('%d/%m/%Y'), enrolment.dog_class, partner).is_a? String))
           @unpaid_enrolments << enrolment if (Date.today <= @exhibition.end_date) # Enrolments not payed at the end of the exhibition are not displayed
           @out_of_time = true if (@exhibition.exhibition_prices Date.today.strftime('%d/%m/%Y'), enrolment.dog_class, partner).include? 'ERROR'
-        end   #if ((Date.today - enrolment.created_at.to_date).to_i < 15)
+        end
       }
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
     @enrolments_index = @exhibition.enrolments.where(dog_id: Dog.all.ids).group(:payment_id).collect(&:id)
-
-    #@enrolments_index = @exhibition.enrolments.group(:payment_id).collect(&:id)
 
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.group(:payment_id).
@@ -100,7 +98,6 @@ class EnrolmentsController < ApplicationController
     @price = -1
     if @enrolment
       today = Date.today.strftime('%d/%m/%Y')
-      #today = '10-01-2015'   # Linea  a quitar cuando esto esté bien.
 
       prices = (@exhibition.exhibition_prices today, @enrolment.dog_class, 'nopartners') if @enrolment.partner == 0
       prices = (@exhibition.exhibition_prices today, @enrolment.dog_class, 'partners') if @enrolment.partner == 1

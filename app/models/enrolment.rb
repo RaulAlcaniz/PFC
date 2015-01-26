@@ -5,7 +5,7 @@ class Enrolment < ActiveRecord::Base
 
   classes_not_available = ['Couple', 'Working', 'Group Breeding']
   validate :check_available_classes
-  validate :check_class  #Errores de si el perro no ha sido seleccionado, o si la clase no está permitida para un perro
+  validate :check_class  # Must select a dog and class must be allowed
 
   validates_uniqueness_of :dog_id, :scope => :exhibition_id, unless: :skip_validation,
                           :message => 'Your dog has already been enrolled in this exhibition'
@@ -36,7 +36,6 @@ class Enrolment < ActiveRecord::Base
   end
 
   def enrolments_with_same_payment
-    #Enrolment.where(payment_id: self.payment_id).count
     count=0
     Enrolment.all.each do |enrolment|
       count=count+1 if enrolment.payment_id == self.payment_id and Dog.try(:find_by_id, enrolment.dog_id)
@@ -57,8 +56,8 @@ class Enrolment < ActiveRecord::Base
     end
   end
 
-  # Comprueba si la clase seleccionada está permitida para el perro seleccionado.
-  # Se comprueba la fecha en base a la fecha de comienzo de la exibición.
+  # Check if selected breed is allowed for the selected dog
+  # Check the date based on the start date of the exhibition
   def class_allowed
     (Dog.find(self.dog_id).what_classes? "#{((Exhibition.find(self.exhibition_id).start_date)).to_date}").include? self.dog_class
   end

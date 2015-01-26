@@ -58,33 +58,35 @@
         </tr>
     <% end %>
 
-    <th class="important" colspan="5"> FINISHED EXHIBITIONS</th>
     <% @exhibitions.where('start_date < ?', Date.today).order('start_date ASC').each do |exhibition| %>
-        <tr>
-          <td>
-            <%= if exhibition.try(:image_url)
-                  link_to image_tag(exhibition.image_url.to_s, class: 'imgExhibIndex img-thumbnail'), exhibition_path(exhibition)
-                else
-                  link_to image_tag('no-image.jpeg', class: 'imgExhibIndex img-thumbnail'), exhibition_path(exhibition)
-                end%>
-          </td>
-          <td>
-            <p><%= link_to exhibition.name, exhibition_path(exhibition) %><br></p>
-            <b>Description:</b> <%= truncate(exhibition.description, length: 200, :separator => ' ') { link_to 'Continue', exhibition_path(exhibition) } %>
-          </td>
-          <td class="center"><%= exhibition.start_date.strftime('%b %e, %Y') %></td>
-          <td class="center"><%= exhibition.end_date.strftime('%b %e, %Y') %></td>
-          <% if user_signed_in? %>
-              <% admins_only do %>
-                  <% if @person %>
-                      <td><%= link_to 'View enrolments', person_exhibition_enrolments_path(@person, exhibition.id)%></td>
-                  <% end %>
-              <% end
-                 users_only do %>
-                  <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id)%></td>
-              <% end %>
-          <% end %>
-        </tr>
+        <th class="important" colspan="5">
+          <p>FINISHED EXHIBITIONS</p>
+        </th>
+          <tr>
+            <td>
+              <%= if exhibition.try(:image_url)
+                    link_to image_tag(exhibition.image_url.to_s, class: 'imgExhibIndex img-thumbnail'), exhibition_path(exhibition)
+                  else
+                    link_to image_tag('no-image.jpeg', class: 'imgExhibIndex img-thumbnail'), exhibition_path(exhibition)
+                  end%>
+            </td>
+            <td>
+              <p><%= link_to exhibition.name, exhibition_path(exhibition) %><br></p>
+              <b>Description:</b> <%= truncate(exhibition.description, length: 200, :separator => ' ') { link_to 'Continue', exhibition_path(exhibition) } %>
+            </td>
+            <td class="center"><%= exhibition.start_date.strftime('%b %e, %Y') %></td>
+            <td class="center"><%= exhibition.end_date.strftime('%b %e, %Y') %></td>
+            <% if user_signed_in? %>
+                <% admins_only do %>
+                    <% if @person %>
+                        <td><%= link_to 'View enrolments', person_exhibition_enrolments_path(@person, exhibition.id)%></td>
+                    <% end %>
+                <% end
+                   users_only do %>
+                    <td><%= link_to 'My enrolments', exhibition_enrolments_path(exhibition.id)%></td>
+                <% end %>
+            <% end %>
+          </tr>
     <% end %>
   </table>
 </div>

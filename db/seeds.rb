@@ -110,6 +110,9 @@ user3 = User.where(email: 'usuario3@example.com').first_or_create! do |user|
 end
 user3.confirm!
 
+#
+# Dogs
+#
 Dog.where(name:'Viejito').first_or_create! do |dog|
   dog.sex = 'Male'
   dog.date_of_birth = '2002-01-17'

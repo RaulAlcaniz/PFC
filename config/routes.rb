@@ -10,10 +10,6 @@ Rails.application.routes.draw do
 
   resources :payments, only: [:index, :new, :create, :show, :edit, :update]
 
-  # resources :enrolments, only: [:new, :create, :index, :destroy] do
-  #   resources :payments, only: [:new, :create]
-  # end
-
   resources :exhibitions do
     resources :enrolments, only: [:new, :create, :index, :destroy]
   end

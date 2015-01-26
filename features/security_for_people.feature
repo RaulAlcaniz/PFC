@@ -11,13 +11,6 @@ Feature: Security for people
 
     Given I am signed in as "user@testing.com"
 
-#  @done
-#  Scenario: Access to the people page when the user is not an admin is bad
-#    When I follow "People page"
-#
-#    Then I should be redirected to the home page
-#    And I should see "You can't access to this page."
-
   @done
   Scenario: Creating a person when the user is not an admin is bad
     When I try to access to "New Person" page

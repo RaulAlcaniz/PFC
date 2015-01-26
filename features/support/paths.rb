@@ -29,13 +29,11 @@ module NavigationHelpers
         subvariety = Subvariety.find_by_name!($1)
         variety_subvariety_path(subvariety.variety, subvariety)
       when /the person page for "([^\"]*)"/
-        #person_path((User.find_by_email!($1)))
         person_path(Person.find_by_name!($1))
       when /the profile for "([^\"]*)"/
         person_path((User.find_by_email!($1)))
       when /the dog page for "([^\"]*)"/
         dog = Dog.find_by_name!($1)
-        #puts dog.person
         person_dog_path(dog.person, dog)
       when /the dogs page for "([^\"]*)"/
         person = Person.find_by_name!($1)

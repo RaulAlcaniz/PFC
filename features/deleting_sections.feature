@@ -9,7 +9,6 @@ Feature: Deleting Sections
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
 
-
   @done
   Scenario: Deleting a section with breeds as admin
     Given I am signed in as "admin@testing.com"

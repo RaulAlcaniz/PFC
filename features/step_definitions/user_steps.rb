@@ -1,7 +1,6 @@
 require 'date'
 
 Given(/^there are the following users:$/) do |table|
-  # table is a Cucumber::Ast::Table
   table.hashes.each do |attributes|
     unconfirmed = attributes.delete('unconfirmed') == 'true'
     @user = User.create!(attributes)

@@ -39,14 +39,3 @@ Feature: Editing People
     And I press "Update Person"
     Then I should see "Person has not been updated."
     And I should see "Date of birth must be before today"
-
-#  @done
-#  Scenario: Updating a person with a name already taken is bad
-#    Given there is a person called "Shaggy Doo"
-#    When I fill in "Name" with "Shaggy Doo"
-#    And I press "Update Person"
-#    Then I should see "Person has not been updated."
-#    And I should see "Name has already been taken"
-
-  # When we are editing a person, we can't select nil value
-  # for sex or country because we use prompt tag, so isn't necessary test it

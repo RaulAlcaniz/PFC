@@ -15,7 +15,6 @@ Feature: Deleting groups
       | Section 1      | Sheepdogs   |
       | Section 2      | Cattledogs  |
 
-
   @done
   Scenario: Deleting groups as admin
     Given I am signed in as "admin@testing.com"

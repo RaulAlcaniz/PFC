@@ -40,14 +40,6 @@ Feature: Creating people
     Then I should see "Person has not been created."
     And I should see "Name can't be blank"
 
-#  @done
-#  Scenario: Creating a person with a name already taken is bad
-#    Given there is a person called "Dorothy Oz"
-#    When I fill in "Name" with "Dorothy Oz"
-#    And I press "Create Person"
-#    Then I should see "Person has not been created."
-#    And I should see "Name has already been taken"
-
   @done
   Scenario: Creating a person with an invalid sex is bad
     When I select "Select one..." from "Sex"
