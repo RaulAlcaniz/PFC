@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126155107) do
+ActiveRecord::Schema.define(version: 20150126160049) do
 
   create_table "breeds", force: true do |t|
     t.string   "name"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150126155107) do
 
   create_table "exhibitions", force: true do |t|
     t.string   "name"
-    t.string   "description", limit: 1000
+    t.string   "description", limit: 5000
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at"
