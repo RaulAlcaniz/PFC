@@ -31,9 +31,9 @@ html {
 }
 
 body {
-  padding-top: 5%;
+  padding-top: 7%;
   font-size: $font-size-base;
-  background: url("nice_snow.png") repeat scroll 0% 0% transparent;
+  background-image: image-url("nice_snow.png");
 }
 
 section {
