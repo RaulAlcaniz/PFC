@@ -1,27 +1,52 @@
-<div id="payments">
-  <%
-     status = 'Status: ' + @payment.status.humanize
-     comment = 'Comment: ' + @payment.comment.humanize
-     dogs = []
-     @same_payment_dogs.each{|dog| dogs << dog.name}
-     dogs = 'Payment for: ' + dogs.to_sentence
-  %>
+<div id="payments" class="row">
+  <h2 class="titles"> <%= @exhibition.name %></h2>
+  <h4 class="titles small"> PAYMENTS <hr></h4>
 
-  <p><%= simple_format( dogs ) %></p>
-  <p><%= simple_format( status ) %></p>
-  <p><%= simple_format( comment ) %></p>
-  <%= link_to 'View the bank receipt', @payment.receipt_url%>
-  <% if @out_of_time %>
-      <p><b>The exhibition has already finished.</b></p>
-  <% end %>
-  <% admins_only do %>
-      <p><%= link_to 'Edit Payment', edit_payment_path%></p>
-  <% end %>
-  <% users_only do %>
-      <% if !@payment.accepted? and !@out_of_time %>
-          <p><%= link_to 'Edit Payment', edit_payment_path%></p>
-      <% end %>
-  <% end %>
 
+  <div class="col-md-12">
+    <% if @out_of_time %>
+        <p class="important center">The exhibition has already finished.</p>
+    <% end %>
+  </div>
+
+  <div class="col-md-12">
+    <% admins_only do %>
+        <div class="admin_actions right">
+          <ul class="breadcrumb">
+            <li><%= link_to 'Edit Payment', edit_payment_path%></li>
+            <li><%= link_to 'View the bank receipt', @payment.receipt_url%></li>
+          </ul>
+        </div>
+    <% end %>
+
+    <% users_only do %>
+        <div class="admin_actions left">
+          <ul class="breadcrumb">
+            <li><%= link_to 'View the bank receipt', @payment.receipt_url%></li>
+            <% if !@payment.accepted? and !@out_of_time %>
+                <li><%= link_to 'Edit Payment', edit_payment_path%></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+  </div>
+
+
+  <div class="col-md-offset-1 col-md-7">
+    <%
+       status = '<b>Status:</b> ' + @payment.status.humanize
+       comment = '<b>Comment:</b> ' + @payment.comment.humanize
+       dogs = []
+       @same_payment_dogs.each{|dog| dogs << dog.name}
+       dogs = '<b>Payment for:</b> ' + dogs.to_sentence
+    %>
+    <p><%= simple_format( dogs ) %></p>
+    <p><%= simple_format( status ) %></p>
+    <p><%= simple_format( comment ) %></p>
+  </div>
+
+  <div id="transfer" class="col-md-4">
+    <%= image_tag("transfer.png", alt: "Bank transfer") %>
+  </div>
 
 </div>

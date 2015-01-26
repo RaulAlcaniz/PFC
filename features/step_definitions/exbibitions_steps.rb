@@ -61,12 +61,13 @@ Given(/^there are these payments for "(.*?)" in "(.*?)":$/) do |clients, exhib_n
     normalize_hash[:classes].each {|normalize| get_abbreviations normalize}
   end
   @groups = Hash.new
-  @groups['Exp. Canina de Cieza'] = grouped_classes
+  @groups["#{exhib_name}"] = grouped_classes
 
   prices_collect = prices_collect.map {|key, value| {key=> value}}
 
-  if not @tax
-    @tax = {:groups  => @groups['Exp. Canina de Cieza']}
+  if not Exhibition.find_by_name(exhib_name).tax
+  #if not @tax
+    @tax = {:groups  => @groups["#{exhib_name}"]}
     @tax.merge!(:deadlines => @deadlines["#{exhib_name}"])
     @tax[:prices] = []
   end

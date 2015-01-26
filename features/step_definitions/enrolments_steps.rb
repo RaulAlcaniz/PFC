@@ -19,7 +19,7 @@ When(/^I follow "(.*?)" for "(.*?)" enrolled in "(.*?)" class$/) do |action, dog
 
 end
 
-Given(/^I have "(.*?)" enrolled in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |dog_name, exhibition_name, dog_class, date|
+Given(/^I have "(.*?)" enrolled( unpartnered)? in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |dog_name, nopartner, exhibition_name, dog_class, date|
   steps %{
     Given I am on the exhibitions page
     And I follow "#{exhibition_name}"
@@ -27,15 +27,15 @@ Given(/^I have "(.*?)" enrolled in "(.*?)" in "(.*?)" class on "(.*?)"$/) do |do
     And I press "Enroll a new dog"
     When I select "#{dog_name}" from "enrolment_dog_id"
     And I select "#{dog_class}" from "enrolment_dog_class"
-    And I check "Partner"
+    }
+    step 'I check "Partner"' if !nopartner
+  steps %{
     When I press "Create Enrolment"
     And I press "Create Enrolment"
     Then "#{dog_name}" should be enrolled for "#{exhibition_name}"
     Given I am on the exhibitions page
     And I follow "#{exhibition_name}"
-  }
-  #And I press "Inscribe a new dog"
-  #puts Enrolment.all.to_yaml
+    }
 end
 
 Then(/^I should see "(.*?)" for the payment of "(.*?)"$/) do |text, dog_names|
@@ -77,8 +77,9 @@ When(/^I try to access to a user enrolments page "(.*?)" as admin$/) do |exhibit
   visit ("/exhibitions/#{Exhibition.find_by_name(exhibition).id}/enrolments")
 end
 
-
-
-
-
-
+Given(/^there are sent erroneous payments data for "(.*?)"$/) do |exhibition|
+  step "there are these payments for \"partners\" in \"#{exhibition}\":", table(%{
+    | Class           | Dogs              | 1st entry deadline |
+    | J. I. O. W. CH. | 1st dog           | 24.00              |
+  })
+end

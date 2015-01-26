@@ -59,22 +59,22 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 1 should have 5 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.1').breeds.count.should eq 5
+            subsections.find_by(:name => 'Subsection 1.1').breeds.count.should eq 5
       end
 
       it 'Subsection 2 from Section 1 should have 3 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.2').breeds.count.should eq 3
+            subsections.find_by(:name => 'Subsection 1.2').breeds.count.should eq 3
       end
 
       it 'Subsection 3 from Section 1 should have 1 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.3').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 1.3').breeds.count.should eq 1
       end
 
       it 'Subsection 4 from Section 1 should have 1 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.4').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 1.4').breeds.count.should eq 1
       end
 
       # Section 2
@@ -85,12 +85,12 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 2 should have 16 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 2').
-            subsections.find_by(:name => '2.1').breeds.count.should eq 16
+            subsections.find_by(:name => 'Subsection 2.1').breeds.count.should eq 16
       end
 
       it 'Subsection 2 from Section 2 should have 18 breeds' do
         Group.find_by(:name => 'Group II').sections.find_by(:name => 'Section 2').
-            subsections.find_by(:name => '2.2').breeds.count.should eq 18
+            subsections.find_by(:name => 'Subsection 2.2').breeds.count.should eq 18
       end
 
       # Section 3
@@ -200,17 +200,17 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 1 should have 15 breeds' do
         Group.find_by(:name => 'Group VI').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.1').breeds.count.should eq 15
+            subsections.find_by(:name => 'Subsection 1.1').breeds.count.should eq 15
       end
 
       it 'Subsection 2 from Section 1 should have 37 breeds' do
         Group.find_by(:name => 'Group VI').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.2').breeds.count.should eq 37
+            subsections.find_by(:name => 'Subsection 1.2').breeds.count.should eq 37
       end
 
       it 'Subsection 3 from Section 1 should have 11 breeds' do
         Group.find_by(:name => 'Group VI').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.3').breeds.count.should eq 11
+            subsections.find_by(:name => 'Subsection 1.3').breeds.count.should eq 11
       end
 
       # Section 2
@@ -236,17 +236,17 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 1 should have 18 breeds' do
         Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.1').breeds.count.should eq 18
+            subsections.find_by(:name => 'Subsection 1.1').breeds.count.should eq 18
       end
 
       it 'Subsection 2 from Section 1 should have 10 breeds' do
         Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.2').breeds.count.should eq 10
+            subsections.find_by(:name => 'Subsection 1.2').breeds.count.should eq 10
       end
 
       it 'Subsection 3 from Section 1 should have 3 breeds' do
         Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.3').breeds.count.should eq 3
+            subsections.find_by(:name => 'Subsection 1.3').breeds.count.should eq 3
       end
 
       # Section 2
@@ -256,12 +256,12 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 2 should have 1 breeds' do
         Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 2').
-            subsections.find_by(:name => '2.1').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 2.1').breeds.count.should eq 1
       end
 
       it 'Subsection 2 from Section 2 should have 4 breeds' do
         Group.find_by(:name => 'Group VII').sections.find_by(:name => 'Section 2').
-            subsections.find_by(:name => '2.2').breeds.count.should eq 4
+            subsections.find_by(:name => 'Subsection 2.2').breeds.count.should eq 4
       end
     end
 
@@ -297,17 +297,17 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 1 should have 4 breeds' do
         Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.1').breeds.count.should eq 4
+            subsections.find_by(:name => 'Subsection 1.1').breeds.count.should eq 4
       end
 
       it 'Subsection 2 from Section 1 should have 1 breeds' do
         Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.2').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 1.2').breeds.count.should eq 1
       end
 
       it 'Subsection 3 from Section 1 should have 1 breeds' do
         Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 1').
-            subsections.find_by(:name => '1.3').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 1.3').breeds.count.should eq 1
       end
 
       # Section 2
@@ -323,12 +323,12 @@ describe '#Seed Data' do
 
       it 'Subsection 1 from Section 1 should have 2 breeds' do
         Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 3').
-            subsections.find_by(:name => '3.1').breeds.count.should eq 2
+            subsections.find_by(:name => 'Subsection 3.1').breeds.count.should eq 2
       end
 
       it 'Subsection 2 from Section 1 should have 1 breeds' do
         Group.find_by(:name => 'Group IX').sections.find_by(:name => 'Section 3').
-            subsections.find_by(:name => '3.2').breeds.count.should eq 1
+            subsections.find_by(:name => 'Subsection 3.2').breeds.count.should eq 1
       end
 
       # Section 4
@@ -450,7 +450,7 @@ describe '#Seed Data' do
             ['Zwergpinscher', 2]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 1').
-                subsections.find_by!(:name => '1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -466,7 +466,7 @@ describe '#Seed Data' do
             ['Zwergschnauzer', 4]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 1').
-                subsections.find_by!(:name => '1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -481,7 +481,7 @@ describe '#Seed Data' do
             ['Deutsche Dogge', 5]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 2').
-                subsections.find_by!(:name => '2.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 2.1').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -498,7 +498,7 @@ describe '#Seed Data' do
             ['St.Bernhardshund (Bernhardiner)', 2]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group II').sections.find_by!(:name => 'Section 2').
-                subsections.find_by!(:name => '2.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 2.2').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -592,7 +592,7 @@ describe '#Seed Data' do
             ['Schweizer Laufhund-Chien Courant Suisse',4]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group VI').sections.find_by!(:name => 'Section 1').
-                subsections.find_by!(:name => '1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 1.2').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -606,7 +606,7 @@ describe '#Seed Data' do
             ['Schweizerischer Niederlaufhund',4]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group VI').sections.find_by!(:name => 'Section 1').
-                subsections.find_by!(:name => '1.3').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 1.3').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end
@@ -627,7 +627,7 @@ describe '#Seed Data' do
             ['Bracco Italiano',2]
           ].inject(0) do |acc, (name, count)|
             Group.find_by!(:name => 'Group VII').sections.find_by!(:name => 'Section 1').
-                subsections.find_by!(:name => '1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
+                subsections.find_by!(:name => 'Subsection 1.1').breeds.find_by!('name LIKE ?', "%#{name}%").
                 varieties.count.should eq count
             acc + count
           end

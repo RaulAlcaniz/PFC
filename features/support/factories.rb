@@ -45,6 +45,7 @@ FactoryGirl.define do
     exhib.description {'Exhibition ' + generate(:description)}
     exhib.start_date DateTime.now + 1.hour
     exhib.end_date DateTime.now + 2.hour
+    exhib.image ActionDispatch::Http::UploadedFile.new(:tempfile => File.new("#{Rails.root}/features/support/attachments/receipt_example.txt"), :filename => 'image.jpeg')
   end
 
   factory :enrolment do |enrolment|

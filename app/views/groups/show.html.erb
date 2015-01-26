@@ -1,28 +1,39 @@
-<div id="groups" >
+<div id="groups" class="row">
+  <div id="exhibition_new" class="col-md-12">
+    <h2 class="exh-title"><strong><%= @group.name %></strong></h2>
+    <h4 class="titles small"> <%= simple_format( @group.description ) %> <hr></h4>
+  </div>
 
-  <h2><%= @group.name %></h2>
-  <%= simple_format( @group.description ) %>
+  <% admins_only do %>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Edit Group', edit_group_path(@group) %></li>
+          <li><%= link_to 'New Section', new_group_section_path(@group) %></li>
+        </ul>
+      </div>
 
-  <ul>
-    <% admins_only do%>
-        <li><%= link_to 'Edit group', edit_group_path(@group) %></li>
-        <li><%= link_to 'Delete group', @group, method: :delete, data: {confirm: 'Are you sure you want to delete this Group'} %></li>
-        <li><%= link_to 'New Section', new_group_section_path(@group) %></li>
-    <% end %>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-  </ul>
+      <div class="admin_actions left">
+        <%= (link_to 'Delete group', @group, method: :delete, data: {confirm: 'Are you sure you want to delete this Group'}, :class => 'btn danger') %>
+      </div>
+    </div>
+  <% end %>
 
-
-  <table id="sections">
-    <tr>
-      <th>Section number</th>
-      <th>Description</th>
-    </tr>
-    <% @group.sections.each do |section| %>
-        <tr>
-          <td><%= section.name %></td>
-          <td><%= link_to section.description, [@group, section] %></td>
-        </tr>
-    <% end %>
-  </table>
+  <div class="col-md-7">
+    <table id="sections" class="table table-striped table-hover table-condensed">
+      <tr>
+        <th>Section</th>
+        <th>Description</th>
+      </tr>
+      <% @group.sections.order('name + 0 ASC').each do |section| %>
+          <tr>
+            <td class="center"><%= section.name %></td>
+            <td><%= link_to section.description, [@group, section] %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+  <div id="champion" class=" col-md-1">
+    <%= image_tag("dogs/dog_group#{@group.id}.jpg",id:'dog_groups', alt: 'Dog Image') %>
+  </div>
 </div>

@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root :to => 'groups#index'
+  root :to => 'exhibitions#index'
 
   get 'dogs/update_varieties'
   get 'dogs/update_subvarieties'
 
   get 'people/:id/my_exhibitions' => 'people#my_exhibitions', :as => :people_my_exhibitions
 
-  resources :payments, only: [:new, :create, :show, :edit, :update]
+  resources :payments, only: [:index, :new, :create, :show, :edit, :update]
 
   # resources :enrolments, only: [:new, :create, :index, :destroy] do
   #   resources :payments, only: [:new, :create]

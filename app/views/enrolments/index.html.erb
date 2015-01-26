@@ -1,91 +1,88 @@
-<div id="no_enrolments" <% if @unpaid_enrolments.any? or @paid_enrolments.any?  %> style='display:none;' <% else %> style='display:block;' <% end %> >
-  <h2> Enrolled dogs for <%= @exhibition.name %></h2>
-  <p>You haven't dogs enrolled in this exhibition.</p>
-</div>
+<div class ="row" >
+  <h2 class="titles"> Enrolled dogs for <%= @exhibition.name %><hr></h2>
 
+  <div id="no_enrolments" class="col-md-12 center" <% if @unpaid_enrolments.any? or @paid_enrolments.any?  %> style='display:none;' <% else %> style='display:block;' <% end %> >
+    <p class="important little underline">You haven't dogs enrolled in this exhibition.</p>
+  </div>
+  <% users_only do %>
+      <div class="col-md-3 col-md-offset-1 ">
+        <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get', :class => 'btn primary'%>
+      </div>
+  <% end %>
 
-<div id="show_enrolments" <% if @unpaid_enrolments.any? or @paid_enrolments.any?  %> style='display:block;' <% else %> style='display:none;' <% end %> >
-  <h2> Enrolled dogs for <%= @exhibition.name %></h2>
-  <table id="pending_enrolments", border = 1>
-    <tr>
-      <th colspan="5"> Pending for the Bank Receipt</th>
-    </tr>
-    <tr>
-      <th>Dog</th>
-      <th>Class</th>
-      <th>Price</th>
-    </tr>
-    <% @unpaid_enrolments.each do |enrolment| %>
+  <div id="show_enrolments" class="container" <% if @unpaid_enrolments.any? or @paid_enrolments.any?  %> style='display:block;' <% else %> style='display:none;' <% end %> >
+    <div id="enrol_unpaid" class="col-md-offset-2 col-md-8">
+      <table id="pending_enrolments" class="table table-striped table-condensed">
         <tr>
-          <td><%= Dog.find(enrolment.dog_id).name %></td>
-          <td><%= enrolment.dog_class %></td>
-          <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
-          <% if !@out_of_time
-               users_only do %>
-            <td><%= link_to 'Remove', [@exhibition, enrolment], method: :delete, data: {confirm: 'Are you sure you want to remove this dog'} %></td>
-          <% end
-             end %>
-          <% if @out_of_time
-               admins_only do %>
-                  <td><%#= link_to 'Remove to do for action', [@exhibition, enrolment], method: :delete, data: {confirm: 'Are you sure you want to remove this dog'} %></td>
-              <% end
-                 end %>
+          <caption><th colspan="5"> Pending for the Bank Receipt</th></caption>
         </tr>
-    <% end %>
-    <tr>
-
-      <td colspan="3" align="right"><%= number_with_precision(@enrolments_price, :precision => 2) %> €</td>
-      <td>TOTAL</td>
-    </tr>
-    <% users_only do %>
-        <%  if @unpaid_enrolments.any? %>
-            <td colspan="5" align="center">
-              <%= form_tag(new_payment_path, method: :get) do %>
-                  <%= hidden_field_tag :exhibition_id, @exhibition.id %>
-                  <%= submit_tag 'Upload the Bank Receipt' %>
-              <% end %>
-            </td>
-        <%end%>
-    <% end %>
-  </table>
-
-  <table id="paid_enrolments", border = 1>
-    <thead>
-        <tr>
-          <th colspan="5"> Dogs Already Enrolled</th>
-        </tr>
-        <tr>
-          <th>Dog</th>
-          <th>Class</th>
-          <th>Price</th>
-          <th>Payment</th>
-          <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <% @paid_enrolments.each do |enrolment| %>
+        <% if @unpaid_enrolments.any?%>
+            <tr>
+              <th class="left">Dog</th>
+              <th class="left">Class</th>
+              <th class="left">Price</th>
+              <th></th>
+            </tr>
+        <% end %>
+        <% @unpaid_enrolments.each do |enrolment| %>
             <tr>
               <td><%= Dog.find(enrolment.dog_id).name %></td>
               <td><%= enrolment.dog_class %></td>
               <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
-
-              <% if enrolment.payment_id and
-                      Payment.find(enrolment.payment_id).receipt_url and
-                      @enrolments_index.include? enrolment.id %>
-                  <td rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>, style="border: 1px inset"><%= link_to 'See Payment', payment_path(enrolment.payment_id, exhibition_id: @exhibition.id) %> </td>
-                  <td rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>, style="border: 1px inset"><%= Payment.find(enrolment.payment_id).status.humanize %> </td>
-              <% end %>
+              <% if !@out_of_time
+                   users_only do %>
+                <td><%= link_to 'Remove', [@exhibition, enrolment], method: :delete, data: {confirm: 'Are you sure you want to remove this dog'} %></td>
+              <% end
+                 end %>
             </tr>
         <% end %>
-    </tbody>
-  </table>
-</div>
-
-<% users_only do %>
-    <div id="enrol_dog" >
-      <p>
-        <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%>
-      </p>
+        <tr>
+          <td colspan="3" align="right"><%= number_with_precision(@enrolments_price, :precision => 2) %> €</td>
+          <td>TOTAL</td>
+        </tr>
+        <% users_only do %>
+            <%  if @unpaid_enrolments.any? %>
+                <td colspan="5" align="center">
+                  <%= form_tag(new_payment_path, method: :get) do %>
+                      <%= hidden_field_tag :exhibition_id, @exhibition.id %>
+                      <%= submit_tag 'Upload the Bank Receipt' %>
+                  <% end %>
+                </td>
+            <%end%>
+        <% end %>
+      </table>
     </div>
-<% end %>
+    <div id="enrol_paid" class="col-md-offset-2 col-md-8">
+        <table id="paid_enrolments" class="table table-striped table-condensed">
+          <thead>
+              <tr>
+                <caption><th colspan="5"> Dogs Already Enrolled</th></caption>
+              </tr>
+              <tr>
+                <th class="left">Dog</th>
+                <th class="left">Class</th>
+                <th class="left">Price</th>
+                <th class="left">Payment</th>
+                <th class="left">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+
+              <% @paid_enrolments.each do |enrolment| %>
+                  <tr>
+                    <td><%= Dog.find(enrolment.dog_id).name %></td>
+                    <td><%= enrolment.dog_class %></td>
+                    <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
+                     <% if enrolment.payment_id and
+                            Payment.find(enrolment.payment_id).receipt_url and
+                            @enrolments_index.include? enrolment.id %>
+                        <td class="paid_enrol" rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>><%= link_to 'See Payment', payment_path(enrolment.payment_id, exhibition_id: @exhibition.id) %> </td>
+                        <td class="paid_enrol" rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>><%= Payment.find(enrolment.payment_id).status.humanize %> </td>
+                    <% end %>
+                  </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

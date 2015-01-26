@@ -1,41 +1,56 @@
-<div id="sections" >
+<div id="sections" class="row"  >
 
-  <h2><%= @section.name %></h2>
-  <%= simple_format( @section.description ) %>
+  <div id="exhibition_new" class="col-md-12">
+    <h2 class="exh-title"><strong><%= @section.name %></strong></h2>
+    <h4 class="titles small"> <%= simple_format( @section.description ) %> <hr></h4>
+  </div>
 
-  <ul>
-    <% admins_only do %>
-        <li><%= link_to 'Edit Section', edit_group_section_path(@group, @section) %></li>
-        <li><%= link_to "Delete Section", [@group, @section], method: :delete,
-                        data: {confirm: 'Are you sure you want to delete this Section?'} %></li>
-        <li><%= link_to 'New Subsection', new_section_subsection_path(@section) %></li>
-        <li><%= link_to 'New Breed', new_section_breed_path(@section) %></li>
-    <% end %>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-  </ul>
+  <% admins_only do %>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Edit Section', edit_group_section_path(@group, @section) %></li>
+          <li><%= link_to 'New Subsection', new_section_subsection_path(@section) %></li>
+          <li><%= link_to 'New Breed', new_section_breed_path(@section) %></li>
+        </ul>
+      </div>
 
-  <table id="subsections">
-    <tr>
-      <th>Subsection number</th>
-      <th>Description</th>
-    </tr>
-    <% @section.subsections.each do |subsection| %>
-      <tr>
-        <td><%= subsection.name %></td>
-        <td><%= link_to subsection.description, [@section, subsection] %></td>
-      </tr>
-    <% end %>
-  </table>
+      <div class="admin_actions left">
+        <%= link_to "Delete Section", [@group, @section], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Section?'}, :class => 'btn danger' %>
+      </div>
+    </div>
+  <% end %>
 
-  <table id="breeds">
-    <tr>
-      <th>Breeds</th>
-    </tr>
-    <% @section.breeds.each do |breed| %>
-      <tr>
-        <td><%= link_to breed.name, [@section, breed] %></td>
-      </tr>
-    <% end %>
-  </table>
+  <% if @section.subsections.any? %>
+      <div class="col-md-6">
+        <table id="subsections" class="table table-striped table-hover table-condensed left">
+          <tr>
+            <th class="left">Subsection</th>
+            <th class="left">Description</th>
+          </tr>
+          <% @section.subsections.order('name +0 ASC').each do |subsection| %>
+            <tr>
+              <td><%= subsection.name %></td>
+              <td><%= link_to subsection.description, [@section, subsection] %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+  <% end %>
 
+  <% if @section.breeds.any? %>
+      <div class="col-md-6">
+        <table id="breeds" class="table table-striped table-hover table-condensed">
+          <tr>
+            <th>Breeds</th>
+          </tr>
+          <% @section.breeds.each do |breed| %>
+            <tr>
+              <td><%= link_to breed.name, [@section, breed] %></td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  <% end %>
 </div>

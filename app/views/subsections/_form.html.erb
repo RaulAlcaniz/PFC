@@ -1,14 +1,21 @@
 <%= form_for [@group, @section, @subsection] do |f|%>
     <% @subsection.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
+        <div class="alert alert-danger" role="alert">
+          <p><%= msg %></p>
+        </div>
     <% end %>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </p>
-    <%= f.submit %>
+
+    <div class="col-md-offset-1 form-group col-md-8">
+      <label><%= f.label :name %></label>
+      <%= f.text_field :name, {class:'form-control'} %>
+    </div>
+
+    <div class="col-md-offset-1 form-group col-md-8">
+      <label><%= f.label :description %></label>
+      <%= f.text_field :description, {class:'form-control'} %>
+    </div>
+
+    <div class="col-md-offset-1 form-group col-md-8">
+      <%= f.submit %>
+    </div>
 <% end %>

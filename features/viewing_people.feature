@@ -34,4 +34,4 @@ Feature: Viewing people
     When the people page is visited
     And I follow "Gamoneda"
     Then I should be on the person page for "Gamoneda"
-    And I should see "Gamoneda" within "#people h2"
+    And I should see "Gamoneda" within "#people h4"

@@ -1,0 +1,295 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+$font-size-base: 16px;
+//** Background color used for `.table`.
+$table-bg:                      transparent !default;
+//** Background color used for `.table-hover`.
+$table-bg-hover:                #f5f5f5 !default;
+$table-bg-active:               $table-bg-hover !default;
+//** Colors for the Navigation bar
+$bgDefault      : #6b6b6b;
+$bgHighlight    : #8e8e8e;
+$colDefault     : #ecf0f1;
+$colHighlight   : #ababab;
+
+/* universal */
+
+#cuerpo{
+  background: white;
+  padding-right: 0;
+  padding-left: 0;
+  border: 3px solid #DDD;
+  border-top: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+  font-size: $font-size-base;
+  background: url("nice_snow.png") repeat scroll 0% 0% transparent;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.margin-bot{
+  margin-bottom: 5px;
+}
+
+/* typography */
+#doggytitle{
+  color: #c75e00;
+  font-family: 'Rouge Script', cursive;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 0 0 50px;
+  text-align: center;
+  text-shadow: 1px 1px 2px #082b34;
+}
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 2;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h4{
+  text-align: center;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2.2em;
+  color: white;
+  letter-spacing: -1px;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
+}
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.navbar {
+  .navbar-nav {
+    > li > a {
+      color: #adadad;
+      font-size: 16px;
+    }
+  }
+  .navbar-text{
+    color: #ece9d1;
+    &.signed{
+      font-size: 16px;
+      margin-bottom: 0px;
+      margin-left: 15px;
+    }
+  }
+}
+
+.navbar-right{
+  float: right;
+}
+
+.img{
+  &.logo{
+    max-height: 40px;
+    margin-top: 5px;
+  }
+}
+
+/* Navigation bar for the site */
+.navbar-default {
+  background: -moz-linear-gradient(45deg,  #474747 5%, #e46540 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(5%, #474747), color-stop(99%, #e46540)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #474747 5%, #e46540 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #474747 5%, #e46540 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #474747 5%,#e46540 99%); /* IE10+ */
+  background: linear-gradient(45deg,  #474747 5%,#e46540 99%); /* W3C */
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+
+.table-striped {
+  &.bordered{
+    border: 3px solid #DDD;
+  }
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: $table-bg-accent;
+    }
+  }
+  > tbody > tr > th {
+    text-align: center;
+    border-bottom: 3px solid #DDD;
+    &.left{
+      text-align: left;
+    }
+  }
+}
+
+.table-user-information > tbody > tr {
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+  border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+  border-top: 0;
+}
+
+.admin_actions{
+  width: auto;
+  padding-right: 2%;
+  padding-left: 2%;
+
+  &.right{
+    float: right;
+  }
+  &.left{
+    float:left;
+  }
+}
+
+.breadcrumb {
+  > li {
+    + li:before {
+      content: "|";
+    }
+  }
+}
+
+.important{
+  color: #d40000;
+  &.little{
+    color: darkred ;
+  }
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+#look_person{
+  text-align: right;
+}
+
+#birthday {
+  float: left;
+  width: 100px;
+}

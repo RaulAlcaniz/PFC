@@ -1,27 +1,39 @@
-<%= form_for [@person] do |f|%>
-    <% @person.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
+<div class="row">
+  <%= form_for [@person] do |f|%>
+      <% @person.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <p><%= msg %></p>
+          </div>
+      <% end %>
 
-    <p>
-      <%= f.label :date_of_birth %>
-      <%= f.date_select(:date_of_birth, start_year: Date.today.year-90,
-                        end_year: Date.today.year) %>
-    </p>
+      <div class="col-md-7">
+        <div class="col-md-offset-1 form-group col-xs-7">
+          <label><%= f.label :name %></label>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
 
-    <p>
-      <%= f.label :sex %>
-      <%= f.select(:sex, options_for_select(%w[Male Female]), prompt: 'Select one...') %>
-    </p>
+        <div class="col-md-offset-1 form-group col-xs-8">
+          <label><%= f.label :date_of_birth %></label><br>
+          <%= f.date_select(:date_of_birth, {start_year: Date.today.year-90, end_year: Date.today.year}, {id:'birthday',class:'form-control'}) %>
+        </div>
 
-    <p>
-      <%= f.label :country %>
-      <%= f.country_select(:country, nil, {prompt: 'Choose one...' }) %>
-    </p>
+        <div class="col-md-offset-1 form-group col-xs-8">
+          <label><%= f.label :sex %></label><br>
+          <%= f.select(:sex, options_for_select(%w[Male Female]), {prompt: 'Select one...'}, class:'form-control' ) %>
+        </div>
 
-    <%= f.submit %>
-<% end %>
+        <div class="col-md-offset-1 form-group col-md-8">
+          <label> <%= f.label :country %></label><br>
+          <%= f.country_select(:country, nil, {prompt: 'Choose one...'}, class:'form-control') %>
+        </div>
+
+        <div class="col-md-offset-1 col-md-8">
+          <%= f.submit %>
+        </div>
+      </div>
+  <% end %>
+
+  <div id="champion" class="col-md-offset-1 col-md-3">
+    <%= image_tag('edit_profile.png', alt: 'form') %>
+  </div>
+</div>

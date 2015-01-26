@@ -1,3 +1,13 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#dog_groups {
+  border: 4px;
+  min-width: 150px;
+  max-width: 300px;
+  min-height: 200px;
+  max-height: 300px;
+  margin-left: 30px;
+}

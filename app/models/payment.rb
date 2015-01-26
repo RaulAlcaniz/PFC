@@ -6,7 +6,7 @@ class Payment < ActiveRecord::Base
 
   #scope to check that one user owns the payment that is attempting to access
   scope :for, ->(person) do
-    User.find(person).admin? ? Payment.all : Payment.where(id: Enrolment.select(:payment_id).where(dog_id: Dog.select(:id).where(person_id: person)))
+    User.find(person.try(:user_id)).admin? ? Payment.all : Payment.where(id: Enrolment.select(:payment_id).where(dog_id: Dog.select(:id).where(person_id: person)))
   end
 
   states.each do |state|

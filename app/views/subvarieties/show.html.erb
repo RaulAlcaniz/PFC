@@ -1,13 +1,20 @@
-<table  id="subvarieties">
+<div  id="subvarieties", class="row">
+  <div class="col-md-12">
+    <h2 class="exh-title"><strong><%= @subvariety.name %></strong><hr></h2>
+  </div>
 
-  <h2><%= @subvariety.name %></h2>
+  <% admins_only do %>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Edit Subvariety', edit_variety_subvariety_path(@variety, @subvariety)%></li>
+        </ul>
+      </div>
 
-  <ul>
-    <% admins_only do %>
-        <li><%= link_to 'Edit Subvariety', edit_variety_subvariety_path(@variety, @subvariety)%></li>
-        <li><%= link_to "Delete Subvariety", [@variety, @subvariety], method: :delete,
-                        data: {confirm: 'Are you sure you want to delete this Subvariety?'} %></li>
-    <% end %>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-  </ul>
-</table>
+      <div class="admin_actions left">
+        <%= link_to "Delete Subvariety", [@variety, @subvariety], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Subvariety?'}, :class => 'btn danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>

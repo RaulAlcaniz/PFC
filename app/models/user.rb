@@ -5,16 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  has_one :person
+  has_one :person, dependent: :destroy
 
   after_create{create_person(name: self.email, sex: "Not selected",
                              date_of_birth: "01/01/2000", country: "Not selected")}
 
   scope :admin?, -> {where(admin: true)}
-
-  # scope :admin?, ->(user_id) do
-  #   #puts User.find(admin: true)
-  #   User.where(id: user_id).where(admin: true)
-  # end
-
 end

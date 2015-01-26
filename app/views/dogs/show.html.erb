@@ -1,58 +1,73 @@
-<div id="dogs" >
+<div id="dogs" class="row" >
 
-  <h2><%= @dog.name %></h2>
+  <div class="col-md-12">
+    <h2 class="titles"> <%= @dog.name.upcase %> </h2>
+    <h4 class="titles small"> Dog <hr></h4>
+  </div>
 
-  <ul>
-    <li><%= link_to 'Edit Dog', edit_person_dog_path(@person, @dog) %></li>
-    <li><%= link_to 'Delete Dog', [@person, @dog], method: :delete,
-                    data: {confirm: 'Are you sure you want to delete this dog?'} %></li>
+  <div class="col-md-12">
+      <div class="col-md-12">
+        <div class="admin_actions right">
+          <ul class="breadcrumb">
+            <li><%= link_to 'Edit Dog', edit_person_dog_path(@person, @dog) %></li>
+          </ul>
+        </div>
+        <div class="admin_actions left">
+          <%= link_to 'Delete Dog', [@person, @dog], method: :delete,
+                      data: {confirm: 'Are you sure you want to delete this Dog?'}, :class => 'btn danger' %>
+        </div>
+      </div>
 
-  </ul>
-
-  <table id="dogs">
-    <tr>
-      <td>Name:</td>
-      <td><%= @dog.name %></td>
-    </tr>
-    <tr>
-      <td>Sire:</td>
-      <td><%= @dog.sire %></td>
-    </tr>
-    <tr>
-      <td>Dam:</td>
-      <td><%= @dog.dam %></td>
-    </tr>
-    <tr>
-      <td>Date of birth:</td>
-      <td><%= @dog.date_of_birth.strftime('%d/%m/%Y') %></td>
-    </tr>
-    <tr>
-      <td>Sex:</td>
-      <td><%= @dog.sex %></td>
-    </tr>
-    <tr>
-      <td>Titles:</td>
-      <td><%= @dog.titles %></td>
-    </tr>
-    <tr>
-      <td>Breed:</td>
-      <td><%= if @is_a_breed or @is_a_variety or @is_a_subvariety
-                @dog.dogable.get_breed.name
-              end %>
-    </tr>
-    <tr <% if not @is_a_variety and not @is_a_subvariety %> style='display:none;' <% end %> >
-      <td>Variety:</td>
-      <td><%= if @is_a_variety or @is_a_subvariety
-                @dog.dogable.get_variety.name
-              end %>
-      </td>
-    </tr>
-    <tr <% if not @is_a_subvariety %> style='display:none;' <% end %> >
-      <td>Subvariety:</td>
-      <td><%= if @is_a_subvariety
-                @dog.dogable.get_subvariety.name
-              end %>
-      </td>
-    </tr>
-  </table>
+    <div class="col-md-offset-1 col-md-6">
+      <table id="dogs" class="table table-user-information">
+        <tr>
+          <td><b>Name:</b></td>
+          <td><%= @dog.name %></td>
+        </tr>
+        <tr>
+          <td><b>Sire:</b></td>
+          <td><%= @dog.sire %></td>
+        </tr>
+        <tr>
+          <td><b>Dam:</b></td>
+          <td><%= @dog.dam %></td>
+        </tr>
+        <tr>
+          <td><b>Date of birth:</b></td>
+          <td><%= @dog.date_of_birth.strftime('%d/%m/%Y') %></td>
+        </tr>
+        <tr>
+          <td><b>Sex:</b></td>
+          <td><%= @dog.sex %></td>
+        </tr>
+        <tr>
+          <td><b>Titles:</b></td>
+          <td class="text-justify"><%= @dog.titles %></td>
+        </tr>
+        <tr>
+          <td><b>Breed:</b></td>
+          <td><%= if @is_a_breed or @is_a_variety or @is_a_subvariety
+                    @dog.dogable.get_breed.name
+                  end %>
+        </tr>
+        <tr <% if not @is_a_variety and not @is_a_subvariety %> style='display:none;' <% end %> >
+          <td><b>Variety:</b></td>
+          <td><%= if @is_a_variety or @is_a_subvariety
+                    @dog.dogable.get_variety.name
+                  end %>
+          </td>
+        </tr>
+        <tr <% if not @is_a_subvariety %> style='display:none;' <% end %> >
+          <td><b>Subvariety:</b></td>
+          <td><%= if @is_a_subvariety
+                    @dog.dogable.get_subvariety.name
+                  end %>
+          </td>
+        </tr>
+      </table>
     </div>
+    <div id="profile_icon" class=" col-md-4">
+      <%= image_tag('dog-profile.png', id:'dog_profile', alt: 'Profile Image') %>
+    </div>
+  </div>
+</div>

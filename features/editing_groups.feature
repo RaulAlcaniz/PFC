@@ -14,7 +14,7 @@ Feature: Editing Groups
     And I am on the groups page
 
     When I follow "Group I"
-    And I follow "Edit group"
+    And I follow "Edit Group"
 
   @done
   Scenario: Updating a group as admin

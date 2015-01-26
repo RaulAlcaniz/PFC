@@ -13,14 +13,13 @@ Feature: Security for enrolments
       | bad@testing.com    | password | false  |
 
     Given "user@testing.com" is owner for some dogs:
-      | Name       | Date of birth | Sire    | Dam   | Sex  | Titles                    |
-      | Snoopy     | 12/12/2012    | Rex     | Missy | Male | PORTO WINNER Jr.          |
+      | Name       | Date of birth | Sire    | Dam   | Sex  | Titles           |
+      | Snoopy     | 12/12/2012    | Rex     | Missy | Male | PORTO WINNER Jr. |
 
     Given the exhibition "Exp. Canina de Cieza" exists
     And "user@testing.com" has "Snoopy" enrolled in "Exp. Canina de Cieza"
 
     And the payment of "Snoopy" for "Champion" class is sending and "pending"
-
 
   @done
   Scenario: Trying to see an enrolment of another user when I'm not an admin is bad
@@ -40,5 +39,6 @@ Feature: Security for enrolments
   Scenario: An admin can't access to my enrolments page
     Given I am signed in as "admin@testing.com"
     When I try to access to a user enrolments page "Exp. Canina de Cieza" as admin
-    Then I should be redirected to the home page
     And I should see "You can't access to this page."
+    Then I should be redirected to the home page
+

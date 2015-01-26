@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   belongs_to :user
-  has_many :dogs
+  has_many :dogs, dependent: :destroy
 
   validates :name, presence: true
   validates :date_of_birth, presence: true

@@ -33,11 +33,17 @@ Feature: Viewing enrolments
       | J. I. O. W. CH. | 2nd dog           | 19.00              | 23.00              | 27.00              |
       | J. I. O. W. CH. | 3rd and following | 14.00              | 18.00              | 21.00              |
 
+    Given there are these payments for "nopartners" in "Exp. Canina de Cieza":
+      | Class           | Dogs              | 1st entry deadline | 2nd entry deadline | 3rd entry deadline |
+      | J. I. O. W. CH. | 1st dog           | 24.00              | 30.00              | 36.00              |
+      | J. I. O. W. CH. | 2nd dog           | 19.00              | 23.00              | 27.00              |
+      | J. I. O. W. CH. | 3rd and following | 14.00              | 18.00              | 21.00              |
+
     And I have "Scooby Doo" enrolled in "Exp. Canina de Cieza" in "Open" class on "11-02-2014"
     And I have sent the payment of "Scooby Doo" for "Open" class
     And the payment status of "Scooby Doo" for "Open" class is "accepted"
 
-    Given I have "Snoopy" enrolled in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
+    Given I have "Snoopy" enrolled unpartnered in "Exp. Canina de Cieza" in "Champion" class on "10-02-2014"
     And I have not sent the payment of "Snoopy" for "Champion" class
 
   @done

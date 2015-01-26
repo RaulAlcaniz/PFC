@@ -1,33 +1,64 @@
-<div id="exhibitions" >
-  <% admins_only do %>
-      <ul>
-        <li><%= link_to 'Edit Exhibition', edit_exhibition_path(@exhibition) %></li>
-        <li><%= link_to 'Delete Exhibition', @exhibition, method: :delete, data: {confirm: 'Are you sure you want to delete this Exhibition'} %></li>
-      </ul>
+<div class ="row" >
+  <h2 class="exh-title"><strong><%= @exhibition.name %></strong><hr></h2>
+
+  <% admins_only do%>
+      <div class="col-md-12">
+        <div class="admin_actions right">
+          <ul class="breadcrumb">
+            <li><%= link_to 'Edit Exhibition', edit_exhibition_path(@exhibition) %></li>
+          </ul>
+        </div>
+        <div class="admin_actions left">
+          <%= link_to 'Delete Exhibition', @exhibition, method: :delete, data: {confirm: 'Are you sure you want to delete this Exhibition'}, :class => 'btn danger' %>
+        </div>
+      </div>
   <% end %>
-
-  <p><%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get'%></p>
-
   <% users_only do %>
-      <p><td><%= link_to "My enrolments for #{@exhibition.name}", exhibition_enrolments_path(@exhibition.id) if user_signed_in?%></td></p>
+      <div class="col-md-12">
+          <div class="col-md-3 col-md-offset-1">
+            <%= button_to 'Enroll a new dog', new_exhibition_enrolment_path(@exhibition, @enrolment), method: 'get', :class => 'btn primary'%>
+          </div>
+          <div class="col-md-6 col-md-offset-2">
+            <p align="center"><%= link_to "My enrolments for #{@exhibition.name}", exhibition_enrolments_path(@exhibition.id) if user_signed_in?%></p>
+          </div>
+      </div>
   <% end %>
 
-  <h2><%= @exhibition.name %></h2>
-  <% description = 'Description:<br> ' + @exhibition.description %>
-  <% start = 'Start date: ' + @exhibition.start_date.strftime('%b %e, %Y - %H:%M') %>
-  <% end_date = 'End date: ' + @exhibition.end_date.strftime('%b %e, %Y - %H:%M') %>
-
-  <p><%= simple_format( description ) %></p>
-  <p><%= simple_format( start ) %></p>
-  <p><%= simple_format( end_date ) %></p>
-
-
+  <% description = @exhibition.description %>
+  <% start = '<b>Start date:</b> ' + @exhibition.start_date.strftime('%b %e, %Y - %H:%M') %>
+  <% end_date = '<b>End date:</b> ' + @exhibition.end_date.strftime('%b %e, %Y - %H:%M') %>
   <% if @exhibition.tax %>
-      <table id="prices" border="1">
-        <caption><b>Payments</b></caption>
+      <% deadlines = JSON.parse(@exhibition.tax)['deadlines'].first['start_date'] + ' * ' + JSON.parse(@exhibition.tax)['deadlines'].last['end_date'] %>
+  <% else %>
+      <% deadlines = 'Not defined' %>
+  <% end %>
+  <div class="col-md-offset-1 col-md-5">
+    <p><%= simple_format( start ) %></p>
+    <%= simple_format( end_date ) %>
+    <%= simple_format( "<b>Deadlines:</b><span class=\"important\"> #{deadlines} ")  %>
+  </div>
+  <div class="col-md-6">
+    <%#= image_tag(@exhibition.image_url.to_s, class: 'imgExhib')  if @exhibition.image_url%>
+    <%= if @exhibition.try(:image_url)
+          image_tag(@exhibition.image_url.to_s, class: 'imgExhib')
+        else
+          image_tag('no-image.jpeg', class: 'imgExhib')
+        end
+    %>
+  </div>
+  <div class="container">
+      <div class="col-md-offset-1 col-md-10" >
+        <%= simple_format( "#{description.indent(2)}", style:'text-align:justify') %>
+      </div>
+  </div>
+
+  <div id="prices" class="col-md-12">
+    <% if @exhibition.tax %>
+      <table id="prices" class="table table-condensed">
+        <caption><h4 class="important underline">ENTRY FEES</h4></caption>
         <tr>
           <td align=center>
-            <table id="deadlines">
+            <table id="deadlines" class="table table-striped table-hover table-condensed">
               <th>Deadlines</th>
               <th>Start Date</th>
               <th>End Date</th>
@@ -41,7 +72,7 @@
             </table>
           </td>
           <td align=center>
-            <table id="groups">
+            <table id="groups"class="table table-striped table-hover table-condensed">
               <th>Groups</th>
               <th>Classes</th>
               <% JSON.parse(@exhibition.tax)['groups'].each do |group| %>
@@ -53,47 +84,45 @@
             </table>
           </td>
         </tr>
-
         <tr>
-            <% JSON.parse(@exhibition.tax)['prices'].each do |tax_prices| %>
+          <% JSON.parse(@exhibition.tax)['prices'].each do |tax_prices| %>
               <td align=center>
-
-                <table id="prices2" border="1">
-                    <% tax_prices.each do |people,prices_grouped| %>
-                        <th colspan="6"><%= people.humanize %></th>
+                <table id="prices2" class="table table-striped table-hover table-condensed">
+                    <% tax_prices.each do |people, prices_grouped| %>
+                      <th colspan="5"><%= people.humanize %></th>
                       <% prices_grouped.each do |group| %>
                           <% group.each do |group_name, prices_array| %>
                               <% prices_array.each_with_index { |prices, index| %>
                                   <% if index == 0 %>
                                       <tr>
-                                        <td><%= group_name.capitalize %></td>
-                                        <%if prices.count > 1
-                                             prices.count.times do |i| %>
-                                             <td><%= (i+1).ordinalize %> Dog</td>
-                                         <% end
-                                            end %>
+                                        <td><b><%= group_name.upcase %></b></td>
+                                        <%if prices.count > 1 %>
+                                           <%  prices.count.times do |i| %>
+                                             <td class='center'><b><%= (i+1).ordinalize %> Dog</b></td>
+                                            <% end %>
+                                            <% else %>
+                                            <td class='center'><b>Single Price</b></td>
+                                         <% end %>
                                       </tr>
                                   <% end %>
                                   <tr>
-                                    <td><%= JSON.parse(@exhibition.tax)['deadlines'][index]['name']%></td>
+                                    <td ><%= JSON.parse(@exhibition.tax)['deadlines'][index]['name']%></td>
                                     <% prices.each do |price| %>
-                                        <td>
-                                          <%= price %>
-                                        </td>
+                                        <td class='center'> <%= price %> </td>
                                     <% end %>
                                   </tr>
                               <% } %>
                           <% end %>
-
                       <% end %>
                     <%end%>
-                  </table>
-              </td>
-            <% end %>
-        </tr>
 
+                </table>
+              </td>
+          <% end %>
+        </tr>
       </table>
-  <% else %>
-      <p> No payment list available at the moment. </p>
-  <% end %>
+    <% else %>
+      <p class="important center"><b> No payment list available at the moment. </b></p>
+    <% end %>
+  </div>
 </div>

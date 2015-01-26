@@ -1,26 +1,37 @@
-<div id="breeds" >
+<div id="breeds" class="row" >
 
-  <h2><%= @breed.name %></h2>
-  <ul>
-    <% admins_only do %>
-        <li><%= link_to 'Edit Breed', send('edit_' + "#{@breed.breedable_type.downcase}" + '_breed_path',@breedable, @breed)%></li>
-        <li><%= link_to "Delete Breed", [@breedable, @breed], method: :delete,
-                    data: {confirm: 'Are you sure you want to delete this Breed?'} %></li>
-        <li><%= link_to 'New Variety', new_breed_variety_path(@breed, @variety) %></li>
-    <% end %>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
+  <div class="col-md-12">
+    <h2 class="exh-title"><strong><%= @breed.name %></strong><hr></h2>
+  </div>
 
-  </ul>
+  <% admins_only do%>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Edit Breed', send('edit_' + "#{@breed.breedable_type.downcase}" + '_breed_path',@breedable, @breed)%></li>
+          <li><%= link_to 'New Variety', new_breed_variety_path(@breed, @variety) %></li>
+        </ul>
+      </div>
 
-  <table id="varieties">
-    <tr>
-      <th>Varieties</th>
-    </tr>
-    <% @breed.varieties.each do |variety| %>
-        <tr>
-          <td><%= link_to variety.name, [@breed, variety] %></td>
-        </tr>
-    <% end %>
-  </table>
+      <div class="admin_actions left">
+        <%= link_to "Delete Breed", [@breedable, @breed], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Breed?'}, :class => 'btn danger' %>
+      </div>
+    </div>
+  <% end %>
 
+  <% if @breed.varieties.any? %>
+      <div class="col-md-12">
+        <table id="varieties" class="table table-striped table-hover table-condensed">
+          <tr>
+            <th>Varieties</th>
+          </tr>
+          <% @breed.varieties.order('name ASC').each do |variety| %>
+              <tr>
+                <td><%= link_to variety.name, [@breed, variety] %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+  <% end %>
 </div>

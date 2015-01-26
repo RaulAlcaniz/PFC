@@ -1,26 +1,39 @@
-<%= form_for @exhibition do |f|%>
-    <% @exhibition.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
+<div class="col-md-12">
+  <%= form_for @exhibition, html: {multipart: true} do |f|%>
+      <% @exhibition.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+          <p><%= msg %></p>
+        </div>
+      <% end %>
 
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area(:description, cols: 60, rows: 10, placeholder: 'Compose a description for the exhibition...') %>
-    </p>
+      <div class="col-md-offset-1 form-group col-md-8">
+          <label><%= f.label :name %></label>
+          <%= f.text_field :name, {class:'form-control'} %>
+      </div>
 
-    <p>
-      <%= f.label :start_date %>
-      <%= f.datetime_select :start_date, start_year: Date.current.year %>
-    </p>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :description %></label>
+        <%= f.text_area(:description, cols: 60, rows: 10, placeholder: 'Compose a description for the exhibition...', class:"form-control") %>
+      </div>
 
-    <p>
-      <%= f.label :end_date %>
-      <%= f.datetime_select :end_date, start_year: Date.current.year %>
-    </p>
+      <div class="ui-select">
+        <div class="col-md-offset-1 form-group col-md-8">
+            <label><%= f.label :start_date %></label>
+              <%= f.datetime_select(:start_date, {start_year: Date.current.year} ) %>
+            </div>
+            <div class="col-md-offset-1 form-group col-md-8">
+            <label><%= f.label :end_date %></label>
+            <%= f.datetime_select :end_date, start_year: Date.current.year %>
+            </div>
+      </div>
 
-    <%= f.submit %>
-<% end %>
+      <div id="file_div" class="col-md-offset-1 col-md-8 form-group">
+        <label class="col-md-2">Image </label>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="col-md-offset-1 form-group col-md-8">
+        <%= f.submit %>
+      </div>
+  <% end %>
+</div>

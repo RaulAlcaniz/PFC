@@ -1,24 +1,32 @@
-<h1>Standars and Nomenclature Page</h1>
+<div class="row">
 
-<ul>
-  <% admins_only do %>
-      <li><%= link_to 'People page', people_path %></li>
-      <li><%= link_to 'New Group', new_group_path %></li>
+  <div id="groups_header" class="col-md-12">
+    <h2 class="titles">Standars and Nomenclature<hr></h2>
+  </div>
+
+  <% admins_only do%>
+      <div class="col-md-12">
+        <div class="admin_actions right">
+          <ul class="breadcrumb">
+            <li><%= link_to 'New Group', new_group_path %></li>
+          </ul>
+        </div>
+      </div>
   <% end %>
-  <li><%= link_to 'Exhibitions page', exhibitions_path %></li>
 
-</ul>
-
-<table id="groups">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <% @groups.each do |group| %>
+  <div class="col-md-offset-2 col-md-8">
+    <table id="groups" class="table table-striped table-hover table-condensed">
       <tr>
-        <td><%= link_to group.name, group_path(group) %></td>
-        <td><%= group.description %></td>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
-  <% end %>
+      <% @groups.each do |group| %>
+          <tr>
+            <td class="center"><%= link_to group.name, group_path(group) %></td>
+            <td><%= group.description %></td>
+          </tr>
+      <% end %>
 
-</table>
+    </table>
+  </div>
+</div>

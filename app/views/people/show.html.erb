@@ -1,45 +1,73 @@
-<div id="people">
+<div id="people" class="row">
 
-  <h2>Profile <%= @person.name %></h2>
-
-  <% sex = 'Sex: ' + @person.sex %>
-  <% country = 'Country: ' + @person.country %>
-  <% birth = 'Date of birth: ' + @person.date_of_birth.strftime('%d/%m/%Y') %>
-
-  <%= simple_format( birth ) %>
-  <%= simple_format( sex ) %>
-  <%= simple_format( country ) %>
+  <div class="col-md-12">
+    <h2 class="titles"><strong>Profile</strong></h2>
+    <h4 class="titles small"> <%= @person.name %> <hr></h4>
+  </div>
 
   <% users_only do %>
-      <ul>
-        <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
-        <li><%= link_to 'My dogs', person_dogs_path(@person) %></li>
-        <li><%= link_to 'My enrolments', exhibitions_path %></li>
-        <li><%= link_to 'My exhibitions', people_my_exhibitions_path(@person) %></li>
-        <li><%= link_to 'My payments', person_payments_path(@person) %></li>
-        <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
-        <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
-        <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-    </ul>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
+          <li><%= link_to 'My dogs', person_dogs_path(@person) %></li>
+          <li><%= link_to 'My exhibitions', people_my_exhibitions_path(@person) %></li>
+          <li><%= link_to 'My enrolments', exhibitions_path %></li>
+          <li><%= link_to 'My payments', person_payments_path(@person) %></li>
+          <li><%= link_to 'Edit profile', edit_person_path(@person) %></li>
+        </ul>
+      </div>
+    </div>
   <% end %>
 
   <% admins_only do %>
-      <div id="admin_people">
-      <% if User.where(id: Person.find(@person.id)).exists? %>
-            <% if User.find(Person.find(@person.id).user_id).admin? %>
-                <h2> Admin </h2>
-            <%else%>
-                <ul>
-                  <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
-                  <li><%= link_to 'View dogs', person_dogs_path(@person) %></li>
-                  <li><%= link_to 'View enrolments', person_exhibitions_path(@person) %></li>
-                  <li><%= link_to 'View payments', person_payments_path(@person) %></li>
-
-          <%end%>
-      <%end%>
+      <div id="admin_people" class="col-md-12">
+        <div class="admin_actions right">
+          <ul class="breadcrumb">
+            <% if User.where(id: Person.find(@person.id).user_id).exists? %>
+                <% if User.find(Person.find(@person.id).user_id).admin? %>
+                    <li> ADMIN </li>
+                <%else%>
+                    <li><%= link_to 'Add a dog', new_person_dog_path(@person) %></li>
+                    <li><%= link_to 'View dogs', person_dogs_path(@person) %></li>
+                    <li><%= link_to 'View enrolments', person_exhibitions_path(@person) %></li>
+                    <li><%= link_to 'View payments', person_payments_path(@person) %></li>
+                <%end%>
+            <%end%>
             <li><%= link_to 'Edit person', edit_person_path(@person) %></li>
-            <li><%= link_to 'Delete person', @person, method: :delete, data: {confirm: 'Are you sure you want to delete this person'} %></li>
-        </ul>
+          </ul>
+        </div>
       </div>
   <% end %>
+
+  <div id="profile_icon" class=" col-md-4">
+    <%= image_tag('profile_black.png', id:'profile_img', alt: 'Profile Image') %>
+  </div>
+
+  <div class="col-md-5">
+    <table class="table table-user-information">
+      <tbody>
+      <tr>
+        <td><b>Email:</b></td>
+        <td><%=User.find_by_id(@person.user_id).try(:email) if User.find_by_id(@person.user_id)%></td>
+      </tr>
+      <tr>
+        <td><b>Date of Birth</b></td>
+        <td><%=@person.date_of_birth.strftime('%d/%m/%Y')%></td>
+      </tr>
+      <tr>
+        <td><b>Gender:</b></td>
+        <td><%=@person.sex%></td>
+      </tr>
+      <tr>
+        <td><b>Country</b></td>
+        <td><%=@person.country%></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-offset-9 col-md-3 admin_actions right">
+    <%= (link_to 'Cancel account', @person, method: :delete, data: {confirm: 'Are you sure you want to cancel this account?'}, :class => 'btn danger') %>
+  </div>
+
 </div>

@@ -4,6 +4,8 @@ class Exhibition < ActiveRecord::Base
   validate :end_start_before_today
   validates :start_date, :end_date, :presence => true
 
+  mount_uploader :image, ImageUploader
+
   serialize :tax, JSON
 
   has_many :enrolments
@@ -38,6 +40,7 @@ class Exhibition < ActiveRecord::Base
         end
       end
     end
+    return 'ERROR: Unable to resolve the price. Contact with the Webmaster.'
   end
 
   def what_classes_has(class_name)

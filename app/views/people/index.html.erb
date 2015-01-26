@@ -1,25 +1,39 @@
-<h1>People page</h1>
+<div id="index_people" class="row">
 
-<li><%= link_to 'New Person', new_person_path %></li>
+  <div id="groups_header" class="col-md-12">
+    <h2 class="titles">Management People<hr></h2>
+  </div>
 
+  <div class="col-md-12">
+    <div class="admin_actions right">
+      <ul class="breadcrumb">
+        <li><%= link_to 'New Person', new_person_path %></li>
+      </ul>
+    </div>
+  </div>
 
-<table id="people">
-  <tr>
-    <th>Name</th>
-    <th>Date of birth</th>
-    <th>Sex</th>
-    <th>Country</th>
+  <div class="col-md-12">
+  <table id="people" class="table table-striped table-hover table-condensed">
+    <tr >
+      <th class="left">Name</th>
+      <th class="left">Date of birth</th>
+      <th class="left">Sex</th>
+      <th class="left">Country</th>
+      <th class="left">Signed times</th>
+      <th class="left">Last sign in</th>
+    </tr>
 
-  </tr>
-  <% @people.each do |person| %>
-      <%# if User.where(id: person.user_id, admin: false, confirmation_token: nil).exists? %>
-          <tr>
-            <td><%= link_to person.name, person_path(person) %></td>
-            <td><%= person.date_of_birth.strftime('%d/%m/%Y') %></td>
-            <td><%= person.sex %></td>
-            <td><%= person.country %></td>
-          </tr>
-      <%# end %>
-  <% end %>
+    <% @people.each do |person| %>
+        <tr>
+          <td><%= link_to person.name, person_path(person) %></td>
+          <td><%= person.date_of_birth.strftime('%d/%m/%Y') %></td>
+          <td><%= person.sex %></td>
+          <td><%= person.country %></td>
+          <td class="center"><%= User.find_by_id(person.user_id).try(:sign_in_count) %></td>
+          <td><%= User.find_by_id(person.user_id).try(:last_sign_in_at) %></td>
+        </tr>
+    <% end %>
 
-</table>
+  </table>
+  </div>
+</div>

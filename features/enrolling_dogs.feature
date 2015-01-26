@@ -232,3 +232,24 @@ Feature: Enrolling a dog in an exhibition
     Then I should see "This exhibition is not available to enroll at the moment."
     And "Snoopy" should not be enrolled for "Exp. Canina de Cieza"
     And I should be on the exhibition page for "Exp. Canina de Cieza"
+
+  @done
+  Scenario: Try to enroll a dog when the pricing table is incorrect is bad
+    Given there are exhibitions with these entries:
+      | Name     | Description | Start date   | End date     |
+      | Bad Exh. | No          | Sep 1, 2014  | Sep 3, 2014  |
+
+    And there are these entry deadlines for "Bad Exh.":
+      | Name      | Start date | End date   |
+      | 1st entry | 08-01-2014 | 22-02-2014 |
+
+    And there are sent erroneous payments data for "Bad Exh."
+    Given I am on the exhibition page for "Bad Exh."
+    And today is "10-02-2014"
+    And I press "Enroll a new dog"
+
+    When I select "Snoopy" from "Dog"
+    And I select "Champion" from "Class"
+    And I press "Create Enrolment"
+
+    Then I should see "ERROR: Unable to resolve the price. Contact with the Webmaster."

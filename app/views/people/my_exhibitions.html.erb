@@ -1,40 +1,49 @@
-<div id="my_exhibitions">
-  <h2>My exhibitions</h2>
+<div id="my_exhibitions" class="row">
 
+  <div class="col-md-12">
+    <h2 class="titles"><strong>My Exhibitions</strong></h2>
+    <h4 class="titles small"> <%= @person.name %> <hr></h4>
+  </div>
 
-    <div id="current_exhibitions" >
-      <p>
-          <table id="current_exhibitions", border = 1>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <%if @exhibitions.where("start_date >= :today",{today: Date.today}).count > 0%>
+        <div id="current_exhibitions" >
+          <table id="current_exhibitions" class="table table-hover table-striped table-condensed">
             <tr>
-                <th colspan="2"> Current exhibitions </th>
+              <th colspan="2"> Current exhibitions </th>
             </tr>
-            <% @exhibitions.each do |exhibition| %>
-                <tr>
-                  <% if exhibition.end_date < Date.today %>
+            <% @exhibitions.order('end_date ASC').each do |exhibition| %>
+                <% if exhibition.end_date >= Date.today %>
+                    <tr>
                       <td><%= exhibition.name %> </td>
                       <td><%= link_to 'View', exhibition_path(exhibition) %> </td>
-                  <%end%>
-                </tr>
+                    </tr>
+                <%end%>
             <% end %>
           </table>
-      </p>
+        </div>
+      <%end%>
     </div>
 
-    <div id="finished_exhibitions" >
-      <p>
-          <table id="finished_exhibitions", border = 1>
+    <div class="col-md-6">
+      <%if @exhibitions.where("start_date < :today",{today: Date.today}).count > 0%>
+        <div id="finished_exhibitions" >
+          <table id="finished_exhibitions" class="table table-striped table-condensed">
             <tr>
               <th colspan="2"> Finished exhibitions </th>
             </tr>
-            <% @exhibitions.each do |exhibition| %>
-                <tr>
-                  <% if exhibition.end_date > Date.today %>
+            <% @exhibitions.order('end_date ASC').each do |exhibition| %>
+                <% if exhibition.end_date < Date.today %>
+                    <tr>
                       <td><%= exhibition.name %> </td>
                       <td><%= link_to 'View', exhibition_path(exhibition) %> </td>
-                  <%end%>
-                </tr>
+                    </tr>
+                <%end%>
             <% end %>
           </table>
-      </p>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>

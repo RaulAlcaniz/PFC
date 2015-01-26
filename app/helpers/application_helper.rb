@@ -6,4 +6,5 @@ module ApplicationHelper
   def users_only
     yield if !(current_user.try :admin?)
   end
+
 end

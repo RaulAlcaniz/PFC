@@ -11,7 +11,7 @@ Feature: Signing in
     When "user@example.com" opens the email with subject "Confirmation instructions"
     And they click the first link in the email
     Then I should see "Your account was successfully confirmed"
-    Then I should not see "Signed in as user@example.com"
+    Then I should not see "Welcome User@example.com"
 
   @done
   Scenario: Signing in via form
@@ -20,7 +20,7 @@ Feature: Signing in
       | user@example.com | password |
     And I am signed in as them
     Then I should see "Signed in successfully"
-    And I should see "Signed in as user@example.com"
+    And I should see "Welcome User@example.com"
 
   @done
   Scenario: Trying to access to an area that requires authentication

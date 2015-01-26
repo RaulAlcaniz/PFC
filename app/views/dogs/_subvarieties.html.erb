@@ -1,6 +1,7 @@
-<div id="dogsSubvarieties" <% if !Subvariety.where(variety_id: @selected_variety).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
+<div id="dogsSubvarieties" class="col-md-8" <% if !Subvariety.where(variety_id: @selected_variety).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
   <%= select_tag :subvariety,
                  options_for_select(Subvariety.order('name ASC').where(variety_id: @selected_variety).map{|x| [x.name, x.id]}),
-                 prompt: 'Select subvariety...'
+                 {prompt: 'Select subvariety...', class:'form-control'}
   %>
+  <br>
 </div>

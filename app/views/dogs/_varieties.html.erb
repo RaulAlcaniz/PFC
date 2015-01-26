@@ -1,6 +1,6 @@
-<div id="dogsVarieties" <% if !Variety.where(breed_id: @selected_breed).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
+<div id="dogsVarieties" class="col-md-8" <% if !Variety.where(breed_id: @selected_breed).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
   <%= select_tag :variety,
                  options_for_select(Variety.order('name ASC').where(breed_id: @selected_breed).map{|x| [x.name, x.id]}, @variety_form),
-                 prompt: 'Select variety...'
+                { prompt: 'Select variety...', class:'form-control'}
   %>
 </div>

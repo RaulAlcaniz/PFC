@@ -14,7 +14,7 @@ Feature: Admin people
 
   @done
   Scenario: Viewing people being admin
-    When I follow "People page"
+    When I follow "Admin People"
     And I follow "user@testing.com"
 
     Then I should be on the person page for "user@testing.com"
@@ -23,18 +23,18 @@ Feature: Admin people
     And I should see "View enrolments"
     And I should see "View payments"
     And I should see "Edit person"
-    And I should see "Delete person"
+    And I should see "Cancel account"
 
     Given I am on the people page
     When I follow "admin@testing.com"
     And I should see "Admin"
     And I should see "Edit person"
-    And I should see "Delete person"
+    And I should see "Cancel account"
 
   @done
   Scenario: deleting people being admin
     Given I am on the person page for "user@testing.com"
-    When I follow "Delete person"
+    When I follow "Cancel account"
 
     Then I should be on the people page
     And I should not see "user@testing.com"
@@ -42,7 +42,7 @@ Feature: Admin people
   @done
   Scenario: Trying to delete myself as admin is bad
     Given I am on the person page for "admin@testing.com"
-    When I follow "Delete person"
+    When I follow "Cancel account"
 
     Then I should be on the person page for "admin@testing.com"
     And I should see "You can't delete yourself as admin"
@@ -60,6 +60,3 @@ Feature: Admin people
     Given I should be able to "delete" the "dog" "Snoopy"
     Then I should be on the dogs page for "user@testing.com"
     And I should not see "Snoopy"
-
-
-

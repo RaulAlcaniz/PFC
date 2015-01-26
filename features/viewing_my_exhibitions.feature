@@ -45,6 +45,9 @@ Feature: Viewing my exhibitions
     Given I am on my profile page
     When I follow "My exhibitions"
     Then I should be on my exhibitions page
-    And I should see "Finished exhibitions" and "Exp. Canina de Cieza"
-    And I should not see "Amsterdam Winner Show"
+    And I should see "Current exhibitions" and "Exp. Canina de Cieza"
+    And I should not see "Finished exhibitions" and "Amsterdam Winner Show"
+
+
+
 

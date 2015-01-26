@@ -1,27 +1,38 @@
-<div id="subsections" >
+<div id="subsections" class="row">
 
-  <h2><%= @subsection.name %></h2>
-  <%= simple_format( @subsection.description ) %>
+  <div class="col-md-12">
+    <h2 class="exh-title"><strong><%= @subsection.name %></strong></h2>
+    <h4 class="titles small"><%= simple_format(@subsection.description) %><hr></h4>
+  </div>
 
-  <ul>
-    <% admins_only do %>
-        <li><%= link_to 'Edit Subsection', edit_section_subsection_path(@section, @subsection) %></li>
-        <li><%= link_to "Delete Subsection", [@group, @section, @subsection], method: :delete,
-                        data: {confirm: 'Are you sure you want to delete this Subsection?'} %></li>
-        <li><%= link_to 'New Breed', new_subsection_breed_path(@subsection) %></li>
-    <% end %>
-    <li><%= link_to 'Standards and nomenclature page', groups_path %></li>
-  </ul>
+  <% admins_only do%>
+    <div class="col-md-12">
+      <div class="admin_actions right">
+        <ul class="breadcrumb">
+          <li><%= link_to 'Edit Subsection', edit_section_subsection_path(@section, @subsection) %></li>
+          <li><%= link_to 'New Breed', new_subsection_breed_path(@subsection) %></li>
+        </ul>
+      </div>
 
-  <table id="breeds">
-    <tr>
-      <th>Breed</th>
-    </tr>
-    <% @subsection.breeds.each do |breed| %>
-        <tr>
-          <td><%= link_to breed.name, [@subsection, breed] %></td>
-        </tr>
-    <% end %>
-  </table>
+      <div class="admin_actions left">
+        <%= link_to "Delete Subsection", [@group, @section, @subsection], method: :delete,
+                    data: {confirm: 'Are you sure you want to delete this Subsection?'}, :class => 'btn danger' %>
+      </div>
+    </div>
+  <% end %>
 
+  <% if @subsection.breeds.any? %>
+      <div class="col-md-12">
+        <table id="breeds" class="table table-striped table-hover table-condensed">
+          <tr>
+            <th>Breed</th>
+          </tr>
+          <% @subsection.breeds.order('name ASC').each do |breed| %>
+              <tr>
+                <td><%= link_to breed.name, [@subsection, breed] %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+  <% end %>
 </div>

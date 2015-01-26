@@ -1,59 +1,70 @@
-<%= form_for [@person, @dog] do |f|%>
-    <% @dog.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
+<div class="col-md-12">
 
-    <p>Select the breed</p>
-    <div id="dogsBreeds">
-      <%= select_tag :breed,
-                     options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}, @breed_form),
-                     prompt: 'Select breed...'
-      %>
-    </div>
+  <%= form_for [@person, @dog] do |f|%>
+      <% @dog.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+          <p><%= msg %></p>
+        </div>
+      <% end %>
 
-    <div id="dogsVarieties" <% if !Variety.where(breed_id: @breed_form).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
-      <%= select_tag :variety,
-                     options_for_select(Variety.order('name ASC').where(breed_id: @breed_form).map{|x| [x.name, x.id]}, @variety_form),
-                     prompt: 'Select variety...'
-      %>
-    </div>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :name %></label>
+        <%= f.text_field :name, {class:'form-control'} %>
+      </div>
 
-    <div id="dogsSubvariety" <% if !Subvariety.where(variety_id: @variety_form).first %> style='display:none;' <% else %> style='display:block;' <% end %>>
-      <%= select_tag :subvariety,
-                     options_for_select(Subvariety.order('name ASC').where(variety_id: @variety_form).map{|x| [x.name, x.id]}, @subvariety_form),
-                     prompt: 'Select subvariety...'
-      %>
-    </div>
+      <div id="dogsBreeds" class="col-md-offset-1 form-group col-md-8">
+        <label>Select the breed</label>
+        <%= select_tag :breed,
+                       options_for_select(Breed.order('name ASC').all.map{|x| [x.name, x.id]}, @breed_form),
+                       {prompt: 'Select breed...', class:'form-control'}
+        %>
+      </div>
 
-    <p>
-      <%= f.label :sire %>
-      <%= f.text_field :sire %>
-    </p>
+      <div id="dogsVarieties" class="col-md-offset-1 col-md-8" <% if !Variety.where(breed_id: @breed_form).first %> style='display:none;' <% else %> style='display:block;' <% end %> >
+        <%= select_tag :variety,
+                       options_for_select(Variety.order('name ASC').where(breed_id: @breed_form).map{|x| [x.name, x.id]}, @variety_form),
+                       {prompt: 'Select variety...', class:'form-control'}
+        %>
+      </div>
 
-    <p>
-      <%= f.label :dam %>
-      <%= f.text_field :dam %>
-    </p>
+      <div id="dogsSubvariety" class="col-md-offset-1 col-md-8" <% if !Subvariety.where(variety_id: @variety_form).first %> style='display:none;' <% else %> style='display:block;' <% end %>>
+        <%= select_tag :subvariety,
+                       options_for_select(Subvariety.order('name ASC').where(variety_id: @variety_form).map{|x| [x.name, x.id]}, @subvariety_form),
+                      { prompt: 'Select subvariety...', class:'form-control'}
+        %>
+      </div>
 
-    <p>
-      <%= f.label :sex %>
-      <%= f.select(:sex, options_for_select(%w[Male Female]), prompt: 'Select one...') %>
-    </p>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :sire %></label>
+        <%= f.text_field :sire, {class:'form-control'} %>
+      </div>
 
-    <p>
-      <%= f.label :date_of_birth %>
-      <%= f.date_select(:date_of_birth, start_year: Date.today.year-20,
-                        end_year: Date.today.year) %>
-    </p>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :dam %></label>
+        <%= f.text_field :dam, {class:'form-control'} %>
+      </div>
 
-    <p>
-      <%= f.label :titles %>
-      <%= f.text_field :titles %>
-    </p>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :sex %></label>
+        <%= f.select(:sex, options_for_select(%w[Male Female]),{ prompt: 'Select one...'}, class:'form-control')  %>
+      </div>
 
-    <%= f.submit %>
-<% end %>
+      <div class="col-md-offset-1 col-md-8">
+        <label><%= f.label :date_of_birth %></label>
+      </div>
+      <div class="col-md-offset-1 form-group col-md-8">
+        <%= f.date_select(:date_of_birth, {start_year: Date.today.year-20,
+                          end_year: Date.today.year}, {id:'birthday',class:'form-control'}) %>
+      </div>
+
+      <div class="col-md-offset-1 form-group col-md-8">
+        <label><%= f.label :titles %></label>
+        <%= f.text_field :titles, {class:'form-control'} %>
+      </div>
+
+      <div class="col-md-offset-1 col-md-8">
+        <%= f.submit %>
+      </div>
+  <% end %>
+
+</div>

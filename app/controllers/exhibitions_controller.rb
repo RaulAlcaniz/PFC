@@ -64,7 +64,7 @@ class ExhibitionsController < ApplicationController
   def authorize_route
     if params[:person_id]
       raise(ActiveRecord::RecordNotFound) if !User.find(current_user.id).admin?
-      @person = Person.find_by_user_id(params[:person_id]) if params[:person_id]
+      @person = Person.find(params[:person_id]) if params[:person_id]
     end
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'You can\'t access to this page.'
@@ -72,7 +72,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def exhibition_params
-    params.require(:exhibition).permit(:name, :description, :start_date, :end_date)
+    params.require(:exhibition).permit(:name, :description, :start_date, :end_date, :image)
   end
 
   def be_able_to_changes

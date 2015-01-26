@@ -1,38 +1,49 @@
-<%= form_for [@exhibition, @enrolment] do |f|%>
-    <%# @enrolment.errors.full_messages.each do |msg| %>
-        <!--<p><%#= msg %></p>-->
-    <%# end %>
-    <% @enrolment.errors.each do |att, msg| %>
-        <p><%= msg %></p>
-    <% end %>
-    <p>
-        <%= f.label :dog_id %>
-        <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id),{prompt: 'Select the dog...'}, {disabled: @enrolment.disable_select} %>
-        <%= f.hidden_field :dog_id, :value => @enrolment.dog_id if @price.to_f >= 0 %>
-    </p>
-    <p>
-        <% classes_to_select = []
-           JSON.parse(@exhibition.tax)['groups'].each do |groups|
-             groups['classes'].each { |classes| classes_to_select << classes}
-           end
-        %>
-        <%= f.label :dog_class, 'Class' %>
-        <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}, {disabled: @enrolment.disable_select}) %>
-        <%= f.hidden_field :dog_class, :value => @enrolment.dog_class if @price.to_f >= 0 %>
-    </p>
-    <p>
+<div class="col-md-12">
+  <%= form_for [@exhibition, @enrolment] do |f|%>
+      <% @enrolment.errors.each do |att, msg| %>
+          <div class="alert alert-danger" role="alert">
+            <p><%= msg %></p>
+          </div>
+      <% end %>
+
+      <div class="col-md-offset-1 col-md-4">
+        <div class="form-group">
+          <label><%= f.label :dog_id %>:</label>
+          <div class="ui-select">
+            <%= f.select :dog_id, options_for_select(Dog.order('name ASC').where(person_id: @person.id).map{|x| [x.name, x.id]}, @enrolment.dog_id),{prompt: 'Select the dog...'}, {disabled: @enrolment.disable_select, class:'form-control'} %>
+            <%= f.hidden_field :dog_id, :value => @enrolment.dog_id if @price.to_f >= 0 %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <% classes_to_select = []
+             JSON.parse(@exhibition.tax)['groups'].each do |groups|
+               groups['classes'].each { |classes| classes_to_select << classes}
+             end
+          %>
+          <label><%= f.label :dog_class, 'Class:' %></label>
+          <div class="ui-select">
+            <%= f.select(:dog_class, options_for_select(classes_to_select, @enrolment.dog_class), {prompt: 'Select a class...'}, {disabled: @enrolment.disable_select, class:'form-control' }) %>
+            <%= f.hidden_field :dog_class, :value => @enrolment.dog_class if @price.to_f >= 0 %>
+          </div>
+        </div>
         <div id="partners" <% if @exhibition.tax.match(/\bpartners\b/) %> style='display:block;' <% else %> style='display:none;' <% end %> >
             <%= f.check_box :partner, disabled: @enrolment.disable_select%>
             <%= f.label(:partner, 'Partner') %>
             <%= f.hidden_field :partner, :value => @enrolment.partner if @price.to_f >= 0 %>
         </div>
-    </p>
 
-    <div id="PaymentDiv" <% if @enrolment.dog_id == nil || @price.to_f < 0 %> style='display:none;' <% else %> style='display:block;' <% end %> >
-      <%= f.label 'Price:' %>
-      <%= label_tag :price, "#{number_with_precision(@price.to_f, :precision => 2)} €" %>
-      <%= f.hidden_field :price, :value => @price %>
-    </div>
+        <div id="PaymentDiv" <% if @enrolment.dog_id == nil || @price.to_f < 0 %> style='display:none;' <% else %> style='display:block;' <% end %> >
+          <%= f.label 'Price:' %>
+          <%= label_tag :price, "#{number_with_precision(@price.to_f, :precision => 2)} €" %>
+          <%= f.hidden_field :price, :value => @price %>
+        </div>
 
-    <%= f.submit %>
-<% end %>
+        <%= f.submit %>
+      </div>
+  <% end %>
+
+  <div id="champion" class="col-md-offset-1 col-md-3">
+    <%= image_tag('champion.jpg',id: 'champion', alt: 'Champion') %>
+  </div>
+</div>

@@ -21,10 +21,16 @@ class EnrolmentsController < ApplicationController
 
     @exhibition.enrolments.find_all{|enrolment|
       @person.dogs.each{|dog|
+        partner = 'undefined'
+        if enrolment.partner?
+          partner = 'partners'
+        else
+          partner = 'nopartners'
+        end
         if (dog.id == enrolment.dog_id and !enrolment.payment_id and
-            !((@exhibition.exhibition_prices enrolment.created_at.strftime('%d/%m/%Y'), enrolment.dog_class, 'nopartners').is_a? String))
+            !((@exhibition.exhibition_prices enrolment.created_at.strftime('%d/%m/%Y'), enrolment.dog_class, partner).is_a? String))
           @unpaid_enrolments << enrolment if (Date.today <= @exhibition.end_date) # Enrolments not payed at the end of the exhibition are not displayed
-          @out_of_time = true if (@exhibition.exhibition_prices Date.today.strftime('%d/%m/%Y'), enrolment.dog_class, 'nopartners').include? 'ERROR'
+          @out_of_time = true if (@exhibition.exhibition_prices Date.today.strftime('%d/%m/%Y'), enrolment.dog_class, partner).include? 'ERROR'
         end   #if ((Date.today - enrolment.created_at.to_date).to_i < 15)
       }
     }
@@ -33,7 +39,6 @@ class EnrolmentsController < ApplicationController
     @enrolments_index = @exhibition.enrolments.where(dog_id: Dog.all.ids).group(:payment_id).collect(&:id)
 
     #@enrolments_index = @exhibition.enrolments.group(:payment_id).collect(&:id)
-
 
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.group(:payment_id).
@@ -46,14 +51,14 @@ class EnrolmentsController < ApplicationController
   def create
     @enrolment = @exhibition.enrolments.build(enrolment_params)
     if @enrolment[:price] < 0 && @enrolment.valid?
-      # begin
+       begin
         set_price
-      # rescue Exception => ex
-      #   flash[:alert] = ex.message
-      #   @price = -1
-      #   render 'new'
-      #   return
-      # end
+       rescue Exception => ex
+         flash[:alert] = ex.message
+         @price = -1
+         redirect_to exhibition_enrolments_path
+         return
+       end
       flash[:notice] = 'Confirm your inscription for the price showed below'
       render 'new'
     elsif @enrolment.save
@@ -81,7 +86,7 @@ class EnrolmentsController < ApplicationController
 
   def set_person
     if User.find(current_user).admin?
-      @person = Person.find_by_user_id(params[:person_id])
+      @person = Person.find_by_id(params[:person_id])
     else
       @person = Person.find_by_user_id(current_user.id)
     end
@@ -109,6 +114,7 @@ class EnrolmentsController < ApplicationController
         @price = prices[number_of_dogs]
       end
     end
+
   end
 
   def update_price
@@ -118,8 +124,6 @@ class EnrolmentsController < ApplicationController
     prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, 'partners') if @enrolment.partner == 1
 
     raise(ActiveRecord::ActiveRecordError) if prices.include? 'ERROR'
-
-    #raise "#{prices}" if prices.include? 'ERROR'
 
     grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)
     owner_id = @enrolment.dog_owner
@@ -148,7 +152,7 @@ class EnrolmentsController < ApplicationController
   def authorize_route
     if params[:person_id]
       raise(ActiveRecord::RecordNotFound) if !User.find(current_user.id).admin?
-      @person = Person.find_by_user_id(params[:person_id]) if params[:person_id]
+      @person = Person.find(params[:person_id]) if params[:person_id]
     end
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'You can\'t access to this page.'

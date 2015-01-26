@@ -1,0 +1,67 @@
+def destroy
+    if User.find(current_user).admin? and @person.user_id == current_user.id
+      flash[:notice] = 'You can\'t delete yourself as admin.'
+      redirect_to @person
+    else
+      if User.where(id: @person.user_id).blank?
+        if @person.delete
+          flash[:notice] = 'Person has been deleted.'
+          if !current_user
+            redirect_to root_path
+          elsif User.find(current_user).admin?
+            redirect_to people_path
+          end
+        end
+      else
+        sign_out User.find(@person.user_id) if !User.find(current_user).admin?
+        if User.find(@person.user_id).delete and @person.delete
+          flash[:notice] = 'User has been deleted.'
+          if !current_user
+            redirect_to root_path
+          elsif User.find(current_user).admin?
+            redirect_to people_path
+          end
+        end
+      end
+    end
+  end
+
+
+
+
+
+  <div class="col-md-6">
+    <p><%= simple_format( start ) %></p>
+    <%= simple_format( end_date ) %>
+    <%= simple_format( "<b>Deadlines:</b><span class=\"important\"> #{deadlines} ")  %>
+    <%= simple_format( description ) %>
+  </div>
+  <div class="col-md-6">
+    <%#= image_tag(@exhibition.image_url.to_s, class: 'imgExhib')  if @exhibition.image_url%>
+    <%= if @exhibition.try(:image_url)
+          image_tag(@exhibition.image_url.to_s, class: 'imgExhib')
+        else
+          image_tag('no-image.jpeg', class: 'imgExhib')
+        end
+    %>
+  </div>
+
+
+Intento fallido
+<div class="col-md-12">
+    <%= simple_format( start ) %>
+    <%= simple_format( end_date ) %>
+    <%= simple_format( "<b>Deadlines:</b><span class=\"important\"> #{deadlines} ") %>
+    <div class="col-md-12 inline">
+      <%= simple_format( "<span class=\"inline\"> #{description} " ) %>
+      <div class="col-md-12" >
+          <%= if @exhibition.try(:image_url)
+                image_tag(@exhibition.image_url.to_s, class: 'imgExhib inline')
+              else
+                image_tag('no-image.jpeg', class: 'imgExhib inline')
+              end
+          %>
+      </div>
+
+      </div>
+  </div>

@@ -9,13 +9,20 @@ Feature: Deleting people
       | admin@testing.com  | password | true   |
       | user@testing.com   | password | false  |
 
-    Given I am signed in as "user@testing.com"
+    Given there is a person called "Dorothy Oz"
 
-    #Given there is a person called "Dorothy Oz"
-    And I am on the profile for "user@testing.com"
+  @done
+  Scenario: Deleting users
+    Given I am signed in as "user@testing.com"
+    And I am on my profile page
+    When I follow "Cancel account"
+    Then I should see "Account has been deleted."
+    And I should be on the home page
 
   @done
   Scenario: Deleting people
-    When I follow "Delete person"
+    Given I am signed in as "admin@testing.com"
+    Given I am on the person page for "Dorothy Oz"
+    When I follow "Cancel account"
     Then I should see "Person has been deleted."
-    And I should be on the home page
+    And I should be on the people page

@@ -1,3 +1,57 @@
 // Place all the styles related to the exhibitions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.imgExhib {
+  display: block;
+  position:relative;
+  overflow:visible;
+  border: 4px;
+  min-width: 150px;
+  max-width: 350px;
+  min-height: 200px;
+  max-height: 300px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 4%;
+}
+
+.imgExhibIndex {
+  position:relative;
+  overflow:visible;
+  width: 300px;
+  max-width:200px;
+  max-height:150px;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  -moz-transition: -moz-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+}
+
+#exhibitions{
+  border-collapse: separate ;
+  > tbody > tr > td {
+    max-width: 350px;
+    max-height: 150px;
+  }
+}
+
+.exh-title{
+  font-family: Myriad Pro,Arial,sans-serif;
+  border: 0px solid #000;
+  font-weight: bold;
+  color: #900;
+  font-size: 25px;
+}
+
+#file_div{
+  padding-left: 0px;
+}
+
+#prices{
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+#exhibitions{
+  padding-left: 0px;
+  padding-right: 2px;
+}

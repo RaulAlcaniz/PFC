@@ -1,16 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #
 # Exhibition - 'Exposición canina de Cieza'
 #
-
-@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Veteran"]}, {:name=>"group3", :classes=>["Puppy"]}, {:name=>"group4", :classes=>["Couple"]}, {:name=>"group5", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 1.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 1.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 2.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 3.day).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 4.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 5.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["24.00", "19.00", "14.00"], ["30.00", "23.00", "18.00"], ["36.00", "27.00", "21.00"]]}, {"group2"=>[["12.00", "9.50", "7.00"], ["15.00", "11.50", "9.00"], ["18.00", "13.50", "10.50"]]}, {"group3"=>[["16.00", "12.00", "9.00"], ["20.00", "15.00", "12.00"], ["24.00", "18.00", "15.00"]]}, {"group4"=>[["20.00"], ["25.00"], ["29.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "25.00", "20.00"], ["37.50", "32.00", "25.00"], ["43.50", "37.00", "29.00"]]}, {"group2"=>[["15.00", "12.50", "10.00"], ["18.70", "16.00", "12.50"], ["21.75", "18.50", "14.50"]]}, {"group3"=>[["21.00", "15.00", "11.00"], ["27.00", "19.00", "14.00"], ["31.00", "21.00", "17.00"]]}, {"group4"=>[["25.00"], ["32.00"], ["37.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}]}.to_json
+@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Veteran"]}, {:name=>"group3", :classes=>["Puppy"]}, {:name=>"group4", :classes=>["Couple"]}, {:name=>"group5", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 1.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 10.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 11.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 21.day).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 22.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 45.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["24.00", "19.00", "14.00"], ["30.00", "23.00", "18.00"], ["36.00", "27.00", "21.00"]]}, {"group2"=>[["12.00", "9.50", "7.00"], ["15.00", "11.50", "9.00"], ["18.00", "13.50", "10.50"]]}, {"group3"=>[["16.00", "12.00", "9.00"], ["20.00", "15.00", "12.00"], ["24.00", "18.00", "15.00"]]}, {"group4"=>[["20.00"], ["25.00"], ["29.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "25.00", "20.00"], ["37.50", "32.00", "25.00"], ["43.50", "37.00", "29.00"]]}, {"group2"=>[["15.00", "12.50", "10.00"], ["18.70", "16.00", "12.50"], ["21.75", "18.50", "14.50"]]}, {"group3"=>[["21.00", "15.00", "11.00"], ["27.00", "19.00", "14.00"], ["31.00", "21.00", "17.00"]]}, {"group4"=>[["25.00"], ["32.00"], ["37.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}]}.to_json
 
 Exhibition.where(name: 'Exposicion Canina de Cieza',
                  description: 'Exposición de Campeonato para todas las Razas, que se regirá por el Reglamento de Exposiciones de la Real Sociedad Canina, poniendo en competición el C.A.C. Nacional, autorizado por la R.S.C.E.
@@ -19,30 +11,81 @@ No puede admitirse en Clase Abierta ningún ejemplar con Libro de Origen Extranj
 Igualmente se pueden admitir ejemplares en Clase Cachorros con Libro de Orígenes en tramite o Extranjero. Todo ejemplar que haya obtenido una de las calificaciones Mejor de Raza en cada Clase, y no esté presente en la final de grupos correspondiente, SERA DESCALIFICADO. Igualmente, todo ejemplar que haya obtenido la calificación necesaria para las Grandes Finales y no esté presente en las mismas, SERA TAMBIÉN DESCALIFICADO.
 
 No se confirmará, quien de antemano no haya sido inscrito en su clase correspondiente.',
-                 start_date: '2015-03-29 14:00:00', end_date: '2015-03-30 20:00:00', tax: @tax).first_or_create!
-
+                 start_date: '2015-05-29 14:00:00', end_date: '2015-05-30 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/cieza.jpg"))).create!
 
 #
 # Exhibition - 'Exposición canina de Jerez de la Frontera'
 #
 @tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Couple"]}, {:name=>"group3", :classes=>["Group Breeding"]}, {:name=>"group4", :classes=>["Veteran"]}, {:name=>"group5", :classes=>["Puppy"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 10.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 4.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today - 3.day).strftime('%d/%m/%Y'), :end_date=>(Date.today).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 1.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 5.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["19.00", "14.00", "9.50"], ["23.50", "17.50", "11.50"], ["28.00", "21.00", "15.00"]]}, {"group2"=>[["15.00"], ["19.00"], ["22.00"]]}, {"group3"=>[["0.00"], ["0.00"], ["0.00"]]}, {"group4"=>[["10.00", "7.00", "5.00"], ["12.50", "9.00", "6.50"], ["14.00", "11.00", "7.50"]]}, {"group5"=>[["10.00", "7.00", "5.00"], ["12.50", "9.00", "6.50"], ["15.00", "11.50", "8.00"]]}]}, {:nopartners=>[{"group1"=>[["24.00", "19.00", "13.50"], ["29.50", "23.00", "17.00"], ["34.00", "27.00", "20.00"]]}, {"group2"=>[["18.00"], ["23.00"], ["28.00"]]}, {"group3"=>[["0.00"], ["0.00"], ["0.00"]]}, {"group4"=>[["12.00", "9.50", "7.50"], ["15.50", "11.50", "9.00"], ["17.00", "14.00", "10.50"]]}, {"group5"=>[["12.50", "9.00", "7.00"], ["15.50", "11.50", "9.00"], ["18.00", "15.50", "12.00"]]}]}]}.to_json
+
 Exhibition.where(name: 'Exposición canina de Jerez de la Frontera',
                   description: 'XXXIV Exposición nacional y XVII Exposición internacional canina, Provincia de Cádiz, Jerez de la Frontera. A partir de las 08:00 H. Apertura del recinto y control veterinario itinerante.
 Juicios a partir de las 09:00 H. con arreglo a los horarios que se establezcan para cada raza. Todos los perros participantes deberán estar dispuestos a la entrada del ring media hora antes de ser juzgados.
-                                                                                                                                                                                                         Las finales del grupo y Gran Final se iniciarán a partir de las 15:30 h. de cada día. Los ejemplares que obtengan Mejor Raza en Clase Muy Cachorros, Cachorros, Jóvenes, Veteranos, Intermedia, Trabajo, Abierta y Campeons, así como los ganadores de grupo y Razas Españolas, deberán estar presentes en sus finales respectivas. De no hacerlo, serán descalificados. ',
-                  start_date: '2015-11-01 08:00:00', end_date: '2015-11-02 20:00:00', tax: @tax).first_or_create!
+Las finales del grupo y Gran Final se iniciarán a partir de las 15:30 h. de cada día. Los ejemplares que obtengan Mejor Raza en Clase Muy Cachorros, Cachorros, Jóvenes, Veteranos, Intermedia, Trabajo, Abierta y Campeons, así como los ganadores de grupo y Razas Españolas, deberán estar presentes en sus finales respectivas. De no hacerlo, serán descalificados. ',
+                  start_date: '2015-11-01 08:00:00', end_date: '2015-11-02 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/jerez.jpg"))).create!
 
 #
 # Exhibition - 'Amsterdam Holland Cup'
 #
-@tax = {:groups=>[{:name=>"group1", :classes=>["Puppy"]}, {:name=>"group2", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion", "Veteran"]}, {:name=>"group3", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 10.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 4.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 5.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 15.day).strftime('%d/%m/%Y')}], :prices=>[{:partner=>[{"group1"=>[["30.00"], ["30.00"]]}, {"group2"=>[["55.00"], ["65.00"]]}, {"group3"=>[["5.00"], ["5.00"]]}]}]}.to_json
+@tax = {:groups=>[{:name=>"group1", :classes=>["Puppy"]}, {:name=>"group2", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion", "Veteran"]}, {:name=>"group3", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 10.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 4.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 5.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 15.day).strftime('%d/%m/%Y')}], :prices=>[{:nopartners=>[{"group1"=>[["30.00"], ["30.00"]]}, {"group2"=>[["55.00"], ["65.00"]]}, {"group3"=>[["5.00"], ["5.00"]]}]}]}.to_json
+
 Exhibition.where(name: '125ste Amsterdam Winner Show',
                  description: 'Wij hebben we gekozen voor een laag inschrijfgeld. Het aantal deelnemers is beperkt en VOL=VOL. Het inschrijfgeld moet uiterlijk 25 november 2014 op onze rekening zijn bijgeschreven. Na 25 november wordt het inschrijfgeld met € 10.00 per hond verhoogd voor administratiekosten. Betaling op show is, tenzij uitdrukkelijk overeengekomen, niet mogelijk. U betaalt dan een toeslag van € 15.00 per hond. Betalingen bijgeschreven op onze rekening op of na 8 december worden beschouwd als niet ontvangen . U dient op show dan nogmaals het verschuldigde bedrag te voldoen (incl. administratiekosten). Mocht dan blijken dat uw betaling op of na 8 december is bijgeschreven op onze rekening, dan wordt het op de bankrekening ontvangen bedrag, na de show aan u terugbetaald.',
-                 start_date: '2015-12-12 08:00:00', end_date: '2015-12-14 20:00:00', tax: @tax).first_or_create!
+                 start_date: '2015-12-12 08:00:00', end_date: '2015-12-14 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/Amsterdam.jpg"))).create!
+
+#
+# Exhibition - 'Exposición canina Medina de Pomar'
+#
+
+@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Open", "Champion"]}, {:name=>"group2", :classes=>["Couple"]}, {:name=>"group3", :classes=>["Group Breeding"]}, {:name=>"group4", :classes=>["Puppy"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today + 62.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 70.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 71.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 90.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["25.00", "18.00", "14.00"], ["30.00", "21.00", "17.00"]]}, {"group2"=>[["20.00"], ["23.00"]]}, {"group3"=>[["0.00"], ["0.00"]]}, {"group4"=>[["16.00", "13.00", "10.00"], ["19.00", "15.00", "12.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "24.00", "20.00"], ["37.00", "29.00", "23.00"]]}, {"group2"=>[["25.00"], ["28.00"]]}, {"group3"=>[["0.00"], ["0.00"]]}, {"group4"=>[["19.00", "15.00", "13.00"], ["22.00", "17.00", "14.00"]]}]}]}.to_json
+
+Exhibition.where(name: 'Exposición canina de Medina de Pomar',
+                 description: 'Los ejemplares inscritos en Libros de Orígenes extranjeros reconocidos por la F.C.I. y la R.S.C.E., deberán acompañar a la hoja de inscripción la fotocopia de Pedigree Original.
+Sólo se admitirán inscripciones que vengan acompañadas de las fotocopias del resguardo que justifique el pago de las mismas, tanto por correo como por fax. Se tomará como fecha de inscripción la que figure en el abono.
+
+
+Les chiens inscrits dans les livres d’origine étranjers reconnus par la F.C.I. et la Societé Centrale Espagnole, devront accompagner la feuille déngagement de la photocopie de Pedigree Original.
+Toute inscripction devra étre accompagnée de la photocopie du recipisée qui justifie le reglement des engagement, aussi bien par lettre que per fax. La date qui sera pris comme la date de l’inscription, sera cèlle qui apparalt dans l’acompte.',
+                 start_date: '2015-12-12 08:00:00', end_date: '2015-12-14 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/medina.jpg"))).create!
+
+#
+# Exhibition - 'VALLS - Tarragona'
+#
+
+@tax = {:groups=>[{:name=>"group1", :classes=>["Puppy"]}, {:name=>"group2", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion", "Veteran"]}, {:name=>"group3", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 120.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 100.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today - 90.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 80.day).strftime('%d/%m/%Y')}], :prices=>[{:nopartners=>[{"group1"=>[["30.00"], ["30.00"]]}, {"group2"=>[["55.00"], ["65.00"]]}, {"group3"=>[["5.00"], ["5.00"]]}]}]}.to_json
+
+Exhibition.where(name: 'III INTERNATIONAL DOG SHOW NATIONAL EXHIBITION AND CANINE XIV',
+                 description: 'VETERANS CLASS (CV) For dogs who have completed 8 years, no upper age limit, who
+are enrolled in the LOE / RRC or other stud book recognized by the FCI, after accreditation with the copy of pedigree.
+VETERANS and BREED SPANISH (except puppies) 50% PREVIOUS RATE (in separate account).
+Dogs in ownership are billed separately from those of a single owner. To apply the Membership Fee, all owners must be
+exemplary partners.
+
+CATALOGUE shipping and DORSALES be digital, via email, if you want PRINTED CATALOGUE, will increase the price of their registration at 5.00 €, expressly stating that you want a printed catalog, checking the box corresponding.',
+                 start_date: '2015-1-27 08:00:00', end_date: '2015-1-27 20:00:00', tax: @tax).create!
+
+
+#
+# Exhibition - 'GRAZ'
+#
+
+@tax = {:groups=>[{:name=>"group1", :classes=>["Puppy"]}, {:name=>"group2", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion", "Veteran"]}, {:name=>"group3", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 120.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 100.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today - 90.day).strftime('%d/%m/%Y'), :end_date=>(Date.today - 80.day).strftime('%d/%m/%Y')}], :prices=>[{:nopartners=>[{"group1"=>[["30.00"], ["30.00"]]}, {"group2"=>[["55.00"], ["65.00"]]}, {"group3"=>[["5.00"], ["5.00"]]}]}]}.to_json
+
+Exhibition.where(name: 'INTERNATIONAL DOG SHOW GRAZ',
+                 description: 'Group assignment:
+Saturday: FCI Groups: III, IV, V, VI, VII, VIII und X
+Sunday: FCI Groups: I, II und IX
+
+Daily schedule:
+from 07:30 o\'clock - intaking dogs
+from 10:00 o\'clock to 14:00 o\'clock - judging in the rings
+from 14:00 o\'clock - program in the ring of honour',
+                 start_date: '2015-1-27 08:00:00', end_date: '2015-1-27 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/graz.jpg"))).create!
+
+
 #
 # Users
 #
-
 admin = User.where(email: 'admin@example.com').first_or_create! do |user|
   user.password = 'adminpassword'
   user.admin = true
@@ -88,7 +131,7 @@ Dog.where(name:'Campeona').first_or_create! do |dog|
   dog.person_id = Person.find_by_name('usuario1@example.com').id
 end
 
-dog = Dog.where(name:'Scooby Doo').first_or_create! do |dog|
+Dog.where(name:'Scooby Doo').first_or_create! do |dog|
   dog.sex = 'Male'
   dog.date_of_birth = '2009-10-23'
   dog.sire = 'Skip'
@@ -97,8 +140,8 @@ dog = Dog.where(name:'Scooby Doo').first_or_create! do |dog|
   dog.dogable_type = 'Variety'
   dog.person_id = Person.find_by_name('usuario1@example.com').id
 end
-#
-asd = Dog.where(name:'Baby').first_or_create! do |dog|
+
+Dog.where(name:'Baby').first_or_create! do |dog|
   dog.sex = 'Female'
   dog.date_of_birth = '2014-06-17'
   dog.sire = 'Snoopy'
@@ -304,17 +347,17 @@ end
 # Group II - Subsections
 #
 [
-  ['1.1', 'Pinscher'],
-  ['1.2', 'Schnauzer'],
-  ['1.3', 'Smoushond'],
-  ['1.4', 'Russkiy Tchiorny Terrier']
+  ['Subsection 1.1', 'Pinscher'],
+  ['Subsection 1.2', 'Schnauzer'],
+  ['Subsection 1.3', 'Smoushond'],
+  ['Subsection 1.4', 'Russkiy Tchiorny Terrier']
 ].each do |name, description|
   Section.find_by(:description => 'Pinscher and Schnauzer type').subsections.where(name: name, description: description).first_or_create!
 end
 
 [
-  ['2.1', 'Mastiff type'],
-  ['2.2', 'Mountain type'],
+  ['Subsection 2.1', 'Mastiff type'],
+  ['Subsection 2.2', 'Mountain type'],
 ].each do |name, description|
   Section.find_by(:description => 'Molossoid breeds').subsections.where(name: name, description: description).first_or_create!
 end
@@ -877,9 +920,9 @@ end
 # Group VI - Subsections
 #
 [
-    ['1.1', 'Large-sized Hounds'],
-    ['1.2', 'Medium-sized Hounds'],
-    ['1.3', 'Small-sized Hounds']
+    ['Subsection 1.1', 'Large-sized Hounds'],
+    ['Subsection 1.2', 'Medium-sized Hounds'],
+    ['Subsection 1.3', 'Small-sized Hounds']
 ].each do |name, description|
   Section.find_by(:description => 'Scenthounds').subsections.where(name: name, description: description).first_or_create!
 end
@@ -1037,16 +1080,16 @@ end
 # Group VII - Subsections
 #
 [
-  ['1.1', 'Type Continental Pointing Dog'],
-  ['1.2', 'Spaniel type'],
-  ['1.3', '\'Griffon\' type']
+  ['Subsection 1.1', 'Type Continental Pointing Dog'],
+  ['Subsection 1.2', 'Spaniel type'],
+  ['Subsection 1.3', '\'Griffon\' type']
 ].each do |name, description|
   Section.find_by(:description => 'Continental Pointing Dogs').subsections.where(name: name, description: description).first_or_create!
 end
 
 [
-  ['2.1', 'Pointer'],
-  ['2.2', 'Setter']
+  ['Subsection 2.1', 'Pointer'],
+  ['Subsection 2.2', 'Setter']
 ].each do |name, description|
   Section.find_by(:description => 'British and Irish Pointers and Setters').subsections.where(name: name, description: description).first_or_create!
 end
@@ -1265,16 +1308,16 @@ end
 # Group IX - Subsections
 #
 [
-  ['1.1', 'Bichons'],
-  ['1.2', 'Coton de Tuléar'],
-  ['1.3', 'Petit chien lion']
+  ['Subsection 1.1', 'Bichons'],
+  ['Subsection 1.2', 'Coton de Tuléar'],
+  ['Subsection 1.3', 'Petit chien lion']
 ].each do |name, description|
   Section.find_by(:description => 'Bichons and related breeds').subsections.where(name: name, description: description).first_or_create!
 end
 
 [
-  ['3.1', 'Griffons'],
-  ['3.2', 'Petit Brabançon']
+  ['Subsection 3.1', 'Griffons'],
+  ['Subsection 3.2', 'Petit Brabançon']
 ].each do |name, description|
   Section.find_by(:description => 'Small Belgian Dogs').subsections.where(name: name, description: description).first_or_create!
 end

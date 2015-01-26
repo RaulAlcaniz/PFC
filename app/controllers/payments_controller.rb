@@ -57,9 +57,11 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    #puts Dog.where(person_id: @person.id).select(:id).to_yaml
-    #@payments = Payment.all
-    @payments = Payment.where(id: Enrolment.where(dog_id: Dog.where(person_id: @person.id).select(:id)).select(:payment_id))
+    if User.find(@person.user_id).admin?
+      @payments = Payment.all
+    else
+      @payments = Payment.where(id: Enrolment.where(dog_id: Dog.where(person_id: @person.id).select(:id)).select(:payment_id))
+    end
   end
 
   private
@@ -110,7 +112,7 @@ class PaymentsController < ApplicationController
     elsif params[:person_id].present?
       @person = Person.find(params[:person_id])
     else
-      @person = Person.find(current_user)
+      @person = Person.find_by_user_id(current_user)
     end
   end
 
@@ -139,7 +141,7 @@ class PaymentsController < ApplicationController
   end
 
   def authorized_people
-    if @person.user_id != current_user.id
+    if @person.try(:user_id) != current_user.id
       raise(ActiveRecord::RecordNotFound) if !User.find(current_user).admin?
     end
   rescue ActiveRecord::RecordNotFound
