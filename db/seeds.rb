@@ -80,7 +80,7 @@ Daily schedule:
 from 07:30 o\'clock - intaking dogs
 from 10:00 o\'clock to 14:00 o\'clock - judging in the rings
 from 14:00 o\'clock - program in the ring of honour',
-                 start_date: '2015-1-27 08:00:00', end_date: '2015-1-27 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/graz.jpg"))).create!
+                 start_date: '2015-1-29 08:00:00', end_date: '2015-1-29 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/graz.jpg"))).create!
 
 
 #
