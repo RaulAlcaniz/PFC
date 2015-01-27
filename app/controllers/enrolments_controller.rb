@@ -36,7 +36,7 @@ class EnrolmentsController < ApplicationController
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
-    @enrolments_index = @exhibition.enrolments.select(:id).group('enrolments.payment_id')
+    @enrolments_index = @exhibition.enrolments.group('enrolments.payment_id').map(&:id)
 
     # puts 'asdasd', @enrolments_index.to_yaml
     # @enrolments_index = @exhibition.enrolments.map(&:payment_id)
