@@ -36,6 +36,8 @@ class EnrolmentsController < ApplicationController
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
+    @enrolments_index = @exhibition.enrolments.order('payment_id DESC').select(:payment_id).distinct
+
     @enrolments_index = []
     paym = []
     # @enrolments_index = @exhibition.enrolments.select(:id).group('enrolment.id, payment_id')
@@ -47,6 +49,7 @@ class EnrolmentsController < ApplicationController
       end
     end
 
+    @enrolments_index = @exhibition.enrolments.order('payment_id DESC').select(:payment_id).distinct
 
     #@enrolments_index = @exhibition.enrolments.group('payment_id')
 
