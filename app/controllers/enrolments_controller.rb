@@ -38,8 +38,7 @@ class EnrolmentsController < ApplicationController
 
     @enrolments_index = []
     paym = []
-    # @enrolments_index = @exhibition.enrolments.select(:id).group('enrolment.id, payment_id')
-    # @enrolments_index = @exhibition.enrolments.group('payment_id')
+
     @exhibition.enrolments.order('id DESC').each do |s|
       if !paym.include? s.payment_id
         paym << s.payment_id
@@ -47,15 +46,6 @@ class EnrolmentsController < ApplicationController
       end
     end
 
-
-    #@enrolments_index = @exhibition.enrolments.group('payment_id')
-
-     # puts 'asdasd', @enrolments_index.to_yaml
-    # @enrolments_index = @exhibition.enrolments.map(&:payment_id)
-    #@enrolments_index = @exhibition.enrolments.select('DISTINCT enrolments.payment_id ')
-    #Model.select(:rating).map(&:rating).uniq
-    # puts @enrolments_index.to_yaml
-    #.where(dog_id: Dog.all.ids)
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.
                   collect(&:payment_id)).find_all{|enrolment|
