@@ -36,10 +36,10 @@ class EnrolmentsController < ApplicationController
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
-    #@enrolments_index = @exhibition.enrolments.where(dog_id: Dog.all.ids).group(:payment_id).collect(&:id)
+    @enrolments_index = @exhibition.enrolments.where(dog_id: Dog.all.ids).collect(&:id)
 
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
-        where(payment_id: @exhibition.enrolments.group(:payment_id).
+        where(payment_id: @exhibition.enrolments.
                   collect(&:payment_id)).find_all{|enrolment|
                     @person.dogs.each{|dog|
                       @paid_enrolments << enrolment if (dog.id == enrolment.dog_id and enrolment.payment_id)}
