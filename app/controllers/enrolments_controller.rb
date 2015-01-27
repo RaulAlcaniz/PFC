@@ -38,7 +38,7 @@ class EnrolmentsController < ApplicationController
 
 
     @enrolments_index = @exhibition.enrolments.select(:id).group('payment_id')
-    @enrolments_index = Enrolment.where(exhibition_id: @exhibition.id).select(:id).group('payment_id')
+
 
      puts 'asdasd', @enrolments_index.to_yaml
     # @enrolments_index = @exhibition.enrolments.map(&:payment_id)
