@@ -36,7 +36,7 @@ class EnrolmentsController < ApplicationController
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
-    @enrolments_index = @exhibition.enrolments.group("payments.id").collect(&:id)
+    @enrolments_index = @exhibition.enrolments.group("payments.id FROM Enrolments").collect(&:id)
 
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.group(:payment_id).
