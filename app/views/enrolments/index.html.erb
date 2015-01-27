@@ -68,7 +68,6 @@
           </thead>
           <tbody>
 
-          <%= @enrolments_index.ids.include? 23 %>
               <% @paid_enrolments.each do |enrolment| %>
                   <tr>
                     <td><%= Dog.find(enrolment.dog_id).name %></td>
