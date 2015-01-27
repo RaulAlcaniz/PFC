@@ -36,11 +36,21 @@ class EnrolmentsController < ApplicationController
     }
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
+    @en = []
+    paym = []
+    # @enrolments_index = @exhibition.enrolments.select(:id).group('enrolment.id, payment_id')
+    # @enrolments_index = @exhibition.enrolments.group('payment_id')
+    @exhibition.enrolments.order('id DESC').each do |s|
+      if !paym.include? s.payment_id
+        paym << s.payment_id
+        @en << s.id
+      end
+    end
 
-    @enrolments_index = @exhibition.enrolments.select(:id).group('payment_id')
+    puts @en
+    #@enrolments_index = @exhibition.enrolments.group('payment_id')
 
-
-     puts 'asdasd', @enrolments_index.to_yaml
+     # puts 'asdasd', @enrolments_index.to_yaml
     # @enrolments_index = @exhibition.enrolments.map(&:payment_id)
     #@enrolments_index = @exhibition.enrolments.select('DISTINCT enrolments.payment_id ')
     #Model.select(:rating).map(&:rating).uniq
