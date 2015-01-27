@@ -25,7 +25,7 @@
         <th>Section</th>
         <th>Description</th>
       </tr>
-      <% @group.sections.order('name + 0 ASC').each do |section| %>
+      <% @group.sections.order('name ASC').each do |section| %>
           <tr>
             <td class="center"><%= section.name %></td>
             <td><%= link_to section.description, [@group, section] %></td>

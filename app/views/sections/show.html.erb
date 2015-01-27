@@ -29,7 +29,7 @@
             <th class="left">Subsection</th>
             <th class="left">Description</th>
           </tr>
-          <% @section.subsections.order('name +0 ASC').each do |subsection| %>
+          <% @section.subsections.order('name ASC').each do |subsection| %>
             <tr>
               <td><%= subsection.name %></td>
               <td><%= link_to subsection.description, [@section, subsection] %></td>
