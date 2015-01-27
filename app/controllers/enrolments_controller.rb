@@ -37,7 +37,11 @@ class EnrolmentsController < ApplicationController
     @enrolments_price = @unpaid_enrolments.map{|enrolment| enrolment.price}.inject(0,:+)
 
     @enrolments_index = @exhibition.enrolments.select(:id).group('enrolments.payment_id')
-
+    # puts 'asdasd', @enrolments_index.to_yaml
+    # @enrolments_index = @exhibition.enrolments.map(&:payment_id)
+    #@enrolments_index = @exhibition.enrolments.select('DISTINCT enrolments.payment_id ')
+    #Model.select(:rating).map(&:rating).uniq
+    # puts @enrolments_index.to_yaml
     #.where(dog_id: Dog.all.ids)
     @exhibition.enrolments.order('payment_id').order('created_at DESC').
         where(payment_id: @exhibition.enrolments.

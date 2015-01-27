@@ -67,8 +67,9 @@
               </tr>
           </thead>
           <tbody>
-
+          <% puts @enrolments_index %>
               <% @paid_enrolments.each do |enrolment| %>
+
                   <tr>
                     <td><%= Dog.find(enrolment.dog_id).name %></td>
                     <td><%= enrolment.dog_class %></td>
