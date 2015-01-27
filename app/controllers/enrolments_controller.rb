@@ -38,16 +38,16 @@ class EnrolmentsController < ApplicationController
 
     @enrolments_index = @exhibition.enrolments.order('payment_id DESC').select(:payment_id).distinct
 
-    @enrolments_index = []
-    paym = []
-    # @enrolments_index = @exhibition.enrolments.select(:id).group('enrolment.id, payment_id')
-    # @enrolments_index = @exhibition.enrolments.group('payment_id')
-    @exhibition.enrolments.order('id DESC').each do |s|
-      if !paym.include? s.payment_id
-        paym << s.payment_id
-        @enrolments_index << s.id
-      end
-    end
+    # @enrolments_index = []
+    # paym = []
+    # # @enrolments_index = @exhibition.enrolments.select(:id).group('enrolment.id, payment_id')
+    # # @enrolments_index = @exhibition.enrolments.group('payment_id')
+    # @exhibition.enrolments.order('id DESC').each do |s|
+    #   if !paym.include? s.payment_id
+    #     paym << s.payment_id
+    #     @enrolments_index << s.id
+    #   end
+    # end
 
     @enrolments_index = @exhibition.enrolments.order('payment_id DESC').select(:payment_id).distinct
 
