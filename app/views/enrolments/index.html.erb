@@ -74,7 +74,8 @@
                     <td><%= enrolment.dog_class %></td>
                     <td><%= number_with_precision(enrolment.price, :precision => 2) %> €</td>
                      <% if enrolment.payment_id and
-                            Payment.find_by_id(enrolment.payment_id).try(:receipt_url) %>
+                            Payment.find_by_id(enrolment.payment_id).try(:receipt_url) and
+                            @enrolments_index.include? enrolment.id %>
                         <td class="paid_enrol" rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>><%= link_to 'See Payment', payment_path(enrolment.payment_id, exhibition_id: @exhibition.id) %> </td>
                         <td class="paid_enrol" rowspan=<%="#{enrolment.enrolments_with_same_payment}"%>><%= Payment.find(enrolment.payment_id).status.humanize %> </td>
                     <% end %>
