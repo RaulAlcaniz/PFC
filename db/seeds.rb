@@ -2,7 +2,7 @@
 #
 # Exhibition - 'Exposición canina de Cieza'
 #
-@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Veteran"]}, {:name=>"group3", :classes=>["Puppy"]}, {:name=>"group4", :classes=>["Couple"]}, {:name=>"group5", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today - 1.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 10.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 11.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 21.day).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 22.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 45.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["24.00", "19.00", "14.00"], ["30.00", "23.00", "18.00"], ["36.00", "27.00", "21.00"]]}, {"group2"=>[["12.00", "9.50", "7.00"], ["15.00", "11.50", "9.00"], ["18.00", "13.50", "10.50"]]}, {"group3"=>[["16.00", "12.00", "9.00"], ["20.00", "15.00", "12.00"], ["24.00", "18.00", "15.00"]]}, {"group4"=>[["20.00"], ["25.00"], ["29.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "25.00", "20.00"], ["37.50", "32.00", "25.00"], ["43.50", "37.00", "29.00"]]}, {"group2"=>[["15.00", "12.50", "10.00"], ["18.70", "16.00", "12.50"], ["21.75", "18.50", "14.50"]]}, {"group3"=>[["21.00", "15.00", "11.00"], ["27.00", "19.00", "14.00"], ["31.00", "21.00", "17.00"]]}, {"group4"=>[["25.00"], ["32.00"], ["37.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}]}.to_json
+@tax = {:groups=>[{:name=>"group1", :classes=>["Junior", "Intermediate", "Open", "Working", "Champion"]}, {:name=>"group2", :classes=>["Veteran"]}, {:name=>"group3", :classes=>["Puppy"]}, {:name=>"group4", :classes=>["Couple"]}, {:name=>"group5", :classes=>["Group Breeding"]}], :deadlines=>[{:name=>"1st entry deadline", :start_date=>(Date.today + 20.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 30.day).strftime('%d/%m/%Y')}, {:name=>"2nd entry deadline", :start_date=>(Date.today + 31.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 41.day).strftime('%d/%m/%Y')}, {:name=>"3rd entry deadline", :start_date=>(Date.today + 42.day).strftime('%d/%m/%Y'), :end_date=>(Date.today + 55.day).strftime('%d/%m/%Y')}], :prices=>[{:partners=>[{"group1"=>[["24.00", "19.00", "14.00"], ["30.00", "23.00", "18.00"], ["36.00", "27.00", "21.00"]]}, {"group2"=>[["12.00", "9.50", "7.00"], ["15.00", "11.50", "9.00"], ["18.00", "13.50", "10.50"]]}, {"group3"=>[["16.00", "12.00", "9.00"], ["20.00", "15.00", "12.00"], ["24.00", "18.00", "15.00"]]}, {"group4"=>[["20.00"], ["25.00"], ["29.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}, {:nopartners=>[{"group1"=>[["30.00", "25.00", "20.00"], ["37.50", "32.00", "25.00"], ["43.50", "37.00", "29.00"]]}, {"group2"=>[["15.00", "12.50", "10.00"], ["18.70", "16.00", "12.50"], ["21.75", "18.50", "14.50"]]}, {"group3"=>[["21.00", "15.00", "11.00"], ["27.00", "19.00", "14.00"], ["31.00", "21.00", "17.00"]]}, {"group4"=>[["25.00"], ["32.00"], ["37.00"]]}, {"group5"=>[["0.00"], ["0.00"], ["0.00"]]}]}]}.to_json
 
 Exhibition.where(name: 'Exposicion Canina de Cieza',
                  description: 'Exposición de Campeonato para todas las Razas, que se regirá por el Reglamento de Exposiciones de la Real Sociedad Canina, poniendo en competición el C.A.C. Nacional, autorizado por la R.S.C.E.
@@ -11,7 +11,7 @@ No puede admitirse en Clase Abierta ningún ejemplar con Libro de Origen Extranj
 Igualmente se pueden admitir ejemplares en Clase Cachorros con Libro de Orígenes en tramite o Extranjero. Todo ejemplar que haya obtenido una de las calificaciones Mejor de Raza en cada Clase, y no esté presente en la final de grupos correspondiente, SERA DESCALIFICADO. Igualmente, todo ejemplar que haya obtenido la calificación necesaria para las Grandes Finales y no esté presente en las mismas, SERA TAMBIÉN DESCALIFICADO.
 
 No se confirmará, quien de antemano no haya sido inscrito en su clase correspondiente.',
-                 start_date: '2015-05-29 14:00:00', end_date: '2015-05-30 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/cieza.jpg"))).create!
+                 start_date: '2015-08-29 14:00:00', end_date: '2015-08-30 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/cieza.jpg"))).create!
 
 #
 # Exhibition - 'Exposición canina de Jerez de la Frontera'
@@ -62,7 +62,7 @@ Dogs in ownership are billed separately from those of a single owner. To apply t
 exemplary partners.
 
 CATALOGUE shipping and DORSALES be digital, via email, if you want PRINTED CATALOGUE, will increase the price of their registration at 5.00 €, expressly stating that you want a printed catalog, checking the box corresponding.',
-                 start_date: '2015-1-27 08:00:00', end_date: '2015-1-27 20:00:00', tax: @tax).create!
+                 start_date: '2015-4-27 08:00:00', end_date: '2015-4-27 20:00:00', tax: @tax).create!
 
 
 #
@@ -80,7 +80,7 @@ Daily schedule:
 from 07:30 o\'clock - intaking dogs
 from 10:00 o\'clock to 14:00 o\'clock - judging in the rings
 from 14:00 o\'clock - program in the ring of honour',
-                 start_date: '2015-1-29 08:00:00', end_date: '2015-1-29 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/graz.jpg"))).create!
+                 start_date: '2015-4-29 08:00:00', end_date: '2015-4-29 20:00:00', tax: @tax, image: File.open(File.join(Rails.root, "/public/graz.jpg"))).create!
 
 
 #
