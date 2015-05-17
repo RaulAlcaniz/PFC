@@ -28,7 +28,8 @@ class Enrolment < ActiveRecord::Base
   end
 
   def dog_owner
-    Dog.where(id: self.dog_id).try(:person_id)
+    Dog.try(:find_by_id, self.dog_id).person_id
+    #Dog.where(id: self.dog_id).try(:person_id)
   end
 
   def disable_select

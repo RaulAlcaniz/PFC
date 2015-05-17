@@ -14,14 +14,14 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-22T12:36:07+00:00">2015-02-22T12:36:07+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-17T01:15:06+00:00">2015-05-17T01:15:06+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.84%</span></span>
+    (<span class="covered_percent"><span class="green">99.54%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>70</b> files in total.
-    <b>1290</b> relevant lines. 
-    <span class="green"><b>1288</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed </span>
+    <b>1297</b> relevant lines. 
+    <span class="green"><b>1291</b> lines covered</span> and
+    <span class="red"><b>6</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -83,11 +83,11 @@
       <tr>
         <td class="strong"><a href="#2024824792046fbf9e0613fa81f89fb3ade81cac" class="src_link" title="app/controllers/enrolments_controller.rb">app/controllers/enrolments_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>174</td>
-        <td>107</td>
-        <td>107</td>
+        <td>178</td>
+        <td>109</td>
+        <td>109</td>
         <td>0</td>
-        <td>76.6</td>
+        <td>76.5</td>
       </tr>
       
       <tr>
@@ -313,11 +313,11 @@
       <tr>
         <td class="strong"><a href="#517c13475680beea19bb31e69a5c725d300fdd7e" class="src_link" title="app/models/enrolment.rb">app/models/enrolment.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>65</td>
+        <td>66</td>
         <td>36</td>
         <td>36</td>
         <td>0</td>
-        <td>69.2</td>
+        <td>71.2</td>
       </tr>
       
       <tr>
@@ -587,7 +587,7 @@
         <td>36</td>
         <td>36</td>
         <td>0</td>
-        <td>25.2</td>
+        <td>25.3</td>
       </tr>
       
       <tr>
@@ -732,22 +732,22 @@
       
       <tr>
         <td class="strong"><a href="#4c406d63ab97d9f6425d3be9986c555b9b1edd9c" class="src_link" title="features/support/paths.rb">features/support/paths.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="green strong">94.87 %</td>
         <td>81</td>
-        <td>36</td>
-        <td>36</td>
-        <td>0</td>
-        <td>47.7</td>
+        <td>39</td>
+        <td>37</td>
+        <td>2</td>
+        <td>49.1</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#ff6051b793c0b44b9a5c9695cdeb199b54ed9a08" class="src_link" title="features/support/selectors.rb">features/support/selectors.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="red strong">71.43 %</td>
         <td>40</td>
+        <td>7</td>
         <td>5</td>
-        <td>5</td>
-        <td>0</td>
-        <td>10.2</td>
+        <td>2</td>
+        <td>7.3</td>
       </tr>
       
     </tbody>
@@ -2253,8 +2253,8 @@
     <h3>app/controllers/enrolments_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>107</b> relevant lines. 
-      <span class="green"><b>107</b> lines covered</span> and
+      <b>109</b> relevant lines. 
+      <span class="green"><b>109</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2943,193 +2943,193 @@
         <li class="covered" data-hits="73" data-linenumber="114">
           <span class="hits">73</span>
           
-          <code class="ruby">      number_of_dogs = @enrolment.how_many_dogs_for_this_exhibition(@exhibition.what_classes_has(@enrolment.dog_class),</code>
+          <code class="ruby">      puts &#39;propietario&#39;, @enrolment.dog_owner</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="115">
           
           
-          <code class="ruby">                                                                    @enrolment.dog_owner, @exhibition.id)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="73" data-linenumber="116">
           <span class="hits">73</span>
           
-          <code class="ruby">      if number_of_dogs &gt;= prices.count</code>
+          <code class="ruby">      number_of_dogs = @enrolment.how_many_dogs_for_this_exhibition(@exhibition.what_classes_has(@enrolment.dog_class),</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="117">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="117">
           
-          <code class="ruby">        @price = prices.last</code>
+          
+          <code class="ruby">                                                                    @enrolment.dog_owner, @exhibition.id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="118">
           
           
-          <code class="ruby">      else</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="119">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="73" data-linenumber="119">
+          <span class="hits">73</span>
           
-          <code class="ruby">        @price = prices[number_of_dogs]</code>
+          <code class="ruby">      puts number_of_dogs</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="120">
+        <li class="covered" data-hits="73" data-linenumber="120">
+          <span class="hits">73</span>
           
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">      if number_of_dogs &gt;= prices.count</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="121">
+        <li class="covered" data-hits="1" data-linenumber="121">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">        @price = prices.last</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="122">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="123">
+        <li class="covered" data-hits="72" data-linenumber="123">
+          <span class="hits">72</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">        @price = prices[number_of_dogs]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="124">
           
           
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="125">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="126">
+          
+          
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="125">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update_price</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="126">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    date = @enrolment.created_at.strftime(&#39;%d/%m/%Y&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="127">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="128">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="128">
           
-          <code class="ruby">    prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, &#39;nopartners&#39;) if @enrolment.partner == 0</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="129">
           <span class="hits">1</span>
           
-          <code class="ruby">    prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, &#39;partners&#39;) if @enrolment.partner == 1</code>
+          <code class="ruby">  def update_price</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="130">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="131">
+        <li class="covered" data-hits="1" data-linenumber="130">
           <span class="hits">1</span>
           
-          <code class="ruby">    raise(ActiveRecord::ActiveRecordError) if prices.include? &#39;ERROR&#39;</code>
+          <code class="ruby">    date = @enrolment.created_at.strftime(&#39;%d/%m/%Y&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="132">
+        <li class="never" data-hits="" data-linenumber="131">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="132">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, &#39;nopartners&#39;) if @enrolment.partner == 0</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="133">
           <span class="hits">1</span>
           
-          <code class="ruby">    grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)</code>
+          <code class="ruby">    prices = (@exhibition.exhibition_prices date, @enrolment.dog_class, &#39;partners&#39;) if @enrolment.partner == 1</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="134">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    owner_id = @enrolment.dog_owner</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="135">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    Enrolment.order(:created_at).find_all{|enrolment| enrolment.dog_owner == owner_id}.</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="136">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        find_all{|enrolment| grouped_classes.include? &quot;#{enrolment.dog_class}&quot;}.</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="137">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        find_all{|enrolment| enrolment.exhibition_id == @exhibition.id}.</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="138">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        each_with_index{|enrolment, index|</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="139">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      enrolment.update_attribute(:price, prices[index])  if index &lt; prices.count</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="140">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      enrolment.update_attribute(:price, prices.last)  if index &gt;= prices.count</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="141">
-          
-          
-          <code class="ruby">    }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="142">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="143">
+        <li class="never" data-hits="" data-linenumber="134">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="135">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    raise(ActiveRecord::ActiveRecordError) if prices.include? &#39;ERROR&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="136">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="137">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    grouped_classes = @exhibition.what_classes_has(@enrolment.dog_class)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="138">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    owner_id = @enrolment.dog_owner</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="139">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    Enrolment.order(:created_at).find_all{|enrolment| enrolment.dog_owner == owner_id}.</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="140">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        find_all{|enrolment| grouped_classes.include? &quot;#{enrolment.dog_class}&quot;}.</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="141">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        find_all{|enrolment| enrolment.exhibition_id == @exhibition.id}.</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="142">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        each_with_index{|enrolment, index|</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="143">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      enrolment.update_attribute(:price, prices[index])  if index &lt; prices.count</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="144">
           <span class="hits">1</span>
           
-          <code class="ruby">  def enrolment_params</code>
+          <code class="ruby">      enrolment.update_attribute(:price, prices.last)  if index &gt;= prices.count</code>
         </li>
       
-        <li class="covered" data-hits="151" data-linenumber="145">
-          <span class="hits">151</span>
+        <li class="never" data-hits="" data-linenumber="145">
           
-          <code class="ruby">    params.require(:enrolment).permit(:dog_id, :partner, :dog_class, :price)</code>
+          
+          <code class="ruby">    }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="146">
@@ -3147,160 +3147,184 @@
         <li class="covered" data-hits="1" data-linenumber="148">
           <span class="hits">1</span>
           
-          <code class="ruby">  def authorized_people</code>
+          <code class="ruby">  def enrolment_params</code>
         </li>
       
-        <li class="covered" data-hits="337" data-linenumber="149">
-          <span class="hits">337</span>
+        <li class="covered" data-hits="151" data-linenumber="149">
+          <span class="hits">151</span>
           
-          <code class="ruby">    if @person.try(:user_id) != current_user.id</code>
+          <code class="ruby">    params.require(:enrolment).permit(:dog_id, :partner, :dog_class, :price)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="150">
-          <span class="hits">6</span>
+        <li class="never" data-hits="" data-linenumber="150">
           
-          <code class="ruby">      raise(ActiveRecord::RecordNotFound) if (!User.find(current_user).admin?) or (User.find(current_user).admin? and !params.has_key?(:person_id))</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="151">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="152">
-          
-          
-          <code class="ruby">  rescue ActiveRecord::RecordNotFound</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="153">
+        <li class="covered" data-hits="1" data-linenumber="152">
           <span class="hits">1</span>
           
-          <code class="ruby">    flash[:alert] = &#39;You can\&#39;t access to this page.&#39;</code>
+          <code class="ruby">  def authorized_people</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="154">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="337" data-linenumber="153">
+          <span class="hits">337</span>
           
-          <code class="ruby">    redirect_to root_path</code>
+          <code class="ruby">    if @person.try(:user_id) != current_user.id</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="154">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      raise(ActiveRecord::RecordNotFound) if (!User.find(current_user).admin?) or (User.find(current_user).admin? and !params.has_key?(:person_id))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="155">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="156">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  rescue ActiveRecord::RecordNotFound</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="157">
           <span class="hits">1</span>
           
+          <code class="ruby">    flash[:alert] = &#39;You can\&#39;t access to this page.&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="158">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    redirect_to root_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="159">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="160">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="161">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def authorize_route</code>
         </li>
       
-        <li class="covered" data-hits="336" data-linenumber="158">
+        <li class="covered" data-hits="336" data-linenumber="162">
           <span class="hits">336</span>
           
           <code class="ruby">    if params[:person_id]</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="159">
+        <li class="covered" data-hits="7" data-linenumber="163">
           <span class="hits">7</span>
           
           <code class="ruby">      raise(ActiveRecord::RecordNotFound) if !User.find(current_user.id).admin?</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="160">
+        <li class="covered" data-hits="5" data-linenumber="164">
           <span class="hits">5</span>
           
           <code class="ruby">      @person = Person.find(params[:person_id]) if params[:person_id]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="161">
+        <li class="never" data-hits="" data-linenumber="165">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="162">
+        <li class="never" data-hits="" data-linenumber="166">
           
           
           <code class="ruby">  rescue ActiveRecord::RecordNotFound</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="163">
+        <li class="covered" data-hits="2" data-linenumber="167">
           <span class="hits">2</span>
           
           <code class="ruby">    flash[:alert] = &#39;You can\&#39;t access to this page.&#39;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="164">
+        <li class="covered" data-hits="2" data-linenumber="168">
           <span class="hits">2</span>
           
           <code class="ruby">    redirect_to root_path</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="165">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="166">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="167">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def check_deadlines</code>
-        </li>
-      
-        <li class="covered" data-hits="232" data-linenumber="168">
-          <span class="hits">232</span>
-          
-          <code class="ruby">    raise(ActiveRecord::ActiveRecordError) if !@exhibition.try(:payment_time_started?) or @exhibition.try(:payment_time_ended?)</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="169">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="170">
           
           
-          <code class="ruby">  rescue ActiveRecord::ActiveRecordError</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="171">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="171">
+          <span class="hits">1</span>
           
-          <code class="ruby">    flash[:alert] = &#39;This exhibition is not available to enroll at the moment.&#39;</code>
+          <code class="ruby">  def check_deadlines</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="172">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="232" data-linenumber="172">
+          <span class="hits">232</span>
           
-          <code class="ruby">    redirect_to @exhibition</code>
+          <code class="ruby">    raise(ActiveRecord::ActiveRecordError) if !@exhibition.try(:payment_time_started?) or @exhibition.try(:payment_time_ended?)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="173">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="174">
+          
+          
+          <code class="ruby">  rescue ActiveRecord::ActiveRecordError</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="175">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    flash[:alert] = &#39;This exhibition is not available to enroll at the moment.&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="176">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    redirect_to @exhibition</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="177">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="178">
           
           
           <code class="ruby">end</code>
@@ -8310,211 +8334,217 @@
           <code class="ruby">  def dog_owner</code>
         </li>
       
-        <li class="covered" data-hits="118" data-linenumber="31">
-          <span class="hits">118</span>
+        <li class="covered" data-hits="191" data-linenumber="31">
+          <span class="hits">191</span>
           
-          <code class="ruby">    Dog.where(id: self.dog_id).try(:person_id)</code>
+          <code class="ruby">    Dog.try(:find_by_id, self.dog_id).person_id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    #Dog.where(id: self.dog_id).try(:person_id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
           <code class="ruby">  def disable_select</code>
         </li>
       
-        <li class="covered" data-hits="465" data-linenumber="35">
+        <li class="covered" data-hits="465" data-linenumber="36">
           <span class="hits">465</span>
           
           <code class="ruby">    self.price &lt; 0 ? true : false if (!self.price.nil? and !errors.any?)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
           <code class="ruby">  def enrolments_with_same_payment</code>
         </li>
       
-        <li class="covered" data-hits="74" data-linenumber="39">
+        <li class="covered" data-hits="74" data-linenumber="40">
           <span class="hits">74</span>
           
           <code class="ruby">    count=0</code>
         </li>
       
-        <li class="covered" data-hits="74" data-linenumber="40">
+        <li class="covered" data-hits="74" data-linenumber="41">
           <span class="hits">74</span>
           
           <code class="ruby">    Enrolment.all.each do |enrolment|</code>
         </li>
       
-        <li class="covered" data-hits="154" data-linenumber="41">
+        <li class="covered" data-hits="154" data-linenumber="42">
           <span class="hits">154</span>
           
           <code class="ruby">      count=count+1 if enrolment.payment_id == self.payment_id and Dog.try(:find_by_id, enrolment.dog_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="74" data-linenumber="43">
+        <li class="covered" data-hits="74" data-linenumber="44">
           <span class="hits">74</span>
           
           <code class="ruby">    count</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="46">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def check_available_classes</code>
         </li>
       
-        <li class="covered" data-hits="198" data-linenumber="48">
+        <li class="covered" data-hits="198" data-linenumber="49">
           <span class="hits">198</span>
           
           <code class="ruby">    errors.add(:dog_class, &#39;This class cant be selected for now. Please contact with the Webmaster&#39;) if self.class_available? self.dog_class</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="51">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
+        <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
           <code class="ruby">  def check_class</code>
         </li>
       
-        <li class="covered" data-hits="198" data-linenumber="52">
+        <li class="covered" data-hits="198" data-linenumber="53">
           <span class="hits">198</span>
           
           <code class="ruby">    if self.dog_id</code>
         </li>
       
-        <li class="covered" data-hits="196" data-linenumber="53">
+        <li class="covered" data-hits="196" data-linenumber="54">
           <span class="hits">196</span>
           
           <code class="ruby">      errors.add(:dog_class, &#39;Must select a class or your dog is not accepted for this class&#39;) if not class_allowed and !errors.include? :dog_class</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="55">
+        <li class="covered" data-hits="2" data-linenumber="56">
           <span class="hits">2</span>
           
           <code class="ruby">      errors.add(:dog, &#39;You have to select a dog&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">  # Check if selected breed is allowed for the selected dog</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="60">
           
           
+          <code class="ruby">  # Check if selected breed is allowed for the selected dog</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
           <code class="ruby">  # Check the date based on the start date of the exhibition</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="62">
           <span class="hits">1</span>
           
           <code class="ruby">  def class_allowed</code>
         </li>
       
-        <li class="covered" data-hits="196" data-linenumber="62">
+        <li class="covered" data-hits="196" data-linenumber="63">
           <span class="hits">196</span>
           
           <code class="ruby">    (Dog.find(self.dog_id).what_classes? &quot;#{((Exhibition.find(self.exhibition_id).start_date)).to_date}&quot;).include? self.dog_class</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>
@@ -14520,8 +14550,8 @@
           <code class="ruby">Given /^today is &quot;([^&quot;]*)&quot;$/ do |date|</code>
         </li>
       
-        <li class="covered" data-hits="211" data-linenumber="14">
-          <span class="hits">211</span>
+        <li class="covered" data-hits="213" data-linenumber="14">
+          <span class="hits">213</span>
           
           <code class="ruby">  travel_to DateTime.parse(date)</code>
         </li>
@@ -14544,8 +14574,8 @@
           <code class="ruby">After(&#39;@time_travel&#39;) do</code>
         </li>
       
-        <li class="covered" data-hits="70" data-linenumber="18">
-          <span class="hits">70</span>
+        <li class="covered" data-hits="72" data-linenumber="18">
+          <span class="hits">72</span>
           
           <code class="ruby">  travel_back</code>
         </li>
@@ -19435,11 +19465,11 @@
         <div class="source_table" id="4c406d63ab97d9f6425d3be9986c555b9b1edd9c">
   <div class="header">
     <h3>features/support/paths.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">94.87 %</span> covered</h4>
     <div>
-      <b>36</b> relevant lines. 
-      <span class="green"><b>36</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>39</b> relevant lines. 
+      <span class="green"><b>37</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -19854,8 +19884,8 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
-          
+        <li class="covered" data-hits="198" data-linenumber="69">
+          <span class="hits">198</span>
           
           <code class="ruby">        begin</code>
         </li>
@@ -19878,22 +19908,22 @@
           <code class="ruby">          self.send(path_components.push(&#39;path&#39;).join(&#39;_&#39;).to_sym)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="missed" data-hits="0" data-linenumber="73">
           
           
-          <code class="ruby">        # rescue NoMethodError, ArgumentError</code>
+          <code class="ruby">        rescue NoMethodError, ArgumentError</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="missed" data-hits="0" data-linenumber="74">
           
           
-          <code class="ruby">        #   raise &quot;Can&#39;t find mapping from \&quot;#{page_name}\&quot; to a path.\n&quot; +</code>
+          <code class="ruby">          raise &quot;Can&#39;t find mapping from \&quot;#{page_name}\&quot; to a path.\n&quot; +</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">        #             &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
+          <code class="ruby">                    &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
@@ -19939,11 +19969,11 @@
         <div class="source_table" id="ff6051b793c0b44b9a5c9695cdeb199b54ed9a08">
   <div class="header">
     <h3>features/support/selectors.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="red">71.43 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
+      <b>7</b> relevant lines. 
       <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -20022,10 +20052,10 @@
           <code class="ruby">      when &quot;the page&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="missed" data-hits="0" data-linenumber="13">
           
           
-          <code class="ruby">        # &quot;html &gt; body&quot;</code>
+          <code class="ruby">        &quot;html &gt; body&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
@@ -20148,16 +20178,16 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="missed" data-hits="0" data-linenumber="34">
           
           
-          <code class="ruby">        # raise &quot;Can&#39;t find mapping from \&quot;#{locator}\&quot; to a selector.\n&quot; +</code>
+          <code class="ruby">        raise &quot;Can&#39;t find mapping from \&quot;#{locator}\&quot; to a selector.\n&quot; +</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby">        #           &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
+          <code class="ruby">                  &quot;Now, go and add a mapping in #{__FILE__}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">

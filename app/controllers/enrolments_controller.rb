@@ -113,6 +113,7 @@ class EnrolmentsController < ApplicationController
 
       number_of_dogs = @enrolment.how_many_dogs_for_this_exhibition(@exhibition.what_classes_has(@enrolment.dog_class),
                                                                     @enrolment.dog_owner, @exhibition.id)
+
       if number_of_dogs >= prices.count
         @price = prices.last
       else

@@ -1,3 +1,4 @@
+@time_travel
 Feature: Viewing exhibitions
   In order to view exhibitions
   As a user
@@ -5,6 +6,7 @@ Feature: Viewing exhibitions
 
   Background:
   There are exhibitions with name, description, and dates for start/end
+    Given today is "10-12-2014"
     Given there are exhibitions with these entries:
       | Name                | Description     | Start date          | End date            |
       | TWK 139th Dog Show  | Not description | May 7, 2015 - 12:30 | May 7, 2015 - 20:30 |
