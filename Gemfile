@@ -28,6 +28,7 @@ gem 'devise', '3.2.4'
 
 # Carrierwave para subida de ficheros
 gem 'carrierwave'
+gem 'fog'
 
 gem 'countries'
 gem 'country_select'
